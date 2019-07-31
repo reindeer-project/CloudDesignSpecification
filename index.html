@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119014319-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119014319-2');
+</script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>Cloud Design Specification - Reindeer Project</title>
+
+    <!-- Styles -->
+    <link href="resources/page.min.css" rel="stylesheet">
+    <link href="resources/style.css" rel="stylesheet">
+    <link href="resources/cdstop.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="https://reindeer.tech/assets/img/reindeerfavicon.png">
+    <link rel="icon" href="https://reindeer.tech/assets/img/reindeerfavicon.png">
+  </head>
+
+  <body data-spy="scroll" data-target=".nav-sidebar" data-offset="100" data-gr-c-s-loaded="true" class="">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-stick-dark">
+      <div class="container">
+        <div class="navbar-left">
+          <ul class="nav nav-navbar">
+            <li class="nav-item">
+              <a class="nav-link" style="padding-left:0px" href="https://reindeer.tech" target="_blank">
+                <span>Supported by Reindeer Project</span>
+              </a>
+	          </li>
+	        </ul>
+        </div>
+        <v-spacer></v-spacer>
+        <div class="navbar-right">
+            <ul class="nav nav-navbar">
+              <li class="nav-item">
+                <a class="nav-link" style="padding-left:0px" href="/index_ja.html" target="_blank">
+                  <span>Japanese</span>
+                </a>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- /.navbar -->
+    <!-- Header -->
+    <header class="header">
+      <canvas id="drawing_canvas"></canvas>
+      <div id="headertitle" class="container">
+        <h1>Cloud Design Specification</h1>
+        <p class="lead">Standard data notation method to record and share know-how of cloud computing adoption.</p>
+        <p>version 1.0.0</p>
+      </div>
+    </header><!-- /.header -->
+    <!-- Main Content -->
+    <main id="main" class="main-content">
+      <div class="container">
+        <div class="row">
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Sidebar
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          <div class="col-md-4 col-xl-3">
+            <aside class="sidebar sidebar-expand-md sidebar-sticky pr-md-4 br-1" style="width: 209.988px;">
+              <div class="sidebar-body ps ps--active-y">
+                <ul class="nav nav-sidebar nav-sidebar-hero nav-sidebar-pill flex-nowrap">
+                  <li class="nav-item">
+                    <a class="nav-link navParent" href="#gettingstarted">Getting started</a>
+                    <div class="nav">
+                      <a class="nav-link small" href="#introduction">Introduction</a>
+                      <a class="nav-link small" href="#extension">Extensional design</a>
+                      <a class="nav-link small" href="#tools">Tools</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link navParent" href="#general">General</a>
+                    <div class="nav">
+                      <a class="nav-link small" href="#versions">Versions</a>
+                      <a class="nav-link small" href="#format">Format</a>
+                      <a class="nav-link small" href="#structure">Structure</a>
+                    </div>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link navParent" href="#parentSchema">Parent Schema</a>
+                    <div class="nav">
+                      <a class="nav-link small" href="#s-clouddesign">
+                          <i class="fa fa-home mr-3" aria-hidden="true"></i>
+                        Cloud Design</a>
+                      <a class="nav-link small" href="#s-info">
+                        <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
+                        Info</a>
+                      <a class="nav-link small" href="#s-actor">
+                        <i class="fa fa-user mr-3" aria-hidden="true"></i>
+                        Actor</a>
+                      <a class="nav-link small" href="#s-resource">
+                        <i class="fa fa-server mr-3" aria-hidden="true"></i>
+                        Resource</a>
+                      <a class="nav-link small" href="#s-context">
+                        <i class="fa fa-route mr-3" aria-hidden="true"></i>                        
+                        Context</a>
+                      <a class="nav-link small" href="#s-components">
+                        <i class="fa fa-cube mr-3" aria-hidden="true"></i>
+                        Components</a>
+                    </div>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link navParent" href="#childSchema">Child Schema</a>
+                      <div class="nav">
+                        <a class="nav-link small" href="#s-license">
+                          <i class="fas fa-signature mr-3" aria-hidden="true"></i>
+                          License</a>
+                        <a class="nav-link small" href="#s-author">
+                            <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
+                          Author</a>
+                        <a class="nav-link small" href="#s-market">
+                            <i class="fa fa-crosshairs mr-3" aria-hidden="true"></i>
+                          Market</a>
+                        <a class="nav-link small" href="#s-trigger">
+                            <i class="fa fa-play-circle mr-3" aria-hidden="true"></i>
+                          Trigger</a>
+                        <a class="nav-link small" href="#s-traffic">
+                          <i class="fa fa-link mr-3" aria-hidden="true"></i>
+                          Traffic</a>
+                        <a class="nav-link small" href="#s-infoType">
+                          <i class="fa fa-lock mr-3" aria-hidden="true"></i>
+                          InfoType</a>
+                      </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link navParent" href="#commonSchema">Common Schema</a>
+                        <div class="nav">
+                              <a class="nav-link small" href="#s-rangeValue">
+                                <i class="fa fa-calculator mr-3" aria-hidden="true"></i>
+                                Range values</a>
+                              <a class="nav-link small" href="#s-ref">
+                                  <i class="fa fa-eye mr-3" aria-hidden="true"></i>
+                                Reference</a>
+                        </div>
+                      </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link navParent" href="#appendix">Appendix</a>
+                    <div class="nav">
+                      <a class="nav-link small" href="#resourcearticles">Resources</a>
+                      <a class="nav-link small" href="#revision">Revision</a>
+                    </div>
+                  </li>
+
+                </ul>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px; height: 318px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 227px;"></div></div></div>
+            </aside>
+          </div>
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Content
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          <div class="col-md-7 col-xl-8 ml-md-auto py-8">
+            <!--
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            | Getting started
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            !-->
+            <h2 id="gettingstarted">Getting started<a class="anchor" href="#gettingstarted"></a></h2>
+            <div class="alert alert-secondary">
+              <p class="lead-2">Get started with Cloud Design with this reference and tools.</p>
+              <p>This document is licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">
+                The Apache License, Version 2.0</a>.
+              </p>
+              <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be 
+                interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt" target="_blank">RFC 2119</a>.</p>
+            </div>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="introduction">Introduction<a class="anchor" href="#introduction"></a></h3>
+            <p>The Cloud Design Specification (<b>the "CDS"</b>) defines a standard, provider-agnostic procurement data of cloud computing which allows both humans and computers 
+              to discover and understand the capabilities of the computing without access to working resources, various documentation, or through network traffic inspection. 
+              When properly defined, a consumer can understand and interact with the remote computing service with a minimal amount of implementation logic.
+            <br>A Cloud Design definition (<b>the "CDD"</b>) can then be used by documentation generation tools to display the computing architecture, archiving tools 
+            to deploy it to the blockchain as the safe and reusable knowledge base, auditing tools, and many other use cases.</p>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="extension">Extension of the existing cloud automation languages <a class="anchor" href="#introduction"></a></h3>
+            <p>The CDS is designed to 'connect the last one mile' between the system requirement, cloud computing's architecture, author, and other valuable information 
+              for service creators explicitly by describing the relations of them. <br>So the CDD SHOULD include the reference to existing cloud automation languages 
+              like <a href="https://aws.amazon.com/cloudformation/" target="_blank">AWS Cloud Formation</a>, 
+              <a href="https://azure.microsoft.com/en-us/features/resource-manager/" target="_blank">Azure Resource Manager</a>, 
+              <a href="https://cloud.google.com/deployment-manager/" target="_blank">Google Cloud Deployment Manager</a>, 
+              <a href="https://www.terraform.io/" target="_blank">Terraform</a> 
+              and so on. Because they are very useful language for describing cloud computing architecture.
+            </p>
+            
+            <hr class="hr-dot-bold my-7">
+            <h3 id="tools">Tools<a class="anchor" href="#tools"></a></h3>
+            <p>You can create, store, search, reuse the Cloud Designs by using various tools.</p>
+            <br><br>
+            <p><B>Reindeer Editor 0.1.0</B><br>A documentation generation tool supported by Reindeer Project. You can edit a CDD and display 
+              the cloud computing adoption report by using this.</p>
+            <p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'demo_editor_en');">DEMO(COMMING SOON)</a>
+              &nbsp;&nbsp;<a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'download_demo_en');">Download(COMMING SOON)</a></p>
+            <br>
+            <p><B>Cloud Design Schema 1.0.0</B><br>It is a JSON schema file that can be used to check the grammar of the CDD by incorporating it into a third party editor.</p>
+            <a class="btn btn-primary mb-1" href="/cds_reindeer_1_0_0_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_en');">Download CDD root schema</a>
+            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_1_0_0_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_en');">Download CDD snippet schema</a>
+          </p>
+            <br>
+            <p><B>Reindeer Archiver 0.1.0</B><br>An archiving tool supported by Reindeer Project. You can deploy your CDD to the blockchain 
+              as the safe and reusable knowledge base.
+            </p><p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'demo_archiver_en');">DEMO(COMMING SOON)</a>
+              &nbsp;&nbsp;<a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'download_archiver_en');">Download(COMMING SOON)</a></p>
+            <br>
+            <p><B>Reindeer HUB 0.1.0</B><br>
+              A search console and workflow tool supported by Reindeer Porject. Your team can find and reuse various CDD for your project.
+	          </p>
+            <p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'hub_en');">ACCESS(COMMING SOON)</a></p>
+
+            <!--
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            | General
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            !-->
+            <div class="text-center my-7"><a href="#gettingstarted"><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 50px;"></i></a></div>
+            <h2 id="general">General<a class="anchor" href="#general"></a></h2>
+            <div class="alert alert-secondary">
+              <p class="lead-2">Describing the general specification of Cloud Design.</p>
+            </div>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="versions">Versions<a class="anchor" href="#versions"></a></h3>
+            <p>The CDS is versioned using <a href ="https://semver.org/spec/v2.0.0.html" target="_blank">Semantic Versioning 2.0.0</a> (SemVer) and follows 
+              the below specification.<br>A version number is given incrementally as <code>major.minor.patch</code>. The <code>major.minor</code> SHALL designate 
+              the one or some feature set. And the <code>.patch</code> SHALL designate backward-compatible bug fixes. 
+              So the patch version SHOULD NOT be considered by tooling, SHOULD NOT make any distinction about the feature or tooling between 1.0.0 and 1.0.1 for example.</p>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="format">Format<a class="anchor" href="#format"></a></h3>
+            <p>The CDD that conforms to the CDS is itself a JSON object, 
+              which MAY be represented either in JSON or YAML format. 
+              In order to preserve the ability to round-trip between YAML and JSON formats, 
+              YAML version <a href ="https://yaml.org/spec/1.2/spec.html" target="_blank">1.2</a> is RECOMMENDED along with some additional constraints:
+	          <ul>
+              <li>Tags MUST be limited to those allowed by the <a href="http://www.yaml.org/spec/1.2/spec.html#id2803231" target="_blank">JSON Schema ruleset</a>.</li>
+              <li>Keys used in YAML maps MUST be limited to a scalar string, 
+                as defined by the <a href="http://yaml.org/spec/1.2/spec.html#id2802346" target="_blank">YAML Failsafe schema ruleset</a>.</li>
+      	    </ul>
+            <p>All field names in the specification are <b>case confidential</b>. 
+              This includes all fields that are used as keys in a map, except where explicitly noted that keys are <b>case inconfidential</b>.</p>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="structure">Structure<a class="anchor" href="#structure"></a></h3>
+            <p>The CDD MAY consist of a single document or split into multiple parts at the user's discretion. 
+              However, in the latter case, the root CDD MUST always contain all required <a href="#parentSchema">parent schemas</a>. 
+              Also, files referred to as parts are called CDD snippets, and SHOULD contain only <a href="#s-components">components</a> objects. 
+              And the reference to the CDD snippet from the root file SHOULD be associated name in <code>$ref</code> field. 
+              And the root file SHOULD be named 'clouddesign.json' or 'clouddesign.yaml'.
+             </p>
+
+            <!--
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            | Parent Schema
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            !-->
+            <div class="text-center my-7"><a href="#general"><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 50px;"></i></a></div>
+            <h2 id="parentSchema">Parent Schema<a class="anchor" href="#parentSchema"></a></h2>
+            <div class="alert alert-secondary">
+              <p class="lead-2">Describing the primary data structure of Cloud Design. 
+                In the following description, if a field is not explicitly REQUIRED or described with a MUST or SHALL, 
+                it can be considered OPTIONAL.
+              </p>
+            </div>
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-clouddesign">
+                <i class="fa fa-home mr-3" aria-hidden="true"></i>
+              Cloud Design Object<a class="anchor" href="#s-clouddesign"></a></h3>
+            <p>This is the root object of the CDD.</p>
+	          <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">reindeer</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    This string MUST be the <a href="#versions">semantic version number</a> of the CDS version. 
+                    The <code>reindeer</code> field SHOULD be used by tools for interpreting the CDD. 
+                    This is not related to the <code>info.version</code> string.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">self</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    This string is the filename of the CDD. It MUST be with the extension, <code>.json</code>, <code>.yaml</code> or <code>.yml</code>. 
+                    The <code>self</code> field SHOULD be used by tools for interpreting the CDD. 
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">info</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-info">Info object</a></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    Provides metadata about the cloud computing adoption. The metadata MAY be used by tooling as required.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">actors</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-actor">Actor object</a> | <code>string</code>, <a href="#s-ref">Reference object</a>]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    An array of actor objects, which provide information about the external user or system to which cloud computing is connected.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">resources</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-resource">Resource object</a> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    An array of resource objects, which is pointing to the external documents (files written by cloud automation languages) describing the cloud computing architecture.</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-context">Context object</a> | <code>string</code>, <a href="#s-ref">Reference object</a>]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    An array of context objects, which provide information about the relationship 
+                    for achieving a specific purpose between actors and cloud computing resources.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">components</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-components">Components object</a></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Holds a set of reusable objects for different aspects of the CDD. 
+                    All objects defined within the components object will have no effect on the Cloud Design 
+                    unless they are explicitly referenced from properties outside the components object.
+                  </p>
+                </div>
+            </div>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-info">
+              <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
+              Info object<a class="anchor" href="#s-info"></a></h3>
+            <p>
+                The object provides metadata about the CDD. 
+                The metadata SHOULD be filled properly for helping others easy to search and find the CDD.
+            </p>
+	          <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">version</p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                  The version of the CDD defined by your willing (which is distinct from <a href="#versions">the CDS version</a>).
+                </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">license</p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-license">License object</a></p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The license information of the CDD.</p>
+              </div>
+              <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">title</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
+                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    The title of the service, adopting this cloud design.
+                  </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                  The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                  And the value MUST be within 255 letters string of UTF-8. <br> 
+                  The description of the service, adopting this cloud design. 
+                  It SHOULD be the concise memo including every keyword of the purpose and functions of the system. 
+                  This text MAY be used as the search index by external tools.
+                </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">status</p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The status of the CDD. 
+                  Valid values are <code>idea</code>, <code>draft</code>, <code>production</code>.<br>
+                  <code>idea: </code>Just an idea.<br>
+                  <code>draft: </code>Under designing.<br>
+                  <code>production: </code>Used by an actual service. Or expected to have production quality.
+                </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">designedAt</p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                  The time when the CDD was designed at. It MUST be the UNIXTIME format.
+                </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">authors</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a href="#s-author">Author object</a> ]</p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The authors of the CDD. 
+                  This information MAY be used by external tools as the important evidence of involved person's skill and experience.
+                </p>
+              </div>
+            </div>
+<h6>JSON example</h6>
+<pre><code>{
+  <span class="token tag">"version": </span>"1.0.0",
+  <span class="token tag">"license": </span>{
+      <span class="token tag">"type": </span>"CC0 1.0"
+  },
+  <span class="token tag">"title": </span>{
+      <span class="token tag">"en": </span>"Sample system",
+      <span class="token tag">"ja": </span>"サンプルシステム",
+      <span class="token tag">"ru": </span>"Образец системы"
+  },
+  <span class="token tag">"description": </span>{
+      <span class="token tag">"en": </span>"Sample description",
+      <span class="token tag">"ja": </span>"説明サンプル",
+      <span class="token tag">"ru": </span>"Пример описания"
+  },
+  <span class="token tag">"status": </span>"draft",
+  <span class="token tag">"designedAt": </span>"1548731447",
+  <span class="token tag">"authors": </span>{
+      <span class="token tag">"sampleHandleNameA": </span>{
+            <span class="token tag">"roles": </span>[<span class="token tag">"designer"</span>],
+            <span class="token tag">"joinedAt": </span>1548730447,
+            <span class="token tag">"leavedAt": </span>1548731447
+      },
+      <span class="token tag">"sampleHandleNameB": </span>{
+            <span class="token tag">"roles": </span>[<span class="token tag">"designer"</span>, <span class="token tag">"auditor"</span>],
+            <span class="token tag">"joinedAt": </span>1548730447
+      }
+    }
+  }
+</code></pre>
+
+<h6>YAML example</h6>
+<pre><code><span class="token tag">version: </span>1.0.0
+<span class="token tag">license: </span>
+      <span class="token tag">type: </span>CC0 1.0
+<span class="token tag">title: </span>
+      <span class="token tag">en: </span>Sample system
+      <span class="token tag">ja: </span>サンプルシステム
+      <span class="token tag">ru: </span>Образец системы
+<span class="token tag">description: </span>
+      <span class="token tag">en: </span>Sample description
+      <span class="token tag">ja: </span>説明サンプル
+      <span class="token tag">ru: </span>Пример описания
+<span class="token tag">status: </span>draft
+<span class="token tag">designedAt: </span>1548731447
+<span class="token tag">authors: </span>
+      <span class="token tag">sampleHandleNameA: </span>
+            <span class="token tag">roles: </span>
+                  <span class="token tag">- </span>designer
+            <span class="token tag">joinedAt: </span>1548730447
+            <span class="token tag">leavedAt: </span>1548731447
+      <span class="token tag">sampleHandleNameB: </span>
+            <span class="token tag">roles: </span>
+                  <span class="token tag">- </span>designer
+                  <span class="token tag">- </span>auditor
+            <span class="token tag">joinedAt: </span>1548730447
+</code></pre>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-actor">
+                <i class="fa fa-user mr-3" aria-hidden="true"></i>
+              Actor objects<a class="anchor" href="#s-info"></a></h3>
+            <p>
+                The objects provide information about users, operators or external systems the Cloud computing will be connected with.
+                It SHOULD be comprehensive for designing and auditing the CDD correctly.
+            </p>
+
+            <hr class="hr-dot my-5">
+            <h3 id="s-actor-market" class="font-italic">Market type of actor object<a class="anchor" href="#s-actor-market"></a></h3>
+            <p>
+                This object provides information about an unspecified number of users, such as consumers and spectators belonging to a particular market.
+                It is the kind of actor you SHOULD use, for example, when designing a limited network connection with an identifiable individual and cloud computing.
+                The correct number SHOULD be provided in order to understand the number of users and the number of requests to be provided to the system.
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">type</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Fixed value, '<code>market</code>'.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">title</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
+                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    The title of the actor.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    The description of the actor. 
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">market</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-market">Market object</a> | <a href="#s-ref">Reference object</a> </p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Market information to which this actor belongs. 
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">marketShare</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The share ratio of this actor among the belonging market. 
+                    For example, <code>0.3</code> means 30%.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">sourceIdentification</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Whether specific IP address range or domains is assigned or not.
+                    If true, <code>identificationGroup</code> property is required.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">identificationGroup</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">The group name of IP address range, domains and so on.. 
+                    Required when <code>sourceIdentification</code> propery is true. And MUST NOT use when <code>sourceIdentification</code> propery is false.
+                  </p>
+                </div>
+            </div>
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"type": "market",</span>
+  <span class="token tag">"title": </span>{
+        <span class="token tag">"en": </span>"Customers", 
+        <span class="token tag">"ja": </span>"顧客",
+        <span class="token tag">"ru": </span>"Клиенты"
+  },
+  <span class="token tag">"description": </span>{
+        <span class="token tag">"en": </span>"Users of our products.",
+        <span class="token tag">"ja": </span>"当社製品の利用ユーザー",
+        <span class="token tag">"ru": </span>"Пользователи нашей продукции."
+  },
+  <span class="token tag">"market": </span>{
+        <span class="token tag">"title": </span>{
+              <span class="token tag">"en": </span>"65 years and over in U.S., July 2018", 
+              <span class="token tag">"ja": </span>"65才以上の人口　米国　2018年7月",
+              <span class="token tag">"ru": </span>"65 лет и старше в США, июль 2018 года"
+        },
+        <span class="token tag">"description": </span>{
+              <span class="token tag">"en": </span>"General population data of U.S. at 2018 by govermental research.",
+              <span class="token tag">"ja": </span>"米国政府による2018年の人口統計",
+              <span class="token tag">"ru": </span>"Данные об общей численности населения США на 2018\nгод по данным государственных исследований."
+        },
+        <span class="token tag">"num": </span>51038120,
+        <span class="token tag">"estimatedBy": </span>"U.S. Census Bureau",
+        <span class="token tag">"estimatedAt": </span>1530370800
+  },
+  <span class="token tag">"marketShare": </span>0.01,
+  <span class="token tag">"sourceIdentification": </span>false
+}
+</code></pre>
+            
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">type: market</span>
+<span class="token tag">title: </span>
+      <span class="token tag">en: </span>Customers 
+      <span class="token tag">ja: </span>顧客
+      <span class="token tag">ru: </span>Клиенты
+<span class="token tag">description: </span>
+      <span class="token tag">en: </span>Users of our products.
+      <span class="token tag">ja: </span>当社製品の利用ユーザー
+      <span class="token tag">ru: </span>Пользователи нашей продукции.
+<span class="token tag">market: </span>
+      <span class="token tag">title: </span>
+            <span class="token tag">en: </span>65 years and over in U.S., July 2018 
+            <span class="token tag">ja: </span>65才以上の人口　米国　2018年7月
+            <span class="token tag">ru: </span>65 лет и старше в США, июль 2018 года
+      <span class="token tag">description: </span>
+            <span class="token tag">en: </span>General population data of U.S. at 2018 by govermental research.
+            <span class="token tag">ja: </span>米国政府による2018年の人口統計
+            <span class="token tag">ru: </span>| 
+                Данные об общей численности населения США на 2018
+                год по данным государственных исследований.
+      <span class="token tag">num: </span>51038120
+      <span class="token tag">estimatedBy: </span>U.S. Census Bureau
+      <span class="token tag">estimatedAt: </span>1530370800
+<span class="token tag">marketShare: </span>0.01
+<span class="token tag">sourceIdentification: </span>false
+</code></pre>
+
+            <hr class="hr-dot my-5">
+            <h3 id="s-actor-persons" class="font-italic">Persons type of actor object<a class="anchor" href="#s-actor-persons"></a></h3>
+            <p>
+                The object provides information about a type of actor being consisted of one or a few persons like system operator.
+                The kind of actor you SHOULD use, for example, when designing a limited network connection between an identifiable external system and cloud computing.            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">type</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Fixed value, '<code>persons</code>'.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">title</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
+                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    The title of the group of persons. 
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      The description of the group of persons. 
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">num</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The number of members.</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">sourceIdentification</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Assigned specific IP address range, domains and so on, or not.
+                      If true, <code>identificationGroup</code> property is required.
+                    </p>
+                  </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">identificationGroup</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">The group name of IP address range, domains and so on. 
+                    Required when <code>sourceIdentification</code> propery is true. And MUST NOT use when <code>sourceIdentification</code> propery is false.
+                  </p>
+                </div>
+            </div>
+
+<h6>JSON example</h6>
+<pre><code>{
+  <span class="token tag">"type": "persons",</span>
+  <span class="token tag">"title": </span>{
+      <span class="token tag">"en": </span>"Operators",
+      <span class="token tag">"ja": </span>"運用担当者",
+      <span class="token tag">"ru": </span>"операторы"
+  },
+  <span class="token tag">"description": </span>{
+      <span class="token tag">"en": </span>"Operators using management console.",
+      <span class="token tag">"ja": </span>"管理コンソールを利用する運用担当者",
+      <span class="token tag">"ru": </span>"Операторы, использующие консоль управления."
+  },
+  <span class="token tag">"num": </span>7,
+  <span class="token tag">"sourceIdentification": </span>true,
+  <span class="token tag">"identificationGroup": </span>"IPsOfOperatorGroupA"
+}</code></pre>
+
+<h6>YAML example</h6>
+<pre><code><span class="token tag">type: persons</span>
+<span class="token tag">title: </span>a
+      <span class="token tag">en: </span>Operators 
+      <span class="token tag">ja: </span>運用担当者
+      <span class="token tag">ru: </span>операторы
+<span class="token tag">description: </span>
+      <span class="token tag">en: </span>Operators using management console.
+      <span class="token tag">ja: </span>管理コンソールを利用する運用担当者
+      <span class="token tag">ru: </span>Операторы, использующие консоль управления.
+<span class="token tag">num: </span>7
+<span class="token tag">sourceIdentification: </span>true
+<span class="token tag">identificationGroup: </span>IPsOfOperatorGroupA
+
+</code></pre>
+
+            <hr class="hr-dot my-5">
+            <h3 id="s-actor-system" class="font-italic">External system type of actor object<a class="anchor" href="#s-actor-system"></a></h3>
+            <p>
+                The object provides information about a type of actor being consisted of one or a few systems like external API, FILE interface and so on.
+                The kind of actor you SHOULD use, for example, when designing a limited network connection between an identifiable external system and cloud computing.
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">type</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Fixed value, '<code>externalSystem</code>'.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">title</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.  
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
+                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    The title of the external system interface.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      The description of the external system interface.
+                    </p>
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">sourceIdentification</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Assigned specific IP address range, domains and so on, or not.
+                      If true, <code>identificationGroup</code> property is required.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">identificationGroup</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">The group name of IP address range, domains and so on.. 
+                    Required when <code>sourceIdentification</code> propery is true. And MUST NOT use when <code>sourceIdentification</code> propery is false.
+                  </p>
+                </div>
+            </div>
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"type": "externalSystem"</span>,
+  <span class="token tag">"title": </span>{
+        <span class="token tag">"en": </span>"API of SFA platform",
+        <span class="token tag">"ja": </span>"SFAプラットフォームのAPI",
+        <span class="token tag">"ru": </span>"API платформы SFA"
+  },
+  <span class="token tag">"description": </span>{
+        <span class="token tag">"en": </span>"Providing GET and POST interfaces of sales information.",
+        <span class="token tag">"ja": </span>"販売情報のGETおよびPOSTインターフェースを提供する外部システム",
+        <span class="token tag">"ru": </span>"Предоставление GET и POST интерфейсов информации о продажах."
+  },
+  <span class="token tag">"sourceIdentification": </span>true,
+  <span class="token tag">"identificationGroup": </span>"ipsOfSFA"
+}</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">type: externalSystem</span>
+<span class="token tag">title: </span>
+      <span class="token tag">en: </span>API of SFA platform
+      <span class="token tag">ja: </span>SFAプラットフォームのAPI
+      <span class="token tag">ru: </span>API платформы SFA
+<span class="token tag">description: </span>
+      <span class="token tag">en: </span>Providing GET and POST interfaces of sales information.
+      <span class="token tag">ja: </span>販売情報のGETおよびPOSTインターフェースを提供する外部システム
+      <span class="token tag">ru: </span>Предоставление GET и POST интерфейсов информации о продажах.
+<span class="token tag">sourceIdentification: </span>true
+<span class="token tag">identificationGroup: </span>ipsOfSFA
+</code></pre>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-resource">
+                <i class="fa fa-server mr-3" aria-hidden="true"></i>
+              Resource object<a class="anchor" href="#s-resource"></a></h3>
+            <p>
+                The object provides information about cloud computing resources used by this system. 
+                It MUST be references of the external file formatted by JSON or YAML.
+                And it SHOULD be well-formatted data for cloud automation tools like below.<br>
+                <div class="font-italic">AWS CloudFormation</div>
+                <div class="font-italic">Azure Resource Manager</div>
+                <div class="font-italic">Google Cloud Deployment Manager</div>
+                <div class="font-italic">Alibaba Cloud Resource Orchestration Service</div>
+                <div class="font-italic">Terraform</div>
+            </p>
+	          <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">type</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Type of the cloud automation language. It MUST be one of the following values.
+                      <br><code>acf</code> : AWS CloudFormation.
+                      <br><code>arm</code> : Azure Resource Manager.
+                      <br><code>gdm</code> : Google Cloud Deployment Manager.
+                      <br><code>aro</code> : Alibaba Cloud Resource Orchestration Service.
+                      <br><code>oth</code> : Others.
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">$ref</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Reference to the file written by cloud automation language. Same as the $ref item of <a href="#s-ref">Reference object</a>.
+                      This MUST point to the external file with extension, <code>.json</code>, <code>.yaml</code>, or <code>.yml</code>.
+                      And the extension SHOULD be used by external tools to detect the file format of the link.
+                </div>
+            </div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"type": "acf"</span>,
+  <span class="token tag">"$ref": </span>"xxx.json"
+}
+</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">type: acf</span>
+<span class="token tag">$ref: </span>xxx.json
+</code></pre>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-context">
+                <i class="fa fa-route mr-3" aria-hidden="true"></i>
+              Context object<a class="anchor" href="#s-context"></a></h3>
+              <p>
+                  The object provides information about the use case of the system by associating 
+                  some actors and resources by the purpose of running the specific function. 
+                  It SHOULD be comprehensive for designing and auditing the CDD correctly.
+              </p>
+              <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">title</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
+                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    The title of the context.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      The description of the context.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">trigger</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-trigger">Trigger objects</a> | <a href="#s-ref">Reference object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      One of the types of trigger object.
+                      The trigger means the initial event of this context. 
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">traffics</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-traffic">Traffic objects</a> | <a href="#s-ref">Reference object</a> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Holding the list of traffic objects. Each traffic is one of the types of traffic objects.
+                      The traffic means related data transfer route within the context. 
+                    </p>
+                </div>
+            </div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"title": </span>{
+        <span class="token tag">"en": </span>"Customers view",
+        <span class="token tag">"ja": </span>"カスタマー閲覧",
+        <span class="token tag">"ru": </span>"Просмотр клиента"
+  },
+  <span class="token tag">"description": </span>{
+        <span class="token tag">"en": </span>"Custormer's web site view of static contents through internet.",
+        <span class="token tag">"ja": </span>"インターネット経由の静的コンテンツ閲覧",
+        <span class="token tag">"ru": </span>"Просмотр статического содержимого через Интернет"
+  },
+  <span class="token tag">"trigger": </span>{
+        <span class="token tag">"$ref": </span>"#/components/triggers/trigger1"
+  },
+  <span class="token tag">"traffics": </span>[
+        {<span class="token tag">"$ref": </span>"#/components/traffics/traffic1"},
+        {<span class="token tag">"$ref": </span>"#/components/traffics/traffic2"},
+        {<span class="token tag">"$ref": </span>"#/components/traffics/traffic3"}
+  ]
+}</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">title: </span>
+      <span class="token tag">en: </span>Customers view
+      <span class="token tag">ja: </span>カスタマー閲覧
+      <span class="token tag">ru: </span>Просмотр клиента
+<span class="token tag">description: </span>
+      <span class="token tag">en: </span>Custormer's web site view of static contents through internet.
+      <span class="token tag">ja: </span>インターネット経由の静的コンテンツ閲覧
+      <span class="token tag">ru: </span>Просмотр статического содержимого через Интернет
+<span class="token tag">trigger: </span>
+      <span class="token tag">$ref: </span>#/components/triggers/trigger1
+<span class="token tag">traffics: </span>
+      - <span class="token tag">$ref: </span>#/components/traffics/traffic1
+      - <span class="token tag">$ref: </span>#/components/traffics/traffic2
+      - <span class="token tag">$ref: </span>#/components/traffics/traffic3
+</code></pre>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-components">
+                <i class="fa fa-cube mr-3" aria-hidden="true"></i>
+              Components object<a class="anchor" href="#s-components"></a></h3>
+              <p>
+                  Holds a set of reusable objects for different aspects of the CDD. 
+                  All objects defined within the components object will have no effect on the CDD unless they are explicitly referenced from properties outside the components object.
+              </p>
+              <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">actors</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a href="#s-actor">Actor object</a> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a href="#s-actor">Actor object</a>.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a href="#s-context">Context object</a> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a href="#s-context">Context object</a>.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">markets</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a href="#s-market">Market object</a> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a href="#s-market">Market object</a>.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">triggers</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a href="#s-trigger">Trigger object</a> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a href="#s-trigger">Trigger object</a>.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">traffics</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a href="#s-traffic">Traffic object</a> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a href="#s-traffic">Traffic object</a>.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a href="#s-infoType">Information type object</a>]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a href="#s-infoType">Information type object</a>.
+                    </p>
+                </div>
+
+              </div>
+
+            <!--
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            | Child Schema
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            !-->
+            <div class="text-center my-7"><a href="#parentSchema"><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 50px;"></i></a></div>
+            <h2 id="childSchema">Child Schema<a class="anchor" href="#childSchema"></a></h2>
+            <div class="alert alert-secondary">
+              <p class="lead-2">Describing the child of the primary data structure of Cloud Design. In the following description, if a field is not explicitly REQUIRED or described with a MUST or SHALL, it can be considered OPTIONAL.</p>
+            </div>
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-license">
+                <i class="fas fa-signature mr-3" aria-hidden="true"></i>
+              License object<a class="anchor" href="#s-license"></a></h3>
+            <p>
+              License information for the CDD.
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">type</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The license type of the CDD. If you store the CDD or related information in the Reindeer's blockchain storage, it MUST be <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0 1.0</a>.</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">url</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">A URL of license description for the CDD. If you store the CDD or related information in the Reindeer's blockchain storage, this item MUST NOT be used.</p>
+                </div>
+            </div>
+<h6>JSON Examples</h6>
+<pre><span class="badge badge-danger">RECOMMENDED</span>
+<code>{
+  <span class="token tag">"type": </span>"CC0 1.0"
+}</code></pre>
+
+<pre><code>{
+  <span class="token tag">"type": </span>"GPL v3",
+  <span class="token tag">"url": </span>"http://www.gnu.org/licenses/gpl-3.0.en.html"
+}</code></pre>
+
+<h6>YAML Examples</h6>
+<pre><span class="badge badge-danger">RECOMMENDED</span>
+<code><span class="token tag">type: </span>CC0 1.0</code></pre>
+
+<pre><code><span class="token tag">type: </span>GPL v3
+<span class="token tag">url: </span>http://www.gnu.org/licenses/gpl-3.0.en.html</code></pre>
+
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-author">
+                <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
+              Author object<a class="anchor" href="#s-author"></a>
+            </h3>
+            <p>
+              The object provides information about authors and their roles on the CDD. 
+              It SHOULD be comprehensive for helping others find the person who has correct knowledge about the system, 
+              the cloud computing technology, and the market the system is serving.
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">roles</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <code>string</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Holds a set of roles related to the CDD. 
+                      Each role MUST be one of below strings.
+                      <br><code>planner</code>: Planing the cloud computing adoption.
+                      <br><code>designer</code>: Design the cloud computing architecture.
+                      <br><code>auditor</code>: Audit the CDD.
+                      <br><code>operator</code>: Operating the system designed by CDD.
+                      <br><code>others</code>: Other role.
+                    </p>
+                  </div>
+                  <div class="d-table-row">
+                      <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
+                      <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                      <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                        The time when the author was joined at this CDD creation / operation. It MUST be the UNIXTIME format.
+                      </p>
+                  </div>
+                  <div class="d-table-row">
+                      <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
+                      <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                      <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                        The time when the author was leaved at this CDD creation / operation. It MUST be the UNIXTIME format.
+                      </p>
+                  </div>
+            </div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"roles": </span>["designer","auditor"],
+  <span class="token tag">"joinedAt": </span>1548730447,
+  <span class="token tag">"leavedAt": </span>1548731447
+}
+</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">roles: </span>
+      - <span class="token tag">designer</span>
+      - <span class="token tag">auditor</span>
+<span class="token tag">joinedAt: </span>1548730447
+<span class="token tag">leavedAt: </span>1548731447
+</code></pre>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-market">
+                <i class="fa fa-crosshairs mr-3" aria-hidden="true"></i>
+              Market object<a class="anchor" href="#s-market"></a></h3>
+            <p>
+                The object provides information about the market.
+                It MAY be including the result of your research or third party's survey.
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">title</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
+                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    The content SHOULD be unique on this CDD by including the words describing a member's properties, interest, estimated year and so on.                  
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      The description of the market. 
+                      It SHOULD be including the words describing the author, estimation purpose and so on. 
+                      This text MAY help the designer's decision whether this information can be reused by other design or not.
+                    </p>
+                  </div>
+  
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">num</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The number of members.</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">estimatedBy </p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The author of this estimation.</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">estimatedAt</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The time when it was estimated at. It MUST be the UNIXTIME format.</p>
+                </div>
+            </div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"title": </span>{
+        <span class="token tag">"en": </span>"65 years and over in U.S., July 2018", 
+        <span class="token tag">"ja": </span>"65才以上の人口　米国　2018年7月",
+        <span class="token tag">"ru": </span>"65 лет и старше в США, июль 2018 года"
+  },
+  <span class="token tag">"description": </span>{
+        <span class="token tag">"en": </span>"General population data of U.S.\n at 2018 by govermental research.",
+        <span class="token tag">"ja": </span>"米国政府による2018年の人口統計",
+        <span class="token tag">"ru": </span>"Данные об общей численности населения США\n на 2018 год по данным государственных исследований."
+  },
+  <span class="token tag">"population": </span>51038120,
+  <span class="token tag">"estimatedBy": </span>"U.S. Census Bureau",
+  <span class="token tag">"estimatedAt": </span>1530370800
+}
+</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">title: </span>
+      <span class="token tag">en: </span>65 years and over in U.S., July 2018 
+      <span class="token tag">ja: </span>65才以上の人口　米国　2018年7月
+      <span class="token tag">ru: </span>65 лет и старше в США, июль 2018 года
+<span class="token tag">description: </span>
+      <span class="token tag">en: </span>|
+      General population data of U.S. 
+      at 2018 by govermental research.
+      <span class="token tag">ja: </span>米国政府による2018年の人口統計
+      <span class="token tag">ru: </span>|
+      Данные об общей численности населения США 
+      на 2018 год по данным государственных исследований.
+<span class="token tag">population: </span>51038120
+<span class="token tag">estimatedBy: </span>U.S. Census Bureau
+<span class="token tag">estimatedAt: </span>1530370800
+</code></pre>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-trigger">
+                <i class="fa fa-play-circle mr-3" aria-hidden="true"></i>
+              Trigger objects<a class="anchor" href="#s-trigger"></a></h3>
+              <p>
+                  The objects provide information about the initial event of the <a href="#s-context">context</a>.
+                  It MAY be person's web site access to the server, or it MAY be an automated timed call to the external API. 
+              </p>
+  
+            <hr class="hr-dot my-5">
+            <h3 id="s-trigger-webaccess" class="font-italic">Web access type of trigger object<a class="anchor" href="#s-trigger-webaccess"></a></h3>
+            <p>This is a kind of trigger by actors. Describing the actor's web access to cloud computing resources. The actor MAY be  
+              human, or external computing.
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">type</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Fixed value, '<code>webAccess</code>'.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    The description of the trigger. 
+                    It SHOULD be the concise memo describing the purpose of this trigger.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Reference to the <a href="#s-infoType">InfoType object</a>. 
+                      Indicates the type of information handled in this trigger.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">ports</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <code>integer</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Port numbers required at the end points (defined at the <code>end</code> field) of this trigger.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">internet</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    Use internet or not for this trigger.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">restriction</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    Source IP, Domain or the other restriction at the end points of this trigger.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">dau</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Daily Active User ratio. For example, 
+                      it will be <code>0.01</code> in case of that avarage 1 percent of actors, referred at this <code>start</code> field, 
+                      will access to the resources, referred at this <code>end</code> field, per day.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">pagesVisit</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Average page numbers per visit. Representing how many pages visitors will open per visit.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">kbPage</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Average page data size as a unit of KB.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">reqPage</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Average request numbers per page. Representing how many requests 
+                      (Requests to images and HTML etc. that make up the page) will be used per page.
+                    </p>
+                </div> 
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">busyHours</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Busy hours per day. For example, it's <code>6</code>, in the case of that most access is concentrated 
+                      amoung AM 9:00 - AM 11:00 and PM 17:00 - PM 19:00 per day.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">postsVisit</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Representing what percentage of the visitors will POST. 
+                      For example, it's <code>0.1</code> in case of that 100 POST will sent per day 
+                      among 100,000 actors and 0.01 dau.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">kbPost</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Average POST data size as a unit of KB.
+                    </p>
+                </div>  
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">start</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      It MUST be a reference to the <a href="#s-actor">actor objects</a>. The start point of this trigger.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">end</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">[ Reference object ]</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      It MUST be references to the each resource item described in the <a href="#s-resource">resource object</a>. The end point of this traffic.
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 30 letters string of UTF-8. <br> 
+                    The name of the endpoint. 
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storedRatio</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The ratio of the <code>end</code>'s stored data volume among the received data. 
+                    For example, if this trigger's <code>end</code> stores all of the data that the actor sends to <code>end</code>, this value will be 1.0. And it's 0 if not stored.
+                    </span>
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storedInfoType</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">
+                    Reference to the <a href="#s-infoType">InfoType object</a>. 
+                    Indicates the type of information stored at the <code>end</code>s of this trigger.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storageDescription</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"> 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    The description of the endpoint. 
+                    It SHOULD be the concise memo describing the purpose of storage of the ends in this trigger.
+                  </p>
+                </div> 
+            </div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"type": "webAccess"</span>,
+  <span class="token tag">"description": </span>{
+    <span class="token tag">"en": </span>"API call for movie data acquisition.",
+    <span class="token tag">"ja": </span>"動画データ取得のためのAPI呼び出し。",
+    <span class="token tag">"ru": </span>"API вызов для сбора данных фильма"
+  },
+  <span class="token tag">"infoType": </span>{
+        <span class="token tag">"$ref": </span>"#/components/infoType/general"
+  },
+  <span class="token tag">"ports": </span>[443],
+  <span class="token tag">"internet": </span>true,
+  <span class="token tag">"restriction": </span>false,
+  <span class="token tag">"dau": </span>{<code>"max":</code> 0.1, <code>"min":</code> 0.03},
+  <span class="token tag">"pagesVisit": </span>{<code>"max":</code> 10, <code>"min":</code> 10},
+  <span class="token tag">"kbPage": </span>{<code>"max":</code> 1024, <code>"min":</code> 1024},
+  <span class="token tag">"reqPage": </span>{<code>"max":</code> 100, <code>"min":</code> 100},
+  <span class="token tag">"busyHours": </span>{<code>"max":</code> 3, <code>"min":</code> 3},
+  <span class="token tag">"postRatio": </span>{<code>"max":</code> 0.1, <code>"min":</code> 0.001},
+  <span class="token tag">"kbPost": </span>{<code>"max":</code> 100, <code>"min":</code> 100},
+  <span class="token tag">"start": </span>{
+        <span class="token tag">"$ref": </span>"#/actors/customer"
+  },
+  <span class="token tag">"end": </span>[
+        {<span class="token tag">"$ref": </span>"#/resources/awsCloudEnvironment/data/Resources/cloudFront"}
+  ],
+  <span class="token tag">"endpointTitle": </span>{
+    <span class="token tag">"en": </span>"LoadBalancer",
+    <span class="token tag">"ja": </span>"ロードバランサ",
+    <span class="token tag">"ru": </span>"Балансировщик нагрузки"
+  },
+  <span class="token tag">"storedRatio": </span>{<code>"max":</code> 0.3, <code>"min":</code> 0.1},
+  <span class="token tag">"storedInfoType": </span>{
+    <span class="token tag">"$ref": </span>"#/components/infoType/general"
+  },
+  <span class="token tag">"storageDescription": </span>{
+    <span class="token tag">"en": </span>"Logging for API usage tracing.",
+    <span class="token tag">"ja": </span>"API利用状況把握のためのログ保管",
+    <span class="token tag">"ru": </span>"Хранение журнала для статуса использования API"
+  }
+}</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">type: webAccess</span>
+<span class="token tag">description: </span>{
+      <span class="token tag">en: </span>Static content distribution,
+      <span class="token tag">ja: </span>静的コンテンツの配信,
+      <span class="token tag">ru: </span>Распределение статического контента
+<span class="token tag">infoType: </span>
+      <span class="token tag">$ref: </span>#/components/infoType/general
+<span class="token tag">ports: </span>[443]
+<span class="token tag">internet: </span>true
+<span class="token tag">restriction: </span>false
+<span class="token tag">dau: </span>{<code>max:</code> 0.1, <code>min:</code> 0.03}
+<span class="token tag">pagesVisit: </span>{<code>max:</code> 10, <code>min:</code> 10}
+<span class="token tag">kbPage: </span>{<code>max:</code> 1024, <code>min:</code> 1024}
+<span class="token tag">reqPage: </span>{<code>max:</code> 100, <code>min:</code> 100}
+<span class="token tag">busyHours: </span>{<code>max:</code> 3, <code>min:</code> 3}
+<span class="token tag">postRatio: </span>{<code>max:</code> 0.1, <code>min:</code> 0.001}
+<span class="token tag">kbPost: </span>{<code>max:</code> 100, <code>min:</code> 100}
+<span class="token tag">start: </span>
+      <span class="token tag">$ref: </span>#/actors/customer
+<span class="token tag">end: </span>
+      - <span class="token tag">$ref: </span>#/resources/awsCloudEnvironment/data/Resources/cloudFront
+<span class="token tag">endpointTitle: </span>
+      <span class="token tag">en: </span>LoadBalancer
+      <span class="token tag">ja: </span>ロードバランサ
+      <span class="token tag">ru: </span>Балансировщик нагрузки
+<span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
+<span class="token tag">storedInfoType: </span>
+      <span class="token tag">$ref: </span>#/components/infoType/general
+<span class="token tag">storageDescription: </span>{
+      <span class="token tag">en: </span>Logging for API usage tracing.,
+      <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
+      <span class="token tag">ru: </span>Хранение журнала для статуса использования API
+
+</code></pre>
+
+            <hr class="hr-dot my-5">
+            <h3 id="s-trigger-timedAction" class="font-italic">Timed action type of trigger object<a class="anchor" href="#s-trigger-webaccess"></a></h3>
+            <p>This is a kind of trigger by actors or resources. Describing the timed action from actors or cloud computing resources to other ones.
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">type</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Fixed value, '<code>timedAction</code>'.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    The description of the trigger. 
+                    It SHOULD be the concise memo describing the purpose of this trigger.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Reference to the <a href="#s-infoType">InfoType object</a>. 
+                      Indicates the type of information handled in this trigger.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">ports</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <code>integer</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Port numbers required at the end points of this trigger.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">internet</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    Use internet or not for this connection.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">restriction</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    Source IP, Domain or the other restriction at the end points of this trigger.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">onlineRps</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Number of requests per second when this trigger fires. 
+                      Specify the required performance from the start point (<code>start</code> field) to the end point (<code>end</code> field). 
+                      For example, if the batch system runs every Monday morning and each batch accesses the external API 
+                      with a throughput of 2 times per second it is <code>2.0</code>.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">reqMonth</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Monthly request numbers from the start point to the endpoints. 
+                      For example, it's <code>9000</code> in case of that the batch system sends mail magazine 3 times to 1000 persons per month.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">kbRequest</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Request data size per request from the start point to the end point as the unit of KB.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">kbResponse</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Response data size per request from the start point to the end point as the unit of KB.
+                    </p>
+                </div>                
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">start</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      It MUST be a reference to the <a href="#s-actor">actor object</a> or the <a href="#s-resource">resource object</a>. The start point of this trigger.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">end</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      It MUST be a reference to the <a href="#s-actor">actor object</a> or the <a href="#s-resource">resource object</a>. The end point of this traffic.
+                </div>  
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 30 letters string of UTF-8. <br> 
+                    The name of the endpoint. 
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storedRatio</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The ratio of the stored data volume among the received data to the ends. For example, 
+                    it is <code>1.0</code> in case of that the database resource in this trigger is received 10GB/Month from the app server and store all of them to the database. 
+                    When the ends don't store the traffic data, it's 0.
+                    </span>
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storedInfoType</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"> 
+                    Reference to the <a href="#s-infoType">InfoType object</a>. 
+                    Indicates the type of information stored at the ends of this trigger.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storageDescription</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"> 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    The description of the endpoint. 
+                    It SHOULD be the concise memo describing the purpose of storage of the ends in this trigger.
+                  </p>
+                </div> 
+            </div>
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"type": "timedAction"</span>,
+  <span class="token tag">"description": </span>{
+    <span class="token tag">"en": </span>"API call for movie data acquisition.",
+    <span class="token tag">"ja": </span>"動画データ取得のためのAPI呼び出し。",
+    <span class="token tag">"ru": </span>"API вызов для сбора данных фильма"
+  },
+  <span class="token tag">"infoType": </span>{
+        <span class="token tag">"$ref": </span>"#/components/infoType/general"
+  },
+  <span class="token tag">"ports": </span>[443],
+  <span class="token tag">"internet": </span>false,
+  <span class="token tag">"restriction": </span>false,
+  <span class="token tag">"onlineRps": </span>{<code>"max":</code> 3, <code>"min":</code> 1},
+  <span class="token tag">"reqMonth": </span>{<code>"max":</code> 9000, <code>"min":</code> 5000},
+  <span class="token tag">"kbRequest": </span>{<code>"max":</code> 0.01, <code>"min":</code> 0.01},
+  <span class="token tag">"kbResponse": </span>{<code>"max":</code> 1, <code>"min":</code> 1},
+  <span class="token tag">"start": </span>{
+        <span class="token tag">"$ref": </span>"#/resources/awsCloudEnvironment/resources/jobServer"
+  },
+  <span class="token tag">"end": </span>[
+        {<span class="token tag">"$ref": </span>"##/actors/api"}
+  ],  
+  <span class="token tag">"endpointTitle": </span>{
+    <span class="token tag">"en": </span>"LoadBalancer",
+    <span class="token tag">"ja": </span>"ロードバランサ",
+    <span class="token tag">"ru": </span>"Балансировщик нагрузки"
+  },
+  <span class="token tag">"storedRatio": </span>{<code>"max":</code> 0.3, <code>"min":</code> 0.1},
+  <span class="token tag">"storedInfoType": </span>{
+    <span class="token tag">"$ref": </span>"#/components/infoType/general"
+  },
+  <span class="token tag">"storageDescription": </span>{
+    <span class="token tag">"en": </span>"Logging for API usage tracing.",
+    <span class="token tag">"ja": </span>"API利用状況把握のためのログ保管",
+    <span class="token tag">"ru": </span>"Хранение журнала для статуса использования API"
+  }
+
+}</code></pre>
+            
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">type: timedAction</span>
+<span class="token tag">description: </span>{
+      <span class="token tag">en: </span>Static content distribution,
+      <span class="token tag">ja: </span>静的コンテンツの配信,
+      <span class="token tag">ru: </span>Распределение статического контента
+<span class="token tag">infoType: </span>
+      <span class="token tag">$ref: </span>#/components/infoType/general
+<span class="token tag">ports: </span>[443]
+<span class="token tag">internet: </span>false
+<span class="token tag">restriction: </span>false
+<span class="token tag">onlineRps: </span>{<code>max:</code> 3, <code>min:</code> 1}
+<span class="token tag">reqMonth: </span>{<code>max:</code> 9000, <code>min:</code> 5000}
+<span class="token tag">kbRequest: </span>{<code>max:</code> 0.01, <code>min:</code> 0.01}
+<span class="token tag">kbResponse: </span>{<code>max:</code> 1, <code>min:</code> 1}
+<span class="token tag">start: </span>
+      <span class="token tag">$ref: </span>#/resources/awsCloudEnvironment/resources/jobServer
+<span class="token tag">end: </span>
+      - <span class="token tag">$ref: </span>#/actors/api
+<span class="token tag">endpointTitle: </span>
+      <span class="token tag">en: </span>LoadBalancer
+      <span class="token tag">ja: </span>ロードバランサ
+      <span class="token tag">ru: </span>Балансировщик нагрузки
+<span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
+<span class="token tag">storedInfoType: </span>
+      <span class="token tag">$ref: </span>#/components/infoType/general
+<span class="token tag">storageDescription: </span>{
+      <span class="token tag">en: </span>Logging for API usage tracing.,
+      <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
+      <span class="token tag">ru: </span>Хранение журнала для статуса использования API
+ 
+</code></pre>
+
+            
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-traffic">
+                <i class="fa fa-link mr-3" aria-hidden="true"></i>
+              Traffic objects<a class="anchor" href="#s-traffic"></a></h3>
+            <p>
+                The objects provide information about related traffics within the <a href="#s-context">context</a>. 
+                This must be used in the subsequent processing of the trigger event. 
+                For example, dynamic content request from Web server to application server, 
+                data storage from application server to database, etc. are expressed.
+            </p>
+            <hr class="hr-dot my-5">
+            <h3 id="s-traffic-passThroughRatio" class="font-italic">Pass through ratio type of traffic object<a class="anchor" href="#s-traffic-passThroughRatio"></a></h3>
+            <p>
+                This is a kind of traffic object. 
+                It can represent traffic that occurs in the form of passing a part of the request 
+                received from the start point to the subsequent resources.
+                For example, it can represent a chain of communication where a load balancer sends a received request to a web server, 
+                and an application generates a mail delivery queue based on the received request.
+                At this time, the size of the data received by this traffic endpoint (<code>end</code> field) is 
+                the percentage of the request received by the previous communication (<code>source</code> field) of this traffic.
+                Therefore, if you extend the data to 3 MB in the server and pass it to the end point of this traffic after the previous communication receives the 1 MB POST value, 
+                the data size can be expressed as 300% (<code>passThroughReqRatio</code>> field's value is <code>3</code>).
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">type</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Fixed value, '<code>passThroughRatio</code>'.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    The description of the traffic. 
+                    It SHOULD be the concise memo describing the purpose of this traffic.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Reference to the <a href="#s-infoType">InfoType object</a>. 
+                      Indicates the type of information handled in this traffic.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">ports</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <code>integer</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Port numbers required at the end points of this traffic.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">internet</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    Use internet or not for this connection.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">restriction</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <code>boolean</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    Source IP, Domain or the other restriction at the end points of this trigger.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">source</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      References to the <a href="#s-trigger">trigger object</a> or the <a href="#s-traffic">traffic object</a>. 
+                      The start point of this traffic. This effects to or is affected by all of the resources or actor object described in the <code>end</code> fields. 
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">end</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      References to the <a href="#s-actor">actor objects</a> or the each resource item described in the <a href="#s-resource">resource object</a>. 
+                      The end point of this traffic.
+                      </p>
+                </div>  
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 30 letters string of UTF-8. <br> 
+                    The name of the endpoint. 
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">passThroughReqRatio</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Indicates what percentage of the requests received by prior trigger or 
+                      traffic (<code>source</code> field) will flow to the endpoint (<code>end</code>) of this traffic. 
+                      For example, if the former trigger receives 100,000/M requests from the user and use internal cash for 50% 
+                      response and pass 50% request to this traffic, this value will be <code>0.5</code>.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">compositResRatio</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      Based on the size of the response data handled by the former trigger or traffic (<code>source</code> field), 
+                      describes that this traffic response what percentage of that size to the source.
+                      For example, if the former trigger returns data of 10GB/Month to the user and this <code>compositResRatio</code> is 0.5, 
+                      this traffic will response 5GB/Month of data to the former trigger.
+                    </p>
+                </div> 
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storedRatio</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    The ratio of the stored data volume among the received data to the ends. For example, 
+                    it is <code>1.0</code> in case of that the database resource in this traffic is received 10GB/Month from the app server and store all of them to the database. 
+                    When the ends don't store the traffic data, it's 0.
+                    </span>
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storedInfoType</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"> 
+                    Reference to the <a href="#s-infoType">InfoType object</a>. 
+                    Indicates the type of information stored at the ends of this traffic.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">storageDescription</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"> 
+                    The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    The description of the endpoint. 
+                    It SHOULD be the concise memo describing the purpose of storage of the ends in this traffic.
+                  </p>
+                </div>            
+            </div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"type": "passThroughRatio"</span>,
+  <span class="token tag">"description": </span>{
+    <span class="token tag">"en": </span>"Static content distribution",
+    <span class="token tag">"ja": </span>"静的コンテンツの配信",
+    <span class="token tag">"ru": </span>"Распределение статического контента"
+  },
+  <span class="token tag">"infoType": </span>{
+        <span class="token tag">"$ref": </span>"#/components/infoType/general"
+  },
+  <span class="token tag">"ports": </span>[80],
+  <span class="token tag">"internet": </span>false,
+  <span class="token tag">"restriction": </span>false,
+  <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/trigger/customer"},
+  <span class="token tag">"end": </span>[
+        {<span class="token tag">"$ref": </span>"#/resources/awsCloudEnvironment/data/Resources/s3"}
+  ],
+  <span class="token tag">"passThroughReqRatio": </span>{<code>"max":</code> 1, <code>"min":</code> 0.1},
+  <span class="token tag">"compositResRatio": </span>{<code>"max":</code> 0.5, <code>"min":</code> 0.5},
+  <span class="token tag">"endpointTitle": </span>{
+    <span class="token tag">"en": </span>"LoadBalancer",
+    <span class="token tag">"ja": </span>"ロードバランサ",
+    <span class="token tag">"ru": </span>"Балансировщик нагрузки"
+  },
+  <span class="token tag">"storedRatio": </span>{<code>"max":</code> 0.3, <code>"min":</code> 0.1},
+  <span class="token tag">"storedInfoType": </span>{
+    <span class="token tag">"$ref": </span>"#/components/infoType/general"
+  },
+  <span class="token tag">"storageDescription": </span>{
+    <span class="token tag">"en": </span>"Logging for API usage tracing.",
+    <span class="token tag">"ja": </span>"API利用状況把握のためのログ保管",
+    <span class="token tag">"ru": </span>"Хранение журнала для статуса использования API"
+  }
+}</code></pre>
+
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">type: passThroughRatio</span>
+<span class="token tag">description: </span>{
+      <span class="token tag">en: </span>Static content distribution,
+      <span class="token tag">ja: </span>静的コンテンツの配信,
+      <span class="token tag">ru: </span>Распределение статического контента
+<span class="token tag">infoType: </span>
+      <span class="token tag">$ref: </span>#/components/infoType/general
+<span class="token tag">ports: </span>[80]
+<span class="token tag">internet: </span>false
+<span class="token tag">restriction: </span>false
+<span class="token tag">source: </span>
+      <span class="token tag">$ref: </span>#/trigger/customer
+<span class="token tag">end: </span>
+    - <span class="token tag">$ref: </span>#/resources/awsCloudEnvironment/data/Resources/s3
+<span class="token tag">passThroughReqRatio: </span>{<code>max:</code> 1, <code>min:</code> 0.1}
+<span class="token tag">compositResRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.5}
+<span class="token tag">endpointTitle: </span>
+      <span class="token tag">en: </span>LoadBalancer
+      <span class="token tag">ja: </span>ロードバランサ
+      <span class="token tag">ru: </span>Балансировщик нагрузки
+<span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
+<span class="token tag">storedInfoType: </span>
+      <span class="token tag">$ref: </span>#/components/infoType/general
+<span class="token tag">storageDescription: </span>{
+      <span class="token tag">en: </span>Logging for API usage tracing.,
+      <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
+      <span class="token tag">ru: </span>Хранение журнала для статуса использования API
+  
+</code></pre>
+
+            
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-infoType">
+            <i class="fa fa-lock mr-3" aria-hidden="true"></i>
+            InfoType object<a class="anchor" href="#s-infoType"></a></h3>
+            <p>
+                The objects represent the information's type and required security level. You SHOULD define the information types 
+                and classify the information received, stored, treated at the cloud computing resources. 
+            </p>               
+	          <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">title</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
+                      And the value MUST be within 30 letters string of UTF-8.<br>
+                      The name of the information type.                  
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">description</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                      The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
+                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      Describing classification detail.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">confidential</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>boolean</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Confidential information or not.</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">privacy</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>boolean</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Privacy information or not. It means the information is needed to be protected as legally.</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">definedBy </p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The author of this definition.</p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">definedAt</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The time when it was defined at. It MUST be the UNIXTIME format.</p>
+                </div>
+            </div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"title": </span>{
+        <span class="token tag">"en": </span>"privacy level", 
+        <span class="token tag">"ja": </span>"個人情報取り扱いレベル",
+        <span class="token tag">"ru": </span>"Чувствительный уровень"
+  },
+  <span class="token tag">"description": </span>{
+        <span class="token tag">"en": </span>"Contains privacy information.",
+        <span class="token tag">"ja": </span>"個人情報を含む",
+        <span class="token tag">"ru": </span>"Содержит конфиденциальную личную информацию."
+  },
+  <span class="token tag">"confidential": </span>true,
+  <span class="token tag">"privacy": </span>true,
+  <span class="token tag">"definedBy": </span>"ABC company",
+  <span class="token tag">"definedAt": </span>1530370800
+}</code></pre>
+
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">title: </span>
+      <span class="token tag">en: </span>confidential level 
+      <span class="token tag">ja: </span>個人情報取り扱いレベル
+      <span class="token tag">ru: </span>Чувствительный уровень
+<span class="token tag">description: </span>
+      <span class="token tag">en: </span>Contains privacy information.
+      <span class="token tag">ja: </span>個人情報を含む
+      <span class="token tag">ru: </span>Содержит конфиденциальную личную информацию.
+<span class="token tag">confidential: </span>true
+<span class="token tag">privacy: </span>true
+<span class="token tag">definedBy: </span>ABC company
+<span class="token tag">definedAt: </span>1530370800
+</code></pre>
+
+
+            <!--
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            | Common Schema
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            !-->
+            <div class="text-center my-7"><a href="#childSchema"><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 50px;"></i></a></div>
+            <h2 id="commonSchema">Common Schema<a class="anchor" href="#commonSchema"></a></h2>
+            <div class="alert alert-secondary">
+              <p class="lead-2">Describing the common data structure of Cloud Design. In the following description, if a field is not explicitly REQUIRED or described with a MUST or SHALL, it can be considered OPTIONAL.</p>
+            </div>
+    
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-rangeValue">
+                <i class="fa fa-calculator mr-3" aria-hidden="true"></i>
+              Range values object<a class="anchor" href="#s-rangeValue"></a>
+            </h3>
+            <p>
+                An object representing the range values used at fields on CDD. 
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">max</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Max value of the range value.
+                    </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">min</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Min value of the range value.
+                    </p>
+                </div>
+            </div>
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"max": </span>1.0,
+  <span class="token tag">"min": </span>0.01
+}
+</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">max: </span>1.0
+<span class="token tag">min: </span>0.01
+</code></pre>
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="s-ref">
+                <i class="fa fa-eye mr-3" aria-hidden="true"></i>
+              Reference object<a class="anchor" href="#s-ref"></a></h3>
+            <p>
+                This is a reference specification object used when referencing JSON/YAML objects 
+                in files for CDD or Cloud Automation Tools from various fields of CDD. 
+                Reference objects are defined by JSON references and follow the same structure, behavior, and rules. 
+                In this specification, reference resolution is done as defined in the JSON Reference Specification, 
+                not the JSON Schema Specification.
+            </p>
+            <h6>Fixed Fields</h6>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">$ref</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Reference strings. 
+                      In the case of referencing the object in the same file, you MUST start with <code>#/</code>, 
+                      and MUST always describe the path from the root object.
+                      When specifying a reference to the external file, you MUST start with the file name with the extension <code>.json</code>, 
+                      <code>.yaml</code> or <code>.yml</code>. After that, you MUST describe the same as in the same file reference.
+                    </p>
+                </div>
+            </div>
+<h6>JSON Example</h6>
+<pre><code>{
+  <span class="token tag">"$ref": </span>"#/components/actors/custormers"
+}</code></pre>
+
+<h6>JSON Relative Documents With Embedded Schema Example</h6>
+<pre><code>{
+  <span class="token tag">"$ref": </span>"externalfile.yaml#/components/actors/custormers"
+}</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">$ref: </span>#/components/actors/custormers
+</code></pre>
+
+<h6>YAML Relative Documents With Embedded Schema Example</h6>
+<pre><code><span class="token tag">$ref: </span>externalfile.yaml#/components/actors/custormers
+</code></pre>
+
+            <!--
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            | Appendix
+            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+            !-->
+            <div class="text-center my-7"><a href="#option"><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 50px;"></i></a></div>
+
+            <h2 id="appendix">Appendix<a class="anchor" href="#appendix"></a></h2>
+
+
+            <hr class="hr-dot-bold my-7">
+            <h3 id="resourcearticles">Resources<a class="anchor" href="#resourcearticles"></a></h3>
+            <p>
+              The Cloud Design Specification has born as a part of 
+              the <a href="https://reindeer.tech" target="_blank"> Reindeer Project</a>. 
+              <br>Reindeer Project has the mission to make all people into creators 
+              by the power of open knowledge distribution of the cloud computing adoption. 
+              <br>The society where everyone can create services by themselves, 
+              will not only bring freedom of expression and diversity of lifestyles and values.
+              It will also spur a redistribution of the wealth to everyone 
+              and greatly improve the average wealth and happiness of people all over the world.
+            </p>
+            <br>
+            <p><B><a href="https://reindeer-project.github.io/documents/reindeer_whitepaper_EN.pdf" target="_blank">Whitepaper</a></B><br>Describing the purpose and plan of the Reindeer project.</p>
+            <br>
+            <p><B><a href="/reindeer_six_states.pdf" target="_blank" onClick="ga('send','event','btn', 'click', 'six_en');">Six states of the Cloud Design</a></B><br>Describing the plan of future tools and ecosystem.</p>
+            <br>
+            <hr class="hr-dot-bold my-7">
+            <h3 id="revision">Revision<a class="anchor" href="#revision"></a></h3>
+            <br>
+            <div class="d-table table-responsive line-break">
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-primary text-white border">Version</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Released</p>
+                  <p class="d-table-cell p-2 bg-primary text-white border">Notes</p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">1.0.0</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">2019-07-31</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Initial public release of the Cloud Design Specification.
+                    </p>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </div>
+
+        </div>
+      </div>
+    </main><!-- /.main-content -->
+
+    <!-- Scripts -->
+    <script src="resources/page.min.js"></script>
+    <script src="resources/script.js"></script>
+    <script type="text/javascript" src="resources/cdstop.js"></script>
+  
+</body></html>
