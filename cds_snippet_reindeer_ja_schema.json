@@ -452,16 +452,26 @@
         "required": [
           "type"
         ],
+        "if": { "properties":{ "type": { "enum":["Closed","OtherOpen"] }}},
+        "then": { "required":["provider"]},
         "properties": {
           "type": {
             "title": "CDDのライセンス種別",
-            "description": "必須. CDDのライセンス種別です。CDDまたは関連する情報をReindeerのブロックチェーン上に保管する場合、それはCC0 1.0でなければなりません。",
+            "description": "必須. CDDのライセンス種別です。以下何れかの値である必要があります。(CC0推奨): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed",
             "type": "string",
-            "default": "CC0 1.0"
+            "default": "CC0",
+            "enum": [
+              "CC0",
+              "Apache-2.0",
+              "MIT",
+              "BSD-2-Clause",
+              "OtherOpen",
+              "Closed"
+            ]
           },
-          "url": {
-            "title": "CDDライセンスの詳細を説明するURL",
-            "description": "CDDの詳細なライセンス情報にアクセスするためのURLです。CDDまたは関連する情報をReindeerのブロックチェーン上に保管する場合、この項目を利用してはいけません。",
+          "provider": {
+            "title": "ライセンスの提供者、またはその名称",
+            "description": "ライセンスの提供者、またはその名称です。typeがOtherOpenまたはClosedの場合以外は記載してはいけません。",
             "type": "string"
           }
         },
@@ -504,6 +514,44 @@
             "title": "離任日時",
             "description": "必須. 作者が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。",
             "type": "integer",
+            "minimum": 1
+          },
+          "sign": {
+            "title": "署名",
+            "description": "作者の署名です。本値は署名支援ツールによって自動生成されるべきもので、通常は空白です。",
+            "type": "string",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "uri": "https://reindeer.tech/cdd-schema/v1/organization.json",
+      "schema": {
+        "title": "Organization object",
+        "description": "このオブジェクトは、CDDの関連組織とその役割についての情報を提供します。 対象のシステム、クラウドコンピューティング技術、そして同システムのサービス提供市場について正しい知識を持っている組織を 他の人が見つけるのを助けるため、包括的に記載されるべきです。",
+        "type": "object",
+        "required": [
+          "joinedAt"
+        ],
+        "properties": {
+          "joinedAt": {
+            "title": "参画日時",
+            "description": "必須. 組織が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。",
+            "type": "integer",
+            "minimum": 1
+          },
+          "leavedAt": {
+            "title": "離任日時",
+            "description": "必須. 組織が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。",
+            "type": "integer",
+            "minimum": 1
+          },
+          "sign": {
+            "title": "署名",
+            "description": "組織の署名です。本値は署名支援ツールによって自動生成されるべきもので、通常は空白です。",
+            "type": "string",
             "minimum": 1
           }
         },

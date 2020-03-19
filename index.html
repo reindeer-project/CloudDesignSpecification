@@ -62,7 +62,7 @@
       <div id="headertitle" class="container">
         <h1>Cloud Design Specification</h1>
         <p class="lead">Standard data notation method to record and share know-how of cloud computing adoption.</p>
-        <p>version 1.0.0</p>
+        <p>version 1.1.0</p>
       </div>
     </header><!-- /.header -->
     <!-- Main Content -->
@@ -126,8 +126,11 @@
                           <i class="fas fa-signature mr-3" aria-hidden="true"></i>
                           License</a>
                         <a class="nav-link small" href="#s-author">
-                            <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
+                          <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
                           Author</a>
+                        <a class="nav-link small" href="#s-organization">
+                          <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
+                          Organization</a>
                         <a class="nav-link small" href="#s-market">
                             <i class="fa fa-crosshairs mr-3" aria-hidden="true"></i>
                           Market</a>
@@ -216,9 +219,9 @@
             <p><a class="btn btn-primary mb-1" href="https://editor.reindeer.tech" target="_blank" onClick="ga('send','event','btn', 'click', 'demo_editor_en');">DEMO</a>
               &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank" onClick="ga('send','event','btn', 'click', 'download_demo_en');">Download</a></p>
             <br>
-            <p><B>Cloud Design Schema 1.0.0</B><br>It is a JSON schema file that can be used to check the grammar of the CDD by incorporating it into a third party editor.</p>
-            <a class="btn btn-primary mb-1" href="/cds_reindeer_1_0_0_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_en');">Download CDD root schema</a>
-            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_1_0_0_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_en');">Download CDD snippet schema</a>
+            <p><B>Cloud Design Schema 1.1.0</B><br>It is a JSON schema file that can be used to check the grammar of the CDD by incorporating it into a third party editor.</p>
+            <a class="btn btn-primary mb-1" href="/cds_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_en');">Download CDD root schema</a>
+            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_en');">Download CDD snippet schema</a>
           </p>
             <br>
             <p><B>Reindeer Archiver 0.1.0</B><br>An archiving tool supported by Reindeer Project. You can deploy your CDD to the blockchain 
@@ -423,12 +426,19 @@
                   This information MAY be used by external tools as the important evidence of involved person's skill and experience.
                 </p>
               </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">organizations</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a href="#s-organization">Organization object</a> ]</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">Related organizations of the CDD. 
+                  This information MAY be used by external tools as the important evidence of involved organization's skill and experience.
+                </p>
+              </div>
             </div>
 <h6>JSON example</h6>
 <pre><code>{
   <span class="token tag">"version": </span>"1.0.0",
   <span class="token tag">"license": </span>{
-      <span class="token tag">"type": </span>"CC0 1.0"
+      <span class="token tag">"type": </span>"CC0"
   },
   <span class="token tag">"title": </span>{
       <span class="token tag">"en": </span>"Sample system",
@@ -452,14 +462,24 @@
             <span class="token tag">"roles": </span>[<span class="token tag">"designer"</span>, <span class="token tag">"auditor"</span>],
             <span class="token tag">"joinedAt": </span>1548730447
       }
+  },
+  <span class="token tag">"organizations": </span>{
+      <span class="token tag">"sampleCompanyA": </span>{
+            <span class="token tag">"joinedAt": </span>1548730447,
+            <span class="token tag">"leavedAt": </span>1548731447
+      },
+      <span class="token tag">"sampleCompanyB": </span>{
+            <span class="token tag">"joinedAt": </span>1548730447,
+            <span class="token tag">"sign": </span>xxxxxx123
+      }
     }
-  }
+}
 </code></pre>
 
 <h6>YAML example</h6>
 <pre><code><span class="token tag">version: </span>1.0.0
 <span class="token tag">license: </span>
-      <span class="token tag">type: </span>CC0 1.0
+      <span class="token tag">type: </span>CC0
 <span class="token tag">title: </span>
       <span class="token tag">en: </span>Sample system
       <span class="token tag">ja: </span>サンプルシステム
@@ -480,10 +500,18 @@
             <span class="token tag">roles: </span>
                   <span class="token tag">- </span>designer
                   <span class="token tag">- </span>auditor
-            <span class="token tag">joinedAt: </span>1548730447
-</code></pre>
+                  <span class="token tag">sign: </span>xxxxxxx123
 
-            <hr class="hr-dot-bold my-7">
+                  <span class="token tag">joinedAt: </span>1548730447
+      <span class="token tag">organizations: </span>
+            <span class="token tag">sampleHandleNameA: </span>
+                  <span class="token tag">joinedAt: </span>1548730447
+                  <span class="token tag">leavedAt: </span>1548731447
+                  <span class="token tag">sign: </span>xxxxxxx123
+            <span class="token tag">sampleHandleNameB: </span>
+                  <span class="token tag">joinedAt: </span>1548730447
+      </code></pre>
+                  <hr class="hr-dot-bold my-7">
             <h3 id="s-actor">
                 <i class="fa fa-user mr-3" aria-hidden="true"></i>
               Actor objects<a class="anchor" href="#s-info"></a></h3>
@@ -1020,31 +1048,39 @@
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">type</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
-                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The license type of the CDD. If you store the CDD or related information in the Reindeer's blockchain storage, it MUST be <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0 1.0</a>.</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+                    This is the CDD license type. MUST be one of the following values: (CC0 recommended)<br>
+                    <a href="https://creativecommons.org/publicdomain/zero" target="_blank">CC0</a><br>
+                    <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache-2.0</a><br>
+                    <a href="https://opensource.org/licenses/mit-license" target="_blank">MIT</a><br>
+                    <a href="https://opensource.org/licenses/BSD-2-Clause" target="_blank">BSD-2-Clause</a><br>
+                    OtherOpen<br>
+                    Closed<br>
+                  </p>                  
                 </div>
                 <div class="d-table-row">
-                  <p class="d-table-cell p-2 bg-white text-dark border">url</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">provider</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
-                  <p class="d-table-cell p-2 bg-white text-dark border">A URL of license description for the CDD. If you store the CDD or related information in the Reindeer's blockchain storage, this item MUST NOT be used.</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">The license provider or license name. You MUST not use this parameter when the type is not OtherOpen and Closed.</p>
                 </div>
             </div>
 <h6>JSON Examples</h6>
 <pre><span class="badge badge-danger">RECOMMENDED</span>
 <code>{
-  <span class="token tag">"type": </span>"CC0 1.0"
+  <span class="token tag">"type": </span>"CC0"
 }</code></pre>
 
 <pre><code>{
-  <span class="token tag">"type": </span>"GPL v3",
-  <span class="token tag">"url": </span>"http://www.gnu.org/licenses/gpl-3.0.en.html"
+  <span class="token tag">"type": </span>"Closed",
+  <span class="token tag">"provider": </span>"Reindeer technology PTE.LTD."
 }</code></pre>
 
 <h6>YAML Examples</h6>
 <pre><span class="badge badge-danger">RECOMMENDED</span>
-<code><span class="token tag">type: </span>CC0 1.0</code></pre>
+<code><span class="token tag">type: </span>CC0</code></pre>
 
-<pre><code><span class="token tag">type: </span>GPL v3
-<span class="token tag">url: </span>http://www.gnu.org/licenses/gpl-3.0.en.html</code></pre>
+<pre><code><span class="token tag">type: </span>Closed
+<span class="token tag">url: </span>Reindeer technology PTE.LTD.</code></pre>
 
 
             <hr class="hr-dot-bold my-7">
@@ -1090,13 +1126,19 @@
                         The time when the author was leaved at this CDD creation / operation. It MUST be the UNIXTIME format.
                       </p>
                   </div>
+                  <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">sign</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border">Sign of the author.</p>
+                  </div>
             </div>
 
 <h6>JSON Example</h6>
 <pre><code>{
   <span class="token tag">"roles": </span>["designer","auditor"],
   <span class="token tag">"joinedAt": </span>1548730447,
-  <span class="token tag">"leavedAt": </span>1548731447
+  <span class="token tag">"leavedAt": </span>1548731447,
+  <span class="token tag">"sign": </span>ABC123DEF456HIJ789#abc
 }
 </code></pre>
 
@@ -1106,6 +1148,59 @@
       - <span class="token tag">auditor</span>
 <span class="token tag">joinedAt: </span>1548730447
 <span class="token tag">leavedAt: </span>1548731447
+<span class="token tag">sign: </span>ABC123DEF456HIJ789#abc
+</code></pre>
+
+<hr class="hr-dot-bold my-7">
+<h3 id="s-organization">
+    <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
+    Organization object<a class="anchor" href="#s-organization"></a>
+</h3>
+<p>
+  The object provides information about organizations related to the CDD. 
+  It SHOULD be comprehensive for helping others find the organization who has correct knowledge about the system, 
+  the cloud computing technology, and the market the system is serving.
+</p>
+<h6>Fixed Fields</h6>
+<div class="d-table table-responsive line-break">
+    <div class="d-table-row">
+      <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+      <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+      <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+    </div>
+    <div class="d-table-row">
+        <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
+        <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+        <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+          The time when the author was joined at this CDD creation / operation. It MUST be the UNIXTIME format.
+        </p>
+    </div>
+    <div class="d-table-row">
+        <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
+        <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+        <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
+          The time when the author was leaved at this CDD creation / operation. It MUST be the UNIXTIME format.
+        </p>
+    </div>
+    <div class="d-table-row">
+      <p class="d-table-cell p-2 bg-white text-dark border">sign</p>
+      <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+      <p class="d-table-cell p-2 bg-white text-dark border">Sign of the author.</p>
+    </div>
+</div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+<span class="token tag">"joinedAt": </span>1548730447,
+<span class="token tag">"leavedAt": </span>1548731447,
+<span class="token tag">"sign": </span>ABC123DEF456HIJ789#abc
+}
+</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">joinedAt: </span>1548730447
+<span class="token tag">leavedAt: </span>1548731447
+<span class="token tag">sign: </span>ABC123DEF456HIJ789#abc
 </code></pre>
 
             <hr class="hr-dot-bold my-7">
@@ -2117,7 +2212,16 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">2019-08-15</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">Add link to Reindeer Editor.
                   </p>
-              </div>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">1.1.0</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">2020-03-18</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">
+                    Enhance the expression of stakeholders in the design (add organization and identity signature)
+                    <br>Add 'organizations' property to the info object.
+                    <br>Add 'sign' property to the author object.
+                  </p>
+                </div>
             </div>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
