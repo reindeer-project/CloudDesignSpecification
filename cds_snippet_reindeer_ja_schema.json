@@ -2,101 +2,18 @@
   "validate": true,
   "schemas": [
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/core-schema.json",
+      "uri": "https://reindeer.tech/cdd-schema/v1/snippet-schema.json",
       "fileMatch": [
         "https://reindeer.tech/cdd-schema/default.json"
       ],
       "schema": {
-        "title": "Cloud Design Object",
-        "description": "これはCDDのルートオブジェクトです。",
+        "title": "Cloud Design Snippet Object",
+        "description": "これはCDDスニペットのルートオブジェクトです。",
         "type": "object",
         "required": [
-          "reindeer",
-          "self",
-          "info",
-          "actors",
-          "resources",
-          "contexts"
+          "components"
         ],
         "properties": {
-          "reindeer": {
-            "title": "CDSのバージョン",
-            "description": "必須. この文字列はCDSのsemantic version numberでなければなりません。 reindeerフィールドは、CDDを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。",
-            "type": "string",
-            "enum": [
-              "1.0.0"
-            ]
-          },
-          "self": {
-            "title": "ファイル名",
-            "description": "必須. この文字列はCDDのファイル名です。 拡張子は.json, .yaml または .ymlでなければなりません。 selfフィールドは、CDDを解釈するためのツールに使用されるべきです。",
-            "type": "string",
-            "default": "cloudDesign.json",
-            "pattern": "^[a-zA-Z0-9]+\\.(yaml|yml|json)$"
-          },
-          "info": {
-            "title": "Info",
-            "description": "必須. クラウドコンピューティングの活用に関するメタデータを提供します。 メタデータは、必要に応じてツールによって使用される場合があります。",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/info.json"
-          },
-          "actors": {
-            "title": "アクター",
-            "description": "必須. アクターオブジェクトの配列です。クラウドコンピューティングに接続する／される外部ユーザーまたはシステムに関する情報を提供します。",
-            "type": "object",
-            "patternProperties": {
-              "^[0-9a-zA-Z]+$": {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/marketTypeOfActor.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/personsTypeOfActor.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/externalSystemTypeOfActor.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/refToActor.json"
-                  }
-                ]
-              }
-            },
-            "additionalProperties": false
-          },
-          "resources": {
-            "title": "リソース",
-            "description": "必須. クラウドコンピューティングの構造を記述する外部ドキュメント（クラウドオートメーション言語が記載されたファイル）への参照を示す、リソースオブジェクトの配列です。",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "$ref": "https://reindeer.tech/cdd-schema/v1/resource.json"
-            },
-            "additionalProperties": false
-          },
-          "contexts": {
-            "title": "コンテキスト",
-            "description": "必須. コンテキストオブジェクトの配列です。アクターとクラウドコンピューティングリソースの間で、 特定の目的を達成するための関連性についての情報を提供します。",
-            "type": "object",
-            "patternProperties": {
-              "^[0-9a-zA-Z]+$": {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/context.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/refToContext.json"
-                  }
-                ]
-              }
-            },
-            "additionalProperties": false
-          },
           "components": {
             "title": "Component objects",
             "description": "CDDのさまざまな側面に対応する一連の再利用可能な オブジェクトを保持します。 コンポーネントオブジェクト内で定義されたすべてのオブジェクトは、 それらがコンポーネントオブジェクトの外部のプロパティから 明示的に参照されない限り、クラウドデザインには影響しません。",
@@ -208,78 +125,6 @@
                   }
                 },
                 "additionalProperties": false
-              }
-            },
-            "additionalProperties": false
-          }
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "uri": "https://reindeer.tech/cdd-schema/v1/info.json",
-      "schema": {
-        "title": "Info object",
-        "description": "このオブジェクトはCDDに関するメタデータを提供します。 他の人がCDDを簡単に検索、発見できるよう、メタデータは適切に記入されるべきです。",
-        "type": "object",
-        "required": [
-          "version",
-          "license",
-          "title",
-          "description",
-          "status",
-          "designedAt",
-          "authors"
-        ],
-        "properties": {
-          "version": {
-            "title": "CDDのバージョン",
-            "description": "必須. あなたの意思で定義されるCDDのバージョンです。（the CDS versionとは異なります）",
-            "default": "1.0.0",
-            "type": "string"
-          },
-          "license": {
-            "title": "CDDのライセンス",
-            "description": "必須. CDDのライセンス情報です。",
-            "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/license.json"
-          },
-          "title": {
-            "title": "サービス名",
-            "description": "必須. このクラウドデザインを適用するサービスの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の30文字以内の文字列でなければなりません。",
-            "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
-          },
-          "description": {
-            "title": "サービスの説明",
-            "description": "必須. このクラウドデザインを適用するサービスの説明です。 それはシステムの目的と機能のすべてのキーワードを含む簡潔なメモであるべきです。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の255文字以内の文字列でなければなりません。",
-            "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
-          },
-          "status": {
-            "title": "CDDの状態",
-            "description": "必須. CDDの状態です。 以下の値が利用できます。\nidea: アイデア段階\ndraft: 設計中\nproduction: 本番稼働サービスで利用中、または本番稼働用の品質で設計されている。",
-            "type": "string",
-            "enum": [
-              "idea",
-              "draft",
-              "production"
-            ]
-          },
-          "designedAt": {
-            "title": "日時",
-            "description": "必須. CDDが作成された日時です。UNIXタイムスタンプ形式を利用する必要があります。",
-            "type": "integer",
-            "minimum": 1
-          },
-          "authors": {
-            "title": "作者",
-            "description": "必須. CDDの作成者です。 この情報は外部ツールによって利用される可能性があり、関係者のスキルや経験を証明する重要な情報となります。",
-            "type": "object",
-            "patternProperties": {
-              "^[0-9a-zA-Z]+$": {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/author.json"
               }
             },
             "additionalProperties": false
@@ -607,16 +452,26 @@
         "required": [
           "type"
         ],
+        "if": { "properties":{ "type": { "enum":["Closed","OtherOpen"] }}},
+        "then": { "required":["provider"]},
         "properties": {
           "type": {
             "title": "CDDのライセンス種別",
-            "description": "必須. CDDのライセンス種別です。CDDまたは関連する情報をReindeerのブロックチェーン上に保管する場合、それはCC0 1.0でなければなりません。",
+            "description": "必須. CDDのライセンス種別です。以下何れかの値である必要があります。(CC0推奨): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed",
             "type": "string",
-            "default": "CC0 1.0"
+            "default": "CC0",
+            "enum": [
+              "CC0",
+              "Apache-2.0",
+              "MIT",
+              "BSD-2-Clause",
+              "OtherOpen",
+              "Closed"
+            ]
           },
-          "url": {
-            "title": "CDDライセンスの詳細を説明するURL",
-            "description": "CDDの詳細なライセンス情報にアクセスするためのURLです。CDDまたは関連する情報をReindeerのブロックチェーン上に保管する場合、この項目を利用してはいけません。",
+          "provider": {
+            "title": "ライセンスの提供者、またはその名称",
+            "description": "ライセンスの提供者、またはその名称です。typeがOtherOpenまたはClosedの場合以外は記載してはいけません。",
             "type": "string"
           }
         },
@@ -659,6 +514,44 @@
             "title": "離任日時",
             "description": "必須. 作者が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。",
             "type": "integer",
+            "minimum": 1
+          },
+          "sign": {
+            "title": "署名",
+            "description": "作者の署名です。本値は署名支援ツールによって自動生成されるべきもので、通常は空白です。",
+            "type": "string",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "uri": "https://reindeer.tech/cdd-schema/v1/organization.json",
+      "schema": {
+        "title": "Organization object",
+        "description": "このオブジェクトは、CDDの関連組織とその役割についての情報を提供します。 対象のシステム、クラウドコンピューティング技術、そして同システムのサービス提供市場について正しい知識を持っている組織を 他の人が見つけるのを助けるため、包括的に記載されるべきです。",
+        "type": "object",
+        "required": [
+          "joinedAt"
+        ],
+        "properties": {
+          "joinedAt": {
+            "title": "参画日時",
+            "description": "必須. 組織が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。",
+            "type": "integer",
+            "minimum": 1
+          },
+          "leavedAt": {
+            "title": "離任日時",
+            "description": "必須. 組織が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。",
+            "type": "integer",
+            "minimum": 1
+          },
+          "sign": {
+            "title": "署名",
+            "description": "組織の署名です。本値は署名支援ツールによって自動生成されるべきもので、通常は空白です。",
+            "type": "string",
             "minimum": 1
           }
         },
