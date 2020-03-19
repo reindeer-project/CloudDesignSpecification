@@ -61,7 +61,7 @@
       <div id="headertitle" class="container">
         <h1>Cloud Design 仕様</h1>
         <p class="lead">クラウドコンピューティングの活用ノウハウを記録、共有する標準的なデータ記述方法</p>
-        <p>version 1.0.0</p>
+        <p>version 1.1.0</p>
       </div>
     </header><!-- /.header -->
     <!-- Main Content -->
@@ -127,6 +127,9 @@
                         <a class="nav-link small" href="#s-author">
                             <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
                           Author</a>
+                        <a class="nav-link small" href="#s-organization">
+                            <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
+                          Organization</a>
                         <a class="nav-link small" href="#s-market">
                             <i class="fa fa-crosshairs mr-3" aria-hidden="true"></i>
                           Market</a>
@@ -213,9 +216,9 @@
             <p><a class="btn btn-primary mb-1" href="https://editor.reindeer.tech/ja/" target="_blank" onClick="ga('send','event','btn', 'click', 'demo_editor_ja');">デモ</a>
               &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank" onClick="ga('send','event','btn', 'click', 'download_editor_ja');">ダウンロード</a></p>
             <br>
-            <p><B>Cloud Design Schema 日本語 1.0.0</B><br>サードパーティー製エディタ等に組み込むことで、CDDの文法チェックに利用できるJSONスキーマファイルです。</p>
-            <a class="btn btn-primary mb-1" href="/cds_reindeer_1_0_0_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_ja');">CDDルートスキーマのダウンロード</a>
-            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_1_0_0_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_ja');">CDDスニペットスキーマのダウンロード</a>
+            <p><B>Cloud Design Schema 日本語 1.1.0</B><br>サードパーティー製エディタ等に組み込むことで、CDDの文法チェックに利用できるJSONスキーマファイルです。</p>
+            <a class="btn btn-primary mb-1" href="/cds_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_ja');">CDDルートスキーマのダウンロード</a>
+            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_ja');">CDDスニペットスキーマのダウンロード</a>
             <br><br>
             <p><B>Reindeer Archiver 0.1.0</B><br>Reindeer Projectがサポートする、アーカイブツールです。CDDを安全で再利用可能なナレッジベースとしての
               ブロックチェーンに保管することができます。
@@ -420,12 +423,19 @@
                   この情報は外部ツールによって利用される可能性があり、関係者のスキルや経験を証明する重要な情報となります。
                 </p>
               </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">organizations</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a href="#s-organization">Organization object</a> ]</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">CDD作成に関与する組織です。
+                  この情報は外部ツールによって利用される可能性があり、組織のスキルや経験を証明する重要な情報となります。
+                </p>
+              </div>
             </div>
 <h6>JSON example</h6>
 <pre><code>{
   <span class="token tag">"version": </span>"1.0.0",
   <span class="token tag">"license": </span>{
-      <span class="token tag">"type": </span>"CC0 1.0"
+      <span class="token tag">"type": </span>"CC0"
   },
   <span class="token tag">"title": </span>{
       <span class="token tag">"en": </span>"Sample system",
@@ -443,20 +453,31 @@
       <span class="token tag">"sampleHandleNameA": </span>{
             <span class="token tag">"roles": </span>[<span class="token tag">"designer"</span>],
             <span class="token tag">"joinedAt": </span>1548730447,
-            <span class="token tag">"leavedAt": </span>1548731447
+            <span class="token tag">"leavedAt": </span>1548731447,
+            <span class="token tag">"sign": </span>xxxxxx123
       },
       <span class="token tag">"sampleHandleNameB": </span>{
             <span class="token tag">"roles": </span>[<span class="token tag">"designer"</span>, <span class="token tag">"auditor"</span>],
             <span class="token tag">"joinedAt": </span>1548730447
       }
+    },
+    <span class="token tag">"organizations": </span>{
+      <span class="token tag">"sampleCompanyA": </span>{
+            <span class="token tag">"joinedAt": </span>1548730447,
+            <span class="token tag">"leavedAt": </span>1548731447
+      },
+      <span class="token tag">"sampleCompanyB": </span>{
+            <span class="token tag">"joinedAt": </span>1548730447,
+            <span class="token tag">"sign": </span>xxxxxx123
+      }
     }
-  }
+}
 </code></pre>
 
 <h6>YAML example</h6>
 <pre><code><span class="token tag">version: </span>1.0.0
 <span class="token tag">license: </span>
-      <span class="token tag">type: </span>CC0 1.0
+      <span class="token tag">type: </span>CC0
 <span class="token tag">title: </span>
       <span class="token tag">en: </span>Sample system
       <span class="token tag">ja: </span>サンプルシステム
@@ -477,7 +498,16 @@
             <span class="token tag">roles: </span>
                   <span class="token tag">- </span>designer
                   <span class="token tag">- </span>auditor
+            <span class="token tag">sign: </span>xxxxxxx123
+
             <span class="token tag">joinedAt: </span>1548730447
+      <span class="token tag">organizations: </span>
+            <span class="token tag">sampleHandleNameA: </span>
+                  <span class="token tag">joinedAt: </span>1548730447
+                  <span class="token tag">leavedAt: </span>1548731447
+                  <span class="token tag">sign: </span>xxxxxxx123
+            <span class="token tag">sampleHandleNameB: </span>
+                  <span class="token tag">joinedAt: </span>1548730447
 </code></pre>
 
             <hr class="hr-dot-bold my-7">
@@ -1023,31 +1053,38 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">type</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                    CDDのライセンス種別です。CDDまたは関連する情報をReindeerのブロックチェーン上に保管する場合、それは<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0 1.0</a>でなければなりません。
+                    CDDのライセンス種別です。以下何れかの値である必要があります。(CC0推奨)<br>
+                    <a href="https://creativecommons.org/publicdomain/zero" target="_blank">CC0</a><br>
+                    <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache-2.0</a><br>
+                    <a href="https://opensource.org/licenses/mit-license" target="_blank">MIT</a><br>
+                    <a href="https://opensource.org/licenses/BSD-2-Clause" target="_blank">BSD-2-Clause</a><br>
+                    OtherOpen<br>
+                    Closed<br>
+                  </p>
                 </div>
                 <div class="d-table-row">
-                  <p class="d-table-cell p-2 bg-white text-dark border">url</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">provider</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
-                  <p class="d-table-cell p-2 bg-white text-dark border">CDDの詳細なライセンス情報にアクセスするためのURLです。CDDまたは関連する情報をReindeerのブロックチェーン上に保管する場合、この項目を利用してはいけません。</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">ライセンスの提供者、またはその名称です。typeがOtherOpenまたはClosedの場合以外は記載してはいけません。</p>
                 </div>
             </div>
 <h6>JSON Examples</h6>
 <pre><span class="badge badge-danger">RECOMMENDED</span>
 <code>{
-  <span class="token tag">"type": </span>"CC0 1.0"
+  <span class="token tag">"type": </span>"CC0"
 }</code></pre>
 
 <pre><code>{
-  <span class="token tag">"type": </span>"GPL v3",
-  <span class="token tag">"url": </span>"http://www.gnu.org/licenses/gpl-3.0.en.html"
+  <span class="token tag">"type": </span>"Closed",
+  <span class="token tag">"provider": </span>"Reindeer technology PTE.LTD."
 }</code></pre>
 
 <h6>YAML Examples</h6>
 <pre><span class="badge badge-danger">RECOMMENDED</span>
-<code><span class="token tag">type: </span>CC0 1.0</code></pre>
+<code><span class="token tag">type: </span>CC0</code></pre>
 
-<pre><code><span class="token tag">type: </span>GPL v3
-<span class="token tag">url: </span>http://www.gnu.org/licenses/gpl-3.0.en.html</code></pre>
+<pre><code><span class="token tag">type: </span>Closed
+<span class="token tag">provider: </span>Reindeer technology PTE.LTD.</code></pre>
 
 
             <hr class="hr-dot-bold my-7">
@@ -1068,37 +1105,43 @@
                   <p class="d-table-cell p-2 bg-primary text-white border">説明</p>
                 </div>
                 <div class="d-table-row">
-                    <p class="d-table-cell p-2 bg-white text-dark border">roles</p>
-                    <p class="d-table-cell p-2 bg-white text-dark border">[ <code>string</code> ]</p>
-                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDDに関与した役割を保持します。役割は、以下の何れかの値でなければなりません。 
-                      <br><code>planner</code>: 企画者
-                      <br><code>designer</code>: 設計者
-                      <br><code>auditor</code>: CDDの監査者
-                      <br><code>operator</code>: CDDで設計されたシステムの運用者
-                      <br><code>others</code>: その他
+                  <p class="d-table-cell p-2 bg-white text-dark border">roles</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">[ <code>string</code> ]</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDDに関与した役割を保持します。役割は、以下の何れかの値でなければなりません。 
+                    <br><code>planner</code>: 企画者
+                    <br><code>designer</code>: 設計者
+                    <br><code>auditor</code>: CDDの監査者
+                    <br><code>operator</code>: CDDで設計されたシステムの運用者
+                    <br><code>others</code>: その他
+                  </p>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
+                      作者が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
                     </p>
-                  </div>
-                  <div class="d-table-row">
-                      <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
-                      <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
-                      <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                        作者が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
-                      </p>
-                  </div>
-                  <div class="d-table-row">
-                      <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
-                      <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
-                      <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                        作者が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
-                      </p>
-                  </div>
+                </div>
+                <div class="d-table-row">
+                    <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
+                      作者が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
+                    </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">sign</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">作者の署名です。本値は署名支援ツールによって自動生成されるべきもので、通常は空白です。</p>
+                </div>
             </div>
 
 <h6>JSON Example</h6>
 <pre><code>{
   <span class="token tag">"roles": </span>["designer","auditor"],
   <span class="token tag">"joinedAt": </span>1548730447,
-  <span class="token tag">"leavedAt": </span>1548731447
+  <span class="token tag">"leavedAt": </span>1548731447,
+  <span class="token tag">"sign": </span>ABC123DEF456HIJ789#abc
 }
 </code></pre>
 
@@ -1108,6 +1151,59 @@
       - <span class="token tag">auditor</span>
 <span class="token tag">joinedAt: </span>1548730447
 <span class="token tag">leavedAt: </span>1548731447
+<span class="token tag">sign: </span>ABC123DEF456HIJ789#abc
+</code></pre>
+
+<hr class="hr-dot-bold my-7">
+<h3 id="s-organization">
+    <i class="fa fa-id-card mr-3" aria-hidden="true"></i>
+  Organization object<a class="anchor" href="#s-organization"></a>
+</h3>
+<p>
+  このオブジェクトは、CDDの関連組織とその役割についての情報を提供します。
+  対象のシステム、クラウドコンピューティング技術、そして同システムのサービス提供市場について正しい知識を持っている組織を
+  他の人が見つけるのを助けるため、包括的に記載されるべきです。
+</p>
+<h6>固定フィールド</h6>
+<div class="d-table table-responsive line-break">
+    <div class="d-table-row">
+      <p class="d-table-cell p-2 bg-primary text-white border">フィールド名</p>
+      <p class="d-table-cell p-2 bg-primary text-white border">種類</p>
+      <p class="d-table-cell p-2 bg-primary text-white border">説明</p>
+    </div>
+    <div class="d-table-row">
+        <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
+        <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+        <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
+          組織が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
+        </p>
+    </div>
+    <div class="d-table-row">
+        <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
+        <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+        <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
+          組織が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
+        </p>
+    </div>
+    <div class="d-table-row">
+      <p class="d-table-cell p-2 bg-white text-dark border">sign</p>
+      <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+      <p class="d-table-cell p-2 bg-white text-dark border">組織の署名です。本値は署名支援ツールによって自動生成されるべきもので、通常は空白です。</p>
+    </div>
+</div>
+
+<h6>JSON Example</h6>
+<pre><code>{
+<span class="token tag">"joinedAt": </span>1548730447,
+<span class="token tag">"leavedAt": </span>1548731447,
+<span class="token tag">"sign": </span>ABC123DEF456HIJ789#abc
+}
+</code></pre>
+
+<h6>YAML Example</h6>
+<pre><code><span class="token tag">joinedAt: </span>1548730447
+<span class="token tag">leavedAt: </span>1548731447
+<span class="token tag">sign: </span>ABC123DEF456HIJ789#abc
 </code></pre>
 
             <hr class="hr-dot-bold my-7">
@@ -2085,7 +2181,7 @@
             <p><B><a href="/reindeer_six_states.pdf" target="_blank" onClick="ga('send','event','btn', 'click', 'six_ja');">Cloud Design の6状態</a></B><br>今後のツールとエコシステム展開のイメージです。</p>
             <br>
             <hr class="hr-dot-bold my-7">
-            <h3 id="revision">バージョン<a class="anchor" href="#revision"></a></h3>
+            <h3 id="revision">リビジョン<a class="anchor" href="#revision"></a></h3>
             <br>
             <div class="d-table table-responsive line-break">
                 <div class="d-table-row">
@@ -2104,6 +2200,15 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">2019-08-15</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">本資料にReindeer Editorへのリンクを追加
                   </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">1.1.0</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">2020-03-18</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">
+                デザインの関係者表現を拡充（組織と本人証明サインを追加）
+                <br>'info' オブジェクトに 'organizations' プロパティを追加
+                <br>'author' オブジェクトに 'sign' プロパティを追加  
+                </p>
               </div>
             </div>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
