@@ -354,13 +354,15 @@
         "properties": {
           "type": {
             "title": "Language type",
-            "description": "REQUIRED. Type of the cloud automation language. It MUST be one of the following values. \nacf : AWS CloudFormation. \narm : Azure Resource Manager. \ngdm : Google Cloud Deployment Manager. \naro : Alicloud Resource Orchestration Service. \noth : Others.",
+            "description": "REQUIRED. Type of the cloud automation language. It MUST be one of the following values. \nacf : AWS CloudFormation. \narm : Azure Resource Manager. \ngdm : Google Cloud Deployment Manager. \naro : Alicloud Resource Orchestration Service. \ntfm: Terraform. \nslf: ServerlessFramework. \noth : Others.",
             "type": "string",
             "enum": [
               "acf",
               "arm",
               "gdm",
               "aro",
+              "tfm",
+              "slf",
               "oth"
             ]
           },
