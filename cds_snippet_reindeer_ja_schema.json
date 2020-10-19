@@ -354,13 +354,15 @@
         "properties": {
           "type": {
             "title": "言語種類",
-            "description": "必須. クラウドオートメーション言語の種別です。以下値の中の１つである必要があります。\nacf : AWS CloudFormation. \narm : Azure Resource Manager.\ngdm : Google Cloud Deployment Manager.\naro : Alibaba Cloud Resource Orchestration Service. \noth : その他",
+            "description": "必須. クラウドオートメーション言語の種別です。以下値の中の１つである必要があります。\nacf : AWS CloudFormation. \narm : Azure Resource Manager.\ngdm : Google Cloud Deployment Manager.\naro : Alibaba Cloud Resource Orchestration Service. \ntfm: Terraform. \nslf: ServerlessFramework. \noth : その他",
             "type": "string",
             "enum": [
               "acf",
               "arm",
               "gdm",
               "aro",
+              "tfm",
+              "slf",
               "oth"
             ]
           },
