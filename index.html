@@ -931,7 +931,7 @@
                 </div>
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">maxPerformanceDurationRatio</p>
-                  <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"> 
                     Shows the monthly duration ratio of maximum performance. 
                     When calculating the cost required for the context, this value is used to synthesize the max and min values ​​of each <a href="#s-rangeValue"> Range values ​​object </a> included in trigger and traffic.
@@ -961,7 +961,7 @@
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic2"},
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic3"}
   ],
-  <span class="token tag">"maxPerformanceDurationRatio": 0.1</span>
+  <span class="token tag">"maxPerformanceDurationRatio": </span>0.1
 }</code></pre>
 
 <h6>YAML Example</h6>
@@ -979,7 +979,7 @@
       - <span class="token tag">$ref: </span>#/components/traffics/traffic1
       - <span class="token tag">$ref: </span>#/components/traffics/traffic2
       - <span class="token tag">$ref: </span>#/components/traffics/traffic3
-<span class="token tag">maxPerformanceDurationRatio: 0.1</span>
+<span class="token tag">maxPerformanceDurationRatio: </span>0.1
 </code></pre>
 
             <hr class="hr-dot-bold my-7">
@@ -2249,6 +2249,13 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">
                     Add 'maxPerformanceDurationRatio' to Context for supporting synthetic cost representation.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">1.3.1</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">
+                    Fix a bug for the type definition of 'maxPerformanceDurationRatio.'
                   </p>
                 </div>
             </div>
