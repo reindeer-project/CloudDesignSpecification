@@ -61,7 +61,7 @@
       <div id="headertitle" class="container">
         <h1>Cloud Design 仕様</h1>
         <p class="lead">クラウドコンピューティングの活用ノウハウを記録、共有する標準的なデータ記述方法</p>
-        <p>version 1.2.0</p>
+        <p>version 1.3.0</p>
       </div>
     </header><!-- /.header -->
     <!-- Main Content -->
@@ -211,21 +211,21 @@
             <h3 id="tools">ツール<a class="anchor" href="#tools"></a></h3>
             <p>様々なツールを用いて、クラウドデザインを作成、保管、検索、再利用することができます。
             <br><br>
-            <p><B>Reindeer Editor 0.2.0</B><br>Reindeer Projectがサポートする、ドキュメント生成ツールです。CDDを編集し、クラウドコンピューティング
+            <p><B>Reindeer Editor</B><br>Reindeer Projectがサポートする、ドキュメント生成ツールです。CDDを編集し、クラウドコンピューティング
               の利用に関するレポートを表示することができます。</p>
-            <p><a class="btn btn-primary mb-1" href="https://editor.reindeer.tech/ja/" target="_blank" onClick="ga('send','event','btn', 'click', 'demo_editor_ja');">デモ</a>
+            <p><a class="btn btn-primary mb-1" href="https://editor.reindeer.tech/ja/detail/" target="_blank" onClick="ga('send','event','btn', 'click', 'demo_editor_ja');">デモ</a>
               &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank" onClick="ga('send','event','btn', 'click', 'download_editor_ja');">ダウンロード</a></p>
             <br>
-            <p><B>Cloud Design Schema 日本語 1.1.0</B><br>サードパーティー製エディタ等に組み込むことで、CDDの文法チェックに利用できるJSONスキーマファイルです。</p>
+            <p><B>Cloud Design Schema 日本語</B><br>サードパーティー製エディタ等に組み込むことで、CDDの文法チェックに利用できるJSONスキーマファイルです。</p>
             <a class="btn btn-primary mb-1" href="/cds_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_ja');">CDDルートスキーマのダウンロード</a>
             &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_ja');">CDDスニペットスキーマのダウンロード</a>
             <br><br>
-            <p><B>Reindeer Archiver 0.1.0</B><br>Reindeer Projectがサポートする、アーカイブツールです。CDDを安全で再利用可能なナレッジベースとしての
+            <p><B>Reindeer Archiver</B><br>Reindeer Projectがサポートする、アーカイブツールです。CDDを安全で再利用可能なナレッジベースとしての
               ブロックチェーンに保管することができます。
             </p><p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'demo_archiver_ja');">デモ(COMMING SOON)</a>
               &nbsp;&nbsp;<a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'download_archiver_ja');">ダウンロード(COMMING SOON)</a></p>
             <br>
-            <p><B>Reindeer HUB 0.1.0</B><br>Reindeer Projectがサポートする、検索コンソールとワークフローツールです。
+            <p><B>Reindeer HUB</B><br>Reindeer Projectがサポートする、検索コンソールとワークフローツールです。
               あなたのチームが自身のプロジェクトのために、様々なCDDを発見し、それらを再利用することができます。
 	          </p>
             <p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'hub_ja');">アクセス(COMMING SOON)</a></p>
@@ -932,6 +932,15 @@
                       トラフィックはコンテキスト内の通信経路を意味します。
                     </p>
                 </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">maxPerformanceDurationRatio</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"> 
+                    最大性能の月間持続時間比率を示します。コンテキストに求められるコストを計算する際、本値を利用してtriggerやtrafficsに含まれる各<a href="#s-rangeValue">Range values object</a>のmaxとmin値を合成します。
+                    例えば月間3日だけ広告効果でDAUを向上させる設計の場合、DAU値をmin:0.01, max:0.1、本値を0.1と表現します。
+                    CloudDesignは月間使用量を基準に性能とコストを表現しますが、本値により月間平均は1rpsながらも瞬間最大性能100rpsを期待する設計が記録できます。
+                  </p>
+              </div>
             </div>
 
 <h6>JSON Example</h6>
@@ -953,7 +962,8 @@
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic1"},
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic2"},
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic3"}
-  ]
+  ],
+  <span class="token tag">"maxPerformanceDurationRatio": 0.1</span>
 }</code></pre>
 
 <h6>YAML Example</h6>
@@ -971,6 +981,7 @@
       - <span class="token tag">$ref: </span>#/components/traffics/traffic1
       - <span class="token tag">$ref: </span>#/components/traffics/traffic2
       - <span class="token tag">$ref: </span>#/components/traffics/traffic3
+<span class="token tag">maxPerformanceDurationRatio: 0.1</span>
 </code></pre>
 
             <hr class="hr-dot-bold my-7">
@@ -2218,6 +2229,13 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">2020-10-08</p>
                 <p class="d-table-cell p-2 bg-white text-dark border">
                 Serverless Framework をサポート
+                </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">1.3.0</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">
+                ContextにmaxPerformanceDurationRatioを追加し、合成コスト表現をサポート
                 </p>
               </div>
             </div>
