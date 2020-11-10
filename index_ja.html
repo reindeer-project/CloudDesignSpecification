@@ -934,7 +934,7 @@
                 </div>
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">maxPerformanceDurationRatio</p>
-                  <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"> 
                     最大性能の月間持続時間比率を示します。コンテキストに求められるコストを計算する際、本値を利用してtriggerやtrafficsに含まれる各<a href="#s-rangeValue">Range values object</a>のmaxとmin値を合成します。
                     例えば月間3日だけ広告効果でDAUを向上させる設計の場合、DAU値をmin:0.01, max:0.1、本値を0.1と表現します。
@@ -963,7 +963,7 @@
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic2"},
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic3"}
   ],
-  <span class="token tag">"maxPerformanceDurationRatio": 0.1</span>
+  <span class="token tag">"maxPerformanceDurationRatio": </span>0.1
 }</code></pre>
 
 <h6>YAML Example</h6>
@@ -981,7 +981,7 @@
       - <span class="token tag">$ref: </span>#/components/traffics/traffic1
       - <span class="token tag">$ref: </span>#/components/traffics/traffic2
       - <span class="token tag">$ref: </span>#/components/traffics/traffic3
-<span class="token tag">maxPerformanceDurationRatio: 0.1</span>
+<span class="token tag">maxPerformanceDurationRatio: </span>0.1
 </code></pre>
 
             <hr class="hr-dot-bold my-7">
@@ -2236,6 +2236,13 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
                 <p class="d-table-cell p-2 bg-white text-dark border">
                 ContextにmaxPerformanceDurationRatioを追加し、合成コスト表現をサポート
+                </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">1.3.1</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">
+                  maxPerformanceDurationRatioの型定義ミスを修正
                 </p>
               </div>
             </div>
