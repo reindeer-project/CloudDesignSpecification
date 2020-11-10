@@ -62,7 +62,7 @@
       <div id="headertitle" class="container">
         <h1>Cloud Design Specification</h1>
         <p class="lead">Standard data notation method to record and share know-how of cloud computing adoption.</p>
-        <p>version 1.2.0</p>
+        <p>version 1.3.0</p>
       </div>
     </header><!-- /.header -->
     <!-- Main Content -->
@@ -214,22 +214,22 @@
             <h3 id="tools">Tools<a class="anchor" href="#tools"></a></h3>
             <p>You can create, store, search, reuse the Cloud Designs by using various tools.</p>
             <br><br>
-            <p><B>Reindeer Editor 0.2.0</B><br>A documentation generation tool supported by Reindeer Project. You can edit a CDD and display 
+            <p><B>Reindeer Editor</B><br>A documentation generation tool supported by Reindeer Project. You can edit a CDD and display 
               the cloud computing adoption report by using this.</p>
             <p><a class="btn btn-primary mb-1" href="https://editor.reindeer.tech" target="_blank" onClick="ga('send','event','btn', 'click', 'demo_editor_en');">DEMO</a>
               &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank" onClick="ga('send','event','btn', 'click', 'download_demo_en');">Download</a></p>
             <br>
-            <p><B>Cloud Design Schema 1.1.0</B><br>It is a JSON schema file that can be used to check the grammar of the CDD by incorporating it into a third party editor.</p>
+            <p><B>Cloud Design Schema</B><br>It is a JSON schema file that can be used to check the grammar of the CDD by incorporating it into a third party editor.</p>
             <a class="btn btn-primary mb-1" href="/cds_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_en');">Download CDD root schema</a>
             &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_en');">Download CDD snippet schema</a>
           </p>
             <br>
-            <p><B>Reindeer Archiver 0.1.0</B><br>An archiving tool supported by Reindeer Project. You can deploy your CDD to the blockchain 
+            <p><B>Reindeer Archiver</B><br>An archiving tool supported by Reindeer Project. You can deploy your CDD to the blockchain 
               as the safe and reusable knowledge base.
             </p><p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'demo_archiver_en');">DEMO(COMMING SOON)</a>
               &nbsp;&nbsp;<a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'download_archiver_en');">Download(COMMING SOON)</a></p>
             <br>
-            <p><B>Reindeer HUB 0.1.0</B><br>
+            <p><B>Reindeer HUB</B><br>
               A search console and workflow tool supported by Reindeer Porject. Your team can find and reuse various CDD for your project.
 	          </p>
             <p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'hub_en');">ACCESS(COMMING SOON)</a></p>
@@ -929,6 +929,16 @@
                       The traffic means related data transfer route within the context. 
                     </p>
                 </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">maxPerformanceDurationRatio</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+                  <p class="d-table-cell p-2 bg-white text-dark border"> 
+                    Shows the monthly duration ratio of maximum performance. 
+                    When calculating the cost required for the context, this value is used to synthesize the max and min values ​​of each <a href="#s-rangeValue"> Range values ​​object </a> included in trigger and traffic.
+                    For example, in the case of a design that improves DAU by advertising effect only 3 days a month, the DAU value is expressed as min: 0.01, max: 0.1, and this value is expressed as 0.1.
+                    CloudDesign expresses performance and cost based on monthly usage, but with this value, it is possible to record a design that expects a maximum instantaneous performance of 100 rps while the monthly average is 1 rps.
+                  </p>
+              </div>
             </div>
 
 <h6>JSON Example</h6>
@@ -950,7 +960,8 @@
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic1"},
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic2"},
         {<span class="token tag">"$ref": </span>"#/components/traffics/traffic3"}
-  ]
+  ],
+  <span class="token tag">"maxPerformanceDurationRatio": 0.1</span>
 }</code></pre>
 
 <h6>YAML Example</h6>
@@ -968,6 +979,7 @@
       - <span class="token tag">$ref: </span>#/components/traffics/traffic1
       - <span class="token tag">$ref: </span>#/components/traffics/traffic2
       - <span class="token tag">$ref: </span>#/components/traffics/traffic3
+<span class="token tag">maxPerformanceDurationRatio: 0.1</span>
 </code></pre>
 
             <hr class="hr-dot-bold my-7">
@@ -2230,6 +2242,13 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">2020-10-08</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">
                     Add support for 'Serverless Framework.'
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">1.3.0</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">
+                    Add 'maxPerformanceDurationRatio' to Context for supporting synthetic cost representation.
                   </p>
                 </div>
             </div>
