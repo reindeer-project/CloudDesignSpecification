@@ -1410,6 +1410,8 @@
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                       Busy hours per day. For example, it's <code>6</code>, in the case of that most access is concentrated 
                       amoung AM 9:00 - AM 11:00 and PM 17:00 - PM 19:00 per day.
+                      <b style = "color: red"> Please note that the max value is "smaller" than the min value, as 1 hour is generally considered to be "more concentrated" than 8 hours. </b>
+                        Example: If the case where users access evenly within 8 hours during the day is the minimum performance, and the case where access is during the 1 hour of the lunch break is the maximum performance, it is expressed as min: 8, max: 1.
                     </p>
                 </div>
                 <div class="d-table-row">
@@ -2256,6 +2258,13 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">
                     Fix a bug for the type definition of 'maxPerformanceDurationRatio.'
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">1.3.1 (No change)</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">2020-11-12</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">
+                    Add an additional description to the 'busyhours' param on this document. 
                   </p>
                 </div>
             </div>

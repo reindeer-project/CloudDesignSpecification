@@ -1407,6 +1407,8 @@
                     <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-rangeValue">Range values object</a></p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                       １日あたりのアクセス集中時間です。例えば日々のアクセスがほぼ AM 9:00 - AM 11:00 と PM 17:00 - PM 19:00 に集中している場合、この値は <code>6</code> です。
+                      <b style="color:red">一般的に8時間より1時間のほうが「集中度は高い」とみなされるため、min値よりmax値のほうが値が「小さくなる」ことにご注意ください。</b>>
+                      例：利用者が日中8時間以内に均等にアクセスするケースを最小性能、昼休みの1時間にアクセスが集中するケースを最大性能とする場合、min:8, max:1 と表現します。
                     </p>
                 </div>
                 <div class="d-table-row">
@@ -2243,6 +2245,13 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
                 <p class="d-table-cell p-2 bg-white text-dark border">
                   maxPerformanceDurationRatioの型定義ミスを修正
+                </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">1.3.1(変更なし)</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">2020-11-12</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">
+                  本ドキュメントのbusyHoursパラメータに説明を補足
                 </p>
               </div>
             </div>
