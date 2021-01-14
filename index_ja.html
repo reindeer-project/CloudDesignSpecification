@@ -36,7 +36,7 @@
         <div class="navbar-left">
           <ul class="nav nav-navbar">
             <li class="nav-item">
-              <a class="nav-link" style="padding-left:0px" href="https://reindeer.tech" target="_blank">
+              <a class="nav-link" style="padding-left:0px" href="https://reindeer.tech/ja/index.html" target="_blank">
                 <span>Supported by Reindeer Project</span>
               </a>
 	          </li>
@@ -60,7 +60,7 @@
       <canvas id="drawing_canvas"></canvas>
       <div id="headertitle" class="container">
         <h1>Cloud Design 仕様</h1>
-        <p class="lead">クラウドコンピューティングの活用ノウハウを記録、共有する標準的なデータ記述方法</p>
+        <p class="lead">クラウドコンピューティングの設計を記録、共有する標準的なデータ記述方法</p>
         <p>version 1.3.1</p>
       </div>
     </header><!-- /.header -->
@@ -191,44 +191,33 @@
 
             <hr class="hr-dot-bold my-7">
             <h3 id="introduction">紹介<a class="anchor" href="#introduction"></a></h3>
-            <p>Cloud Design仕様 (<b>the "CDS"</b>) は、標準的かつベンダーに依存しない方法で、人間とコンピュータの双方が理解できるクラウドコンピューティングの調達情報を定義します。
+            <p>Cloud Design仕様 (<b>the "CDS"</b>) は、標準的かつベンダーに依存しない方法で、人間とコンピュータの双方が理解できるクラウドコンピューティングの設計を定義します。
             正しく定義されていれば、利用者は最小限の労力でリモートコンピューティングサービスを理解、操作でき、
             稼働中のリソースそのものや分散された様々なドキュメントの確認に頼る必要がなくなります。
-            <br>そして、同仕様にもとづいて作成されたCloud Design定義 (<b>the "CDD"</b>) は、
-            コンピューティング構成を表示するレポート生成ツールや監査ツールなど、様々なツールで横断的に利用されるよう設計されています。
+            <br>そしてCDSは、
+            クラウド設計の可視化や監査などを行う様々なツールで横断的に利用できるよう設計されています。
+            <br>なお本ドキュメントにおいて、CDSという呼称は言語仕様そのものの名称であると同時に、同仕様に基づいて記述されたクラウド設計を示します。以前は後者をCloud Design Definition(<b>the "CDD"</b>)として明確に区別しましたが、用語の乱立を防ぐためCDSに統一されました。よってツールや周辺ドキュメントの一部にCDDの記述が存在しますが、CDSと同義とお考えいただいて問題ありません。
             <hr class="hr-dot-bold my-7">
-            <h3 id="extension">既存のクラウドオートメーション言語の拡張 <a class="anchor" href="#introduction"></a></h3>
-            <p>CDSはサービスのクリエイターのために、システム要件とクラウドコンピューティング構成、作成者、およびその他の貴重な情報の
-              関連性を明示することによって、それらを断絶する最後の１マイルを結びつけるよう計画されています。
-              <br>よってCDDは、クラウドコンピューティング構成を的確に表現できる、
-              以下のような既存のクラウドオートメーション言語への参照を含むべきです。
-              <a href="https://aws.amazon.com/cloudformation/" target="_blank">AWS Cloud Formation</a>, 
-              <a href="https://azure.microsoft.com/en-us/features/resource-manager/" target="_blank">Azure Resource Manager</a>, 
-              <a href="https://cloud.google.com/deployment-manager/" target="_blank">Google Cloud Deployment Manager</a>, 
-              <a href="https://www.terraform.io/" target="_blank">Terraform</a> など
+            <h3 id="extension">既存のプロビジョニングコードの拡張 <a class="anchor" href="#introduction"></a></h3>
+            <p>CDSはCloudFormationなど既存のプロビジョニングコードを補完する設計言語です。クラウドの利用者やアクセスボリュームといったシステム要件を独自の仕様で記述し、クラウドリソースの定義は既存のプロビジョニング言語への参照によって表現します。同構造により、デベロッパーの学習コストを抑え、既存コード資産の活用を促します。
+              <br>CDSが含むことのできるプロビジョニングコードの種類については、<a href="#s-resource">Resource object</a>をご参照下さい。
             </p>
             <hr class="hr-dot-bold my-7">
             <h3 id="tools">ツール<a class="anchor" href="#tools"></a></h3>
             <p>様々なツールを用いて、クラウドデザインを作成、保管、検索、再利用することができます。
             <br><br>
-            <p><B>Reindeer Editor</B><br>Reindeer Projectがサポートする、ドキュメント生成ツールです。CDDを編集し、クラウドコンピューティング
+            <p><B>Reindeer Editor</B><br>Reindeer Projectがサポートする、ドキュメント生成ツールです。CDSを編集し、クラウドコンピューティング
               の利用に関するレポートを表示することができます。</p>
             <p><a class="btn btn-primary mb-1" href="https://editor.reindeer.tech/ja/detail/" target="_blank" onClick="ga('send','event','btn', 'click', 'demo_editor_ja');">デモ</a>
               &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank" onClick="ga('send','event','btn', 'click', 'download_editor_ja');">ダウンロード</a></p>
             <br>
-            <p><B>Cloud Design Schema 日本語</B><br>サードパーティー製エディタ等に組み込むことで、CDDの文法チェックに利用できるJSONスキーマファイルです。</p>
-            <a class="btn btn-primary mb-1" href="/cds_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_ja');">CDDルートスキーマのダウンロード</a>
-            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_ja');">CDDスニペットスキーマのダウンロード</a>
+            <p><B>Cloud Design Schema 日本語</B><br>サードパーティー製エディタ等に組み込むことで、CDSの文法チェックに利用できるJSONスキーマファイルです。</p>
+            <a class="btn btn-primary mb-1" href="/cds_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cds_schema_ja');">CDSルートスキーマのダウンロード</a>
+            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'CDS_snippet_schema_ja');">CDSスニペットスキーマのダウンロード</a>
             <br><br>
-            <p><B>Reindeer Archiver</B><br>Reindeer Projectがサポートする、アーカイブツールです。CDDを安全で再利用可能なナレッジベースとしての
-              ブロックチェーンに保管することができます。
-            </p><p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'demo_archiver_ja');">デモ(COMMING SOON)</a>
-              &nbsp;&nbsp;<a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'download_archiver_ja');">ダウンロード(COMMING SOON)</a></p>
-            <br>
-            <p><B>Reindeer HUB</B><br>Reindeer Projectがサポートする、検索コンソールとワークフローツールです。
-              あなたのチームが自身のプロジェクトのために、様々なCDDを発見し、それらを再利用することができます。
-	          </p>
-            <p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'hub_ja');">アクセス(COMMING SOON)</a></p>
+            <p><B>ForkMe!</B><br>Reindeer Technology PTE.LTD.が提供する、クラウド設計管理ツールです。「クラウドの設計を、ソフトウェアのようにフォーク（複製／派生）したい」というデベロッパーの願いをかなえます。（Reindeer ProjectはReindeer Technology PTE.LTD.に発展的に法人化されました。）
+            </p>
+            <p><a class="btn btn-primary mb-1" href="https://forkme.cloud/ja/" target="_blank" onClick="ga('send','event','btn', 'click', 'hub_ja');">アクセス</a>
 
             <!--
             |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
@@ -252,7 +241,7 @@
               よって、パッチバージョンはツールの利用において考慮されるべきではありません。例えば1.0.0と1.0.1の間で、機能またはツールの区別はすべきではありません。
             <hr class="hr-dot-bold my-7">
             <h3 id="format">形式<a class="anchor" href="#format"></a></h3>
-            <p>CDSに準拠したCDDはJSONオブジェクトです。JSONまたはYAMLフォーマットの両方を用いて表現することができます。
+            <p>CDSはJSONオブジェクトです。JSONまたはYAMLフォーマットの両方を用いて表現することができます。
               YAMLとJSONフォーマットの互換性を維持するため、YAML利用時は以下いくつかの追加の制約に沿った上で、バージョン
               <a href ="https://yaml.org/spec/1.2/spec.html" target="_blank">1.2</a> の利用を推奨します。
 	          <ul>
@@ -267,10 +256,10 @@
 
             <hr class="hr-dot-bold my-7">
             <h3 id="structure">構造<a class="anchor" href="#structure"></a></h3>
-            <p>CDDは単一のドキュメントで構成されるか、ユーザーの判断で複数のパーツに分割しても構いません。
-              ただし後者の場合でも、親（ルート）となるCDDは必ずすべての必須<a href="#parentSchema">親スキーマ</a>を内包する必要があります。
-              またパーツとして参照されるファイルは「CDDスニペット」と呼ばれ、<a href="#s-components">Components</a>オブジェクトだけを内包するようにします。
-              そしてルートファイルからCDDスニペットに対する参照を<code>$ref</code>フィールドで関連づけされねばなりません。
+            <p>CDSは単一のドキュメントで構成されるか、ユーザーの判断で複数のパーツに分割しても構いません。
+              ただし後者の場合でも、親（ルート）となるCDSは必ずすべての必須<a href="#parentSchema">親スキーマ</a>を内包する必要があります。
+              またパーツとして参照されるファイルは「CDSスニペット」と呼ばれ、<a href="#s-components">Components</a>オブジェクトだけを内包するようにします。
+              そしてルートファイルからCDSスニペットに対する参照を<code>$ref</code>フィールドで関連づけされねばなりません。
               なお、ルートファイルはclouddesign.json」または「clouddesign.yaml」と命名されるべきです。
             <!--
             |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
@@ -288,7 +277,7 @@
             <h3 id="s-clouddesign">
                 <i class="fa fa-home mr-3" aria-hidden="true"></i>
               Cloud Design Object<a class="anchor" href="#s-clouddesign"></a></h3>
-            <p>これはCDDのルートオブジェクトです。</p>
+            <p>これはCDSのルートオブジェクトです。</p>
 	          <h6>固定フィールド</h6>
             <div class="d-table table-responsive line-break">
                 <div class="d-table-row">
@@ -300,17 +289,17 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">reindeer</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                    この文字列はCDSの<a href="#versions">semantic version number</a>でなければなりません。
-                    <code>reindeer</code>フィールドは、CDDを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。
+                    この文字列はCDS自体の<a href="#versions">semantic version number</a>でなければなりません。
+                    <code>reindeer</code>フィールドは、CDSを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。
                   </p>
                 </div>
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">self</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                    この文字列はCDDのファイル名です。
+                    この文字列はCDSのファイル名です。
                     拡張子は<code>.json</code>, <code>.yaml</code> または <code>.yml</code>でなければなりません。
-                    <code>self</code>フィールドは、CDDを解釈するためのツールに使用されるべきです。
+                    <code>self</code>フィールドは、CDSを解釈するためのツールに使用されるべきです。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -331,7 +320,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">resources</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-resource">Resource object</a> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                    クラウドコンピューティングの構造を記述する外部ドキュメント（クラウドオートメーション言語が記載されたファイル）への参照を示す、リソースオブジェクトの配列です。</p>.</p>
+                    クラウドコンピューティングの構造を記述する外部ドキュメント（プロビジョニングコードが記載されたファイル）への参照を示す、リソースオブジェクトの配列です。</p>.</p>
                 </div>
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
@@ -344,7 +333,7 @@
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">components</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-components">Components object</a></p>
-                  <p class="d-table-cell p-2 bg-white text-dark border">CDDのさまざまな側面に対応する一連の再利用可能な
+                  <p class="d-table-cell p-2 bg-white text-dark border">CDSのさまざまな側面に対応する一連の再利用可能な
                     オブジェクトを保持します。 コンポーネントオブジェクト内で定義されたすべてのオブジェクトは、
                     それらがコンポーネントオブジェクトの外部のプロパティから
                     明示的に参照されない限り、クラウドデザインには影響しません。
@@ -357,8 +346,8 @@
               <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
               Info object<a class="anchor" href="#s-info"></a></h3>
             <p>
-                このオブジェクトはCDDに関するメタデータを提供します。
-                他の人がCDDを簡単に検索、発見できるよう、メタデータは適切に記入されるべきです。
+                このオブジェクトはCDSに関するメタデータを提供します。
+                他の人がCDSを簡単に検索、発見できるよう、メタデータは適切に記入されるべきです。
             </p>
 	          <h6>固定フィールド</h6>
             <div class="d-table table-responsive line-break">
@@ -371,13 +360,13 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">version</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                  あなたの意思で定義されるCDDのバージョンです。（<a href="#versions">the CDS version</a>とは異なります）
+                  あなたの設計のバージョンです。（<a href="#versions">the CDS version</a>とは異なります）
                 </p>
               </div>
               <div class="d-table-row">
                 <p class="d-table-cell p-2 bg-white text-dark border">license</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-license">License object</a></p>
-                <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDDのライセンス情報です。</p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDSのライセンス情報です。</p>
               </div>
               <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">title</p>
@@ -402,7 +391,7 @@
               <div class="d-table-row">
                 <p class="d-table-cell p-2 bg-white text-dark border">status</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
-                <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDDの状態です。
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDSの状態です。
                   以下の値が利用できます。<br>
                   <code>idea: </code>アイデア段階<br>
                   <code>draft: </code>設計中<br>
@@ -413,20 +402,20 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">designedAt</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                  CDDが作成された日時です。UNIXタイムスタンプ形式を利用する必要があります。
+                  CDSが作成された日時です。UNIXタイムスタンプ形式を利用する必要があります。
                 </p>
               </div>
               <div class="d-table-row">
                 <p class="d-table-cell p-2 bg-white text-dark border">authors</p>
                 <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a href="#s-author">Author object</a> ]</p>
-                <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDDの作成者です。
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDSの作成者です。
                   この情報は外部ツールによって利用される可能性があり、関係者のスキルや経験を証明する重要な情報となります。
                 </p>
               </div>
               <div class="d-table-row">
                 <p class="d-table-cell p-2 bg-white text-dark border">organizations</p>
                 <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a href="#s-organization">Organization object</a> ]</p>
-                <p class="d-table-cell p-2 bg-white text-dark border">CDD作成に関与する組織です。
+                <p class="d-table-cell p-2 bg-white text-dark border">CDS作成に関与する組織です。
                   この情報は外部ツールによって利用される可能性があり、組織のスキルや経験を証明する重要な情報となります。
                 </p>
               </div>
@@ -516,7 +505,7 @@
               Actor objects<a class="anchor" href="#s-info"></a></h3>
             <p>
               クラウドコンピューティングにアクセスするユーザーや運用者、外部システムに関する情報を提供するオブジェクトです。
-              CDDを正しく設計、監査するため、包括的に表現されるべきです。
+              CDSを正しく設計、監査するため、包括的に表現されるべきです。
             </p>
 
             <hr class="hr-dot my-5">
@@ -851,7 +840,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">type</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                      クラウドオートメーション言語の種別です。以下値の中の１つである必要があります。
+                      プロビジョニングコードの種別です。以下値の中の１つである必要があります。
                       <br><code>acf</code> : AWS CloudFormation.
                       <br><code>arm</code> : Azure Resource Manager.
                       <br><code>gdm</code> : Google Cloud Deployment Manager.
@@ -864,7 +853,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">$ref</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                      クラウドオートメーション言語で記述されたファイルへの参照で、<a href="#s-ref">Reference object</a>の$refアイテムと同じです。
+                      プロビジョニングコードで記述されたファイルへの参照で、<a href="#s-ref">Reference object</a>の$refアイテムと同じです。
                       <code>.json</code>, <code>.yaml</code>, または <code>.yml</code>の拡張子を持つ外部ファイルを参照しなければなりません。
                       そしてその拡張子は、外部ツールによってリンク先のファイルフォーマットを検出するために利用されるべきものです。
                 </div>
@@ -889,7 +878,7 @@
               <p>
                   このオブジェクトは、特定の機能を実行する目的でいくつかのアクターとリソースを関連付けることにより、
                   システムの利用ケースに関する情報を提供します。
-                  それはCDDを正しく設計、監査するために、包括的に記述されるべきです。
+                  それはCDSを正しく設計、監査するために、包括的に記述されるべきです。
               </p>
               <h6>固定フィールド</h6>
             <div class="d-table table-responsive line-break">
@@ -989,8 +978,8 @@
                 <i class="fa fa-cube mr-3" aria-hidden="true"></i>
               Components object<a class="anchor" href="#s-components"></a></h3>
               <p>
-                  CDDのさまざまな側面に対応する一連の再利用可能なオブジェクトを保持します。
-                  componentsオブジェクト内で定義されたすべてのオブジェクトは、それらがcomponentsオブジェクトの外のプロパティから明示的に参照されない限り、CDDに影響を与えません。
+                  CDSのさまざまな側面に対応する一連の再利用可能なオブジェクトを保持します。
+                  componentsオブジェクト内で定義されたすべてのオブジェクトは、それらがcomponentsオブジェクトの外のプロパティから明示的に参照されない限り、CDSに影響を与えません。
               </p>
               <h6>固定フィールド</h6>
             <div class="d-table table-responsive line-break">
@@ -1054,7 +1043,7 @@
                 <i class="fas fa-signature mr-3" aria-hidden="true"></i>
               License object<a class="anchor" href="#s-license"></a></h3>
             <p>
-              CDDのライセンス情報です。
+              CDSのライセンス情報です。
             </p>
             <h6>固定フィールド</h6>
             <div class="d-table table-responsive line-break">
@@ -1067,7 +1056,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">type</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                    CDDのライセンス種別です。以下何れかの値である必要があります。(CC0推奨)<br>
+                    CDSのライセンス種別です。以下何れかの値である必要があります。(CC0推奨)<br>
                     <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0</a><br>
                     <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache-2.0</a><br>
                     <a href="https://opensource.org/licenses/mit-license" target="_blank">MIT</a><br>
@@ -1107,7 +1096,7 @@
               Author object<a class="anchor" href="#s-author"></a>
             </h3>
             <p>
-              このオブジェクトは、CDDの作者とその役割についての情報を提供します。
+              このオブジェクトは、CDSの作者とその役割についての情報を提供します。
               対象のシステム、クラウドコンピューティング技術、そして同システムのサービス提供市場について正しい知識を持っている人を
               他の人が見つけるのを助けるため、包括的に記載されるべきです。
             </p>
@@ -1121,11 +1110,11 @@
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">roles</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">[ <code>string</code> ]</p>
-                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDDに関与した役割を保持します。役割は、以下の何れかの値でなければなりません。 
+                  <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDSに関与した役割を保持します。役割は、以下の何れかの値でなければなりません。 
                     <br><code>planner</code>: 企画者
                     <br><code>designer</code>: 設計者
-                    <br><code>auditor</code>: CDDの監査者
-                    <br><code>operator</code>: CDDで設計されたシステムの運用者
+                    <br><code>auditor</code>: CDSの監査者
+                    <br><code>operator</code>: CDSで設計されたシステムの運用者
                     <br><code>others</code>: その他
                   </p>
                 </div>
@@ -1133,14 +1122,14 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                      作者が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
+                      作者が本CDSに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
                     </p>
                 </div>
                 <div class="d-table-row">
                     <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                      作者が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
+                      作者が本CDSの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
                     </p>
                 </div>
                 <div class="d-table-row">
@@ -1174,7 +1163,7 @@
   Organization object<a class="anchor" href="#s-organization"></a>
 </h3>
 <p>
-  このオブジェクトは、CDDの関連組織とその役割についての情報を提供します。
+  このオブジェクトは、CDSの関連組織とその役割についての情報を提供します。
   対象のシステム、クラウドコンピューティング技術、そして同システムのサービス提供市場について正しい知識を持っている組織を
   他の人が見つけるのを助けるため、包括的に記載されるべきです。
 </p>
@@ -1189,14 +1178,14 @@
         <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
         <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
         <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-          組織が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
+          組織が本CDSに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
         </p>
     </div>
     <div class="d-table-row">
         <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
         <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
         <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-          組織が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
+          組織が本CDSの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
         </p>
     </div>
     <div class="d-table-row">
@@ -1239,7 +1228,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     マーケットの名称です。
-                    会員の特性、興味、推定年などを説明する言葉を含めることにより、このCDD上でユニークであるべきです。
+                    会員の特性、興味、推定年などを説明する言葉を含めることにより、このCDS上でユニークであるべきです。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
                     そして値はUTF-8の30文字以内の文字列でなければなりません。
                   </p>
@@ -1436,7 +1425,8 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">end</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">[ Reference object ]</a></p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
-                      <a href="#s-resource">resource object</a>に記載されたリソースへの参照でなければなりません。このトリガーのエンドポイントを示します。
+                      <a href="#s-resource">resource object</a>に記載されたリソースへの参照でなければなりません。このトリガーのエンドポイントを示します。<b style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
+                      例：10GBのリクエストを送信するアクターに対して2台のWebサーバを列記した場合、各サーバが受信するリクエストは5GBとなります。静的コンテンツ用サーバと動的コンテンツ用サーバに9:1の割合でアクセスする設計の場合は両サーバを一つのendに併記せず、静的コンテンツを提供するコンテキストと動的コンテンツを提供するコンテキストを分けて、それぞれのendに各サーバを記述してください。
                 </div>
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -1654,7 +1644,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                       トリガーのエンドポイントを示します。
-                      <a href="#s-resource">resource object</a> または <a href="#s-actor">actor object</a>への参照でなければなりません。
+                      <a href="#s-resource">resource object</a> または <a href="#s-actor">actor object</a>への参照でなければなりません。<b style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
                 </div>  
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -1851,8 +1841,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                       このトラフィックのエンドポイントを意味します。
-                      <a href="#s-actor">actor objects</a> または <a href="#s-resource">resource object</a>内に記述された各リソースへの参照です。 
-                      The end point of this traffic.
+                      <a href="#s-actor">actor objects</a> または <a href="#s-resource">resource object</a>内に記述された各リソースへの参照です。<b style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
                       </p>
                 </div>  
                 <div class="d-table-row">
@@ -2092,7 +2081,7 @@
               Range values object<a class="anchor" href="#s-rangeValue"></a>
             </h3>
             <p>
-                CDDの様々なフィールドで利用される、値範囲を示すオブジェクトです。 
+                CDSの様々なフィールドで利用される、値範囲を示すオブジェクトです。 
             </p>
             <h6>固定フィールド</h6>
             <div class="d-table table-responsive line-break">
@@ -2131,7 +2120,7 @@
                 <i class="fa fa-eye mr-3" aria-hidden="true"></i>
               Reference object<a class="anchor" href="#s-ref"></a></h3>
             <p>
-              CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを
+              CDSの様々なフィールドからCDSやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを
               参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、
               同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく
               JSON参照仕様で定義されているとおりに行われます。
@@ -2186,10 +2175,8 @@
             <p>
               Cloud Design仕様は<a href="https://reindeer.tech" target="_blank"> Reindeer Project</a>の
               一環として生まれました。
-              <br>Reindeer Projectはクラウドコンピューティング活用のオープンな知識流通の力で、
-              すべての人々をクリエイターにするという使命を持っています。
-              <br>誰もがクリエイターとしてサービスを創造できる社会は、表現の自由と生活様式や価値観の多様性をもたらすだけではありません。
-              それはまたすべての人々に対する富の再分配を促進し、世界中の人々の平均的な富と幸福を大いに改善するでしょう。
+              <br>Reindeer Projectはクラウド設計のオープンな流通を通じて、すべての人々に「つくる力」を提供するという使命を持っています。
+              <br>誰もが自分の力でサービスを創造できる社会は、表現の自由と生活様式や価値観の多様性をもたらすだけではありません。それはまた、すべての人々に対する富の再分配を促進し、世界中の人々の平均的な富と幸福を改善すると信じています。
             </p>
             <br>
             <p><B><a href="https://reindeer-project.github.io/documents/reindeer_whitepaper_JA.pdf" target="_blank">ホワイトペーパー</a></B><br>Reindeer projectの目的と計画が記されています。</p>
@@ -2254,6 +2241,13 @@
                   本ドキュメントのbusyHoursパラメータに説明を補足
                 </p>
               </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">1.3.1(変更なし)</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">2021-1-14</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">
+                  本ドキュメントのいくつかの説明表現を改善
+                </p>
+              </div>
             </div>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
@@ -2265,6 +2259,5 @@
     <!-- Scripts -->
     <script src="resources/page.min.js"></script>
     <script src="resources/script.js"></script>
-    <script type="text/javascript" src="resources/cdstop.js"></script>
   
 </body></html>
