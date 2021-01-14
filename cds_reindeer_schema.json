@@ -2,13 +2,13 @@
   "validate": true,
   "schemas": [
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/core-schema.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/core-schema.json",
       "fileMatch": [
-        "https://reindeer.tech/cdd-schema/default.json"
+        "https://reindeer.tech/cds-schema/default.json"
       ],
       "schema": {
         "title": "Cloud Design Object",
-        "description": "This is the root object of the CDD.",
+        "description": "This is the root object of the CDS.",
         "type": "object",
         "required": [
           "reindeer",
@@ -21,7 +21,7 @@
         "properties": {
           "reindeer": {
             "title": "Version number",
-            "description": "REQUIRED. This string MUST be the semantic version number of the CDS version. The reindeer field SHOULD be used by tools for interpreting the CDD. This is not related to the info.version string.",
+            "description": "REQUIRED. This string MUST be the semantic version number of the CDS version. The reindeer field SHOULD be used by tools for interpreting the CDS. This is not related to the info.version string.",
             "type": "string",
             "enum": [
               "1.1.0"
@@ -29,7 +29,7 @@
           },
           "self": {
             "title": "File name",
-            "description": "REQUIRED. This string is the filename of the CDD. It MUST be with the extension, .json, .yaml or .yml. The self field SHOULD be used by tools for interpreting the CDD.",
+            "description": "REQUIRED. This string is the filename of the CDS. It MUST be with the extension, .json, .yaml or .yml. The self field SHOULD be used by tools for interpreting the CDS.",
             "type": "string",
             "default": "cloudDesign.json",
             "pattern": "^[a-zA-Z0-9]+\\.(yaml|yml|json)$"
@@ -37,7 +37,7 @@
           "info": {
             "title": "Info",
             "description": "REQUIRED. Provides metadata about the cloud computing adoption. The metadata MAY be used by tooling as required.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/info.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/info.json"
           },
           "actors": {
             "title": "Actors",
@@ -48,19 +48,19 @@
                 "anyOf": [
                   {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/marketTypeOfActor.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/marketTypeOfActor.json"
                   },
                   {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/personsTypeOfActor.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/personsTypeOfActor.json"
                   },
                   {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/externalSystemTypeOfActor.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/externalSystemTypeOfActor.json"
                   },
                   {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/refToActor.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
                   }
                 ]
               }
@@ -69,11 +69,11 @@
           },
           "resources": {
             "title": "Resources",
-            "description": "REQUIRED. An array of resource objects, which is pointing to the external documents (files written by cloud automation languages) describing the cloud computing architecture.",
+            "description": "REQUIRED. An array of resource objects, which is pointing to the external documents (files written by provisioning codes) describing the cloud computing architecture.",
             "type": "array",
             "items": {
               "type": "object",
-              "$ref": "https://reindeer.tech/cdd-schema/v1/resource.json"
+              "$ref": "https://reindeer.tech/cds-schema/v1/resource.json"
             },
             "additionalProperties": false
           },
@@ -86,11 +86,11 @@
                 "anyOf": [
                   {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/context.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
                   },
                   {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/refToContext.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/refToContext.json"
                   }
                 ]
               }
@@ -99,7 +99,7 @@
           },
           "components": {
             "title": "Component objects",
-            "description": "Holds a set of reusable objects for different aspects of the CDD. All objects defined within the components object will have no effect on the Cloud Design unless they are explicitly referenced from properties outside the components object.",
+            "description": "Holds a set of reusable objects for different aspects of the CDS. All objects defined within the components object will have no effect on the Cloud Design unless they are explicitly referenced from properties outside the components object.",
             "type": "object",
             "properties": {
               "actors": {
@@ -111,15 +111,15 @@
                     "anyOf": [
                       {
                         "type": "object",
-                        "$ref": "https://reindeer.tech/cdd-schema/v1/marketTypeOfActor.json"
+                        "$ref": "https://reindeer.tech/cds-schema/v1/marketTypeOfActor.json"
                       },
                       {
                         "type": "object",
-                        "$ref": "https://reindeer.tech/cdd-schema/v1/personsTypeOfActor.json"
+                        "$ref": "https://reindeer.tech/cds-schema/v1/personsTypeOfActor.json"
                       },
                       {
                         "type": "object",
-                        "$ref": "https://reindeer.tech/cdd-schema/v1/externalSystemTypeOfActor.json"
+                        "$ref": "https://reindeer.tech/cds-schema/v1/externalSystemTypeOfActor.json"
                       }
                     ]
                   }
@@ -136,7 +136,7 @@
                     "oneOf": [
                       {
                         "type": "object",
-                        "$ref": "https://reindeer.tech/cdd-schema/v1/context.json"
+                        "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
                       }
                     ]
                   }
@@ -153,7 +153,7 @@
                     "oneOf": [
                       {
                         "type": "object",
-                        "$ref": "https://reindeer.tech/cdd-schema/v1/market.json"
+                        "$ref": "https://reindeer.tech/cds-schema/v1/market.json"
                       }
                     ]
                   }
@@ -170,11 +170,11 @@
                     "oneOf": [
                       {
                         "type": "object",
-                        "$ref": "https://reindeer.tech/cdd-schema/v1/webAccessTypeOfTrigger.json"
+                        "$ref": "https://reindeer.tech/cds-schema/v1/webAccessTypeOfTrigger.json"
                       },
                       {
                         "type": "object",
-                        "$ref": "https://reindeer.tech/cdd-schema/v1/timedActionTypeOfTrigger.json"
+                        "$ref": "https://reindeer.tech/cds-schema/v1/timedActionTypeOfTrigger.json"
                       }
                     ]
                   }
@@ -190,7 +190,7 @@
                     "oneOf": [
                       {
                         "type": "object",
-                        "$ref": "https://reindeer.tech/cdd-schema/v1/passThroughRatioTypeOfTraffic.json"
+                        "$ref": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json"
                       }
                     ]
                   }
@@ -204,7 +204,7 @@
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/infoType.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
                   }
                 },
                 "additionalProperties": false
@@ -217,10 +217,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/info.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/info.json",
       "schema": {
         "title": "Info object",
-        "description": "The object provides metadata about the CDD. The metadata SHOULD be filled properly for helping others easy to search and find the CDD.",
+        "description": "The object provides metadata about the CDS. The metadata SHOULD be filled properly for helping others easy to search and find the CDS.",
         "type": "object",
         "required": [
           "version",
@@ -233,32 +233,32 @@
         ],
         "properties": {
           "version": {
-            "title": "CDD's version number",
-            "description": "REQUIRED. The version of the CDD defined by your willing (which is distinct from the CDS version).",
+            "title": "CDS's version number",
+            "description": "REQUIRED. The version of the CDS defined by your willing (which is distinct from the CDS version).",
             "default": "1.0.0",
             "type": "string"
           },
           "license": {
-            "title": "License of this CDD",
-            "description": "REQUIRED. The license information of the CDD.",
+            "title": "License of this CDS",
+            "description": "REQUIRED. The license information of the CDS.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/license.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/license.json"
           },
           "title": {
             "title": "Title of the service",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The title of the service, adopting this cloud design.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "Description of the service",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the service, adopting this cloud design. It SHOULD be the concise memo including every keyword of the purpose and functions of the system. This text MAY be used as the search index by external tools.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "status": {
-            "title": "The status of the CDD",
-            "description": "REQUIRED. The status of the CDD. Valid values are idea, draft, production.\nidea: Just an idea.\ndraft: Under designing.\nproduction: Used by an actual service. Or expected to have production quality.",
+            "title": "The status of the CDS",
+            "description": "REQUIRED. The status of the CDS. Valid values are idea, draft, production.\nidea: Just an idea.\ndraft: Under designing.\nproduction: Used by an actual service. Or expected to have production quality.",
             "type": "string",
             "enum": [
               "idea",
@@ -268,30 +268,30 @@
           },
           "designedAt": {
             "title": "Designed time",
-            "description": "REQUIRED. The time when the CDD was designed at. It MUST be the UNIXTIME format.",
+            "description": "REQUIRED. The time when the CDS was designed at. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
           "authors": {
             "title": "Authors",
-            "description": "REQUIRED. The authors of the CDD. This information MAY be used by external tools as the important evidence of involved person's skill and experience.",
+            "description": "REQUIRED. The authors of the CDS. This information MAY be used by external tools as the important evidence of involved person's skill and experience.",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/author.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/author.json"
               }
             },
             "additionalProperties": false
           },
           "organizations": {
             "title": "Organizations",
-            "description": "Related organizations of the CDD. This information MAY be used by external tools as the important evidence of involved organization's skill and experience.",
+            "description": "Related organizations of the CDS. This information MAY be used by external tools as the important evidence of involved organization's skill and experience.",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/organization.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/organization.json"
               }
             },
             "additionalProperties": false
@@ -301,7 +301,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/marketTypeOfActor.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/marketTypeOfActor.json",
       "schema": {
         "title": "Market type of actor object",
         "description": "This object provides information about an unspecified number of users, such as consumers and spectators belonging to a particular market. It is the kind of actor you SHOULD use, for example, when designing a limited network connection with an identifiable individual and cloud computing. The correct number SHOULD be provided in order to understand the number of users and the number of requests to be provided to the system.",
@@ -327,13 +327,13 @@
             "title": "The title of the actor",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The title of the actor.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "The description of the actor",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the actor.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "market": {
             "title": "Market object",
@@ -342,11 +342,11 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/market.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/market.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToMarket.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToMarket.json"
               }
             ]
           },
@@ -366,7 +366,7 @@
             "title": "The group name of IP address range, domains and so on.",
             "description": "The group name of IP address range, domains and so on.. Required when sourceIdentification propery is true. And MUST NOT use when sourceIdentification propery is false.",
             "type": "string",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/ip.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
           }
         },
         "dependencies": {
@@ -384,7 +384,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/personsTypeOfActor.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/personsTypeOfActor.json",
       "schema": {
         "title": "Persons type of actor object",
         "description": "The object provides information about a type of actor being consisted of one or a few persons like system operator. The kind of actor you SHOULD use, for example, when designing a limited network connection between an identifiable external system and cloud computing.",
@@ -409,13 +409,13 @@
             "title": "The title of the group of persons",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "The description of the actor",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. ",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "num": {
             "title": "The number of members",
@@ -432,7 +432,7 @@
             "title": "The group name of IP address range, domains and so on.",
             "description": "The group name of IP address range, domains and so on. Required when sourceIdentification propery is true. And MUST NOT use when sourceIdentification propery is false.",
             "type": "string",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/ip.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
           }
         },
         "dependencies": {
@@ -450,7 +450,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/externalSystemTypeOfActor.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/externalSystemTypeOfActor.json",
       "schema": {
         "title": "External system type of actor object",
         "description": "The object provides information about a type of actor being consisted of one or a few systems like external API, FILE interface and so on. The kind of actor you SHOULD use, for example, when designing a limited network connection between an identifiable external system and cloud computing.",
@@ -474,13 +474,13 @@
             "title": "The title of the external system interface",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The title of the external system interface.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "The description of the actor",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the external system interface.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "sourceIdentification": {
             "title": "IP, Domain or the other identification",
@@ -491,7 +491,7 @@
             "title": "The group name of IP address range, domains and so on.",
             "description": "The group name of IP address range, domains and so on.. Required when sourceIdentification propery is true. And MUST NOT use when sourceIdentification propery is false.",
             "type": "string",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/ip.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
           }
         },
         "dependencies": {
@@ -509,7 +509,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/resource.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/resource.json",
       "schema": {
         "title": "Resource object",
         "description": "The object provides information about cloud computing resources used by this system. It MUST be references of the external file formatted by JSON or YAML. And it SHOULD be well-formatted data for cloud automation tools like below.\nAWS CloudFormation\nAzure Resource Manager\nGoogle Cloud Deployment Manager\nAlibaba Cloud Resource Orchestration Service\nTerraform",
@@ -545,10 +545,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/context.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/context.json",
       "schema": {
         "title": "Context object",
-        "description": "The object provides information about the use case of the system by associating some actors and resources by the purpose of running the specific function. It SHOULD be comprehensive for designing and auditing the CDD correctly.",
+        "description": "The object provides information about the use case of the system by associating some actors and resources by the purpose of running the specific function. It SHOULD be comprehensive for designing and auditing the CDS correctly.",
         "type": "object",
         "required": [
           "title",
@@ -561,13 +561,13 @@
             "title": "The title of the context",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The title of the context.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "The description of the context",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the context.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "trigger": {
             "title": "Trigger of the context",
@@ -576,15 +576,15 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/webAccessTypeOfTrigger.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/webAccessTypeOfTrigger.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/timedActionTypeOfTrigger.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/timedActionTypeOfTrigger.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToTrigger.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToTrigger.json"
               }
             ]
           },
@@ -597,11 +597,11 @@
                 "anyOf": [
                   {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/passThroughRatioTypeOfTraffic.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json"
                   },
                   {
                     "type": "object",
-                    "$ref": "https://reindeer.tech/cdd-schema/v1/refToTraffic.json"
+                    "$ref": "https://reindeer.tech/cds-schema/v1/refToTraffic.json"
                   }
                 ]
               }
@@ -620,10 +620,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/license.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/license.json",
       "schema": {
         "title": "License object",
-        "description": "License information for the CDD.",
+        "description": "License information for the CDS.",
         "type": "object",
         "required": [
           "type"
@@ -632,8 +632,8 @@
         "then": { "required":["provider"]},
         "properties": {
           "type": {
-            "title": "The license type of the CDD",
-            "description": "REQUIRED. This is the CDD license type. MUST be one of the following values: (CC0 recommended): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed",
+            "title": "The license type of the CDS",
+            "description": "REQUIRED. This is the CDS license type. MUST be one of the following values: (CC0 recommended): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed",
             "type": "string",
             "default": "CC0",
             "enum": [
@@ -655,10 +655,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/author.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/author.json",
       "schema": {
         "title": "Author object",
-        "description": "The object provides information about authors and their roles on the CDD. It SHOULD be comprehensive for helping others find the person who has correct knowledge about the system, the cloud computing technology, and the market the system is serving.",
+        "description": "The object provides information about authors and their roles on the CDS. It SHOULD be comprehensive for helping others find the person who has correct knowledge about the system, the cloud computing technology, and the market the system is serving.",
         "type": "object",
         "required": [
           "roles",
@@ -667,7 +667,7 @@
         "properties": {
           "roles": {
             "title": "Roles of author",
-            "description": "REQUIRED. Holds a set of roles related to the CDD. Each role MUST be one of below strings. \nplanner: Planing the cloud computing adoption. \ndesigner: Design the cloud computing architecture. \nauditor: Audit the CDD. \noperator: Operating the system designed by CDD. \nothers: Other role.",
+            "description": "REQUIRED. Holds a set of roles related to the CDS. Each role MUST be one of below strings. \nplanner: Planing the cloud computing adoption. \ndesigner: Design the cloud computing architecture. \nauditor: Audit the CDS. \noperator: Operating the system designed by CDS. \nothers: Other role.",
             "type": "array",
             "items": {
               "type": "string",
@@ -682,13 +682,13 @@
           },
           "joinedAt": {
             "title": "Joined time",
-            "description": "REQUIRED. The time when the author was joined at this CDD creation / operation. It MUST be the UNIXTIME format.",
+            "description": "REQUIRED. The time when the author was joined at this CDS creation / operation. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
           "leavedAt": {
             "title": "Leaved time",
-            "description": "REQUIRED. The time when the author was leaved at this CDD creation / operation. It MUST be the UNIXTIME format.",
+            "description": "REQUIRED. The time when the author was leaved at this CDS creation / operation. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
@@ -703,10 +703,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/organization.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/organization.json",
       "schema": {
         "title": "Organization object",
-        "description": "The object provides information about organizations related to the CDD. It SHOULD be comprehensive for helping others find the organization who has correct knowledge about the system, the cloud computing technology, and the market the system is serving.",
+        "description": "The object provides information about organizations related to the CDS. It SHOULD be comprehensive for helping others find the organization who has correct knowledge about the system, the cloud computing technology, and the market the system is serving.",
         "type": "object",
         "required": [
           "joinedAt"
@@ -714,13 +714,13 @@
         "properties": {
           "joinedAt": {
             "title": "Joined time",
-            "description": "REQUIRED. The time when the organization was joined at this CDD creation / operation. It MUST be the UNIXTIME format.",
+            "description": "REQUIRED. The time when the organization was joined at this CDS creation / operation. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
           "leavedAt": {
             "title": "Leaved time",
-            "description": "REQUIRED. The time when the organization was leaved at this CDD creation / operation. It MUST be the UNIXTIME format.",
+            "description": "REQUIRED. The time when the organization was leaved at this CDS creation / operation. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
@@ -735,7 +735,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/market.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/market.json",
       "schema": {
         "title": "Market object",
         "description": "The object provides information about the market. It MAY be including the result of your research or third party's survey.",
@@ -750,15 +750,15 @@
         "properties": {
           "title": {
             "title": "Title of the market",
-            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The content SHOULD be unique on this CDD by including the words describing a member's properties, interest, estimated year and so on.",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The content SHOULD be unique on this CDS by including the words describing a member's properties, interest, estimated year and so on.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "Description of the market",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the market. It SHOULD be including the words describing the author, estimation purpose and so on. This text MAY help the designer's decision whether this information can be reused by other design or not.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "num": {
             "title": "Number of members of the market",
@@ -782,7 +782,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/infoType.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/infoType.json",
       "schema": {
         "title": "InfoType object",
         "description": "The objects represent the information's type and required security level. You SHOULD define the information types and classify the information received, stored, treated at the cloud computing resources.",
@@ -800,13 +800,13 @@
             "title": "Title",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The name of the information type.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "Description",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. Describing classification detail.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "confidential": {
             "title": "confidential flag",
@@ -834,7 +834,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/title.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/title.json",
       "schema": {
         "type": "object",
         "patternProperties": {
@@ -848,7 +848,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/description.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/description.json",
       "schema": {
         "type": "object",
         "patternProperties": {
@@ -861,17 +861,17 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/ip.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/ip.json",
       "schema": {
         "type": "string",
         "pattern": "^[a-zA-Z0-9]+$"
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/refToActor.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/refToActor.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
@@ -887,10 +887,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/refToResources.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/refToResources.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
@@ -906,10 +906,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/refToContext.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/refToContext.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
@@ -925,10 +925,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/refToTrigger.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/refToTrigger.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
@@ -944,10 +944,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/refToTraffic.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/refToTraffic.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
@@ -963,10 +963,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/refToInfoType.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/refToInfoType.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
@@ -982,10 +982,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/refToMarket.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/refToMarket.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
@@ -1001,7 +1001,7 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/webAccessTypeOfTrigger.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/webAccessTypeOfTrigger.json",
       "schema": {
         "title": "Web access type of trigger object",
         "description": "This is a kind of trigger by actors. Describing the actor's web access to cloud computing resources. The actor MAY be human, or external computing.",
@@ -1037,7 +1037,7 @@
           "description": {
             "title": "Description of trigger",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the trigger. It SHOULD be the concise memo describing the purpose of this trigger.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
             "title": "Information type",
@@ -1045,11 +1045,11 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/infoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToInfoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
               }
             ]
           },
@@ -1074,37 +1074,37 @@
           "dau": {
             "title": "Daily Active User ratio",
             "description": "REQUIRED. Daily Active User ratio. For example, it will be 0.01 in case of that avarage 1 percent of actors, referred at this start field, will access to the resources, referred at this end field, per day.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "pagesVisit": {
             "title": "Page numbers per visit",
             "description": "REQUIRED. Average page numbers per visit. Representing how many pages visitors will open per visit.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbPage": {
             "title": "Page size (KB)",
             "description": "REQUIRED. Average page data size as a unit of KB.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "reqPage": {
             "title": "Request number per page",
             "description": "REQUIRED. Average request numbers per page. Representing how many requests (Requests to images and HTML etc. that make up the page) will be used per page.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "busyHours": {
             "title": "Busy hours within a day",
             "description": "REQUIRED. Busy hours per day. For example, it's 6, in the case of that most access is concentrated amoung AM 9:00 - AM 11:00 and PM 17:00 - PM 19:00 per day.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "postsVisit": {
             "title": "POST numbers per visit",
             "description": "REQUIRED. Representing what percentage of the visitors will POST. For example, it's 0.1 in case of that 100 POST will sent per day among 100,000 actors and 0.01 dau.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbPost": {
             "title": "Post size (KB)",
             "description": "REQUIRED. Average POST data size as a unit of KB.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "start": {
             "title": "The start point of this trigger",
@@ -1112,7 +1112,7 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToActor.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
               }
             ]
           },
@@ -1122,19 +1122,19 @@
             "type": "array",
             "items": {
               "type": "object",
-              "$ref": "https://reindeer.tech/cdd-schema/v1/refToResources.json"
+              "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
             }
           },
           "endpointTitle": {
             "title": "The name of the endpoint",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The name of the endpoint.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "storedRatio": {
             "title": "Stored data size ratio",
             "description": "REQUIRED. The ratio of the end's stored data volume among the received data. For example, if this trigger's end stores all of the data that the actor sends to end, this value will be 1.0. And it's 0 if not stored.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "storedInfoType": {
             "title": "Information type of stored data",
@@ -1142,25 +1142,25 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/infoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToInfoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
               }
             ]
           },
           "storageDescription": {
             "title": "Purpose of the storage",
             "description": "The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the endpoint. It SHOULD be the concise memo describing the purpose of storage of the ends in this trigger.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
         }
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/timedActionTypeOfTrigger.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/timedActionTypeOfTrigger.json",
       "schema": {
         "title": "Timed action type of trigger object",
         "description": "This is a kind of trigger by actors or resources. Describing the timed action from actors or cloud computing resources to other ones.",
@@ -1193,7 +1193,7 @@
           "description": {
             "title": "The description of the trigger",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the trigger. It SHOULD be the concise memo describing the purpose of this trigger.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
             "title": "Information type",
@@ -1201,11 +1201,11 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/infoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToInfoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
               }
             ]
           },
@@ -1230,22 +1230,22 @@
           "onlineRps": {
             "title": "Requests per second",
             "description": "REQUIRED. Number of requests per second when this trigger fires. Specify the required performance from the start point (start field) to the end point (end field). For example, if the batch system runs every Monday morning and each batch accesses the external API with a throughput of 2 times per second it is 2.0.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "reqMonth": {
             "title": "Requests per month",
             "description": "REQUIRED. Monthly request numbers from the start point to the endpoints. For example, it's 9000 in case of that the batch system sends mail magazine 3 times to 1000 persons per month.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbRequest": {
             "title": "Request size (KB)",
             "description": "REQUIRED. Request data size per request from the start point to the end point as the unit of KB.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbResponse": {
             "title": "Response size (KB)",
             "description": "REQUIRED. Response data size per request from the start point to the end point as the unit of KB.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "start": {
             "title": "The start point of this trigger",
@@ -1253,11 +1253,11 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToActor.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToResources.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
               }
             ]
           },
@@ -1269,11 +1269,11 @@
               "anyOf": [
                 {
                   "type": "object",
-                  "$ref": "https://reindeer.tech/cdd-schema/v1/refToActor.json"
+                  "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
                 },
                 {
                   "type": "object",
-                  "$ref": "https://reindeer.tech/cdd-schema/v1/refToResources.json"
+                  "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
                 }
               ]
             }
@@ -1282,12 +1282,12 @@
             "title": "The name of the endpoint",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The name of the endpoint.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "storedRatio": {
             "title": "Stored data size ratio",
             "description": "REQUIRED. The ratio of the stored data volume among the received data to the ends. For example, it is 1.0 in case of that the database resource in this trigger is received 10GB/Month from the app server and store all of them to the database. When the ends don't store the traffic data, it's 0.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "storedInfoType": {
             "title": "Information type",
@@ -1295,25 +1295,25 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/infoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToInfoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
               }
             ]
           },
           "storageDescription": {
             "title": "Purpose of the storage",
             "description": "The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the endpoint. It SHOULD be the concise memo describing the purpose of storage of the ends in this trigger.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
         }
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/passThroughRatioTypeOfTraffic.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json",
       "schema": {
         "title": "Pass through ratio type of traffic object",
         "description": "This is a kind of traffic object. It can represent traffic that occurs in the form of passing a part of the request received from the start point to the subsequent resources. For example, it can represent a chain of communication where a load balancer sends a received request to a web server, and an application generates a mail delivery queue based on the received request. At this time, the size of the data received by this traffic endpoint (end field) is the percentage of the request received by the previous communication (source field) of this traffic. Therefore, if you extend the data to 3 MB in the server and pass it to the end point of this traffic after the previous communication receives the 1 MB POST value, the data size can be expressed as 300% (passThroughReqRatio> field's value is 3).",
@@ -1344,7 +1344,7 @@
           "description": {
             "title": "The description of the traffic.",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the traffic. It SHOULD be the concise memo describing the purpose of this traffic.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
             "title": "Information type",
@@ -1352,11 +1352,11 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/infoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToInfoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
               }
             ]
           },
@@ -1385,11 +1385,11 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToTrigger.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToTrigger.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToTraffic.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToTraffic.json"
               }
             ]
           },
@@ -1401,11 +1401,11 @@
               "anyOf": [
                 {
                   "type": "object",
-                  "$ref": "https://reindeer.tech/cdd-schema/v1/refToActor.json"
+                  "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
                 },
                 {
                   "type": "object",
-                  "$ref": "https://reindeer.tech/cdd-schema/v1/refToResources.json"
+                  "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
                 }
               ]
             }
@@ -1413,23 +1413,23 @@
           "passThroughReqRatio": {
             "title": "Request ratio",
             "description": "REQUIRED. Indicates what percentage of the requests received by prior trigger or traffic (source field) will flow to the endpoint (end) of this traffic. For example, if the former trigger receives 100,000/M requests from the user and use internal cash for 50% response and pass 50% request to this traffic, this value will be 0.5.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "compositResRatio": {
             "title": "Composition ratio",
             "description": "REQUIRED. Based on the size of the response data handled by the former trigger or traffic (source field), describes that this traffic response what percentage of that size to the source. For example, if the former trigger returns data of 10GB/Month to the user and this compositResRatio is 0.5, this traffic will response 5GB/Month of data to the former trigger.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "endpointTitle": {
             "title": "The name of the endpoint",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 30 letters string of UTF-8. The name of the endpoint.",
             "type": "object",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/title.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "storedRatio": {
             "title": "Stored data size ratio",
             "description": "The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the endpoint. It SHOULD be the concise memo describing the purpose of storage of the ends in this traffic.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/rangeValue.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "storedInfoType": {
             "title": "Information type of the storage",
@@ -1437,28 +1437,28 @@
             "oneOf": [
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/infoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
               },
               {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cdd-schema/v1/refToInfoType.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
               }
             ]
           },
           "storageDescription": {
             "title": "Purpose of the storage",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the endpoint. It SHOULD be the concise memo describing the purpose of storage of the ends in this traffic.",
-            "$ref": "https://reindeer.tech/cdd-schema/v1/description.json"
+            "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
         }
       }
     },
     {
-      "uri": "https://reindeer.tech/cdd-schema/v1/rangeValue.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/rangeValue.json",
       "schema": {
         "title": "Range values object",
-        "description": "An object representing the range values used at fields on CDD.",
+        "description": "An object representing the range values used at fields on CDS.",
         "type": "object",
         "required": [
           "max",
