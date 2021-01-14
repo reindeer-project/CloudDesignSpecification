@@ -61,7 +61,7 @@
       <canvas id="drawing_canvas"></canvas>
       <div id="headertitle" class="container">
         <h1>Cloud Design Specification</h1>
-        <p class="lead">Standard data notation method to record and share know-how of cloud computing adoption.</p>
+        <p class="lead">Standard data notation method to record and share the cloud computing design.</p>
         <p>version 1.3.1</p>
       </div>
     </header><!-- /.header -->
@@ -193,46 +193,36 @@
 
             <hr class="hr-dot-bold my-7">
             <h3 id="introduction">Introduction<a class="anchor" href="#introduction"></a></h3>
-            <p>The Cloud Design Specification (<b>the "CDS"</b>) defines a standard, provider-agnostic procurement data of cloud computing which allows both humans and computers 
+            <p>The Cloud Design Specification (<b>the "CDS"</b>) defines a standard, provider-agnostic cloud computing design which allows both humans and computers 
               to discover and understand the capabilities of the computing without access to working resources, various documentation, or through network traffic inspection. 
               When properly defined, a consumer can understand and interact with the remote computing service with a minimal amount of implementation logic.
-            <br>A Cloud Design definition (<b>the "CDD"</b>) can then be used by documentation generation tools to display the computing architecture, archiving tools 
-            to deploy it to the blockchain as the safe and reusable knowledge base, auditing tools, and many other use cases.</p>
-
+            <br>And CDS is designed to be used by various tools for visualizing, auditing cloud designs, and so on.
+            <br>In this document, CDS is the name of the language specification itself, and at the same time, it indicates the code described based on the cloud design specification. Previously, the latter was clearly distinguished as Cloud Design Definition (<b> the "CDD" </b>), but it has been unified into CDS to prevent a mess of terms.
+            So there is a description of CDD in some tools and peripheral documents, still it is no problem that you think it is synonymous with CDS.
+            </p>
             <hr class="hr-dot-bold my-7">
-            <h3 id="extension">Extension of the existing cloud automation languages <a class="anchor" href="#introduction"></a></h3>
-            <p>The CDS is designed to 'connect the last one mile' between the system requirement, cloud computing's architecture, author, and other valuable information 
-              for service creators explicitly by describing the relations of them. <br>So the CDD SHOULD include the reference to existing cloud automation languages 
-              like <a href="https://aws.amazon.com/cloudformation/" target="_blank">AWS Cloud Formation</a>, 
-              <a href="https://azure.microsoft.com/en-us/features/resource-manager/" target="_blank">Azure Resource Manager</a>, 
-              <a href="https://cloud.google.com/deployment-manager/" target="_blank">Google Cloud Deployment Manager</a>, 
-              <a href="https://www.terraform.io/" target="_blank">Terraform</a> 
-              and so on. Because they are very useful language for describing cloud computing architecture.
+            <h3 id="extension">Extension of the existing provisioning codes <a class="anchor" href="#introduction"></a></h3>
+            <p>CDS is a design language that complements existing provisioning code such as CloudFormation. System requirements such as users and access volumes are described in this own specifications, and cloud resource definitions are expressed by references to existing provisioning languages. This structure reduces the learning cost of developers and encourages the utilization of existing code assets.
+              <br>Please refer <a href="#s-resource">Resource object</a> for the types of provisioning code that you can use on CDD.
             </p>
             
             <hr class="hr-dot-bold my-7">
             <h3 id="tools">Tools<a class="anchor" href="#tools"></a></h3>
             <p>You can create, store, search, reuse the Cloud Designs by using various tools.</p>
             <br><br>
-            <p><B>Reindeer Editor</B><br>A documentation generation tool supported by Reindeer Project. You can edit a CDD and display 
+            <p><B>Reindeer Editor</B><br>A documentation generation tool supported by Reindeer Project. You can edit a CDS and display 
               the cloud computing adoption report by using this.</p>
             <p><a class="btn btn-primary mb-1" href="https://editor.reindeer.tech" target="_blank" onClick="ga('send','event','btn', 'click', 'demo_editor_en');">DEMO</a>
               &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank" onClick="ga('send','event','btn', 'click', 'download_demo_en');">Download</a></p>
             <br>
-            <p><B>Cloud Design Schema</B><br>It is a JSON schema file that can be used to check the grammar of the CDD by incorporating it into a third party editor.</p>
-            <a class="btn btn-primary mb-1" href="/cds_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_schema_en');">Download CDD root schema</a>
-            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cdd_snippet_schema_en');">Download CDD snippet schema</a>
+            <p><B>Cloud Design Schema</B><br>It is a JSON schema file that can be used to check the grammar of the CDS by incorporating it into a third party editor.</p>
+            <a class="btn btn-primary mb-1" href="/cds_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cds_schema_en');">Download CDS root schema</a>
+            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'CDS_snippet_schema_en');">Download CDS snippet schema</a>
           </p>
             <br>
-            <p><B>Reindeer Archiver</B><br>An archiving tool supported by Reindeer Project. You can deploy your CDD to the blockchain 
-              as the safe and reusable knowledge base.
-            </p><p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'demo_archiver_en');">DEMO(COMMING SOON)</a>
-              &nbsp;&nbsp;<a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'download_archiver_en');">Download(COMMING SOON)</a></p>
-            <br>
-            <p><B>Reindeer HUB</B><br>
-              A search console and workflow tool supported by Reindeer Porject. Your team can find and reuse various CDD for your project.
-	          </p>
-            <p><a class="btn btn-outline-primary disabled mb-1" href="#" onClick="ga('send','event','btn', 'click', 'hub_en');">ACCESS(COMMING SOON)</a></p>
+            <p><B>ForkMe!</B><br>A cloud design management tool provided by Reindeer Technology PTE.LTD. It fulfills the developer's desire to "fork (duplicate / derive) cloud design like software". (The Reindeer Project was progressively incorporated into Reindeer Technology PTE. LTD.)
+            </p>
+            <p><a class="btn btn-primary mb-1" href="https://forkme.cloud/" target="_blank" onClick="ga('send','event','btn', 'click', 'hub_ja');">Access</a>
 
             <!--
             |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
@@ -254,7 +244,7 @@
 
             <hr class="hr-dot-bold my-7">
             <h3 id="format">Format<a class="anchor" href="#format"></a></h3>
-            <p>The CDD that conforms to the CDS is itself a JSON object, 
+            <p>The CDS is itself a JSON object, 
               which MAY be represented either in JSON or YAML format. 
               In order to preserve the ability to round-trip between YAML and JSON formats, 
               YAML version <a href ="https://yaml.org/spec/1.2/spec.html" target="_blank">1.2</a> is RECOMMENDED along with some additional constraints:
@@ -268,10 +258,10 @@
 
             <hr class="hr-dot-bold my-7">
             <h3 id="structure">Structure<a class="anchor" href="#structure"></a></h3>
-            <p>The CDD MAY consist of a single document or split into multiple parts at the user's discretion. 
-              However, in the latter case, the root CDD MUST always contain all required <a href="#parentSchema">parent schemas</a>. 
-              Also, files referred to as parts are called CDD snippets, and SHOULD contain only <a href="#s-components">components</a> objects. 
-              And the reference to the CDD snippet from the root file SHOULD be associated name in <code>$ref</code> field. 
+            <p>The CDS MAY consist of a single document or split into multiple parts at the user's discretion. 
+              However, in the latter case, the root CDS MUST always contain all required <a href="#parentSchema">parent schemas</a>. 
+              Also, files referred to as parts are called CDS snippets, and SHOULD contain only <a href="#s-components">components</a> objects. 
+              And the reference to the CDS snippet from the root file SHOULD be associated name in <code>$ref</code> field. 
               And the root file SHOULD be named 'clouddesign.json' or 'clouddesign.yaml'.
              </p>
 
@@ -292,7 +282,7 @@
             <h3 id="s-clouddesign">
                 <i class="fa fa-home mr-3" aria-hidden="true"></i>
               Cloud Design Object<a class="anchor" href="#s-clouddesign"></a></h3>
-            <p>This is the root object of the CDD.</p>
+            <p>This is the root object of the CDS.</p>
 	          <h6>Fixed Fields</h6>
             <div class="d-table table-responsive line-break">
                 <div class="d-table-row">
@@ -304,8 +294,8 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">reindeer</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                    This string MUST be the <a href="#versions">semantic version number</a> of the CDS version. 
-                    The <code>reindeer</code> field SHOULD be used by tools for interpreting the CDD. 
+                    This string MUST be the <a href="#versions">semantic version number</a> of the CDS itself. 
+                    The <code>reindeer</code> field SHOULD be used by tools for interpreting the CDS. 
                     This is not related to the <code>info.version</code> string.
                   </p>
                 </div>
@@ -313,8 +303,8 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">self</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                    This string is the filename of the CDD. It MUST be with the extension, <code>.json</code>, <code>.yaml</code> or <code>.yml</code>. 
-                    The <code>self</code> field SHOULD be used by tools for interpreting the CDD. 
+                    This string is the filename of the CDS. It MUST be with the extension, <code>.json</code>, <code>.yaml</code> or <code>.yml</code>. 
+                    The <code>self</code> field SHOULD be used by tools for interpreting the CDS. 
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -335,7 +325,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">resources</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-resource">Resource object</a> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                    An array of resource objects, which is pointing to the external documents (files written by cloud automation languages) describing the cloud computing architecture.</p>
+                    An array of resource objects, which is pointing to the external documents (files written by provisioning codes) describing the cloud computing architecture.</p>
                 </div>
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
@@ -348,7 +338,7 @@
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">components</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-components">Components object</a></p>
-                  <p class="d-table-cell p-2 bg-white text-dark border">Holds a set of reusable objects for different aspects of the CDD. 
+                  <p class="d-table-cell p-2 bg-white text-dark border">Holds a set of reusable objects for different aspects of the CDS. 
                     All objects defined within the components object will have no effect on the Cloud Design 
                     unless they are explicitly referenced from properties outside the components object.
                   </p>
@@ -360,8 +350,8 @@
               <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
               Info object<a class="anchor" href="#s-info"></a></h3>
             <p>
-                The object provides metadata about the CDD. 
-                The metadata SHOULD be filled properly for helping others easy to search and find the CDD.
+                The object provides metadata about the CDS. 
+                The metadata SHOULD be filled properly for helping others easy to search and find the CDS.
             </p>
 	          <h6>Fixed Fields</h6>
             <div class="d-table table-responsive line-break">
@@ -374,13 +364,13 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">version</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                  The version of the CDD defined by your willing (which is distinct from <a href="#versions">the CDS version</a>).
+                  The version of your design (which is distinct from <a href="#versions">the CDS version</a>).
                 </p>
               </div>
               <div class="d-table-row">
                 <p class="d-table-cell p-2 bg-white text-dark border">license</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-license">License object</a></p>
-                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The license information of the CDD.</p>
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The license information of the CDS.</p>
               </div>
               <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">title</p>
@@ -405,7 +395,7 @@
               <div class="d-table-row">
                 <p class="d-table-cell p-2 bg-white text-dark border">status</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
-                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The status of the CDD. 
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The status of the CDS. 
                   Valid values are <code>idea</code>, <code>draft</code>, <code>production</code>.<br>
                   <code>idea: </code>Just an idea.<br>
                   <code>draft: </code>Under designing.<br>
@@ -416,20 +406,20 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">designedAt</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                  The time when the CDD was designed at. It MUST be the UNIXTIME format.
+                  The time when the CDS was designed at. It MUST be the UNIXTIME format.
                 </p>
               </div>
               <div class="d-table-row">
                 <p class="d-table-cell p-2 bg-white text-dark border">authors</p>
                 <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a href="#s-author">Author object</a> ]</p>
-                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The authors of the CDD. 
+                <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. The authors of the CDS. 
                   This information MAY be used by external tools as the important evidence of involved person's skill and experience.
                 </p>
               </div>
               <div class="d-table-row">
                 <p class="d-table-cell p-2 bg-white text-dark border">organizations</p>
                 <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a href="#s-organization">Organization object</a> ]</p>
-                <p class="d-table-cell p-2 bg-white text-dark border">Related organizations of the CDD. 
+                <p class="d-table-cell p-2 bg-white text-dark border">Related organizations of the CDS. 
                   This information MAY be used by external tools as the important evidence of involved organization's skill and experience.
                 </p>
               </div>
@@ -517,7 +507,7 @@
               Actor objects<a class="anchor" href="#s-info"></a></h3>
             <p>
                 The objects provide information about users, operators or external systems the Cloud computing will be connected with.
-                It SHOULD be comprehensive for designing and auditing the CDD correctly.
+                It SHOULD be comprehensive for designing and auditing the CDS correctly.
             </p>
 
             <hr class="hr-dot my-5">
@@ -886,7 +876,7 @@
               <p>
                   The object provides information about the use case of the system by associating 
                   some actors and resources by the purpose of running the specific function. 
-                  It SHOULD be comprehensive for designing and auditing the CDD correctly.
+                  It SHOULD be comprehensive for designing and auditing the CDS correctly.
               </p>
               <h6>Fixed Fields</h6>
             <div class="d-table table-responsive line-break">
@@ -987,8 +977,8 @@
                 <i class="fa fa-cube mr-3" aria-hidden="true"></i>
               Components object<a class="anchor" href="#s-components"></a></h3>
               <p>
-                  Holds a set of reusable objects for different aspects of the CDD. 
-                  All objects defined within the components object will have no effect on the CDD unless they are explicitly referenced from properties outside the components object.
+                  Holds a set of reusable objects for different aspects of the CDS. 
+                  All objects defined within the components object will have no effect on the CDS unless they are explicitly referenced from properties outside the components object.
               </p>
               <h6>Fixed Fields</h6>
             <div class="d-table table-responsive line-break">
@@ -1051,7 +1041,7 @@
                 <i class="fas fa-signature mr-3" aria-hidden="true"></i>
               License object<a class="anchor" href="#s-license"></a></h3>
             <p>
-              License information for the CDD.
+              License information for the CDS.
             </p>
             <h6>Fixed Fields</h6>
             <div class="d-table table-responsive line-break">
@@ -1064,7 +1054,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">type</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                    This is the CDD license type. MUST be one of the following values: (CC0 recommended)<br>
+                    This is the CDS license type. MUST be one of the following values: (CC0 recommended)<br>
                     <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0</a><br>
                     <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache-2.0</a><br>
                     <a href="https://opensource.org/licenses/mit-license" target="_blank">MIT</a><br>
@@ -1104,7 +1094,7 @@
               Author object<a class="anchor" href="#s-author"></a>
             </h3>
             <p>
-              The object provides information about authors and their roles on the CDD. 
+              The object provides information about authors and their roles on the CDS. 
               It SHOULD be comprehensive for helping others find the person who has correct knowledge about the system, 
               the cloud computing technology, and the market the system is serving.
             </p>
@@ -1118,12 +1108,12 @@
                 <div class="d-table-row">
                     <p class="d-table-cell p-2 bg-white text-dark border">roles</p>
                     <p class="d-table-cell p-2 bg-white text-dark border">[ <code>string</code> ]</p>
-                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Holds a set of roles related to the CDD. 
+                    <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Holds a set of roles related to the CDS. 
                       Each role MUST be one of below strings.
                       <br><code>planner</code>: Planing the cloud computing adoption.
                       <br><code>designer</code>: Design the cloud computing architecture.
-                      <br><code>auditor</code>: Audit the CDD.
-                      <br><code>operator</code>: Operating the system designed by CDD.
+                      <br><code>auditor</code>: Audit the CDS.
+                      <br><code>operator</code>: Operating the system designed by CDS.
                       <br><code>others</code>: Other role.
                     </p>
                   </div>
@@ -1131,14 +1121,14 @@
                       <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
                       <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
                       <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                        The time when the author was joined at this CDD creation / operation. It MUST be the UNIXTIME format.
+                        The time when the author was joined at this CDS creation / operation. It MUST be the UNIXTIME format.
                       </p>
                   </div>
                   <div class="d-table-row">
                       <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
                       <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
                       <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                        The time when the author was leaved at this CDD creation / operation. It MUST be the UNIXTIME format.
+                        The time when the author was leaved at this CDS creation / operation. It MUST be the UNIXTIME format.
                       </p>
                   </div>
                   <div class="d-table-row">
@@ -1172,7 +1162,7 @@
     Organization object<a class="anchor" href="#s-organization"></a>
 </h3>
 <p>
-  The object provides information about organizations related to the CDD. 
+  The object provides information about organizations related to the CDS. 
   It SHOULD be comprehensive for helping others find the organization who has correct knowledge about the system, 
   the cloud computing technology, and the market the system is serving.
 </p>
@@ -1187,14 +1177,14 @@
         <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
         <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
         <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-          The time when the author was joined at this CDD creation / operation. It MUST be the UNIXTIME format.
+          The time when the author was joined at this CDS creation / operation. It MUST be the UNIXTIME format.
         </p>
     </div>
     <div class="d-table-row">
         <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
         <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
         <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-          The time when the author was leaved at this CDD creation / operation. It MUST be the UNIXTIME format.
+          The time when the author was leaved at this CDS creation / operation. It MUST be the UNIXTIME format.
         </p>
     </div>
     <div class="d-table-row">
@@ -1239,7 +1229,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
                     And the value MUST be within 30 letters string of UTF-8.<br>
-                    The content SHOULD be unique on this CDD by including the words describing a member's properties, interest, estimated year and so on.                  
+                    The content SHOULD be unique on this CDS by including the words describing a member's properties, interest, estimated year and so on.                  
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1441,7 +1431,8 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">end</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">[ Reference object ]</a></p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                      It MUST be references to the each resource item described in the <a href="#s-resource">resource object</a>. The end point of this traffic.
+                      It MUST be references to the each resource item described in the <a href="#s-resource">resource object</a>. The end point of this traffic.<b style="color:red">If multiple resources are specified, the traffic from start is determined to be evenly divided into each resource. Connections to resources with different traffic weights or different uses, connection ports, etc. should not be listed here. Write it as the end of the new context.</b>
+                      Example: If you list two web servers for an actor sending a 10GB request, each server will receive 5GB of requests. In the case of designing to access the static content server and the dynamic content server at a ratio of 9: 1, do not write both servers together in one end, and the context that provides static content and the context that provides dynamic content. Please describe each server in each end separately.
                 </div>
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -1659,7 +1650,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">end</p>
                     <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
-                      It MUST be a reference to the <a href="#s-actor">actor object</a> or the <a href="#s-resource">resource object</a>. The end point of this traffic.
+                      It MUST be a reference to the <a href="#s-actor">actor object</a> or the <a href="#s-resource">resource object</a>. The end point of this traffic.<b style="color:red">If multiple resources are specified, the traffic from start is determined to be evenly divided into each resource. Connections to resources with different traffic weights or different uses, connection ports, etc. should not be listed here. Write it as the end of the new context.</b>
                 </div>  
                 <div class="d-table-row">
                   <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -1863,7 +1854,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                       References to the <a href="#s-actor">actor objects</a> or the each resource item described in the <a href="#s-resource">resource object</a>. 
-                      The end point of this traffic.
+                      The end point of this traffic.<b style="color:red">If multiple resources are specified, the traffic from start is determined to be evenly divided into each resource. Connections to resources with different traffic weights or different uses, connection ports, etc. should not be listed here. Write it as the end of the new context.</b>
                       </p>
                 </div>  
                 <div class="d-table-row">
@@ -2101,7 +2092,7 @@
               Range values object<a class="anchor" href="#s-rangeValue"></a>
             </h3>
             <p>
-                An object representing the range values used at fields on CDD. 
+                An object representing the range values used at fields on CDS. 
             </p>
             <h6>Fixed Fields</h6>
             <div class="d-table table-responsive line-break">
@@ -2141,7 +2132,7 @@
               Reference object<a class="anchor" href="#s-ref"></a></h3>
             <p>
                 This is a reference specification object used when referencing JSON/YAML objects 
-                in files for CDD or Cloud Automation Tools from various fields of CDD. 
+                in files for CDS or Cloud Automation Tools from various fields of CDS. 
                 Reference objects are defined by JSON references and follow the same structure, behavior, and rules. 
                 In this specification, reference resolution is done as defined in the JSON Reference Specification, 
                 not the JSON Schema Specification.
@@ -2197,12 +2188,11 @@
             <p>
               The Cloud Design Specification has born as a part of 
               the <a href="https://reindeer.tech" target="_blank"> Reindeer Project</a>. 
-              <br>Reindeer Project has the mission to make all people into creators 
-              by the power of open knowledge distribution of the cloud computing adoption. 
-              <br>The society where everyone can create services by themselves, 
+              <br>The Reindeer Project has a mission to provide "creating power" to all people through open distribution of cloud designs.
+              <br>A society where everyone can create services on their own 
               will not only bring freedom of expression and diversity of lifestyles and values.
-              It will also spur a redistribution of the wealth to everyone 
-              and greatly improve the average wealth and happiness of people all over the world.
+              We believe it also promotes the redistribution of wealth to all 
+              and improves the average wealth and well-being of people around the world.
             </p>
             <br>
             <p><B><a href="https://reindeer-project.github.io/documents/reindeer_whitepaper_EN.pdf" target="_blank">Whitepaper</a></B><br>Describing the purpose and plan of the Reindeer project.</p>
@@ -2267,6 +2257,13 @@
                     Add an additional description to the 'busyhours' param on this document. 
                   </p>
                 </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">1.3.1(No change)</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">2021-1-14</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">
+                    Improved some descriptive expressions on this document.
+                  </p>
+                </div>
             </div>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
@@ -2278,6 +2275,5 @@
     <!-- Scripts -->
     <script src="resources/page.min.js"></script>
     <script src="resources/script.js"></script>
-    <script type="text/javascript" src="resources/cdstop.js"></script>
   
 </body></html>
