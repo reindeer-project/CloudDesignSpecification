@@ -62,7 +62,7 @@
       <div id="headertitle" class="container">
         <h1>Cloud Design Specification</h1>
         <p class="lead">Standard data notation method to record and share the cloud computing design.</p>
-        <p>version 1.3.1</p>
+        <p>version 1.3.2</p>
       </div>
     </header><!-- /.header -->
     <!-- Main Content -->
@@ -216,8 +216,8 @@
               &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank" onClick="ga('send','event','btn', 'click', 'download_demo_en');">Download</a></p>
             <br>
             <p><B>Cloud Design Schema</B><br>It is a JSON schema file that can be used to check the grammar of the CDS by incorporating it into a third party editor.</p>
-            <a class="btn btn-primary mb-1" href="/cds_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cds_schema_en');">Download CDS root schema</a>
-            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'CDS_snippet_schema_en');">Download CDS snippet schema</a>
+            <a class="btn btn-primary mb-1" href="/en/reindeer-schema_cds.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cds_schema_en');">Download CDS root schema</a>
+            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/en/reindeer-schema_cds-snippet.json" target="_blank" onClick="ga('send','event','btn', 'click', 'CDS_snippet_schema_en');">Download CDS snippet schema</a>
           </p>
             <br>
             <p><B>ForkMe!</B><br>A cloud design management tool provided by Reindeer Technology PTE.LTD. It fulfills the developer's desire to "fork (duplicate / derive) cloud design like software". (The Reindeer Project was progressively incorporated into Reindeer Technology PTE. LTD.)
@@ -377,7 +377,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
-                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    And the value MUST be within 150 letters string of UTF-8.<br>
                     The title of the service, adopting this cloud design.
                   </p>
               </div>
@@ -386,7 +386,7 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                 <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                   The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                  And the value MUST be within 255 letters string of UTF-8. <br> 
+                  And the value MUST be within 150 letters string of UTF-8. <br> 
                   The description of the service, adopting this cloud design. 
                   It SHOULD be the concise memo including every keyword of the purpose and functions of the system. 
                   This text MAY be used as the search index by external tools.
@@ -535,7 +535,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
-                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    And the value MUST be within 150 letters string of UTF-8.<br>
                     The title of the actor.
                   </p>
                 </div>
@@ -544,7 +544,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The description of the actor. 
                   </p>
                 </div>
@@ -660,7 +660,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
-                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    And the value MUST be within 150 letters string of UTF-8.<br>
                     The title of the group of persons. 
                   </p>
                 </div>
@@ -669,7 +669,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                       The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      And the value MUST be within 150 letters string of UTF-8. <br> 
                       The description of the group of persons. 
                   </p>
                 </div>
@@ -752,7 +752,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.  
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
-                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    And the value MUST be within 150 letters string of UTF-8.<br>
                     The title of the external system interface.
                   </p>
                 </div>
@@ -761,7 +761,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                       The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      And the value MUST be within 150 letters string of UTF-8. <br> 
                       The description of the external system interface.
                     </p>
                   </p>
@@ -890,7 +890,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
-                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    And the value MUST be within 150 letters string of UTF-8.<br>
                     The title of the context.
                     </p>
                 </div>
@@ -899,7 +899,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                       The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      And the value MUST be within 150 letters string of UTF-8. <br> 
                       The description of the context.
                   </p>
                 </div>
@@ -1228,7 +1228,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
-                    And the value MUST be within 30 letters string of UTF-8.<br>
+                    And the value MUST be within 150 letters string of UTF-8.<br>
                     The content SHOULD be unique on this CDS by including the words describing a member's properties, interest, estimated year and so on.                  
                   </p>
                 </div>
@@ -1237,7 +1237,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                       The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      And the value MUST be within 150 letters string of UTF-8. <br> 
                       The description of the market. 
                       It SHOULD be including the words describing the author, estimation purpose and so on. 
                       This text MAY help the designer's decision whether this information can be reused by other design or not.
@@ -1329,7 +1329,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The description of the trigger. 
                     It SHOULD be the concise memo describing the purpose of this trigger.
                   </p>
@@ -1439,7 +1439,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 30 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The name of the endpoint. 
                   </p>
                 </div>
@@ -1465,7 +1465,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"> 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The description of the endpoint. 
                     It SHOULD be the concise memo describing the purpose of storage of the ends in this trigger.
                   </p>
@@ -1573,7 +1573,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The description of the trigger. 
                     It SHOULD be the concise memo describing the purpose of this trigger.
                   </p>
@@ -1657,7 +1657,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 30 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The name of the endpoint. 
                   </p>
                 </div>
@@ -1684,7 +1684,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"> 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The description of the endpoint. 
                     It SHOULD be the concise memo describing the purpose of storage of the ends in this trigger.
                   </p>
@@ -1807,7 +1807,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The description of the traffic. 
                     It SHOULD be the concise memo describing the purpose of this traffic.
                   </p>
@@ -1862,7 +1862,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 30 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The name of the endpoint. 
                   </p>
                 </div>
@@ -1909,7 +1909,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"> 
                     The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                    And the value MUST be within 255 letters string of UTF-8. <br> 
+                    And the value MUST be within 150 letters string of UTF-8. <br> 
                     The description of the endpoint. 
                     It SHOULD be the concise memo describing the purpose of storage of the ends in this traffic.
                   </p>
@@ -2005,7 +2005,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                       The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>.
-                      And the value MUST be within 30 letters string of UTF-8.<br>
+                      And the value MUST be within 150 letters string of UTF-8.<br>
                       The name of the information type.                  
                     </p>
                 </div>
@@ -2014,7 +2014,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. 
                       The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>. 
-                      And the value MUST be within 255 letters string of UTF-8. <br> 
+                      And the value MUST be within 150 letters string of UTF-8. <br> 
                       Describing classification detail.
                     </p>
                 </div>
@@ -2262,6 +2262,13 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">2021-1-14</p>
                   <p class="d-table-cell p-2 bg-white text-dark border">
                     Improved some descriptive expressions on this document.
+                  </p>
+                </div>
+                <div class="d-table-row">
+                  <p class="d-table-cell p-2 bg-white text-dark border">1.3.2</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">2021-1-15</p>
+                  <p class="d-table-cell p-2 bg-white text-dark border">
+                    Change max letter size of title and description to 150.
                   </p>
                 </div>
             </div>
