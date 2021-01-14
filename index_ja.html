@@ -61,7 +61,7 @@
       <div id="headertitle" class="container">
         <h1>Cloud Design 仕様</h1>
         <p class="lead">クラウドコンピューティングの設計を記録、共有する標準的なデータ記述方法</p>
-        <p>version 1.3.1</p>
+        <p>version 1.3.2</p>
       </div>
     </header><!-- /.header -->
     <!-- Main Content -->
@@ -212,8 +212,8 @@
               &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank" onClick="ga('send','event','btn', 'click', 'download_editor_ja');">ダウンロード</a></p>
             <br>
             <p><B>Cloud Design Schema 日本語</B><br>サードパーティー製エディタ等に組み込むことで、CDSの文法チェックに利用できるJSONスキーマファイルです。</p>
-            <a class="btn btn-primary mb-1" href="/cds_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cds_schema_ja');">CDSルートスキーマのダウンロード</a>
-            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/cds_snippet_reindeer_ja_schema.json" target="_blank" onClick="ga('send','event','btn', 'click', 'CDS_snippet_schema_ja');">CDSスニペットスキーマのダウンロード</a>
+            <a class="btn btn-primary mb-1" href="/ja/reindeer-schema_cds.json" target="_blank" onClick="ga('send','event','btn', 'click', 'cds_schema_ja');">CDSルートスキーマのダウンロード</a>
+            &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/ja/reindeer-schema_cds-snippet.json" target="_blank" onClick="ga('send','event','btn', 'click', 'CDS_snippet_schema_ja');">CDSスニペットスキーマのダウンロード</a>
             <br><br>
             <p><B>ForkMe!</B><br>Reindeer Technology PTE.LTD.が提供する、クラウド設計管理ツールです。「クラウドの設計を、ソフトウェアのようにフォーク（複製／派生）したい」というデベロッパーの願いをかなえます。（Reindeer ProjectはReindeer Technology PTE.LTD.に発展的に法人化されました。）
             </p>
@@ -374,7 +374,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     このクラウドデザインを適用するサービスの名称です。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
               </div>
               <div class="d-table-row">
@@ -385,7 +385,7 @@
                   それはシステムの目的と機能のすべてのキーワードを含む簡潔なメモであるべきです。 
                   このテキストは外部ツールによる検索インデックスとして使われる可能性があります。
                   キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                  そして値はUTF-8の255文字以内の文字列でなければなりません。
+                  そして値はUTF-8の150文字以内の文字列でなければなりません。
                 </p>
               </div>
               <div class="d-table-row">
@@ -533,7 +533,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     アクターの名称です。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -543,7 +543,7 @@
                     アクターの説明です。
                     このテキストは外部ツールによる検索インデックスとして使われる可能性があります。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の255文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -660,7 +660,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     アクターの名称です。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -670,7 +670,7 @@
                       アクターの説明です。 
                       このテキストは外部ツールによる検索インデックスとして使われる可能性があります。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の255文字以内の文字列でなければなりません。
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -753,7 +753,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.  
                     アクターの名称です。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -763,7 +763,7 @@
                       アクターの説明です。
                       このテキストは外部ツールによる検索インデックスとして使われる可能性があります。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の255文字以内の文字列でなければなりません。
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。
                     </p>
                   </p>
                 </div>
@@ -893,7 +893,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     コンテキストの名称です。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                     </p>
                 </div>
                 <div class="d-table-row">
@@ -903,7 +903,7 @@
                       コンテキストの説明です。
                       このテキストは外部ツールによる検索インデックスとして使われる可能性があります。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の255文字以内の文字列でなければなりません。
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1230,7 +1230,7 @@
                     マーケットの名称です。
                     会員の特性、興味、推定年などを説明する言葉を含めることにより、このCDS上でユニークであるべきです。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1240,7 +1240,7 @@
                       マーケットの説明です。
                       それは詳細な算定者や算定目的などを説明する言葉を含むべきです。この説明は、設計者がこの情報を他のデザインで再利用できるかどうかを判断するのに役立ちます。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の255文字以内の文字列でなければなりません。
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。
                     </p>
                   </div>
   
@@ -1331,7 +1331,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     トリガーの説明です。トリガーの目的を端的に示すメモであるべきです。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の255文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1434,7 +1434,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     エンドポイントの名称です。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1461,7 +1461,7 @@
                       ストレージの説明です。
                       このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の255文字以内の文字列でなければなりません。
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div> 
             </div>
@@ -1569,7 +1569,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     トリガーの説明です。トリガーの目的を端的に示すメモであるべきです。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の255文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1651,7 +1651,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     エンドポイントの名称です。キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。 
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。 
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1678,7 +1678,7 @@
                       ストレージの説明です。
                       このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の255文字以内の文字列でなければなりません。
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div> 
             </div>
@@ -1795,7 +1795,7 @@
                     トラフィックの説明です。 
                     このテキストは外部ツールによる検索インデックスとして使われる可能性があります。
                     キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の255文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1849,7 +1849,7 @@
                   <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
                   <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                     エンドポイントの名称です。キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                    そして値はUTF-8の30文字以内の文字列でなければなりません。
+                    そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>
                 <div class="d-table-row">
@@ -1896,7 +1896,7 @@
                       ストレージの説明です。
                       このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の255文字以内の文字列でなければなりません。
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。
                   </p>
                 </div>            
             </div>
@@ -1992,7 +1992,7 @@
                     <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 
                       情報種別の名称です。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の30文字以内の文字列でなければなりません。           
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。           
                     </p>
                 </div>
                 <div class="d-table-row">
@@ -2002,7 +2002,7 @@
                       情報種別の説明です。
                       このテキストは外部ツールによる検索インデックスとして使われる可能性があります。
                       キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。 
-                      そして値はUTF-8の255文字以内の文字列でなければなりません。
+                      そして値はUTF-8の150文字以内の文字列でなければなりません。
                     </p>
                 </div>
                 <div class="d-table-row">
@@ -2246,6 +2246,13 @@
                 <p class="d-table-cell p-2 bg-white text-dark border">2021-1-14</p>
                 <p class="d-table-cell p-2 bg-white text-dark border">
                   本ドキュメントのいくつかの説明表現を改善
+                </p>
+              </div>
+              <div class="d-table-row">
+                <p class="d-table-cell p-2 bg-white text-dark border">1.3.2</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">2021-1-15</p>
+                <p class="d-table-cell p-2 bg-white text-dark border">
+                  titleとdescriptionの最大文字長を150字に変更
                 </p>
               </div>
             </div>
