@@ -8,7 +8,7 @@
       ],
       "schema": {
         "title": "Cloud Design Object",
-        "description": "これはCDDのルートオブジェクトです。 https://docs.reindeer.tech/index_ja.html#s-clouddesign",
+        "description": "This is the root object of the CDS.",
         "type": "object",
         "required": [
           "reindeer",
@@ -20,26 +20,28 @@
         ],
         "properties": {
           "reindeer": {
-            "title": "CDSのバージョン",
-            "description": "必須. この文字列はCDSのsemantic version numberでなければなりません。 reindeerフィールドは、CDDを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。 https://docs.reindeer.tech/index_ja.html#s-clouddesign",
+            "title": "Version number",
+            "description": "REQUIRED. This string MUST be the semantic version number of the CDS version. The reindeer field SHOULD be used by tools for interpreting the CDS. This is not related to the info.version string.",
             "type": "string",
-            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]$"
+            "enum": [
+              "1.1.0"
+            ]
           },
           "self": {
-            "title": "ファイル名",
-            "description": "必須. この文字列はCDDのファイル名です。 拡張子は.json, .yaml または .ymlでなければなりません。 selfフィールドは、CDDを解釈するためのツールに使用されるべきです。 https://docs.reindeer.tech/index_ja.html#s-clouddesign",
+            "title": "File name",
+            "description": "REQUIRED. This string is the filename of the CDS. It MUST be with the extension, .json, .yaml or .yml. The self field SHOULD be used by tools for interpreting the CDS.",
             "type": "string",
             "default": "cloudDesign.json",
             "pattern": "^[a-zA-Z0-9]+\\.(yaml|yml|json)$"
           },
           "info": {
             "title": "Info",
-            "description": "必須. クラウドコンピューティングの活用に関するメタデータを提供します。 メタデータは、必要に応じてツールによって使用される場合があります。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "description": "REQUIRED. Provides metadata about the cloud computing adoption. The metadata MAY be used by tooling as required.",
             "$ref": "https://reindeer.tech/cds-schema/v1/info.json"
           },
           "actors": {
-            "title": "アクター",
-            "description": "必須. アクターオブジェクトの配列です。クラウドコンピューティングに接続する／される外部ユーザーまたはシステムに関する情報を提供します。 https://docs.reindeer.tech/index_ja.html#s-actor",
+            "title": "Actors",
+            "description": "REQUIRED. An array of actor objects, which provide information about the external user or system to which cloud computing is connected.",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -66,8 +68,8 @@
             "additionalProperties": false
           },
           "resources": {
-            "title": "リソース",
-            "description": "必須. クラウドコンピューティングの構造を記述する外部ドキュメント（クラウドオートメーション言語が記載されたファイル）への参照を示す、リソースオブジェクトの配列です。 https://docs.reindeer.tech/index_ja.html#s-resource",
+            "title": "Resources",
+            "description": "REQUIRED. An array of resource objects, which is pointing to the external documents (files written by provisioning codes) describing the cloud computing architecture.",
             "type": "array",
             "items": {
               "type": "object",
@@ -76,8 +78,8 @@
             "additionalProperties": false
           },
           "contexts": {
-            "title": "コンテキスト",
-            "description": "必須. コンテキストオブジェクトの配列です。アクターとクラウドコンピューティングリソースの間で、 特定の目的を達成するための関連性についての情報を提供します。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "title": "Contexts",
+            "description": "REQUIRED. An array of context objects, which provide information about the relationship for achieving a specific purpose between actors and cloud computing resources.",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -97,12 +99,12 @@
           },
           "components": {
             "title": "Component objects",
-            "description": "CDDのさまざまな側面に対応する一連の再利用可能な オブジェクトを保持します。 コンポーネントオブジェクト内で定義されたすべてのオブジェクトは、 それらがコンポーネントオブジェクトの外部のプロパティから 明示的に参照されない限り、クラウドデザインには影響しません。 https://docs.reindeer.tech/index_ja.html#s-components",
+            "description": "Holds a set of reusable objects for different aspects of the CDS. All objects defined within the components object will have no effect on the Cloud Design unless they are explicitly referenced from properties outside the components object.",
             "type": "object",
             "properties": {
               "actors": {
                 "title": "Actor objects",
-                "description": "再利用可能なActor objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-actor",
+                "description": "An object to hold reusable Actor object.",
                 "type": "object",
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
@@ -126,7 +128,7 @@
               },
               "contexts": {
                 "title": "Context objects",
-                "description": "再利用可能なContext objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-context",
+                "description": "An object to hold reusable Context object.",
                 "type": "object",
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
@@ -143,7 +145,7 @@
               },
               "markets": {
                 "title": "Market objects",
-                "description": "再利用可能なMarket objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-market",
+                "description": "An object to hold reusable Market object.",
                 "type": "object",
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
@@ -160,7 +162,7 @@
               },
               "triggers": {
                 "title": "Trigger objects",
-                "description": "再利用可能なTrigger objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-trigger",
+                "description": "An object to hold reusable Trigger object.",
                 "type": "object",
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
@@ -181,7 +183,7 @@
               },
               "traffics": {
                 "title": "Traffic objects",
-                "description": "再利用可能なTraffic objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
+                "description": "An object to hold reusable Traffic object.",
                 "type": "object",
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
@@ -197,7 +199,7 @@
               },
               "infoTypes": {
                 "title": "Information type objects",
-                "description": "再利用可能なInformation type objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+                "description": "An object to hold reusable Information type object.",
                 "type": "object",
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
@@ -218,7 +220,7 @@
       "uri": "https://reindeer.tech/cds-schema/v1/info.json",
       "schema": {
         "title": "Info object",
-        "description": "このオブジェクトはCDDに関するメタデータを提供します。 他の人がCDDを簡単に検索、発見できるよう、メタデータは適切に記入されるべきです。 https://docs.reindeer.tech/index_ja.html#s-info",
+        "description": "The object provides metadata about the CDS. The metadata SHOULD be filled properly for helping others easy to search and find the CDS.",
         "type": "object",
         "required": [
           "version",
@@ -231,32 +233,32 @@
         ],
         "properties": {
           "version": {
-            "title": "CDDのバージョン",
-            "description": "必須. あなたの意思で定義されるCDDのバージョンです。（the CDS versionとは異なります） https://docs.reindeer.tech/index_ja.html#s-info",
+            "title": "CDS's version number",
+            "description": "REQUIRED. The version of the CDS defined by your willing (which is distinct from the CDS version).",
             "default": "1.0.0",
             "type": "string"
           },
           "license": {
-            "title": "CDDのライセンス",
-            "description": "必須. CDDのライセンス情報です。 https://docs.reindeer.tech/index_ja.html#s-license",
+            "title": "License of this CDS",
+            "description": "REQUIRED. The license information of the CDS.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/license.json"
           },
           "title": {
-            "title": "サービス名",
-            "description": "必須. このクラウドデザインを適用するサービスの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "title": "Title of the service",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The title of the service, adopting this cloud design.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
-            "title": "サービスの説明",
-            "description": "必須. このクラウドデザインを適用するサービスの説明です。 それはシステムの目的と機能のすべてのキーワードを含む簡潔なメモであるべきです。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "title": "Description of the service",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the service, adopting this cloud design. It SHOULD be the concise memo including every keyword of the purpose and functions of the system. This text MAY be used as the search index by external tools.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "status": {
-            "title": "CDDの状態",
-            "description": "必須. CDDの状態です。 以下の値が利用できます。\nidea: アイデア段階\ndraft: 設計中\nproduction: 本番稼働サービスで利用中、または本番稼働用の品質で設計されている。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "title": "The status of the CDS",
+            "description": "REQUIRED. The status of the CDS. Valid values are idea, draft, production.\nidea: Just an idea.\ndraft: Under designing.\nproduction: Used by an actual service. Or expected to have production quality.",
             "type": "string",
             "enum": [
               "idea",
@@ -265,14 +267,14 @@
             ]
           },
           "designedAt": {
-            "title": "日時",
-            "description": "必須. CDDが作成された日時です。UNIXタイムスタンプ形式を利用する必要があります。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "title": "Designed time",
+            "description": "REQUIRED. The time when the CDS was designed at. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
           "authors": {
-            "title": "作者",
-            "description": "必須. CDDの作成者です。 この情報は外部ツールによって利用される可能性があり、関係者のスキルや経験を証明する重要な情報となります。 https://docs.reindeer.tech/index_ja.html#s-author",
+            "title": "Authors",
+            "description": "REQUIRED. The authors of the CDS. This information MAY be used by external tools as the important evidence of involved person's skill and experience.",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -283,8 +285,8 @@
             "additionalProperties": false
           },
           "organizations": {
-            "title": "組織",
-            "description": "CDD作成に関与する組織です。 この情報は外部ツールによって利用される可能性があり、組織のスキルや経験を証明する重要な情報となります。 https://docs.reindeer.tech/index_ja.html#s-organization",
+            "title": "Organizations",
+            "description": "Related organizations of the CDS. This information MAY be used by external tools as the important evidence of involved organization's skill and experience.",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -301,8 +303,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/marketTypeOfActor.json",
       "schema": {
-        "title": "マーケットタイプのアクターオブジェクト",
-        "description": "このオブジェクトは特定のマーケットに属する消費者、観客など、不特定多数の利用者に関する情報を提供します。 システム提供対象となるユーザ数やリクエスト数を把握するため、正しい数値を提供すべきです。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
+        "title": "Market type of actor object",
+        "description": "This object provides information about an unspecified number of users, such as consumers and spectators belonging to a particular market. It is the kind of actor you SHOULD use, for example, when designing a limited network connection with an identifiable individual and cloud computing. The correct number SHOULD be provided in order to understand the number of users and the number of requests to be provided to the system.",
         "type": "object",
         "required": [
           "type",
@@ -314,28 +316,28 @@
         ],
         "properties": {
           "type": {
-            "title": "アクターの種類",
-            "description": "必須. 固定値： 'market' https://docs.reindeer.tech/index_ja.html#s-actor-market",
+            "title": "Type of actor",
+            "description": "REQUIRED. Fixed value, 'market'.",
             "type": "string",
             "enum": [
               "market"
             ]
           },
           "title": {
-            "title": "アクター名",
-            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
+            "title": "The title of the actor",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The title of the actor.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
-            "title": "アクターの説明",
-            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
+            "title": "The description of the actor",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the actor.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "market": {
             "title": "Market object",
-            "description": "必須. アクターが属する市場に関する情報です。 https://docs.reindeer.tech/index_ja.html#s-market",
+            "description": "REQUIRED. Market information to which this actor belongs.",
             "type": "object",
             "oneOf": [
               {
@@ -349,20 +351,20 @@
             ]
           },
           "marketShare": {
-            "title": "市場シェア",
-            "description": "必須. 市場シェアを示します。 例えば 0.3 は 30% を意味します。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
+            "title": "Market share",
+            "description": "REQUIRED. The share ratio of this actor among the belonging market. For example, 0.3 means 30%.",
             "type": "number",
             "minimum": 0,
             "maximum": 1
           },
           "sourceIdentification": {
-            "title": "IP/ドメインなどによる接続元の特定",
-            "description": "必須. 特定のIPアドレス範囲やドメイン名などで識別できるかどうかを意味します。 trueの場合、identificationGroup フィールドは必須です。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
+            "title": "IP, Domain or the other identification",
+            "description": "REQUIRED. Whether specific IP address range or domains is assigned or not. If true, identificationGroup property is required.",
             "type": "boolean"
           },
           "identificationGroup": {
-            "title": "IPアドレス範囲などのグループ名",
-            "description": "IPアドレス範囲やドメイン名など。 sourceIdentification フィールドがtrueの場合は必須です。そして、sourceIdentification がfalseの場合、指定してはいけません。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
+            "title": "The group name of IP address range, domains and so on.",
+            "description": "The group name of IP address range, domains and so on.. Required when sourceIdentification propery is true. And MUST NOT use when sourceIdentification propery is false.",
             "type": "string",
             "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
           }
@@ -384,8 +386,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/personsTypeOfActor.json",
       "schema": {
-        "title": "個人タイプのアクターオブジェクト",
-        "description": "このオブジェクトは、運用担当者のような1人または複数の人物で構成されているアクターの種類に関する情報を提供します。 識別可能な個人とクラウドコンピューティングとの制限されたネットワーク接続を設計する際などに、使用べき種類のアクターです。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+        "title": "Persons type of actor object",
+        "description": "The object provides information about a type of actor being consisted of one or a few persons like system operator. The kind of actor you SHOULD use, for example, when designing a limited network connection between an identifiable external system and cloud computing.",
         "type": "object",
         "required": [
           "type",
@@ -396,39 +398,39 @@
         ],
         "properties": {
           "type": {
-            "title": "アクターの種類",
-            "description": "必須. 固定値： 'persons' https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+            "title": "Type of actor",
+            "description": "REQUIRED. Fixed value, 'persons'.",
             "type": "string",
             "enum": [
               "persons"
             ]
           },
           "title": {
-            "title": "アクター名",
-            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+            "title": "The title of the group of persons",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
-            "title": "アクターの説明",
-            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+            "title": "The description of the actor",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. ",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "num": {
-            "title": "人数",
-            "description": "必須. 本アクターを構成する人数です。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+            "title": "The number of members",
+            "description": "REQUIRED. The number of members.",
             "type": "integer",
             "minimum": 1
           },
           "sourceIdentification": {
-            "title": "IP/ドメインなどによる接続元の特定",
-            "description": "必須. 特定のIPアドレス範囲やドメイン名などで識別できるかどうかを意味します。 trueの場合、identificationGroup フィールドは必須です。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+            "title": "IP, Domain or the other identification",
+            "description": "REQUIRED. Whether specific IP address range or domains is assigned or not. If true, identificationGroup property is required.",
             "type": "boolean"
           },
           "identificationGroup": {
-            "title": "IPアドレス範囲などのグループ名",
-            "description": "IPアドレス範囲やドメイン名など。 sourceIdentification フィールドがtrueの場合は必須です。そして、sourceIdentification がfalseの場合、指定してはいけません。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+            "title": "The group name of IP address range, domains and so on.",
+            "description": "The group name of IP address range, domains and so on. Required when sourceIdentification propery is true. And MUST NOT use when sourceIdentification propery is false.",
             "type": "string",
             "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
           }
@@ -450,8 +452,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/externalSystemTypeOfActor.json",
       "schema": {
-        "title": "外部システムタイプのアクターオブジェクト",
-        "description": "このオブジェクトは外部システムのAPIやファイルインターフェイスなど、1つまたはいくつかのシステムで構成される種類のアクターに関する情報を提供します。 識別可能な外部システムとクラウドコンピューティングとの制限されたネットワーク接続を設計する際などに、使用べき種類のアクターです。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
+        "title": "External system type of actor object",
+        "description": "The object provides information about a type of actor being consisted of one or a few systems like external API, FILE interface and so on. The kind of actor you SHOULD use, for example, when designing a limited network connection between an identifiable external system and cloud computing.",
         "type": "object",
         "required": [
           "type",
@@ -461,33 +463,33 @@
         ],
         "properties": {
           "type": {
-            "title": "アクターの種類",
-            "description": "必須. 固定値： 'externalSystem' https://docs.reindeer.tech/index_ja.html#s-actor-system",
+            "title": "Type of actor",
+            "description": "REQUIRED. Fixed value, 'externalSystem'.",
             "type": "string",
             "enum": [
               "externalSystem"
             ]
           },
           "title": {
-            "title": "アクターの名前",
-            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
+            "title": "The title of the external system interface",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The title of the external system interface.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
-            "title": "アクターの説明",
-            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
+            "title": "The description of the actor",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the external system interface.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "sourceIdentification": {
-            "title": "IP/ドメインなどによる接続元の特定",
-            "description": "必須. 特定のIPアドレス範囲やドメイン名などで識別できるかどうかを意味します。 trueの場合、identificationGroup フィールドは必須です。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
+            "title": "IP, Domain or the other identification",
+            "description": "REQUIRED. Whether specific IP address range or domains is assigned or not. If true, identificationGroup property is required.",
             "type": "boolean"
           },
           "identificationGroup": {
-            "title": "IPアドレス範囲などのグループ名",
-            "description": "IPアドレス範囲やドメイン名など。 sourceIdentification フィールドがtrueの場合は必須です。そして、sourceIdentification がfalseの場合、指定してはいけません。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
+            "title": "The group name of IP address range, domains and so on.",
+            "description": "The group name of IP address range, domains and so on.. Required when sourceIdentification propery is true. And MUST NOT use when sourceIdentification propery is false.",
             "type": "string",
             "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
           }
@@ -510,7 +512,7 @@
       "uri": "https://reindeer.tech/cds-schema/v1/resource.json",
       "schema": {
         "title": "Resource object",
-        "description": "このオブジェクトは、利用するクラウドコンピューティングリソースに関する情報を提供します。 JSONまたはYAMLでフォーマットされた外部ファイルに対する参照でなければなりません。 そして、以下のようなクラウド自動化ツールのために、整形されたデータであるべきです。\nAWS CloudFormation\nAzure Resource Manager\nGoogle Cloud Deployment Manager\nAlibaba Cloud\nResource Orchestration Service\nTerraform https://docs.reindeer.tech/index_ja.html#s-resource",
+        "description": "The object provides information about cloud computing resources used by this system. It MUST be references of the external file formatted by JSON or YAML. And it SHOULD be well-formatted data for cloud automation tools like below.\nAWS CloudFormation\nAzure Resource Manager\nGoogle Cloud Deployment Manager\nAlibaba Cloud Resource Orchestration Service\nTerraform",
         "type": "object",
         "required": [
           "type",
@@ -518,8 +520,8 @@
         ],
         "properties": {
           "type": {
-            "title": "言語種類",
-            "description": "必須. クラウドオートメーション言語の種別です。以下値の中の１つである必要があります。\nacf : AWS CloudFormation. \narm : Azure Resource Manager.\ngdm : Google Cloud Deployment Manager.\naro : Alibaba Cloud Resource Orchestration Service. \ntfm: Terraform. \nslf: ServerlessFramework. \noth : その他 https://docs.reindeer.tech/index_ja.html#s-resource",
+            "title": "Language type",
+            "description": "REQUIRED. Type of the cloud automation language. It MUST be one of the following values. \nacf : AWS CloudFormation. \narm : Azure Resource Manager. \ngdm : Google Cloud Deployment Manager. \naro : Alicloud Resource Orchestration Service. \ntfm: Terraform. \nslf: ServerlessFramework. \noth : Others.",
             "type": "string",
             "enum": [
               "acf",
@@ -532,8 +534,8 @@
             ]
           },
           "$ref": {
-            "title": "参照",
-            "description": "必須. クラウドオートメーション言語で記述されたファイルへの参照で、Reference objectの$refアイテムと同じです。 .json, .yaml, または .ymlの拡張子を持つ外部ファイルを参照しなければなりません。 そしてその拡張子は、外部ツールによってリンク先のファイルフォーマットを検出するために利用されるべきものです。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "title": "Reference",
+            "description": "REQUIRED. Reference to the file written by cloud automation language. Same as the $ref item of Reference object. This MUST point to the external file with extension, .json, .yaml, or .yml. And the extension SHOULD be used by external tools to detect the file format of the link.",
             "type": "string",
             "default": "externalFile.json",
             "pattern": "^[a-zA-Z0-9]+\\.(yaml|yml|json)$"
@@ -545,8 +547,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/context.json",
       "schema": {
-        "title": "コンテキストオブジェクト",
-        "description": "このオブジェクトは、特定の機能を実行する目的でいくつかのアクターとリソースを関連付けることにより、 システムの利用ケースに関する情報を提供します。 それはCDDを正しく設計、監査するために、包括的に記述されるべきです。 https://docs.reindeer.tech/index_ja.html#s-context",
+        "title": "Context object",
+        "description": "The object provides information about the use case of the system by associating some actors and resources by the purpose of running the specific function. It SHOULD be comprehensive for designing and auditing the CDS correctly.",
         "type": "object",
         "required": [
           "title",
@@ -556,20 +558,20 @@
         ],
         "properties": {
           "title": {
-            "title": "コンテキストの名称",
-            "description": "必須. コンテキストの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "title": "The title of the context",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The title of the context.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
-            "title": "コンテキストの説明",
-            "description": "必須. コンテキストの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "title": "The description of the context",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the context.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "trigger": {
-            "title": "コンテキストの開始点",
-            "description": "必須. トリガーオブジェクトを指定します。トリガーはこのコンテキストの開始イベントを意味します。 https://docs.reindeer.tech/index_ja.html#s-trigger",
+            "title": "Trigger of the context",
+            "description": "REQUIRED. One of the types of trigger object. The trigger means the initial event of this context.",
             "type": "object",
             "oneOf": [
               {
@@ -587,8 +589,8 @@
             ]
           },
           "traffics": {
-            "title": "コンテキスト内の通信",
-            "description": "必須. トラフィックオブジェクトを格納します。各トラフィックはトラフィックオブジェクトを指定します。 トラフィックはコンテキスト内の通信経路を意味します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
+            "title": "Traffics of the context",
+            "description": "REQUIRED. Holding the list of traffic objects. Each traffic is one of the types of traffic objects. The traffic means related data transfer route within the context.",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -607,8 +609,8 @@
             "additionalProperties": false
           },
           "maxPerformanceDurationRatio": {
-            "title": "最大性能の月間持続時間比率",
-            "description": "コンテキストに求められるコストを計算する際、本値を利用してtriggerやtrafficsに含まれる各Range values objectのmaxとmin値を合成します。 例えば月間3日だけ広告効果でDAUを向上させる設計の場合、DAU値をmin:0.01, max:0.1、本値を0.1と表現します。 CloudDesignは月間使用量を基準に性能とコストを表現しますが、本値により月間平均は1rpsながらも瞬間最大性能100rpsを期待する設計が記録できます。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "title": "Monthly duration ratio of maximum performance",
+            "description": "When calculating the cost required for the context, this value is used to synthesize the max and min values ​​of each Range values ​​object included in trigger and traffic. For example, in the case of a design that improves DAU by advertising effect only 3 days a month, the DAU value is expressed as min: 0.01, max: 0.1, and this value is expressed as 0.1. CloudDesign expresses performance and cost based on monthly usage, but with this value, it is possible to record a design that expects a maximum instantaneous performance of 100 rps while the monthly average is 1 rps.",
             "type": "number",
             "minimum": 0,
             "maximum": 1
@@ -620,8 +622,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/license.json",
       "schema": {
-        "title": "ライセンス",
-        "description": "CDDのライセンス情報です。 https://docs.reindeer.tech/index_ja.html#s-license",
+        "title": "License object",
+        "description": "License information for the CDS.",
         "type": "object",
         "required": [
           "type"
@@ -630,8 +632,8 @@
         "then": { "required":["provider"]},
         "properties": {
           "type": {
-            "title": "CDDのライセンス種別",
-            "description": "必須. CDDのライセンス種別です。以下何れかの値である必要があります。(CC0推奨): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed https://docs.reindeer.tech/index_ja.html#s-license",
+            "title": "The license type of the CDS",
+            "description": "REQUIRED. This is the CDS license type. MUST be one of the following values: (CC0 recommended): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed",
             "type": "string",
             "default": "CC0",
             "enum": [
@@ -644,8 +646,8 @@
             ]
           },
           "provider": {
-            "title": "ライセンスの提供者、またはその名称",
-            "description": "ライセンスの提供者、またはその名称です。typeがOtherOpenまたはClosedの場合以外は記載してはいけません。 https://docs.reindeer.tech/index_ja.html#s-license",
+            "title": "Optional. The license provider or license name",
+            "description": "The license provider or license name. You MUST not use this parameter when the type is not OtherOpen and Closed.",
             "type": "string"
           }
         },
@@ -656,7 +658,7 @@
       "uri": "https://reindeer.tech/cds-schema/v1/author.json",
       "schema": {
         "title": "Author object",
-        "description": "このオブジェクトは、CDDの作者とその役割についての情報を提供します。 対象のシステム、クラウドコンピューティング技術、そして同システムのサービス提供市場について正しい知識を持っている人を 他の人が見つけるのを助けるため、包括的に記載されるべきです。 https://docs.reindeer.tech/index_ja.html#s-author",
+        "description": "The object provides information about authors and their roles on the CDS. It SHOULD be comprehensive for helping others find the person who has correct knowledge about the system, the cloud computing technology, and the market the system is serving.",
         "type": "object",
         "required": [
           "roles",
@@ -664,8 +666,8 @@
         ],
         "properties": {
           "roles": {
-            "title": "作者の役割",
-            "description": "必須. CDDに関与した役割を保持します。役割は、以下の何れかの値でなければなりません。\nplanner: 企画者\ndesigner: 設計者\nauditor: CDDの監査者\noperator: CDDで設計されたシステムの運用者\nothers: その他 https://docs.reindeer.tech/index_ja.html#s-author",
+            "title": "Roles of author",
+            "description": "REQUIRED. Holds a set of roles related to the CDS. Each role MUST be one of below strings. \nplanner: Planing the cloud computing adoption. \ndesigner: Design the cloud computing architecture. \nauditor: Audit the CDS. \noperator: Operating the system designed by CDS. \nothers: Other role.",
             "type": "array",
             "items": {
               "type": "string",
@@ -679,20 +681,20 @@
             }
           },
           "joinedAt": {
-            "title": "参画日時",
-            "description": "必須. 作者が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。 https://docs.reindeer.tech/index_ja.html#s-author",
+            "title": "Joined time",
+            "description": "REQUIRED. The time when the author was joined at this CDS creation / operation. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
           "leavedAt": {
-            "title": "離任日時",
-            "description": "必須. 作者が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。 https://docs.reindeer.tech/index_ja.html#s-author",
+            "title": "Leaved time",
+            "description": "REQUIRED. The time when the author was leaved at this CDS creation / operation. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
           "sign": {
-            "title": "署名",
-            "description": "作者の署名です。本値は署名支援ツールによって自動生成されるべきもので、通常は空白です。 https://docs.reindeer.tech/index_ja.html#s-author",
+            "title": "Sign",
+            "description": "Sign of the author. This value should be automatically generated by the signature support tool and is usually blank.",
             "type": "string",
             "minimum": 1
           }
@@ -704,27 +706,27 @@
       "uri": "https://reindeer.tech/cds-schema/v1/organization.json",
       "schema": {
         "title": "Organization object",
-        "description": "このオブジェクトは、CDDの関連組織とその役割についての情報を提供します。 対象のシステム、クラウドコンピューティング技術、そして同システムのサービス提供市場について正しい知識を持っている組織を 他の人が見つけるのを助けるため、包括的に記載されるべきです。 https://docs.reindeer.tech/index_ja.html#s-organization",
+        "description": "The object provides information about organizations related to the CDS. It SHOULD be comprehensive for helping others find the organization who has correct knowledge about the system, the cloud computing technology, and the market the system is serving.",
         "type": "object",
         "required": [
           "joinedAt"
         ],
         "properties": {
           "joinedAt": {
-            "title": "参画日時",
-            "description": "必須. 組織が本CDDに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。 https://docs.reindeer.tech/index_ja.html#s-organization",
+            "title": "Joined time",
+            "description": "REQUIRED. The time when the organization was joined at this CDS creation / operation. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
           "leavedAt": {
-            "title": "離任日時",
-            "description": "必須. 組織が本CDDの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。 https://docs.reindeer.tech/index_ja.html#s-organization",
+            "title": "Leaved time",
+            "description": "REQUIRED. The time when the organization was leaved at this CDS creation / operation. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
           "sign": {
-            "title": "署名",
-            "description": "組織の署名です。本値は署名支援ツールによって自動生成されるべきもので、通常は空白です。 https://docs.reindeer.tech/index_ja.html#s-organization",
+            "title": "Sign",
+            "description": "Sign of the organization. This value should be automatically generated by the signature support tool and is usually blank.",
             "type": "string",
             "minimum": 1
           }
@@ -735,8 +737,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/market.json",
       "schema": {
-        "title": "マーケットオブジェクト",
-        "description": "マーケットに関する情報を提供します。あなた自身、または第三者の調査結果を内包する可能性があります。 https://docs.reindeer.tech/index_ja.html#s-market",
+        "title": "Market object",
+        "description": "The object provides information about the market. It MAY be including the result of your research or third party's survey.",
         "type": "object",
         "required": [
           "title",
@@ -747,31 +749,31 @@
         ],
         "properties": {
           "title": {
-            "title": "マーケットの名前",
-            "description": "必須. マーケットの名称です。 会員の特性、興味、推定年などを説明する言葉を含めることにより、このCDD上でユニークであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-market",
+            "title": "Title of the market",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The content SHOULD be unique on this CDS by including the words describing a member's properties, interest, estimated year and so on.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
-            "title": "マーケットの説明",
-            "description": "必須. マーケットの説明です。 それは詳細な算定者や算定目的などを説明する言葉を含むべきです。この説明は、設計者がこの情報を他のデザインで再利用できるかどうかを判断するのに役立ちます。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-market",
+            "title": "Description of the market",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the market. It SHOULD be including the words describing the author, estimation purpose and so on. This text MAY help the designer's decision whether this information can be reused by other design or not.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "num": {
-            "title": "人数",
-            "description": "必須. 構成メンバーの数です。 https://docs.reindeer.tech/index_ja.html#s-market",
+            "title": "Number of members of the market",
+            "description": "REQUIRED. The number of members.",
             "type": "integer",
             "minimum": 1
           },
           "estimatedBy": {
-            "title": "算定者名",
-            "description": "必須. 算定者の名称です。 https://docs.reindeer.tech/index_ja.html#s-market",
+            "title": "The author of this estimation",
+            "description": "REQUIRED. The author of this estimation.",
             "type": "string"
           },
           "estimatedAt": {
-            "title": "算定日時",
-            "description": "必須. 算定された日時です。UNIXTIME形式で記載されねばなりません。 https://docs.reindeer.tech/index_ja.html#s-market",
+            "title": "The date of estimation",
+            "description": "REQUIRED. The time when it was estimated at. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
@@ -782,8 +784,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/infoType.json",
       "schema": {
-        "title": "情報種別",
-        "description": "情報の種類と必要なセキュリティレベルを表します。 本オブジェクトにより、取り扱う情報タイプを定義し、クラウドコンピューティングリソースで 受信、保存、処理される情報を分類すべきです。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+        "title": "InfoType object",
+        "description": "The objects represent the information's type and required security level. You SHOULD define the information types and classify the information received, stored, treated at the cloud computing resources.",
         "type": "object",
         "required": [
           "title",
@@ -795,35 +797,35 @@
         ],
         "properties": {
           "title": {
-            "title": "名称",
-            "description": "必須. 情報種別の名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "Title",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The name of the information type.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
-            "title": "説明",
-            "description": "必須. 情報種別の名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "Description",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. Describing classification detail.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "confidential": {
-            "title": "機密フラグ",
-            "description": "必須. 機密情報か否かを定義します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "confidential flag",
+            "description": "REQUIRED. Confidential information or not.",
             "type": "boolean"
           },
           "privacy": {
-            "title": "個人情報フラグ",
-            "description": "必須. プライバシー情報を含むか否かを定義します。法的に守られるべき情報の存在を意味します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "privacy flag",
+            "description": "REQUIRED. Privacy information or not. It means the information is needed to be protected as legally.",
             "type": "boolean"
           },
           "definedBy": {
-            "title": "作成者",
-            "description": "必須. 作成者です。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "The author of this infotype",
+            "description": "REQUIRED. The author of this definition.",
             "type": "string"
           },
           "definedAt": {
-            "title": "作成日",
-            "description": "必須. 作成日です。UNIXTIME形式で記述されなければなりません。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "The date of the definition",
+            "description": "REQUIRED. The time when it was defined at. It MUST be the UNIXTIME format.",
             "type": "integer",
             "minimum": 1
           },
@@ -852,7 +854,7 @@
         "patternProperties": {
           "^[a-z]{2}$": {
             "type": "string",
-            "maxLength": 150
+            "maxLength": 255
           }
         },
         "additionalProperties": false
@@ -868,16 +870,16 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/refToActor.json",
       "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
+        "title": "Reference",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
         ],
         "properties": {
           "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "title": "Reference",
+            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference.",
             "type": "string",
             "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+(/components/actors|/actors)+/[a-zA-Z0-9]+$"
           }
@@ -887,16 +889,16 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/refToResources.json",
       "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
+        "title": "Reference",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
         ],
         "properties": {
           "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "title": "Reference",
+            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference.",
             "type": "string",
             "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/+.+$"
           }
@@ -906,16 +908,16 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/refToContext.json",
       "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
+        "title": "Reference",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
         ],
         "properties": {
           "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "title": "Reference",
+            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference.",
             "type": "string",
             "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/contexts/[a-zA-Z0-9]+$"
           }
@@ -925,16 +927,16 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/refToTrigger.json",
       "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
+        "title": "Reference",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
         ],
         "properties": {
           "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "title": "Reference",
+            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference.",
             "type": "string",
             "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+(/components/triggers/+([a-zA-Z0-9])|/contexts/+([a-zA-Z0-9])+/trigger)+$"
           }
@@ -944,16 +946,16 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/refToTraffic.json",
       "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
+        "title": "Reference",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
         ],
         "properties": {
           "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "title": "Reference",
+            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference.",
             "type": "string",
             "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+(/components/traffics|/contexts/+([a-zA-Z0-9])+/traffics)+/[a-zA-Z0-9]+$"
           }
@@ -963,16 +965,16 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/refToInfoType.json",
       "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
+        "title": "Reference",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
         ],
         "properties": {
           "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "title": "Reference",
+            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference.",
             "type": "string",
             "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/infoTypes/[a-zA-Z0-9]+$"
           }
@@ -982,16 +984,16 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/refToMarket.json",
       "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
+        "title": "Reference",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDS or Cloud Automation Tools from various fields of CDS. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification.",
         "type": "object",
         "required": [
           "$ref"
         ],
         "properties": {
           "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "title": "Reference",
+            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference.",
             "type": "string",
             "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/markets/[a-zA-Z0-9]+$"
           }
@@ -1001,8 +1003,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/webAccessTypeOfTrigger.json",
       "schema": {
-        "title": "Webアクセスタイプのトリガーオブジェクト",
-        "description": "これはアクターによるトリガーの一種です。アクターによるクラウドコンピューティングリソースへのWebアクセスを表現します。 アクターは人間または外部システムの可能性があります。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+        "title": "Web access type of trigger object",
+        "description": "This is a kind of trigger by actors. Describing the actor's web access to cloud computing resources. The actor MAY be human, or external computing.",
         "type": "object",
         "required": [
           "type",
@@ -1025,21 +1027,21 @@
         ],
         "properties": {
           "type": {
-            "title": "トリガーの種類",
-            "description": "必須. 固定値： 'webAccess' https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Type of this trigger",
+            "description": "REQUIRED. Fixed value, 'webAccess'.",
             "type": "string",
             "enum": [
               "webAccess"
             ]
           },
           "description": {
-            "title": "トリガーの説明",
-            "description": "必須. トリガーの説明です。トリガーの目的を端的に示すメモであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Description of trigger",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the trigger. It SHOULD be the concise memo describing the purpose of this trigger.",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
-            "title": "情報の種別",
-            "description": "必須. InfoType objectに対する参照です。このトリガーが扱う情報の種別を定義します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "Information type",
+            "description": "REQUIRED. Reference to the InfoType object. Indicates the type of information handled in this trigger.",
             "oneOf": [
               {
                 "type": "object",
@@ -1052,61 +1054,61 @@
             ]
           },
           "ports": {
-            "title": "ポート番号",
-            "description": "必須. このトリガーのエンドポイント（endフィールドで定義）が利用するポート番号です。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Ports",
+            "description": "REQUIRED. Port numbers required at the end points (defined at the end field) of this trigger.",
             "type": "array",
             "items": {
               "type": "integer"
             }
           },
           "internet": {
-            "title": "インターネット通信",
-            "description": "必須. この接続がインターネット経由か否かを示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Internet usage",
+            "description": "REQUIRED. Use internet or not for this trigger.",
             "type": "boolean"
           },
           "restriction": {
-            "title": "通信制限",
-            "description": "必須. このトリガーのエンドポイントにおける、接続元IP、ドメインなどの接続制限の有無を示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Restricted by IP range, domain or the others",
+            "description": "REQUIRED. Source IP, Domain or the other restriction at the end points of this trigger.",
             "type": "boolean"
           },
           "dau": {
-            "title": "DAU",
-            "description": "必須. 日間アクティブユーザー率（Dayly Active User)です。例えば１日平均で、このstartフィールドで参照された アクターの1%がこのendフィールドで参照されるリソースにアクセスする場合、それは0.01となります。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Daily Active User ratio",
+            "description": "REQUIRED. Daily Active User ratio. For example, it will be 0.01 in case of that avarage 1 percent of actors, referred at this start field, will access to the resources, referred at this end field, per day.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "pagesVisit": {
-            "title": "訪問毎ページ数",
-            "description": "必須. 訪問あたりの平均ページ数です。訪問者が訪問毎にどのくらいのページにアクセスするかを示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Page numbers per visit",
+            "description": "REQUIRED. Average page numbers per visit. Representing how many pages visitors will open per visit.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbPage": {
-            "title": "ページサイズ(KB)",
-            "description": "必須. 平均ページサイズです。（KB単位） https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Page size (KB)",
+            "description": "REQUIRED. Average page data size as a unit of KB.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "reqPage": {
-            "title": "ページ毎リクエスト数",
-            "description": "必須. ページあたりのリクエスト数です。ページあたりにどのくらいのリクエスト数（ページを構成する画像やHTMLなどへのリクエスト）が発生するかを示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Request number per page",
+            "description": "REQUIRED. Average request numbers per page. Representing how many requests (Requests to images and HTML etc. that make up the page) will be used per page.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "busyHours": {
-            "title": "日間アクセス集中時間",
-            "description": "必須. １日あたりのアクセス集中時間です。例えば日々のアクセスがほぼ AM 9:00 - AM 11:00 と PM 17:00 - PM 19:00 に集中している場合、この値は 6 です。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Busy hours within a day",
+            "description": "REQUIRED. Busy hours per day. For example, it's 6, in the case of that most access is concentrated amoung AM 9:00 - AM 11:00 and PM 17:00 - PM 19:00 per day.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "postsVisit": {
-            "title": "投稿者率",
-            "description": "必須. 投稿する訪問者の割合を示します。例えば1日あたり、100,000人のアクターがDAU1%の割合で訪問する中で100件の投稿がある場合、この値は0.1となります。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "POST numbers per visit",
+            "description": "REQUIRED. Representing what percentage of the visitors will POST. For example, it's 0.1 in case of that 100 POST will sent per day among 100,000 actors and 0.01 dau.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbPost": {
-            "title": "投稿サイズ (KB)",
-            "description": "必須. 平均投稿データサイズです。（KB単位） https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Post size (KB)",
+            "description": "REQUIRED. Average POST data size as a unit of KB.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "start": {
-            "title": "トリガーの開始点",
-            "description": "必須. actor objectsへの参照です。このトリガーの開始点を意味します。 https://docs.reindeer.tech/index_ja.html#s-actor",
+            "title": "The start point of this trigger",
+            "description": "REQUIRED. It MUST be a reference to the actor objects. The start point of this trigger.",
             "oneOf": [
               {
                 "type": "object",
@@ -1115,8 +1117,8 @@
             ]
           },
           "end": {
-            "title": "トリガーのエンドポイント",
-            "description": "必須. resource objectに記載されたリソースへの参照でなければなりません。このトリガーのエンドポイントを示します。 https://docs.reindeer.tech/index_ja.html#s-resource",
+            "title": "The end point of this traffic",
+            "description": "REQUIRED. It MUST be references to the each resource item described in the resource object. The end point of this traffic.",
             "type": "array",
             "items": {
               "type": "object",
@@ -1124,19 +1126,19 @@
             }
           },
           "endpointTitle": {
-            "title": "エンドポイント名",
-            "description": "必須. エンドポイントの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "The name of the endpoint",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The name of the endpoint.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "storedRatio": {
-            "title": "データ保管率",
-            "description": "必須. endが受信したデータのうち、endで保管するデータサイズの比率を示します。 例えば、このトリガーでアクターがendに送信するデータの全てをend上で保管する場合、この値は1.0になります。データを 保管しない場合は0です。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Stored data size ratio",
+            "description": "REQUIRED. The ratio of the end's stored data volume among the received data. For example, if this trigger's end stores all of the data that the actor sends to end, this value will be 1.0. And it's 0 if not stored.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "storedInfoType": {
-            "title": "保管データの情報種別",
-            "description": "InfoType objectへの参照です。このトリガーのendが保管するデータの種類を示します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "Information type of stored data",
+            "description": "Reference to the InfoType object. Indicates the type of information stored at the ends of this trigger.",
             "oneOf": [
               {
                 "type": "object",
@@ -1149,8 +1151,8 @@
             ]
           },
           "storageDescription": {
-            "title": "データ保管の目的",
-            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "title": "Purpose of the storage",
+            "description": "The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the endpoint. It SHOULD be the concise memo describing the purpose of storage of the ends in this trigger.",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
@@ -1160,8 +1162,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/timedActionTypeOfTrigger.json",
       "schema": {
-        "title": "時限アクションタイプのトリガーオブジェクト",
-        "description": "これはアクターまたはコンピューティングリソースによって発動されるタイプのトリガーです。 アクターまたはcloud computingリソースからの時限アクションを表現します。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+        "title": "Timed action type of trigger object",
+        "description": "This is a kind of trigger by actors or resources. Describing the timed action from actors or cloud computing resources to other ones.",
         "type": "object",
         "required": [
           "type",
@@ -1181,21 +1183,21 @@
         ],
         "properties": {
           "type": {
-            "title": "トリガーの種類",
-            "description": "必須. 固定値： 'timedAction' https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Type",
+            "description": "REQUIRED. Fixed value, 'timedAction'.",
             "type": "string",
             "enum": [
               "timedAction"
             ]
           },
           "description": {
-            "title": "トリガーの説明",
-            "description": "必須. トリガーの説明です。トリガーの目的を端的に示すメモであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "The description of the trigger",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the trigger. It SHOULD be the concise memo describing the purpose of this trigger.",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
-            "title": "情報の種別",
-            "description": "必須. InfoType objectに対する参照です。このトリガーが扱う情報の種別を定義します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "Information type",
+            "description": "REQUIRED. Reference to the InfoType object. Indicates the type of information handled in this trigger.",
             "oneOf": [
               {
                 "type": "object",
@@ -1208,46 +1210,46 @@
             ]
           },
           "ports": {
-            "title": "ポート番号",
-            "description": "必須. このトリガーのエンドポイント（endフィールドで定義）が利用するポート番号です。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Ports",
+            "description": "REQUIRED. Port numbers required at the end points of this trigger.",
             "type": "array",
             "items": {
               "type": "integer"
             }
           },
           "internet": {
-            "title": "インターネット通信",
-            "description": "必須. この接続がインターネット経由か否かを示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Internet usage",
+            "description": "REQUIRED. Whether use internet use or not for this connection.",
             "type": "boolean"
           },
           "restriction": {
-            "title": "通信制限",
-            "description": "必須. このトリガーのエンドポイントにおける、接続元IP、ドメインなどの接続制限の有無を示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Restricted by IP range, domain or the others",
+            "description": "REQUIRED. Source IP, Domain or the other restriction at the end points of this trigger.",
             "type": "boolean"
           },
           "onlineRps": {
-            "title": "秒間リクエスト",
-            "description": "必須. このトリガーが発火した時の、1秒当たりの要求数。 開始点（startフィールド）からエンドポイント（endフィールド）に 対するリクエストの要求性能を明示します。 たとえば、毎週月曜日の朝にバッチシステムが動作し、各バッチが1秒間に2回のスループットで外部APIにアクセスする場合は2.0です。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Requests per second",
+            "description": "REQUIRED. Number of requests per second when this trigger fires. Specify the required performance from the start point (start field) to the end point (end field). For example, if the batch system runs every Monday morning and each batch accesses the external API with a throughput of 2 times per second it is 2.0.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "reqMonth": {
-            "title": "月間リクエスト",
-            "description": "必須. 開始点からエンドポイントへの月間リクエスト数です。 たとえば、バッチシステムが毎月1000人に3回メールマガジンを送信する場合、この値は9000になります。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Requests per month",
+            "description": "REQUIRED. Monthly request numbers from the start point to the endpoints. For example, it's 9000 in case of that the batch system sends mail magazine 3 times to 1000 persons per month.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbRequest": {
-            "title": "リクエストサイズ (KB)",
-            "description": "必須. 開始点からエンドポイントに対するリクエストあたりのデータサイズをKB単位で明示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Request size (KB)",
+            "description": "REQUIRED. Request data size per request from the start point to the end point as the unit of KB.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbResponse": {
-            "title": "レスポンスサイズ (KB)",
-            "description": "必須. 開始点からエンドポイントへのリクエスト毎に生じるレスポンスのデータサイズをKB単位で明示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Response size (KB)",
+            "description": "REQUIRED. Response data size per request from the start point to the end point as the unit of KB.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "start": {
-            "title": "トリガーの開始点",
-            "description": "必須. トリガーの開始点を示します。actor object または resource objectへの参照でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "The start point of this trigger",
+            "description": "REQUIRED. It MUST be a reference to the actor object or the resource object. The start point of this trigger.",
             "oneOf": [
               {
                 "type": "object",
@@ -1260,8 +1262,8 @@
             ]
           },
           "end": {
-            "title": "トリガーのエンドポイント",
-            "description": "必須. トリガーのエンドポイントを示します。 resource object または actor objectへの参照でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "The end point of this trigger",
+            "description": "REQUIRED. It MUST be a reference to the actor object or the resource object. The end point of this traffic.",
             "type": "array",
             "items": {
               "anyOf": [
@@ -1277,19 +1279,19 @@
             }
           },
           "endpointTitle": {
-            "title": "エンドポイントの名称",
-            "description": "必須. エンドポイントの名称です。キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "The name of the endpoint",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The name of the endpoint.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "storedRatio": {
-            "title": "データの保管率",
-            "description": "必須. endが受信したデータのうち、endに保管されるデータサイズの比率を示します。 例えば、このトリガーでアクターがendに送信するデータの全てをend上で保管する場合、この値は1.0になります。データを 保管しない場合は0です。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Stored data size ratio",
+            "description": "REQUIRED. The ratio of the stored data volume among the received data to the ends. For example, it is 1.0 in case of that the database resource in this trigger is received 10GB/Month from the app server and store all of them to the database. When the ends don't store the traffic data, it's 0.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "storedInfoType": {
-            "title": "保管するデータの種類",
-            "description": "InfoType objectへの参照です。このトリガーのendが保管するデータの種類を示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Information type",
+            "description": "Reference to the InfoType object. Indicates the type of information stored at the ends of this trigger.",
             "oneOf": [
               {
                 "type": "object",
@@ -1302,8 +1304,8 @@
             ]
           },
           "storageDescription": {
-            "title": "保管データの目的",
-            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "title": "Purpose of the storage",
+            "description": "The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the endpoint. It SHOULD be the concise memo describing the purpose of storage of the ends in this trigger.",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
@@ -1313,8 +1315,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json",
       "schema": {
-        "title": "パススルー比率タイプのトラフィックオブジェクト",
-        "description": "これはトラフィックオブジェクトの一種です。開始点が受信したリクエストの一部を後続のリソースに受け渡すという形で発生する通信を表現できます。 例えばロードバランサが受けたリクエストをWebサーバに送信する、アプリケーションが受けたリクエストにもとづいてメール配信キューを生成するといった通信の連鎖が表現できます。 その際、本トラフィックのエンドポイント(endフィールド)が受信するデータサイズは、本トラフィックの前段の通信（sourceフィールド）が 受信したリクエストの何パーセントにあたるかといった表現方法になります。したがって、前段の通信が1MBのPOST値を受け取った後にサーバ内で3MBにデータを拡張して 本トラフィックのエンドポイントに受け渡すといった場合には、データサイズは300%になる（passThroughReqRatio>フィールドが3）と表現できます。 https://docs.reindeer.tech/index_ja.html#s-traffic",
+        "title": "Pass through ratio type of traffic object",
+        "description": "This is a kind of traffic object. It can represent traffic that occurs in the form of passing a part of the request received from the start point to the subsequent resources. For example, it can represent a chain of communication where a load balancer sends a received request to a web server, and an application generates a mail delivery queue based on the received request. At this time, the size of the data received by this traffic endpoint (end field) is the percentage of the request received by the previous communication (source field) of this traffic. Therefore, if you extend the data to 3 MB in the server and pass it to the end point of this traffic after the previous communication receives the 1 MB POST value, the data size can be expressed as 300% (passThroughReqRatio> field's value is 3).",
         "type": "object",
         "required": [
           "type",
@@ -1332,21 +1334,21 @@
         ],
         "properties": {
           "type": {
-            "title": "トラフィックの種類",
-            "description": "必須. 固定値： 'passThroughRatio'. https://docs.reindeer.tech/index_ja.html#s-traffic",
+            "title": "Type",
+            "description": "REQUIRED. Fixed value, 'passThroughRatio'.",
             "type": "string",
             "enum": [
               "passThroughRatio"
             ]
           },
           "description": {
-            "title": "トラフィックの説明",
-            "description": "必須. トラフィックの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic",
+            "title": "The description of the traffic.",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the traffic. It SHOULD be the concise memo describing the purpose of this traffic.",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
-            "title": "情報の種類",
-            "description": "必須. InfoType objectへの参照です。 トラフィックが扱う情報の種類を明示します。　https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "title": "Information type",
+            "description": "REQUIRED. Reference to the InfoType object. Indicates the type of information handled in this traffic.",
             "oneOf": [
               {
                 "type": "object",
@@ -1359,26 +1361,26 @@
             ]
           },
           "ports": {
-            "title": "ポート番号",
-            "description": "必須. トラフィックのエンドポイントが利用するポート番号です。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Ports",
+            "description": "REQUIRED. Port numbers required at the end points of this traffic.",
             "type": "array",
             "items": {
               "type": "integer"
             }
           },
           "internet": {
-            "title": "インターネット利用",
-            "description": "必須. トラフィックがインターネット経由の通信を行うかどうかを明示します。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Internet usage",
+            "description": "REQUIRED. Use internet or not for this connection.",
             "type": "boolean"
           },
           "restriction": {
-            "title": "通信制限",
-            "description": "必須. トラフィックのエンドポイントが接続元IP、ドメイン、その他の接続制限をかけているかどうかを明示します。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Restricted by IP range, domain or the others",
+            "description": "REQUIRED. Source IP, Domain or the other restriction at the end points of this trigger.",
             "type": "boolean"
           },
           "source": {
-            "title": "トラフィックの開始点",
-            "description": "必須. trigger object または traffic objectへの参照です。 このトラフィックの開始点を意味します。 これは、endフィールドに記述されているすべてのリソースまたはアクターオブジェクトに影響を及ぼします。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Source objects",
+            "description": "REQUIRED. References to the trigger object or the traffic object. The start point of this traffic. This effects to or is affected by all of the resources or actor object described in the end fields.",
             "type": "object",
             "oneOf": [
               {
@@ -1392,8 +1394,8 @@
             ]
           },
           "end": {
-            "title": "トラフィックのエンドポイント",
-            "description": "必須. このトラフィックのエンドポイントを意味します。 actor objects または resource object内に記述された各リソースへの参照です。  https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "End objects",
+            "description": "REQUIRED. References to the actor objects or the each resource item described in the resource object. The end point of this traffic.",
             "type": "array",
             "items": {
               "anyOf": [
@@ -1409,29 +1411,29 @@
             }
           },
           "passThroughReqRatio": {
-            "title": "リクエスト率",
-            "description": "必須. 前段のトリガーやトラフィック（sourceフィールド）が受信したリクエストのうち、 何パーセントが後続となる本トラフィックのエンドポイント（end）に流入するかを示します。 例えば前段のトリガーがユーザーから100,000/月のリクエストを受信し、50%を自身のキャッシュ、50%を本トラフィックに 送信する場合、この値は0.5となります。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Request ratio",
+            "description": "REQUIRED. Indicates what percentage of the requests received by prior trigger or traffic (source field) will flow to the endpoint (end) of this traffic. For example, if the former trigger receives 100,000/M requests from the user and use internal cash for 50% response and pass 50% request to this traffic, this value will be 0.5.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "compositResRatio": {
-            "title": "レスポンス構成率",
-            "description": "必須. 前段のトリガーやトラフィック（sourceフィールド）が扱うレスポンスデータのサイズを基準と して、本トラフィックがその何パーセントにあたるサイズのデータを前段のトリガーやトラフィックに返却するかを記述します。 例えば前段のトリガーがユーザーに10GB/月のデータを返却する場合、この値が0.5であれば 本トラフィックから前段のトリガーに対して5GB/月のデータを返却することになります。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Composition ratio",
+            "description": "REQUIRED. Based on the size of the response data handled by the former trigger or traffic (source field), describes that this traffic response what percentage of that size to the source. For example, if the former trigger returns data of 10GB/Month to the user and this compositResRatio is 0.5, this traffic will response 5GB/Month of data to the former trigger.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "endpointTitle": {
-            "title": "エンドポイントの名称",
-            "description": "必須. エンドポイントの名称です。キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "The name of the endpoint",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 150 letters string of UTF-8. The name of the endpoint.",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "storedRatio": {
-            "title": "データ保管率",
-            "description": "必須. endが受信したデータのうち、endで保管するデータサイズの比率を示します。 例えば、このトラフィックで送信元がendに送信するデータの全てをend上で保管する場合、この値は1.0になります。データを 保管しない場合は0です。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Stored data size ratio",
+            "description": "The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the endpoint. It SHOULD be the concise memo describing the purpose of storage of the ends in this traffic.",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "storedInfoType": {
-            "title": "保管データの種類",
-            "description": "InfoType objectへの参照です。このトラフィックのendが保管するデータの種類を示します。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Information type of the storage",
+            "description": "Reference to the InfoType object. Indicates the type of information stored at the ends of this traffic.",
             "oneOf": [
               {
                 "type": "object",
@@ -1444,8 +1446,8 @@
             ]
           },
           "storageDescription": {
-            "title": "データ保管の名前",
-            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "title": "Purpose of the storage",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 255 letters string of UTF-8. The description of the endpoint. It SHOULD be the concise memo describing the purpose of storage of the ends in this traffic.",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
@@ -1455,8 +1457,8 @@
     {
       "uri": "https://reindeer.tech/cds-schema/v1/rangeValue.json",
       "schema": {
-        "title": "データ範囲オブジェクト",
-        "description": "CDDの様々なフィールドで利用される、値範囲を示すオブジェクトです。 https://docs.reindeer.tech/index_ja.html#s-rangeValue",
+        "title": "Range values object",
+        "description": "An object representing the range values used at fields on CDS.",
         "type": "object",
         "required": [
           "max",
@@ -1464,14 +1466,14 @@
         ],
         "properties": {
           "max": {
-            "title": "最大値",
-            "description": "必須. 値範囲の最大値を意味します。",
+            "title": "Max value",
+            "description": "REQUIRED. Max value of the range value.",
             "type": "number",
             "minimum": 0
           },
           "min": {
-            "title": "最小値",
-            "description": "必須. 値範囲の最小値を意味します。",
+            "title": "Min value",
+            "description": "REQUIRED. Min value of the range value.",
             "type": "number",
             "minimum": 0
           }
