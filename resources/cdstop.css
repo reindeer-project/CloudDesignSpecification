@@ -1,0 +1,35 @@
+#main {
+  z-index: 2000;
+}
+#headertitle {
+  z-index: 2000;
+}
+#drawing_canvas {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.header {
+  background-color: #9fa8da !important;
+}
+.main-content {
+  background-color: #ffffff;
+}
+#headertitle h1 {
+  font-weight: 400;
+  color: #ffffff;
+}
+#headertitle p {
+  font-weight: 300;
+  color: #e8eaf6;
+}
+.navbar-dark .nav-navbar > .nav-item > .nav-link,
+.navbar-dark .nav-navbar > .nav-link,
+.navbar-stick-dark.stick .nav-navbar > .nav-item > .nav-link,
+.navbar-stick-dark.stick .nav-navbar > .nav-link {
+  color: #ffffff;
+}
