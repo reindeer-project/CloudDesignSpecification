@@ -20,9 +20,9 @@
   <title>クラウド設計仕様 - Reindeer Project</title>
 
   <!-- Styles -->
-  <link href="resources/page.minCDS.css" rel="stylesheet">
-  <link href="resources/styleCDS.css" rel="stylesheet">
-  <link href="resources/cdstopCDS.css" rel="stylesheet">
+  <link href="resources/page.min.css" rel="stylesheet">
+  <link href="resources/style.css" rel="stylesheet">
+  <link href="resources/cdstop.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -59,20 +59,16 @@
   <!-- /.navbar -->
   <!-- Header -->
   <header class="header">
-    <canvas id="drawing_canvas"></canvas>
     <div id="headertitle" class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-8" style="text-align:center">
-          <h1>クラウド設計仕様（CDS）</h1>
-          <p class="lead">クラウドの利用要件を定義する設計コード</p>
-          <p>version 1.3.2</p>
-        </div>
-        <div class="col-sm-12 col-md-4" style="text-align:right">
-          <img src="cloudDesignSpecification.svg" style="max-width:600px;">
+        <div class="col-sm-12" style="text-align:center">
+          <img src="cloudDesignSpecification.svg" class="mb-3" style="max-width:150px;">
+          <h1 style="padding-bottom:20px;padding-top:10px;">クラウド設計仕様 (CDS)</h1>
         </div>
       </div>
     </div>
-  </header><!-- /.header -->
+  </header>
+  <!-- /.header -->
   <!-- Main Content -->
   <main id="main" class="main-content">
     <div class="container">
@@ -197,7 +193,7 @@
             !-->
           <h2 id="gettingstarted">はじめに<a class="anchor" href="#gettingstarted"></a></h2>
           <div class="alert alert-secondary">
-            <p class="lead-2">本資料とツール群を使って、クラウドの設計をはじめましょう！</p>
+            <p class="lead-2">本資料とツール群を使って、クラウドの要件定義をはじめましょう！</p>
             <p>この文書は、<a href="https://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">
                 The Apache License, Version 2.0</a> のもとで公開されます。
             </p>
@@ -214,7 +210,7 @@
             <hr class="hr-dot-bold my-7">
           <h3 id="extension">既存のプロビジョニングコードの拡張 <a class="anchor" href="#introduction"></a></h3>
           <p>
-            CDSはCloudFormationなど既存のプロビジョニングコードを拡張する設計コードです。クラウドの利用者やアクセスボリュームといったシステム要件を独自の仕様で記述し、クラウドリソースの定義は既存のプロビジョニングコードへの参照によって表現します。同構造により、デベロッパーの学習コストを抑え、既存コード資産の活用を促します。
+            CDSはCloudFormationなど既存のプロビジョニングコードを拡張する要件定義コードです。クラウドの利用者やアクセスボリュームといったシステム要件を独自の仕様で記述し、クラウドリソースの定義は既存のプロビジョニングコードへの参照によって表現します。同構造により、デベロッパーの学習コストを抑え、既存コード資産の活用を促します。
             <br>CDSが含むことのできるプロビジョニングコードの種類については、<a href="#s-resource">Resource object</a>をご参照下さい。
           </p>
           <hr class="hr-dot-bold my-7">
@@ -2375,8 +2371,8 @@
   </main><!-- /.main-content -->
 
   <!-- Scripts -->
-  <script src="resources/page.minCDS.js"></script>
-  <script src="resources/scriptCDS.js"></script>
+  <script src="resources/page.min.js"></script>
+  <script src="resources/script.js"></script>
 
 </body>
 
