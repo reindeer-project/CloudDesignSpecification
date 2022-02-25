@@ -424,7 +424,10 @@
           "traffics": {
             "title": "Traffics of the context",
             "description": "REQUIRED. Holding the list of traffic objects. Each traffic is one of the types of traffic objects. The traffic means related data transfer route within the context.",
-            "type": "object",
+            "oneOf":[
+              {"type": "object"},
+              {"type": "array"}
+            ],
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
                 "anyOf": [
