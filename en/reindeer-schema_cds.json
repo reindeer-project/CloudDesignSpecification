@@ -163,7 +163,10 @@
               "triggers": {
                 "title": "Trigger objects",
                 "description": "An object to hold reusable Trigger object.",
-                "type": "object",
+                "oneOf":[
+                  {"type": "object"},
+                  {"type": "array"}
+                ],
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
                     "type": "object",

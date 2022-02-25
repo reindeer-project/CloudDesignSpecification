@@ -182,7 +182,10 @@
               "traffics": {
                 "title": "Traffic objects",
                 "description": "再利用可能なTraffic objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
-                "type": "object",
+                "oneOf":[
+                  {"type": "object"},
+                  {"type": "array"}
+                ],
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
                     "oneOf": [
