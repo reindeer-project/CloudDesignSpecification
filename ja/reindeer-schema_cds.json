@@ -182,10 +182,7 @@
               "traffics": {
                 "title": "Traffic objects",
                 "description": "再利用可能なTraffic objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
-                "oneOf":[
-                  {"type": "object"},
-                  {"type": "array"}
-                ],
+                "type": "object",
                 "patternProperties": {
                   "^[0-9a-zA-Z]+$": {
                     "oneOf": [
@@ -592,7 +589,10 @@
           "traffics": {
             "title": "コンテキスト内の通信",
             "description": "必須. トラフィックオブジェクトを格納します。各トラフィックはトラフィックオブジェクトを指定します。 トラフィックはコンテキスト内の通信経路を意味します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
-            "type": "object",
+            "oneOf":[
+              {"type": "object"},
+              {"type": "array"}
+            ],
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
                 "anyOf": [
