@@ -32,7 +32,7 @@
             "description": "REQUIRED. This string is the filename of the CDS. It MUST be with the extension, .json, .yaml or .yml. The self field SHOULD be used by tools for interpreting the CDS.",
             "type": "string",
             "default": "cloudDesign.json",
-            "pattern": "^[a-zA-Z0-9]+\\.(yaml|yml|json)$"
+            "pattern": "^[a-zA-Z0-9_.\\-]+\\.(yaml|yml|json)$"
           },
           "info": {
             "title": "Info",
@@ -541,7 +541,7 @@
             "description": "REQUIRED. Reference to the file written by cloud automation language. Same as the $ref item of Reference object. This MUST point to the external file with extension, .json, .yaml, or .yml. And the extension SHOULD be used by external tools to detect the file format of the link.",
             "type": "string",
             "default": "externalFile.json",
-            "pattern": "^[a-zA-Z0-9]+\\.(yaml|yml|json)$"
+            "pattern": "^[a-zA-Z0-9_.\\-]+\\.(yaml|yml|json)$"
           }
         },
         "additionalProperties": false
@@ -867,7 +867,7 @@
       "uri": "https://reindeer.tech/cds-schema/v1/ip.json",
       "schema": {
         "type": "string",
-        "pattern": "^[a-zA-Z0-9]+$"
+        "pattern": "^[a-zA-Z0-9_.\\-]+$"
       }
     },
     {
