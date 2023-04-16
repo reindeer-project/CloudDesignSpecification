@@ -63,7 +63,8 @@
       <div class="row">
         <div class="col-sm-12" style="text-align:center">
           <img src="cloudDesignSpecification.svg" class="mb-3" style="max-width:150px;">
-          <h1 style="padding-bottom:20px;padding-top:10px;">CDS: クラウドデザイン仕様</h1>
+          <h1 style="padding-top:10px;">CDS: クラウドデザイン仕様</h1>
+          <div style="padding-bottom:30px;padding-top:10px;font-size:20px;color:white">Ver 1.3.2</div>
         </div>
       </div>
     </div>
@@ -313,6 +314,8 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 この文字列はCDS自体の<a href="#versions">semantic version number</a>でなければなりません。
                 <code>reindeer</code>フィールドは、CDSを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。
+                <br>
+                <span style="font-weight:bold;color:red"><a href="https://forkme.cloud/ja/" target="_blank">ForkMe!</a>では「1.3.2」をご指定ください。</span>
               </p>
             </div>
             <div class="d-table-row">
@@ -322,6 +325,7 @@
                 この文字列はCDSのファイル名です。
                 拡張子は<code>.json</code>, <code>.yaml</code> または <code>.yml</code>でなければなりません。
                 <code>self</code>フィールドは、CDSを解釈するためのツールに使用されるべきです。
+                <span style="font-weight:bold;color:red"><a href="https://forkme.cloud/ja/" target="_blank">ForkMe!</a>では「cloudDesign.json」をご指定ください。</span>
               </p>
             </div>
             <div class="d-table-row">
@@ -366,6 +370,57 @@
               </p>
             </div>
           </div>
+
+          <h6>JSON example</h6>
+          <pre><code>{
+  <span class="token tag">"reindeer": </span>"1.3.2",
+  <span class="token tag">"self": </span>"cloudDesign.json"
+  <span class="token tag">"info": </span>{
+    <span class="token tag">"title": </span>{
+      <span class="token tag">"en": </span>"Sample system",
+      <span class="token tag">"ja": </span>"サンプルシステム",
+    },
+    以下Infoスキーマ参照
+  },
+  <span class="token tag">"actors": </span>{
+      <span class="token tag">"customer": </span>{
+        <span class="token tag">"title": </span>{
+          <span class="token tag">"en": </span>"Customers",
+          <span class="token tag">"ja": </span>"顧客",
+        },
+        以下Actorスキーマ参照
+      }
+  },
+  <span class="token tag">"resources": </span>[
+      {
+        <span class="token tag">"$ref":</span>"awsTemplate.json",
+        以下Resourcesスキーマ参照
+      }
+  ],
+  <span class="token tag">"contexts": </span>{
+    <span class="token tag">"customerWebAccess": </span>{
+      <span class="token tag">"title": </span>{
+        <span class="token tag">"en": </span>"Web access by customer",
+        <span class="token tag">"ja": </span>"顧客によるウェブアクセス",
+      },
+      以下Contextsスキーマ参照
+    }
+  },
+  <span class="token tag">"components": </span>{
+    <span class="token tag">"actors": </span>{
+      <span class="token tag">"operator": </span>{
+        <span class="token tag">"title": </span>{
+          <span class="token tag">"en": </span>"Operator",
+          <span class="token tag">"ja": </span>"運用者",
+        },
+        以下Actorスキーマ参照
+      }
+    },
+    以下Componentsスキーマ参照
+    （Componentsは定義の再利用に便利なオプションスキーマです）
+}
+</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-info">
@@ -2359,6 +2414,13 @@
               <p class="d-table-cell p-2 bg-white text-dark border">2021-06-11</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
                 商標表記を追加
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">1.3.2(変更なし)</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2023-04-17</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                ルートスキーマのjsonサンプルを追加
               </p>
             </div>
           </div>

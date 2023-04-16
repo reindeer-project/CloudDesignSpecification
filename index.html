@@ -64,7 +64,8 @@
       <div class="row">
         <div class="col-sm-12" style="text-align:center">
           <img src="cloudDesignSpecification.svg" class="mb-3" style="max-width:150px;">
-          <h1 style="padding-bottom:20px;padding-top:10px;">CDS: Cloud Design Specification</h1>
+          <h1 style="padding-top:10px;">CDS: Cloud Design Specification</h1>
+          <div style="padding-bottom:30px;padding-top:10px;font-size:20px;color:white">Ver 1.3.2</div>
         </div>
       </div>
     </div>
@@ -339,6 +340,7 @@
                 This string MUST be the <a href="#versions">semantic version number</a> of the CDS itself.
                 The <code>reindeer</code> field SHOULD be used by tools for interpreting the CDS.
                 This is not related to the <code>info.version</code> string.
+                <span style="font-weight:bold;color:red">Use '1.3.2' at <a href="https://forkme.cloud/" target="_blank">ForkMe!</a></span>
               </p>
             </div>
             <div class="d-table-row">
@@ -348,6 +350,7 @@
                 This string is the filename of the CDS. It MUST be with the extension, <code>.json</code>,
                 <code>.yaml</code> or <code>.yml</code>.
                 The <code>self</code> field SHOULD be used by tools for interpreting the CDS.
+                <span style="font-weight:bold;color:red">Use 'cloudDesign.json' at <a href="https://forkme.cloud/" target="_blank">ForkMe!</a></span>
               </p>
             </div>
             <div class="d-table-row">
@@ -394,6 +397,57 @@
               </p>
             </div>
           </div>
+
+          <h6>JSON example</h6>
+          <pre><code>{
+  <span class="token tag">"reindeer": </span>"1.3.2",
+  <span class="token tag">"self": </span>"cloudDesign.json"
+  <span class="token tag">"info": </span>{
+    <span class="token tag">"title": </span>{
+      <span class="token tag">"en": </span>"Sample system",
+      <span class="token tag">"ja": </span>"サンプルシステム",
+    },
+    Refer 'Info' schema
+  },
+  <span class="token tag">"actors": </span>{
+      <span class="token tag">"customer": </span>{
+        <span class="token tag">"title": </span>{
+          <span class="token tag">"en": </span>"Customers",
+          <span class="token tag">"ja": </span>"顧客",
+        },
+        Refer 'Actor' schema
+      }
+  },
+  <span class="token tag">"resources": </span>[
+      {
+        <span class="token tag">"$ref":</span>"awsTemplate.json",
+        Refer 'Resources' schema
+      }
+  ],
+  <span class="token tag">"contexts": </span>{
+    <span class="token tag">"customerWebAccess": </span>{
+      <span class="token tag">"title": </span>{
+        <span class="token tag">"en": </span>"Web access by customer",
+        <span class="token tag">"ja": </span>"顧客によるウェブアクセス",
+      },
+      Refer 'Contexts' schema
+    }
+  },
+  <span class="token tag">"components": </span>{
+    <span class="token tag">"actors": </span>{
+      <span class="token tag">"operator": </span>{
+        <span class="token tag">"title": </span>{
+          <span class="token tag">"en": </span>"Operator",
+          <span class="token tag">"ja": </span>"運用者",
+        },
+        Refer 'Actor' schema
+      }
+    },
+    Refer 'Components' schema
+    (Components is an optional schema useful for reusing definitions)
+}
+</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-info">
@@ -2497,6 +2551,13 @@
               <p class="d-table-cell p-2 bg-white text-dark border">2021-06-11</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
                 Added trademark descriptions.
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">1.3.2(No change)</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2023-04-17</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                Added json sample of root schema.
               </p>
             </div>
           </div>
