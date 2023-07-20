@@ -244,24 +244,25 @@
           },
           "title": {
             "title": "サービス名",
-            "description": "必須. このクラウドデザインを適用するサービスの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "description": "必須. このクラウドデザインを適用するサービスの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-info",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "サービスの説明",
-            "description": "必須. このクラウドデザインを適用するサービスの説明です。 それはシステムの目的と機能のすべてのキーワードを含む簡潔なメモであるべきです。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "description": "必須. このクラウドデザインを適用するサービスの説明です。 それはシステムの目的と機能のすべてのキーワードを含む簡潔なメモであるべきです。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-info",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "status": {
             "title": "CDDの状態",
-            "description": "必須. CDDの状態です。 以下の値が利用できます。\nidea: アイデア段階\ndraft: 設計中\nproduction: 本番稼働サービスで利用中、または本番稼働用の品質で設計されている。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "description": "必須. CDDの状態です。 以下の値が利用できます。\ndraft: アイデア段階\ndefined: 要件定義済\ndesigned: 設計済\nreviewed:レビュー済 https://docs.reindeer.tech/index_ja.html#s-info",
             "type": "string",
             "enum": [
-              "idea",
               "draft",
-              "production"
+              "defined",
+              "designed",
+              "reviewed"
             ]
           },
           "designedAt": {
@@ -323,13 +324,13 @@
           },
           "title": {
             "title": "アクター名",
-            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
+            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "アクターの説明",
-            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
+            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
@@ -405,13 +406,13 @@
           },
           "title": {
             "title": "アクター名",
-            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "アクターの説明",
-            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
+            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
@@ -470,13 +471,13 @@
           },
           "title": {
             "title": "アクターの名前",
-            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
+            "description": "必須. アクターの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "アクターの説明",
-            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
+            "description": "必須. アクターの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
@@ -510,7 +511,7 @@
       "uri": "https://reindeer.tech/cds-schema/v1/resource.json",
       "schema": {
         "title": "Resource object",
-        "description": "このオブジェクトは、利用するクラウドコンピューティングリソースに関する情報を提供します。 JSONまたはYAMLでフォーマットされた外部ファイルに対する参照でなければなりません。 そして、以下のようなクラウド自動化ツールのために、整形されたデータであるべきです。\nAWS CloudFormation\nAzure Resource Manager\nGoogle Cloud Deployment Manager\nAlibaba Cloud\nResource Orchestration Service\nTerraform https://docs.reindeer.tech/index_ja.html#s-resource",
+        "description": "このオブジェクトは、利用するクラウドコンピューティングリソースに関する情報を提供します。 JSONまたはYAML、HCLでフォーマットされた外部ファイルに対する参照でなければなりません。 そして、以下のようなクラウド自動化ツールのために、整形されたデータであるべきです。\nAWS CloudFormation\nAzure Resource Manager\nGoogle Cloud Deployment Manager\nAlibaba Cloud\nResource Orchestration Service\nTerraform https://docs.reindeer.tech/index_ja.html#s-resource",
         "type": "object",
         "required": [
           "type",
@@ -533,10 +534,10 @@
           },
           "$ref": {
             "title": "参照",
-            "description": "必須. クラウドオートメーション言語で記述されたファイルへの参照で、Reference objectの$refアイテムと同じです。 .json, .yaml, または .ymlの拡張子を持つ外部ファイルを参照しなければなりません。 そしてその拡張子は、外部ツールによってリンク先のファイルフォーマットを検出するために利用されるべきものです。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "description": "必須. クラウドオートメーション言語で記述されたファイルへの参照で、Reference objectの$refアイテムと同じです。 .json, .yaml, .ymlまたは .tf そしてその拡張子は、外部ツールによってリンク先のファイルフォーマットを検出するために利用されるべきものです。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
             "default": "externalFile.json",
-            "pattern": "^[a-zA-Z0-9_.\\-]+\\.(yaml|yml|json)$"
+            "pattern": "^[a-zA-Z0-9_.\\-]+\\.(yaml|yml|json|tf)$"
           }
         },
         "additionalProperties": false
@@ -557,13 +558,13 @@
         "properties": {
           "title": {
             "title": "コンテキストの名称",
-            "description": "必須. コンテキストの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "description": "必須. コンテキストの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-context",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "コンテキストの説明",
-            "description": "必須. コンテキストの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "description": "必須. コンテキストの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-context",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
@@ -751,13 +752,13 @@
         "properties": {
           "title": {
             "title": "マーケットの名前",
-            "description": "必須. マーケットの名称です。 会員の特性、興味、推定年などを説明する言葉を含めることにより、このCDD上でユニークであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-market",
+            "description": "必須. マーケットの名称です。 会員の特性、興味、推定年などを説明する言葉を含めることにより、このCDD上でユニークであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-market",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "マーケットの説明",
-            "description": "必須. マーケットの説明です。 それは詳細な算定者や算定目的などを説明する言葉を含むべきです。この説明は、設計者がこの情報を他のデザインで再利用できるかどうかを判断するのに役立ちます。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-market",
+            "description": "必須. マーケットの説明です。 それは詳細な算定者や算定目的などを説明する言葉を含むべきです。この説明は、設計者がこの情報を他のデザインで再利用できるかどうかを判断するのに役立ちます。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-market",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
@@ -799,13 +800,13 @@
         "properties": {
           "title": {
             "title": "名称",
-            "description": "必須. 情報種別の名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "description": "必須. 情報種別の名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-infoType",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
             "title": "説明",
-            "description": "必須. 情報種別の名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-infoType",
+            "description": "必須. 情報種別の名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-infoType",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
@@ -842,7 +843,7 @@
           "^[a-z]{2}$": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 150
+            "maxLength": 70
           }
         },
         "additionalProperties": false
@@ -855,7 +856,7 @@
         "patternProperties": {
           "^[a-z]{2}$": {
             "type": "string",
-            "maxLength": 150
+            "maxLength": 500
           }
         },
         "additionalProperties": false
@@ -901,7 +902,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/+.+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/+.+$"
           }
         }
       }
@@ -939,7 +940,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+(/components/triggers/+([a-zA-Z0-9])|/contexts/+([a-zA-Z0-9])+/trigger)+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+(/components/triggers/+([a-zA-Z0-9])|/contexts/+([a-zA-Z0-9])+/trigger)+$"
           }
         }
       }
@@ -958,7 +959,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+(/components/traffics|/contexts/+([a-zA-Z0-9])+/traffics)+/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+(/components/traffics|/contexts/+([a-zA-Z0-9])+/traffics)+/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -1037,7 +1038,7 @@
           },
           "description": {
             "title": "トリガーの説明",
-            "description": "必須. トリガーの説明です。トリガーの目的を端的に示すメモであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "description": "必須. トリガーの説明です。トリガーの目的を端的に示すメモであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
@@ -1094,7 +1095,7 @@
           },
           "busyHours": {
             "title": "日間アクセス集中時間",
-            "description": "必須. １日あたりのアクセス集中時間です。例えば日々のアクセスがほぼ AM 9:00 - AM 11:00 と PM 17:00 - PM 19:00 に集中している場合、この値は 6 です。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "description": "必須. １日あたりのアクセス集中時間です。例えば日々のアクセスがほぼ AM 9:00 - AM 12:00 と PM 17:00 - PM 20:00 に集中している場合、この値は 6時間 です。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "postsVisit": {
@@ -1128,7 +1129,7 @@
           },
           "endpointTitle": {
             "title": "エンドポイント名",
-            "description": "必須. エンドポイントの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "description": "必須. エンドポイントの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
@@ -1153,7 +1154,7 @@
           },
           "storageDescription": {
             "title": "データ保管の目的",
-            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
+            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
@@ -1193,7 +1194,7 @@
           },
           "description": {
             "title": "トリガーの説明",
-            "description": "必須. トリガーの説明です。トリガーの目的を端的に示すメモであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "description": "必須. トリガーの説明です。トリガーの目的を端的に示すメモであるべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
@@ -1235,7 +1236,7 @@
           },
           "reqMonth": {
             "title": "月間リクエスト",
-            "description": "必須. 開始点からエンドポイントへの月間リクエスト数です。 たとえば、バッチシステムが毎月1000人に3回メールマガジンを送信する場合、この値は9000になります。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "description": "必須. 開始点からエンドポイントへの月間リクエスト数です。 たとえば、バッチシステムが毎月1000人に3回メールマガジンを送信する場合、この値は3000になります。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
             "$ref": "https://reindeer.tech/cds-schema/v1/rangeValue.json"
           },
           "kbRequest": {
@@ -1281,7 +1282,7 @@
           },
           "endpointTitle": {
             "title": "エンドポイントの名称",
-            "description": "必須. エンドポイントの名称です。キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "description": "必須. エンドポイントの名称です。キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
@@ -1306,7 +1307,7 @@
           },
           "storageDescription": {
             "title": "保管データの目的",
-            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
+            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
@@ -1344,7 +1345,7 @@
           },
           "description": {
             "title": "トラフィックの説明",
-            "description": "必須. トラフィックの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic",
+            "description": "必須. トラフィックの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "infoType": {
@@ -1423,7 +1424,7 @@
           },
           "endpointTitle": {
             "title": "エンドポイントの名称",
-            "description": "必須. エンドポイントの名称です。キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "description": "必須. エンドポイントの名称です。キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
@@ -1448,7 +1449,7 @@
           },
           "storageDescription": {
             "title": "データ保管の名前",
-            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の150文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "additionalProperties": false
