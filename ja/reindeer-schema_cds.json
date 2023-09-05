@@ -256,11 +256,11 @@
           },
           "status": {
             "title": "CDDの状態",
-            "description": "必須. CDDの状態です。 以下の値が利用できます。\ndraft: アイデア段階\ndefined: 要件定義済\ndesigned: 設計済\nreviewed:レビュー済 https://docs.reindeer.tech/index_ja.html#s-info",
+            "description": "必須. CDDの状態です。 以下の値が利用できます。\ndraft: アイデア段階\nprepared: 準備済\ndesigned: 設計済\nreviewed:レビュー済 https://docs.reindeer.tech/index_ja.html#s-info",
             "type": "string",
             "enum": [
               "draft",
-              "defined",
+              "prepared",
               "designed",
               "reviewed"
             ]

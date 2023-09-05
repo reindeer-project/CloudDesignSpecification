@@ -256,11 +256,11 @@
           },
           "status": {
             "title": "The status of the CDD",
-            "description": "REQUIRED. The status of the CDD. Valid values are draft, requirement-defined, design-completed and design-reviewd.\ndraft: Requirement unregistered or under definition.\ndefined: State where requirements are defined.\ndesigned: Design codes created based on requirements.\nreviewed: Completed design review and modification.\n https://docs.reindeer.tech/index.html#s-info",
+            "description": "REQUIRED. The status of the CDD. Valid values are draft, requirement-defined, design-completed and design-reviewd.\ndraft: Requirement unregistered or under definition.\nprepared: State where requirements are defined.\ndesigned: Design codes created based on requirements.\nreviewed: Completed design review and modification.\n https://docs.reindeer.tech/index.html#s-info",
             "type": "string",
             "enum": [
               "draft",
-              "defined",
+              "prepared",
               "designed",
               "reviewed"
             ]
