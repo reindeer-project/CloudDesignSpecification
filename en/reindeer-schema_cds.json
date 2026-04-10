@@ -1382,7 +1382,7 @@
           },
           "source": {
             "title": "Source objects",
-            "description": "REQUIRED. References to the trigger object or the traffic object. The start point of this traffic. This effects to or is affected by all of the resources or actor object described in the end fields. https://docs.reindeer.tech/index.html#s-traffic-passThroughRatio",
+            "description": "REQUIRED. References to the trigger object or the traffic object. The start point of this traffic. This effects to or is affected by all of the resources or actor object described in the end fields. To express a sequential chain of heterogeneous resources (e.g. CloudFront → API Gateway → Lambda), create multiple traffic objects and set this field of each subsequent traffic to reference the preceding traffic. This is the prescribed pattern for chaining different resource types. https://docs.reindeer.tech/index.html#s-traffic-passThroughRatio",
             "type": "object",
             "oneOf": [
               {
@@ -1397,7 +1397,7 @@
           },
           "end": {
             "title": "End objects",
-            "description": "REQUIRED. References to the actor objects or the each resource item described in the resource object. The end point of this traffic. https://docs.reindeer.tech/index.html#s-traffic-passThroughRatio",
+            "description": "REQUIRED. References to the actor objects or the each resource item described in the resource object. The end point of this traffic. When multiple resources are listed, the traffic is assumed to be evenly distributed across all of them — this is intended for homogeneous resources of the same type (e.g. multiple EC2 instances in an auto-scaling group). All items MUST reference resources of the same type. Mixing different resource types is a specification violation; tools SHOULD treat it as an error and render only the first item. To connect to different resource types in sequence, use chained traffic objects via the source field instead. https://docs.reindeer.tech/index.html#s-traffic-passThroughRatio",
             "type": "array",
             "items": {
               "anyOf": [

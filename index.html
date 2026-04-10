@@ -2015,6 +2015,33 @@
             the previous communication receives the 1 MB POST value,
             the data size can be expressed as 300% (<code>passThroughReqRatio</code>> field's value is <code>3</code>).
           </p>
+          <p>
+            <strong>Chaining heterogeneous resources:</strong>
+            To express a sequential chain of different resource types (e.g. CloudFront → API Gateway → Lambda),
+            create one traffic object per step and set each traffic's <code>source</code> to reference the preceding traffic.
+            Do <strong>not</strong> list different resource types together in the <code>end</code> array of a single traffic;
+            that array is reserved for homogeneous resources of the same type (e.g. multiple EC2 instances sharing load).
+          </p>
+          <p>Example of a correct chain (CloudFront → API Gateway → Lambda):</p>
+          <pre><code><span class="token tag">traffics:</span>
+  <span class="token tag">t1:</span>
+    <span class="token tag">type: passThroughRatio</span>
+    <span class="token tag">source:</span>
+      <span class="token tag">$ref: "#/contexts/myContext/trigger"</span>
+    <span class="token tag">end:</span>
+      <span class="token tag">- $ref: "#/resources/myCloudFront"</span>
+  <span class="token tag">t2:</span>
+    <span class="token tag">type: passThroughRatio</span>
+    <span class="token tag">source:</span>
+      <span class="token tag">$ref: "#/contexts/myContext/traffics/t1"</span>
+    <span class="token tag">end:</span>
+      <span class="token tag">- $ref: "#/resources/myApiGateway"</span>
+  <span class="token tag">t3:</span>
+    <span class="token tag">type: passThroughRatio</span>
+    <span class="token tag">source:</span>
+      <span class="token tag">$ref: "#/contexts/myContext/traffics/t2"</span>
+    <span class="token tag">end:</span>
+      <span class="token tag">- $ref: "#/resources/myLambda"</span></code></pre>
           <h6>Fixed Fields</h6>
           <div class="d-table table-responsive line-break">
             <div class="d-table-row">
@@ -2077,6 +2104,9 @@
                   object</a>.
                 The start point of this traffic. This effects to or is affected by all of the resources or actor object
                 described in the <code>end</code> fields.
+                <strong>To chain heterogeneous resources in sequence (e.g. CloudFront → API Gateway → Lambda),
+                set this to the preceding traffic object.</strong>
+                This is the prescribed pattern for sequential resource chains.
               </p>
             </div>
             <div class="d-table-row">
@@ -2085,10 +2115,13 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 References to the <a href="#s-actor">actor objects</a> or the each resource item described in the <a
                   href="#s-resource">resource object</a>.
-                The end point of this traffic.<b style="color:red">If multiple resources are specified, the traffic from
-                  start is determined to be evenly divided into each resource. Connections to resources with different
-                  traffic weights or different uses, connection ports, etc. should not be listed here. Write it as the
-                  end of the new context.</b>
+                The end point of this traffic.
+                <b style="color:red">When multiple resources are listed, the traffic is assumed to be evenly distributed
+                  across all of them. This is intended for homogeneous resources of the same type (e.g. multiple EC2
+                  instances in an auto-scaling group). All items MUST be the same resource type. Mixing different
+                  resource types is a specification violation — tools treat it as an error and render only the first
+                  item. To connect to different resource types in sequence, use chained traffic objects via the
+                  <code>source</code> field.</b>
               </p>
             </div>
             <div class="d-table-row">
