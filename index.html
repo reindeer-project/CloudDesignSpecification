@@ -2116,12 +2116,14 @@
                 References to the <a href="#s-actor">actor objects</a> or the each resource item described in the <a
                   href="#s-resource">resource object</a>.
                 The end point of this traffic.
-                <b style="color:red">When multiple resources are listed, the traffic is assumed to be evenly distributed
-                  across all of them. This is intended for homogeneous resources of the same type (e.g. multiple EC2
-                  instances in an auto-scaling group). All items MUST be the same resource type. Mixing different
-                  resource types is a specification violation — tools treat it as an error and render only the first
-                  item. To connect to different resource types in sequence, use chained traffic objects via the
-                  <code>source</code> field.</b>
+                When multiple resources are listed, the traffic is assumed to be evenly distributed across all of them.
+                This applies to homogeneous resources (e.g. multiple EC2 instances in an auto-scaling group) as well as
+                tightly coupled resource groups provisioned together (e.g. a DB instance and its parameter group).
+                <b style="color:red">However, if the resources have a chain relationship — meaning traffic flows
+                  sequentially from one to another (e.g. CloudFront → API Gateway → Lambda) — they MUST NOT be
+                  combined here. Express each hop as a separate traffic object linked via the <code>source</code> field.
+                  Combining chained resources in a single <code>end</code> array conflates sequential flow with parallel
+                  distribution and produces incorrect traffic calculations.</b>
               </p>
             </div>
             <div class="d-table-row">
