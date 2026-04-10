@@ -1382,7 +1382,7 @@
           },
           "source": {
             "title": "トラフィックの開始点",
-            "description": "必須. trigger object または traffic objectへの参照です。 このトラフィックの開始点を意味します。 これは、endフィールドに記述されているすべてのリソースまたはアクターオブジェクトに影響を及ぼします。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "description": "必須. trigger object または traffic objectへの参照です。 このトラフィックの開始点を意味します。 これは、endフィールドに記述されているすべてのリソースまたはアクターオブジェクトに影響を及ぼします。 異なる種類のリソースを直列に繋ぐ場合（例：CloudFront → API Gateway → Lambda）は、複数のtrafficオブジェクトを作成し、各trafficのsourceフィールドに前段のtrafficへの参照を指定することでチェーンを表現します。これが異種リソースの直列接続における規定の記述方法です。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
             "type": "object",
             "oneOf": [
               {
@@ -1397,7 +1397,7 @@
           },
           "end": {
             "title": "トラフィックのエンドポイント",
-            "description": "必須. このトラフィックのエンドポイントを意味します。 actor objects または resource object内に記述された各リソースへの参照です。  https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "description": "必須. このトラフィックのエンドポイントを意味します。 actor objects または resource object内に記述された各リソースへの参照です。 複数のリソースが指定された場合、通信量は各リソースに均等に分割されるものと判断されます。これはオートスケールグループのEC2インスタンス群など、同種リソースを並列に並べる場合を想定しています。配列内のすべての要素は同一種別のリソースを参照しなければなりません（MUST）。異なる種別のリソースを混在させることは仕様違反です。ツールはこれをエラーとして扱い、先頭の要素のみ描画するべきです（SHOULD）。異なる種別のリソースを直列に接続する場合は、sourceフィールドを利用したtrafficのチェーンとして記述してください。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
             "type": "array",
             "items": {
               "anyOf": [

@@ -1902,6 +1902,33 @@
             受信したリクエストの何パーセントにあたるかといった表現方法になります。したがって、前段の通信が1MBのPOST値を受け取った後にサーバ内で3MBにデータを拡張して
             本トラフィックのエンドポイントに受け渡すといった場合には、データサイズは300%になる（<code>passThroughReqRatio</code>>フィールドが<code>3</code>）と表現できます。
           </p>
+          <p>
+            <strong>異種リソースのチェーン:</strong>
+            CloudFront → API Gateway → Lambda のような異なる種別のリソースを直列に繋ぐ場合は、1ステップにつき1つのtrafficオブジェクトを作成し、
+            各trafficの<code>source</code>フィールドに前段のtrafficへの参照を指定します。
+            異なる種別のリソースを1つのtrafficの<code>end</code>配列にまとめて列記することは<strong>仕様違反</strong>です。
+            <code>end</code>配列はオートスケールグループのEC2インスタンス群など、<strong>同一種別</strong>のリソースを並列に並べる場合専用です。
+          </p>
+          <p>正しいチェーンの記述例（CloudFront → API Gateway → Lambda）:</p>
+          <pre><code><span class="token tag">traffics:</span>
+  <span class="token tag">t1:</span>
+    <span class="token tag">type: passThroughRatio</span>
+    <span class="token tag">source:</span>
+      <span class="token tag">$ref: "#/contexts/myContext/trigger"</span>
+    <span class="token tag">end:</span>
+      <span class="token tag">- $ref: "#/resources/myCloudFront"</span>
+  <span class="token tag">t2:</span>
+    <span class="token tag">type: passThroughRatio</span>
+    <span class="token tag">source:</span>
+      <span class="token tag">$ref: "#/contexts/myContext/traffics/t1"</span>
+    <span class="token tag">end:</span>
+      <span class="token tag">- $ref: "#/resources/myApiGateway"</span>
+  <span class="token tag">t3:</span>
+    <span class="token tag">type: passThroughRatio</span>
+    <span class="token tag">source:</span>
+      <span class="token tag">$ref: "#/contexts/myContext/traffics/t2"</span>
+    <span class="token tag">end:</span>
+      <span class="token tag">- $ref: "#/resources/myLambda"</span></code></pre>
           <h6>固定フィールド</h6>
           <div class="d-table table-responsive line-break">
             <div class="d-table-row">
@@ -1962,6 +1989,8 @@
                 <a href="#s-trigger">trigger object</a> または <a href="#s-traffic">traffic object</a>への参照です。
                 このトラフィックの開始点を意味します。
                 これは、<code>end</code>フィールドに記述されているすべてのリソースまたはアクターオブジェクトに影響を及ぼします。
+                <strong>異なる種別のリソースを直列に繋ぐ場合（例：CloudFront → API Gateway → Lambda）は、このフィールドに前段のtrafficオブジェクトへの参照を指定します。</strong>
+                これが異種リソースの直列接続における規定の記述方法です。
               </p>
             </div>
             <div class="d-table-row">
@@ -1969,8 +1998,12 @@
               <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 このトラフィックのエンドポイントを意味します。
-                <a href="#s-actor">actor objects</a> または <a href="#s-resource">resource object</a>内に記述された各リソースへの参照です。<b
-                  style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
+                <a href="#s-actor">actor objects</a> または <a href="#s-resource">resource object</a>内に記述された各リソースへの参照です。
+                <b style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。
+                  これはオートスケールグループのEC2インスタンス群など、<strong>同一種別のリソースを並列に並べる場合専用</strong>です。
+                  配列内のすべての要素は同一種別のリソースを参照しなければなりません（MUST）。
+                  異なる種別のリソースを混在させることは仕様違反です。ツールはこれをエラーとして扱い、先頭の要素のみ描画します（SHOULD）。
+                  異なる種別のリソースを直列に接続する場合は、<code>source</code>フィールドを利用したtrafficのチェーンとして記述してください。</b>
               </p>
             </div>
             <div class="d-table-row">
