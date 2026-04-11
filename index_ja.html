@@ -1549,6 +1549,17 @@
                 例：10GBのリクエストを送信するアクターに対して2台のWebサーバを列記した場合、各サーバが受信するリクエストは5GBとなります。静的コンテンツ用サーバと動的コンテンツ用サーバに9:1の割合でアクセスする設計の場合は両サーバを一つのendに併記せず、静的コンテンツを提供するコンテキストと動的コンテンツを提供するコンテキストを分けて、それぞれのendに各サーバを記述してください。
             </div>
             <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">endSub</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><strong>任意</strong>.
+                <a href="#s-resource">resource object</a>内の<strong>副次リソース</strong>への参照配列です。
+                副次リソースとは、DBパラメータグループ・EIP・セキュリティグループ設定など、トラフィックを直接処理しないリソースです（リソースマスターで<code>passThrough=0</code>のもの）。
+                ここに列記されたリソースには通信量は配分されません。コスト管理・ガバナンスのための紐付けが目的です。
+                <code>end</code>と異なり、異種リソースの混在が許可されています。
+                アクターはここに含めてはなりません。アクターは必ず<code>end</code>に含めてください。
+              </p>
+            </div>
+            <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
