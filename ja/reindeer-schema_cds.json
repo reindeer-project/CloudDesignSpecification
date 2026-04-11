@@ -1127,6 +1127,19 @@
               "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
             }
           },
+          "endSub": {
+            "title": "副次エンドポイントオブジェクト",
+            "description": "任意. ガバナンスおよびコスト管理のためにこのトラフィックに紐付ける副次リソースへの参照配列です。副次リソースはリソースマスターでpassThrough=0のもの（DBパラメータグループ・EIPなど）です。通信量は配分されません。異種リソースの混在可。アクター不可。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
+                }
+              ]
+            }
+          },
           "endpointTitle": {
             "title": "エンドポイント名",
             "description": "必須. エンドポイントの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",

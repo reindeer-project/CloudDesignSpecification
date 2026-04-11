@@ -1127,6 +1127,19 @@
               "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
             }
           },
+          "endSub": {
+            "title": "Secondary endpoint objects",
+            "description": "OPTIONAL. References to secondary resource items that are associated with this traffic for governance and cost-tracking purposes but do not receive distributed traffic. Secondary resources have passThrough=0 in the resource master (e.g. DB parameter groups, EIPs, security-group configurations). Heterogeneous resource types are permitted. Actors must not appear here. https://docs.reindeer.tech/index.html#s-traffic-passThroughRatio",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
+                }
+              ]
+            }
+          },
           "endpointTitle": {
             "title": "The name of the endpoint",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 70 letters string of UTF-8. The name of the endpoint. https://docs.reindeer.tech/index.html#s-trigger-webaccess",
