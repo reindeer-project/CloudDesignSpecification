@@ -1638,17 +1638,7 @@
                 content and the context that provides dynamic content. Please describe each server in each end
                 separately.
             </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">endSub</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><strong>OPTIONAL</strong>.
-                References to <em>secondary</em> resource items described in the <a href="#s-resource">resource object</a>.
-                Secondary resources are those that do not directly handle traffic — such as DB parameter groups, EIPs, or security-group configurations (identified by <code>passThrough=0</code> in the resource master).
-                Traffic is <strong>not</strong> distributed to resources listed here; they are associated for governance and cost-tracking purposes only.
-                Unlike <code>end</code>, heterogeneous resource types may be freely mixed in this array.
-                Actors must not appear here; actors always belong in <code>end</code>.
-              </p>
-            </div>
+
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
