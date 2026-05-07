@@ -366,6 +366,12 @@
             "description": "IPアドレス範囲やドメイン名など。 sourceIdentification フィールドがtrueの場合は必須です。そして、sourceIdentification がfalseの場合、指定してはいけません。 https://docs.reindeer.tech/index_ja.html#s-actor-market",
             "type": "string",
             "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
+          },
+          "_meta": {
+            "title": "由来メタデータ",
+            "description": "OPTIONAL. Conccent の学習ループ向けの作成者・確信度メタデータ。省略時は AI が確信度 1.0 で作成したとみなされます。",
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/meta.json"
           }
         },
         "dependencies": {
@@ -432,6 +438,12 @@
             "description": "IPアドレス範囲やドメイン名など。 sourceIdentification フィールドがtrueの場合は必須です。そして、sourceIdentification がfalseの場合、指定してはいけません。 https://docs.reindeer.tech/index_ja.html#s-actor-persons",
             "type": "string",
             "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
+          },
+          "_meta": {
+            "title": "由来メタデータ",
+            "description": "OPTIONAL. Conccent の学習ループ向けの作成者・確信度メタデータ。省略時は AI が確信度 1.0 で作成したとみなされます。",
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/meta.json"
           }
         },
         "dependencies": {
@@ -491,6 +503,12 @@
             "description": "IPアドレス範囲やドメイン名など。 sourceIdentification フィールドがtrueの場合は必須です。そして、sourceIdentification がfalseの場合、指定してはいけません。 https://docs.reindeer.tech/index_ja.html#s-actor-system",
             "type": "string",
             "$ref": "https://reindeer.tech/cds-schema/v1/ip.json"
+          },
+          "_meta": {
+            "title": "由来メタデータ",
+            "description": "OPTIONAL. Conccent の学習ループ向けの作成者・確信度メタデータ。省略時は AI が確信度 1.0 で作成したとみなされます。",
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/meta.json"
           }
         },
         "dependencies": {
@@ -538,6 +556,12 @@
             "type": "string",
             "default": "externalFile.json",
             "pattern": "^[a-zA-Z0-9_.\\-]+\\.(yaml|yml|json|tf)$"
+          },
+          "_meta": {
+            "title": "由来メタデータ",
+            "description": "OPTIONAL. Conccent の学習ループ向けの作成者・確信度メタデータ。省略時は AI が確信度 1.0 で作成したとみなされます。",
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/meta.json"
           }
         },
         "additionalProperties": false
@@ -1158,6 +1182,12 @@
             "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
+          "_meta": {
+            "title": "由来メタデータ",
+            "description": "OPTIONAL. Conccent の学習ループ向けの作成者・確信度メタデータ。省略時は AI が確信度 1.0 で作成したとみなされます。",
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/meta.json"
+          },
           "additionalProperties": false
         }
       }
@@ -1311,6 +1341,12 @@
             "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
+          "_meta": {
+            "title": "由来メタデータ",
+            "description": "OPTIONAL. Conccent の学習ループ向けの作成者・確信度メタデータ。省略時は AI が確信度 1.0 で作成したとみなされます。",
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/meta.json"
+          },
           "additionalProperties": false
         }
       }
@@ -1453,6 +1489,12 @@
             "description": "ストレージの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があり、ストレージの目的を的確に表現すべきです。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
+          "_meta": {
+            "title": "由来メタデータ",
+            "description": "OPTIONAL. Conccent の学習ループ向けの作成者・確信度メタデータ。省略時は AI が確信度 1.0 で作成したとみなされます。",
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/meta.json"
+          },
           "additionalProperties": false
         }
       }
@@ -1481,6 +1523,35 @@
             "minimum": 0
           }
         }
+      }
+    },
+    {
+      "uri": "https://reindeer.tech/cds-schema/v1/meta.json",
+      "schema": {
+        "title": "由来メタデータオブジェクト",
+        "description": "CDS ノード（actor / resource / traffic / trigger）の作成者と確信度を記録する OPTIONAL なオブジェクト。省略時は AI が確信度 1.0 で作成したとみなされる。Conccent の学習ループにおいて、AI 推論と人間の手修正を区別するために使用される。",
+        "type": "object",
+        "properties": {
+          "d": {
+            "title": "作成者",
+            "description": "OPTIONAL. 作成者を示す識別子。'ai' は AI 生成、'h:<userId>' は人間が定義したことを示す。省略時は 'ai' とみなされる。",
+            "type": "string"
+          },
+          "t": {
+            "title": "作成・更新日時",
+            "description": "OPTIONAL. 'd' で示される作成者によりノードが最後に変更された時刻（epoch 秒）。",
+            "type": "integer",
+            "minimum": 0
+          },
+          "c": {
+            "title": "確信度",
+            "description": "OPTIONAL. AI が生成した値への確信度（0-1）。'd' が 'ai' または省略時のみ意味を持つ。省略時は 1.0 とみなされる。",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "additionalProperties": false
       }
     }
   ]
