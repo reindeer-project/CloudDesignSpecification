@@ -942,6 +942,7 @@
                 <br><code>acf</code> : AWS CloudFormation.
                 <br><code>arm</code> : Azure Resource Manager.
                 <br><code>gdm</code> : Google Cloud Deployment Manager.
+                <br><code>cim</code> : Google Cloud Infrastructure Manager.
                 <br><code>aro</code> : Alibaba Cloud Resource Orchestration Service.
                 <br><code>tfm</code> : Terraform.
                 <br><code>slf</code> : Serverless Framework.
@@ -1548,6 +1549,7 @@
                   style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
                 例：10GBのリクエストを送信するアクターに対して2台のWebサーバを列記した場合、各サーバが受信するリクエストは5GBとなります。静的コンテンツ用サーバと動的コンテンツ用サーバに9:1の割合でアクセスする設計の場合は両サーバを一つのendに併記せず、静的コンテンツを提供するコンテキストと動的コンテンツを提供するコンテキストを分けて、それぞれのendに各サーバを記述してください。
             </div>
+
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
@@ -2282,6 +2284,70 @@
           <h6>YAML Example</h6>
           <pre><code><span class="token tag">max: </span>1.0
 <span class="token tag">min: </span>0.01
+</code></pre>
+
+          <hr class="hr-dot-bold my-7">
+          <h3 id="s-meta">
+            <i class="fa fa-tag mr-3" aria-hidden="true"></i>
+            由来メタデータオブジェクト (<code>_meta</code>)<a class="anchor" href="#s-meta"></a>
+          </h3>
+          <p>
+            CDS ノード（<a href="#s-actor">actor</a>、<a href="#s-resource">resource</a>、
+            <a href="#s-traffic">traffic</a>、<a href="#s-trigger">trigger</a>）の作成者と確信度を
+            記録する OPTIONAL なオブジェクトです。
+            省略時は AI が確信度 1.0 で作成したとみなされます。
+            Conccent の学習ループにおいて、AI 推論と人間の手修正を区別するために使用されます。
+          </p>
+          <h6>固定フィールド</h6>
+          <div class="d-table table-responsive line-break">
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-primary text-white border">フィールド名</p>
+              <p class="d-table-cell p-2 bg-primary text-white border">型</p>
+              <p class="d-table-cell p-2 bg-primary text-white border">説明</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">d</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                <strong>OPTIONAL</strong>. 作成者を示す識別子。
+                <code>"ai"</code> は AI 生成、<code>"h:&lt;userId&gt;"</code> は人間が定義したことを示します。
+                省略時は <code>"ai"</code> とみなされます。
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">t</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                <strong>OPTIONAL</strong>. <code>d</code> で示される作成者により
+                ノードが最後に変更された時刻（epoch 秒）。
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">c</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code> (0-1)</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                <strong>OPTIONAL</strong>. AI が生成した値への確信度。
+                <code>d</code> が <code>"ai"</code> または省略時のみ意味を持ちます。
+                省略時は <code>1.0</code> とみなされます。
+              </p>
+            </div>
+          </div>
+          <h6>使用ルール</h6>
+          <ul>
+            <li>AI 生成ノードで確信度が高い場合：<strong><code>_meta</code> 全体を省略</strong>してバイト数を抑える。</li>
+            <li>AI 生成で確信度が低い場合：<code>c</code> のみ記述。例 <code>"_meta": { "c": 0.6 }</code>。</li>
+            <li>人間が編集したノード：<strong>必ず <code>_meta</code> を保持または設定</strong>し、
+              <code>"d": "h:&lt;userId&gt;"</code> を含める。人間の編集ノードから <code>_meta</code> を削除しないこと。</li>
+            <li>AI が人間定義ノードを変更する場合：ユーザから明示的に指示されたときのみ実施。</li>
+          </ul>
+          <h6>JSON 例</h6>
+          <pre><code>{
+  <span class="token tag">"_meta": </span>{
+    <span class="token tag">"d": </span><span class="token string">"h:U123"</span>,
+    <span class="token tag">"t": </span>1714400000,
+    <span class="token tag">"c": </span>0.9
+  }
+}
 </code></pre>
 
           <hr class="hr-dot-bold my-7">
