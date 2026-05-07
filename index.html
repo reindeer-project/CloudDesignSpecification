@@ -2415,6 +2415,70 @@
 </code></pre>
 
           <hr class="hr-dot-bold my-7">
+          <h3 id="s-meta">
+            <i class="fa fa-tag mr-3" aria-hidden="true"></i>
+            Provenance metadata object (<code>_meta</code>)<a class="anchor" href="#s-meta"></a>
+          </h3>
+          <p>
+            An optional object tracking the authorship and confidence of a CDS node
+            (<a href="#s-actor">actor</a>, <a href="#s-resource">resource</a>,
+            <a href="#s-traffic">traffic</a>, <a href="#s-trigger">trigger</a>).
+            Absence implies AI-defined with full confidence.
+            Used by tooling such as Conccent's learning loop to distinguish AI inference from human curation.
+          </p>
+          <h6>Fixed Fields</h6>
+          <div class="d-table table-responsive line-break">
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
+              <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
+              <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">d</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                <strong>OPTIONAL</strong>. Authorship marker.
+                <code>"ai"</code> for AI-generated, <code>"h:&lt;userId&gt;"</code> for human-defined.
+                Absence means <code>"ai"</code>.
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">t</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                <strong>OPTIONAL</strong>. Timestamp (epoch seconds) when the node was last modified
+                by the actor named in <code>d</code>.
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">c</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code> (0-1)</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                <strong>OPTIONAL</strong>. Confidence in the AI-generated value.
+                Only meaningful when <code>d</code> is <code>"ai"</code> or absent.
+                Absence means <code>1.0</code>.
+              </p>
+            </div>
+          </div>
+          <h6>Usage Rules</h6>
+          <ul>
+            <li>AI-generated nodes with full confidence: <strong>OMIT <code>_meta</code> entirely</strong> to save bytes.</li>
+            <li>AI-generated nodes with low confidence: include <code>c</code> only, e.g. <code>"_meta": { "c": 0.6 }</code>.</li>
+            <li>Human-modified nodes: <strong>ALWAYS preserve or set <code>_meta</code></strong> with <code>"d": "h:&lt;userId&gt;"</code>.
+              NEVER strip <code>_meta</code> from a human-edited node.</li>
+            <li>When AI modifies a human-defined node: only proceed if explicitly instructed by the user.</li>
+          </ul>
+          <h6>JSON Example</h6>
+          <pre><code>{
+  <span class="token tag">"_meta": </span>{
+    <span class="token tag">"d": </span><span class="token string">"h:U123"</span>,
+    <span class="token tag">"t": </span>1714400000,
+    <span class="token tag">"c": </span>0.9
+  }
+}
+</code></pre>
+
+          <hr class="hr-dot-bold my-7">
           <h3 id="s-ref">
             <i class="fa fa-eye mr-3" aria-hidden="true"></i>
             Reference object<a class="anchor" href="#s-ref"></a>
