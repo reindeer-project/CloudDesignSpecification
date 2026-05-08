@@ -221,8 +221,6 @@
           <p><B>Cloud Design Schema 日本語</B><br>サードパーティー製エディタ等に組み込むことで、CDSの文法チェックに利用できるJSONスキーマファイルです。</p>
           <a class="btn btn-primary mb-1" href="/ja/reindeer-schema_cds.json" target="_blank"
             onClick="ga('send','event','btn', 'click', 'cds_schema_ja');">CDSルートスキーマのダウンロード</a>
-          &nbsp;&nbsp;<a class="btn btn-primary mb-1" href="/ja/reindeer-schema_cds-snippet.json" target="_blank"
-            onClick="ga('send','event','btn', 'click', 'CDS_snippet_schema_ja');">CDSスニペットスキーマのダウンロード</a>
           <br><br>
           <p><B>ForkMe!</B><br>Reindeer Technology
             PTE.LTD.が提供する、クラウド設計管理ツールです。「クラウドの設計を、ソフトウェアのようにフォーク（複製／派生）したい」というデベロッパーの願いをかなえます。（Reindeer ProjectはReindeer
@@ -277,22 +275,10 @@
 
           <hr class="hr-dot-bold my-7">
           <h3 id="structure">構造<a class="anchor" href="#structure"></a></h3>
-          <p>CDSは単一のドキュメントで構成されるか、ユーザーの判断で複数のパーツに分割しても構いません。
-            ただし後者の場合でも、親（ルート）となるCDSは必ずすべての必須<a href="#parentSchema">親スキーマ</a>を内包する必要があります。
-            またパーツとして参照されるファイルは「CDSスニペット」と呼ばれ、<a href="#s-components">Components</a>オブジェクトだけを内包するようにします。
-            そしてルートファイルからCDSスニペットに対する参照を<code>$ref</code>フィールドで関連づけされねばなりません。
-            なお、ルートファイルはclouddesign.json」または「clouddesign.yaml」と命名されるべきです。
-            <!--
-            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
-            | Parent Schema
-            |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
-            !-->
-          <div class="text-center my-7"><a href="#general"><i class="fa fa-angle-up" aria-hidden="true"
-                style="font-size: 50px;"></i></a></div>
-          <h2 id="parentSchema">親スキーマ<a class="anchor" href="#parentSchema"></a></h2>
-          <div class="alert alert-secondary">
-            <p class="lead-2">Cloud Designの主要なデータ構造を説明します。
-              以下の説明では、フィールドが明示的に「必須」と定義されない、または「しなければならない」または「する／することになる」と記載されていない場合、オプションと見なすことができます。
+          <p>CDSは単一のルート文書である必要があります。すべての参照 (<code>$ref</code>) は <code>#/</code> で始まる内部参照のみで、外部ファイル参照はサポートされません。
+            ルートファイルは 'clouddesign.json' か 'clouddesign.yaml' という命名にすべきです。
+            <br>
+            <small><em>注: 旧バージョンでは CDS を複数ファイルに分割するための「CDSスニペット」機構が定義されていましたが、2026-05 に廃止されました。プロジェクト横断参照は将来的に project_id ベースの新仕様で提供予定です。</em></small>
             </p>
           </div>
           <hr class="hr-dot-bold my-7">
@@ -2371,10 +2357,9 @@
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">$ref</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. Reference strings.
-                同一ファイルの場合は<code>#/</code>で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。
-                また外部ファイルを指定するときは、必ず拡張子<code>.json</code>、<code>.yaml</code>、または<code>.yml</code>を付けたファイル名から参照を記述し、
-                <code>#/</code>以降は同一ファイルの場合と同様に記述します。
+              <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 参照文字列。
+                <code>#/</code>で始まる内部参照のみを記述し、CDSのルートオブジェクトからのパスを記述します。
+                外部ファイル参照（例 <code>other.json#/...</code>）はサポートされません（CDSスニペット機能は2026-05に廃止）。
               </p>
             </div>
           </div>
@@ -2523,6 +2508,16 @@
               <p class="d-table-cell p-2 bg-white text-dark border">2023-04-17</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
                 ルートスキーマのjsonサンプルを追加
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">1.3.2(廃止）</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-05-08</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                プロジェクト横断で外部ファイルを参照するための CDS Snippet 仕様を廃止しました
+                （<code>&lt;file&gt;.<i>ext</i>#/...</code> 形式の <code>$ref</code> はサポート停止）。
+                以降、すべての <code>$ref</code> は <code>#/...</code> 内部参照のみとなります。
+                プロジェクト横断でリソースやアクターを参照する用途は、将来的に project_id ベースのリンク仕様を別途追加予定です（本スキーマには未影響）。
               </p>
             </div>
           </div>
