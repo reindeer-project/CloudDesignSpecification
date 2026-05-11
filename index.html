@@ -294,13 +294,26 @@
 
           <hr class="hr-dot-bold my-7">
           <h3 id="structure">Structure<a class="anchor" href="#structure"></a></h3>
-          <p>The CDS MUST consist of a single root document. All references (<code>$ref</code>) MUST be internal
-            references starting with <code>#/</code>; external file references are not supported.
-            The root file SHOULD be named 'clouddesign.json' or 'clouddesign.yaml'.
+          <p>The CDS MUST consist of a single root document. The root file SHOULD be named 'clouddesign.json' or 'clouddesign.yaml'.
             <br>
-            <small><em>Note: Earlier versions defined a "CDS snippet" mechanism for splitting a CDS into multiple
-            files via external references. This was deprecated in 2026-05; future cross-project references will be
-            provided via a project_id-based linking specification.</em></small>
+            References (<code>$ref</code>) take two forms:
+            <ul>
+              <li><b>CDS-internal reference</b> — points to a directive inside the same CDS document. Starts with
+                <code>#/</code> and describes the path from the CDS root (e.g. <code>#/actors/customer</code>,
+                <code>#/components/infoTypes/pii</code>, <code>#/contexts/web/trigger</code>).</li>
+              <li><b>Provisioning resource reference</b> — points to a specific resource declared inside a provisioning
+                file listed in the CDS <code>resources[]</code> array. Form is
+                <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> where <code>&lt;file&gt;</code> matches a
+                filename declared in <code>resources[]</code>, <code>&lt;section&gt;</code> is the lowercase section
+                indicator (<code>resources</code> for CFn / Terraform / etc., <code>functions</code> for Serverless
+                Framework Lambda), and <code>&lt;RealKey&gt;</code> is the actual key inside the provisioning file
+                (case-sensitive).</li>
+            </ul>
+            <small><em>Note: A "CDS snippet" mechanism for splitting a CDS document across multiple external files
+            was deprecated in 2026-05. Cross-CDS-file references are not supported; future cross-project references
+            will be provided via a project_id-based linking specification. Provisioning resource references
+            (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) remain valid — they are NOT cross-CDS-file
+            references but link a CDS to entries inside its declared provisioning files.</em></small>
             </p>
 
           <!--
@@ -1703,7 +1716,7 @@
         <span class="token tag">"$ref": </span>"#/actors/customer"
   },
   <span class="token tag">"end": </span>[
-        {<span class="token tag">"$ref": </span>"#/resources/awsCloudEnvironment/data/Resources/cloudFront"}
+        {<span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/cloudFront"}
   ],
   <span class="token tag">"endpointTitle": </span>{
     <span class="token tag">"en": </span>"LoadBalancer",
@@ -1742,7 +1755,7 @@
 <span class="token tag">start: </span>
       <span class="token tag">$ref: </span>#/actors/customer
 <span class="token tag">end: </span>
-      - <span class="token tag">$ref: </span>#/resources/awsCloudEnvironment/data/Resources/cloudFront
+      - <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/cloudFront
 <span class="token tag">endpointTitle: </span>
       <span class="token tag">en: </span>LoadBalancer
       <span class="token tag">ja: </span>ロードバランサ
@@ -1929,7 +1942,7 @@
   <span class="token tag">"kbRequest": </span>{<code>"max":</code> 0.01, <code>"min":</code> 0.01},
   <span class="token tag">"kbResponse": </span>{<code>"max":</code> 1, <code>"min":</code> 1},
   <span class="token tag">"start": </span>{
-        <span class="token tag">"$ref": </span>"#/resources/awsCloudEnvironment/resources/jobServer"
+        <span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/jobServer"
   },
   <span class="token tag">"end": </span>[
         {<span class="token tag">"$ref": </span>"##/actors/api"}
@@ -1968,7 +1981,7 @@
 <span class="token tag">kbRequest: </span>{<code>max:</code> 0.01, <code>min:</code> 0.01}
 <span class="token tag">kbResponse: </span>{<code>max:</code> 1, <code>min:</code> 1}
 <span class="token tag">start: </span>
-      <span class="token tag">$ref: </span>#/resources/awsCloudEnvironment/resources/jobServer
+      <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/jobServer
 <span class="token tag">end: </span>
       - <span class="token tag">$ref: </span>#/actors/api
 <span class="token tag">endpointTitle: </span>
@@ -2206,7 +2219,7 @@
   <span class="token tag">"restriction": </span>false,
   <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/trigger/customer"},
   <span class="token tag">"end": </span>[
-        {<span class="token tag">"$ref": </span>"#/resources/awsCloudEnvironment/data/Resources/s3"}
+        {<span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/s3"}
   ],
   <span class="token tag">"passThroughReqRatio": </span>{<code>"max":</code> 1, <code>"min":</code> 0.1},
   <span class="token tag">"compositResRatio": </span>{<code>"max":</code> 0.5, <code>"min":</code> 0.5},
@@ -2241,7 +2254,7 @@
 <span class="token tag">source: </span>
       <span class="token tag">$ref: </span>#/trigger/customer
 <span class="token tag">end: </span>
-    - <span class="token tag">$ref: </span>#/resources/awsCloudEnvironment/data/Resources/s3
+    - <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/s3
 <span class="token tag">passThroughReqRatio: </span>{<code>max:</code> 1, <code>min:</code> 0.1}
 <span class="token tag">compositResRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.5}
 <span class="token tag">endpointTitle: </span>
@@ -2498,10 +2511,19 @@
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">$ref</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Reference strings. MUST
-                be an internal reference starting with <code>#/</code>, describing the path from the CDS root object.
-                External file references (e.g. <code>other.json#/...</code>) are no longer supported (the CDS
-                Snippet feature was deprecated in 2026-05).
+              <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Reference string. Two
+                forms:
+                <ul>
+                  <li><b>CDS-internal</b>: starts with <code>#/</code> and describes the path from the CDS root
+                    (e.g. <code>#/actors/customer</code>, <code>#/components/infoTypes/pii</code>).</li>
+                  <li><b>Provisioning resource</b>: <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> where
+                    <code>&lt;file&gt;</code> is a filename declared in CDS <code>resources[]</code> with extension,
+                    <code>&lt;section&gt;</code> is <code>resources</code> (CFn / Terraform / GDM / CIM / ARM / ROS) or
+                    <code>functions</code> (Serverless Framework Lambda), and <code>&lt;RealKey&gt;</code> is the
+                    resource's actual key inside the provisioning file (case-sensitive).</li>
+                </ul>
+                Cross-CDS-file references (the deprecated "CDS Snippet" form, e.g.
+                <code>other.json#/actors/x</code>) are NOT supported.
               </p>
             </div>
           </div>
@@ -2664,6 +2686,19 @@
                 (<code>&lt;file&gt;.<i>ext</i>#/...</code>). All <code>$ref</code> values MUST now be
                 internal-only (<code>#/...</code>). Future cross-project references will be added as a separate
                 project_id-based linking specification (no schema impact yet).
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">1.3.2(clarification)</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-05-11</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                Clarified scope of the 2026-05-08 deprecation: only <strong>cross-CDS-file</strong> references
+                (the "CDS Snippet" mechanism) are deprecated. <strong>Provisioning resource references</strong>
+                — pointing from a CDS to entries inside provisioning files declared in
+                <code>resources[]</code> — use the form <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>
+                and remain valid. <code>&lt;section&gt;</code> is the lowercase section indicator
+                (<code>resources</code> or <code>functions</code>). Documentation, schema, and code examples
+                updated to use this form consistently.
               </p>
             </div>
           </div>
