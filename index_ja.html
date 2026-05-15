@@ -1537,6 +1537,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 <a href="#s-resource">resource object</a>に記載されたリソースへの参照でなければなりません。このトリガーのエンドポイントを示します。<b
                   style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
+                <b style="color:darkred">⚠️ トラフィックオブジェクト（例: <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>）をここに指定してはなりません。スキーマ上は受理されますが、rendererはトラフィック参照をノードとして解決できず「？」マークを表示します。必ず <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> 形式で実リソースを参照してください。</b>
                 例：10GBのリクエストを送信するアクターに対して2台のWebサーバを列記した場合、各サーバが受信するリクエストは5GBとなります。静的コンテンツ用サーバと動的コンテンツ用サーバに9:1の割合でアクセスする設計の場合は両サーバを一つのendに併記せず、静的コンテンツを提供するコンテキストと動的コンテンツを提供するコンテキストを分けて、それぞれのendに各サーバを記述してください。
             </div>
 
@@ -1761,6 +1762,7 @@
                 トリガーのエンドポイントを示します。
                 <a href="#s-resource">resource object</a> または <a href="#s-actor">actor object</a>への参照でなければなりません。<b
                   style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
+                <b style="color:darkred">⚠️ トラフィックオブジェクト（例: <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>）をここに指定してはなりません。スキーマ上は受理されますが、rendererはトラフィック参照をノードとして解決できず「？」マークを表示します。必ず <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> 形式で実リソースを参照してください。</b>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
