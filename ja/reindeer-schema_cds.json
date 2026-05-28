@@ -55,10 +55,6 @@
                   {
                     "type": "object",
                     "$ref": "https://reindeer.tech/cds-schema/v1/externalSystemTypeOfActor.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
                   }
                 ]
               }
@@ -81,16 +77,8 @@
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/refToContext.json"
-                  }
-                ]
+                "type": "object",
+                "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
               }
             },
             "additionalProperties": false
@@ -243,16 +231,7 @@
             "title": "Market object",
             "description": "必須. アクターが属する市場に関する情報です。 https://docs.reindeer.tech/index_ja.html#s-market",
             "type": "object",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/market.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToMarket.json"
-              }
-            ]
+            "$ref": "https://reindeer.tech/cds-schema/v1/market.json"
           },
           "marketShare": {
             "title": "市場シェア",
@@ -509,10 +488,6 @@
               {
                 "type": "object",
                 "$ref": "https://reindeer.tech/cds-schema/v1/timedActionTypeOfTrigger.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToTrigger.json"
               }
             ]
           },
@@ -529,16 +504,8 @@
             ],
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/refToTraffic.json"
-                  }
-                ]
+                "type": "object",
+                "$ref": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json"
               }
             },
             "additionalProperties": false

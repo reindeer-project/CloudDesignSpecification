@@ -373,9 +373,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">actors</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-actor">Actor object</a> |
-                <code>string</code>, <a href="#s-ref">Reference object</a>]
-              </p>
+              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-actor">Actor object</a> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 An array of actor objects, which provide information about the external user or system to which cloud
                 computing is connected.
@@ -391,8 +389,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a
-                  href="#s-context">Context object</a> | <code>string</code>, <a href="#s-ref">Reference object</a>]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-context">Context object</a> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 An array of context objects, which provide information about the relationship
                 for achieving a specific purpose between actors and cloud resources.
@@ -679,8 +676,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">market</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-market">Market object</a> | <a
-                  href="#s-ref">Reference object</a> </p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-market">Market object</a></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>. Market information to
                 which this actor belongs.
               </p>
@@ -1066,8 +1062,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">trigger</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-trigger">Trigger objects</a> | <a
-                  href="#s-ref">Reference object</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-trigger">Trigger objects</a></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 One of the types of trigger object.
                 The trigger means the initial event of this context.
@@ -1075,7 +1070,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">traffics</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-traffic">Traffic objects</a> ] | [ <a href="#s-ref">Reference object</a> ]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-traffic">Traffic objects</a> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 Holding the list of traffic objects. Each traffic is one of the types of traffic objects.
                 The traffic means related data transfer route within the context.
@@ -1110,13 +1105,13 @@
         <span class="token tag">"ru": </span>"Просмотр статического содержимого через Интернет"
   },
   <span class="token tag">"trigger": </span>{
-        <span class="token tag">"$ref": </span>"#/components/triggers/trigger1"
+        <span class="token tag">"type": </span>"webAccess",
+        <span class="token tag">"..."</span>: "..."
   },
-  <span class="token tag">"traffics": </span>[
-        {<span class="token tag">"$ref": </span>"#/components/traffics/traffic1"},
-        {<span class="token tag">"$ref": </span>"#/components/traffics/traffic2"},
-        {<span class="token tag">"$ref": </span>"#/components/traffics/traffic3"}
-  ],
+  <span class="token tag">"traffics": </span>{
+        <span class="token tag">"traffic1": </span>{ <span class="token tag">"type": </span>"passThroughRatio", <span class="token tag">"..."</span>: "..." },
+        <span class="token tag">"traffic2": </span>{ <span class="token tag">"type": </span>"passThroughRatio", <span class="token tag">"..."</span>: "..." }
+  },
   <span class="token tag">"maxPerformanceDurationRatio": </span>0.1
 }</code></pre>
 
@@ -1130,11 +1125,15 @@
       <span class="token tag">ja: </span>インターネット経由の静的コンテンツ閲覧
       <span class="token tag">ru: </span>Просмотр статического содержимого через Интернет
 <span class="token tag">trigger: </span>
-      <span class="token tag">$ref: </span>#/components/triggers/trigger1
+  <span class="token tag">type: </span>webAccess
+  <span class="token tag">...: </span>...
 <span class="token tag">traffics: </span>
-      - <span class="token tag">$ref: </span>#/components/traffics/traffic1
-      - <span class="token tag">$ref: </span>#/components/traffics/traffic2
-      - <span class="token tag">$ref: </span>#/components/traffics/traffic3
+  <span class="token tag">traffic1: </span>
+    <span class="token tag">type: </span>passThroughRatio
+    <span class="token tag">...: </span>...
+  <span class="token tag">traffic2: </span>
+    <span class="token tag">type: </span>passThroughRatio
+    <span class="token tag">...: </span>...
 <span class="token tag">maxPerformanceDurationRatio: </span>0.1
 </code></pre>
 
@@ -2489,22 +2488,22 @@
               </p>
             </div>
           </div>
-          <h6>JSON Example</h6>
+          <h6>JSON Example (infoType reference)</h6>
           <pre><code>{
-  <span class="token tag">"$ref": </span>"#/components/actors/custormers"
+  <span class="token tag">"$ref": </span>"#/components/infoTypes/classA"
 }</code></pre>
 
-          <h6>JSON Relative Documents With Embedded Schema Example</h6>
+          <h6>JSON Example (provisioning resource reference)</h6>
           <pre><code>{
-  <span class="token tag">"$ref": </span>"externalfile.yaml#/components/actors/custormers"
+  <span class="token tag">"$ref": </span>"awsTemplate.json#/resources/ApplicationLoadBalancer"
 }</code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">$ref: </span>#/components/actors/custormers
+          <h6>YAML Example (infoType reference)</h6>
+          <pre><code><span class="token tag">$ref: </span>#/components/infoTypes/classA
 </code></pre>
 
-          <h6>YAML Relative Documents With Embedded Schema Example</h6>
-          <pre><code><span class="token tag">$ref: </span>externalfile.yaml#/components/actors/custormers
+          <h6>YAML Example (provisioning resource reference)</h6>
+          <pre><code><span class="token tag">$ref: </span>awsTemplate.yaml#/resources/ApplicationLoadBalancer
 </code></pre>
 
           <!--
