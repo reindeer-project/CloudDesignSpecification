@@ -889,9 +889,9 @@
         "properties": {
           "$ref": {
             "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
+            "description": "必須. CDS 内部の #/components/infoTypes/<key> のみ有効です。外部ファイル参照は使用できません。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/infoTypes/[a-zA-Z0-9]+$"
+            "pattern": "^#/components/infoTypes/[a-zA-Z0-9]+$"
           }
         }
       }

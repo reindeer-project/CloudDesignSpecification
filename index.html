@@ -1493,7 +1493,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/components/infoTypes/&lt;key&gt;</code>)</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 Reference to the <a href="#s-infoType">InfoType object</a>.
                 Indicates the type of information handled in this trigger.
@@ -1630,7 +1630,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">storedInfoType</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/components/infoTypes/&lt;key&gt;</code>)</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
                 Reference to the <a href="#s-infoType">InfoType object</a>.
                 Indicates the type of information stored at the <code>end</code>s of this trigger.
@@ -1658,7 +1658,7 @@
     <span class="token tag">"ru": </span>"API вызов для сбора данных фильма"
   },
   <span class="token tag">"infoType": </span>{
-        <span class="token tag">"$ref": </span>"#/components/infoType/general"
+        <span class="token tag">"$ref": </span>"#/components/infoTypes/general"
   },
   <span class="token tag">"ports": </span>[443],
   <span class="token tag">"internet": </span>true,
@@ -1683,7 +1683,7 @@
   },
   <span class="token tag">"storedRatio": </span>{<code>"max":</code> 0.3, <code>"min":</code> 0.1},
   <span class="token tag">"storedInfoType": </span>{
-    <span class="token tag">"$ref": </span>"#/components/infoType/general"
+    <span class="token tag">"$ref": </span>"#/components/infoTypes/general"
   },
   <span class="token tag">"storageDescription": </span>{
     <span class="token tag">"en": </span>"Logging for API usage tracing.",
@@ -1699,7 +1699,7 @@
       <span class="token tag">ja: </span>静的コンテンツの配信,
       <span class="token tag">ru: </span>Распределение статического контента
 <span class="token tag">infoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoType/general
+      <span class="token tag">$ref: </span>#/components/infoTypes/general
 <span class="token tag">ports: </span>[443]
 <span class="token tag">internet: </span>true
 <span class="token tag">restriction: </span>false
@@ -1720,7 +1720,7 @@
       <span class="token tag">ru: </span>Балансировщик нагрузки
 <span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
 <span class="token tag">storedInfoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoType/general
+      <span class="token tag">$ref: </span>#/components/infoTypes/general
 <span class="token tag">storageDescription: </span>{
       <span class="token tag">en: </span>Logging for API usage tracing.,
       <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
@@ -1761,7 +1761,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/components/infoTypes/&lt;key&gt;</code>)</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 Reference to the <a href="#s-infoType">InfoType object</a>.
                 Indicates the type of information handled in this trigger.
@@ -1893,7 +1893,7 @@
     <span class="token tag">"ru": </span>"API вызов для сбора данных фильма"
   },
   <span class="token tag">"infoType": </span>{
-        <span class="token tag">"$ref": </span>"#/components/infoType/general"
+        <span class="token tag">"$ref": </span>"#/components/infoTypes/general"
   },
   <span class="token tag">"ports": </span>[443],
   <span class="token tag">"internet": </span>false,
@@ -1915,7 +1915,7 @@
   },
   <span class="token tag">"storedRatio": </span>{<code>"max":</code> 0.3, <code>"min":</code> 0.1},
   <span class="token tag">"storedInfoType": </span>{
-    <span class="token tag">"$ref": </span>"#/components/infoType/general"
+    <span class="token tag">"$ref": </span>"#/components/infoTypes/general"
   },
   <span class="token tag">"storageDescription": </span>{
     <span class="token tag">"en": </span>"Logging for API usage tracing.",
@@ -1933,7 +1933,7 @@
       <span class="token tag">ja: </span>静的コンテンツの配信,
       <span class="token tag">ru: </span>Распределение статического контента
 <span class="token tag">infoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoType/general
+      <span class="token tag">$ref: </span>#/components/infoTypes/general
 <span class="token tag">ports: </span>[443]
 <span class="token tag">internet: </span>false
 <span class="token tag">restriction: </span>false
@@ -1951,7 +1951,7 @@
       <span class="token tag">ru: </span>Балансировщик нагрузки
 <span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
 <span class="token tag">storedInfoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoType/general
+      <span class="token tag">$ref: </span>#/components/infoTypes/general
 <span class="token tag">storageDescription: </span>{
       <span class="token tag">en: </span>Logging for API usage tracing.,
       <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
@@ -2042,7 +2042,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/components/infoTypes/&lt;key&gt;</code>)</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 Reference to the <a href="#s-infoType">InfoType object</a>.
                 Indicates the type of information handled in this traffic.
@@ -2145,7 +2145,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">storedInfoType</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/components/infoTypes/&lt;key&gt;</code>)</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
                 Reference to the <a href="#s-infoType">InfoType object</a>.
                 Indicates the type of information stored at the ends of this traffic.
@@ -2173,7 +2173,7 @@
     <span class="token tag">"ru": </span>"Распределение статического контента"
   },
   <span class="token tag">"infoType": </span>{
-        <span class="token tag">"$ref": </span>"#/components/infoType/general"
+        <span class="token tag">"$ref": </span>"#/components/infoTypes/general"
   },
   <span class="token tag">"ports": </span>[80],
   <span class="token tag">"internet": </span>false,
@@ -2191,7 +2191,7 @@
   },
   <span class="token tag">"storedRatio": </span>{<code>"max":</code> 0.3, <code>"min":</code> 0.1},
   <span class="token tag">"storedInfoType": </span>{
-    <span class="token tag">"$ref": </span>"#/components/infoType/general"
+    <span class="token tag">"$ref": </span>"#/components/infoTypes/general"
   },
   <span class="token tag">"storageDescription": </span>{
     <span class="token tag">"en": </span>"Logging for API usage tracing.",
@@ -2208,7 +2208,7 @@
       <span class="token tag">ja: </span>静的コンテンツの配信,
       <span class="token tag">ru: </span>Распределение статического контента
 <span class="token tag">infoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoType/general
+      <span class="token tag">$ref: </span>#/components/infoTypes/general
 <span class="token tag">ports: </span>[80]
 <span class="token tag">internet: </span>false
 <span class="token tag">restriction: </span>false
@@ -2224,7 +2224,7 @@
       <span class="token tag">ru: </span>Балансировщик нагрузки
 <span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
 <span class="token tag">storedInfoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoType/general
+      <span class="token tag">$ref: </span>#/components/infoTypes/general
 <span class="token tag">storageDescription: </span>{
       <span class="token tag">en: </span>Logging for API usage tracing.,
       <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
