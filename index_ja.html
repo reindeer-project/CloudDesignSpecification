@@ -1937,7 +1937,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">source</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/contexts/&lt;ctx&gt;/trigger</code> または <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>)</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 <a href="#s-trigger">trigger object</a> または <a href="#s-traffic">traffic object</a>への参照です。
                 このトラフィックの開始点を意味します。
@@ -2033,7 +2033,7 @@
   <span class="token tag">"ports": </span>[80],
   <span class="token tag">"internet": </span>false,
   <span class="token tag">"restriction": </span>false,
-  <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/trigger/customer"},
+  <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/contexts/customerWebAccess/trigger"},
   <span class="token tag">"end": </span>[
         {<span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/s3"}
   ],
@@ -2068,7 +2068,7 @@
 <span class="token tag">internet: </span>false
 <span class="token tag">restriction: </span>false
 <span class="token tag">source: </span>
-      <span class="token tag">$ref: </span>#/trigger/customer
+      <span class="token tag">$ref: </span>#/contexts/customerWebAccess/trigger
 <span class="token tag">end: </span>
     - <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/s3
 <span class="token tag">passThroughReqRatio: </span>{<code>max:</code> 1, <code>min:</code> 0.1}
