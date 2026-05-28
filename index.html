@@ -445,13 +445,9 @@
     }
   },
   <span class="token tag">"components": </span>{
-    <span class="token tag">"actors": </span>{
-      <span class="token tag">"operator": </span>{
-        <span class="token tag">"title": </span>{
-          <span class="token tag">"en": </span>"Operator",
-          <span class="token tag">"ja": </span>"運用者",
-        },
-        Refer 'Actor' schema
+    <span class="token tag">"infoType": </span>{
+      <span class="token tag">"pii": </span>{
+        Refer 'Information type' schema
       }
     },
     Refer 'Components' schema
@@ -1148,9 +1144,7 @@
             Components object<a class="anchor" href="#s-components"></a>
           </h3>
           <p>
-            Holds a set of reusable objects for different aspects of the CDS.
-            All objects defined within the components object will have no effect on the CDS unless they are explicitly
-            referenced from properties outside the components object.
+            The components object holds reusable definitions of information types.
           </p>
           <h6>Fixed Fields</h6>
           <div class="d-table table-responsive line-break">
@@ -1158,46 +1152,6 @@
               <p class="d-table-cell p-2 bg-primary text-white border">Field Name</p>
               <p class="d-table-cell p-2 bg-primary text-white border">Type</p>
               <p class="d-table-cell p-2 bg-primary text-white border">Description</p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">actors</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a href="#s-actor">Actor
-                  object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a href="#s-actor">Actor
-                  object</a>.
-              </p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a
-                  href="#s-context">Context object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a
-                  href="#s-context">Context object</a>.
-              </p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">markets</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a
-                  href="#s-market">Market object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a
-                  href="#s-market">Market object</a>.
-              </p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">triggers</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a
-                  href="#s-trigger">Trigger object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a
-                  href="#s-trigger">Trigger object</a>.
-              </p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">traffics</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a
-                  href="#s-traffic">Traffic object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">An object to hold reusable <a
-                  href="#s-traffic">Traffic object</a>.
-              </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>

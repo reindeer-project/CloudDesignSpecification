@@ -284,7 +284,7 @@
             </ul>
             <small><em>注: CDS を複数の外部ファイルに分割する「CDSスニペット」機構は 2026-05 に廃止されました。CDS 間のクロスファイル参照はサポートされません。プロジェクト横断の参照は将来的に project_id ベースの新仕様で提供予定です。provisioning リソース参照 (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) は CDS 間参照ではなく、CDS と自身が宣言する provisioning ファイル内エントリの紐付けなので引き続き有効です。</em></small>
             </p>
-          </div>
+
           <hr class="hr-dot-bold my-7">
           <h3 id="s-clouddesign">
             <i class="fa fa-home mr-3" aria-hidden="true"></i>
@@ -397,13 +397,9 @@
     }
   },
   <span class="token tag">"components": </span>{
-    <span class="token tag">"actors": </span>{
-      <span class="token tag">"operator": </span>{
-        <span class="token tag">"title": </span>{
-          <span class="token tag">"en": </span>"Operator",
-          <span class="token tag">"ja": </span>"運用者",
-        },
-        以下Actorスキーマ参照
+    <span class="token tag">"infoType": </span>{
+      <span class="token tag">"pii": </span>{
+        以下Information typeスキーマ参照
       }
     },
     以下Componentsスキーマ参照
@@ -1071,8 +1067,7 @@
             Components object<a class="anchor" href="#s-components"></a>
           </h3>
           <p>
-            CDSのさまざまな側面に対応する一連の再利用可能なオブジェクトを保持します。
-            componentsオブジェクト内で定義されたすべてのオブジェクトは、それらがcomponentsオブジェクトの外のプロパティから明示的に参照されない限り、CDSに影響を与えません。
+            componentsオブジェクトは情報種別（Information type）の再利用可能な定義を保持します。
           </p>
           <h6>固定フィールド</h6>
           <div class="d-table table-responsive line-break">
@@ -1080,41 +1075,6 @@
               <p class="d-table-cell p-2 bg-primary text-white border">フィールド名</p>
               <p class="d-table-cell p-2 bg-primary text-white border">種類</p>
               <p class="d-table-cell p-2 bg-primary text-white border">説明</p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">actors</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a href="#s-actor">Actor
-                  object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">再利用可能な<a href="#s-actor">Actor object</a>を保持します。
-              </p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a
-                  href="#s-context">Context object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">再利用可能な<a href="#s-context">Context object</a>を保持します。
-              </p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">markets</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a
-                  href="#s-market">Market object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">再利用可能な<a href="#s-market">Market object</a>を保持します。
-              </p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">triggers</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a
-                  href="#s-trigger">Trigger object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">再利用可能な<a href="#s-trigger">Trigger object</a>を保持します。
-              </p>
-            </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">traffics</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map [ <code>string</code>, <a
-                  href="#s-traffic">Traffic object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">再利用可能な<a href="#s-traffic">Traffic object</a>を保持します。
-              </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">infoType</p>
