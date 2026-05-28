@@ -100,101 +100,6 @@
             "description": "CDDのさまざまな側面に対応する一連の再利用可能な オブジェクトを保持します。 コンポーネントオブジェクト内で定義されたすべてのオブジェクトは、 それらがコンポーネントオブジェクトの外部のプロパティから 明示的に参照されない限り、クラウドデザインには影響しません。 https://docs.reindeer.tech/index_ja.html#s-components",
             "type": "object",
             "properties": {
-              "actors": {
-                "title": "Actor objects",
-                "description": "再利用可能なActor objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-actor",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "anyOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/marketTypeOfActor.json"
-                      },
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/personsTypeOfActor.json"
-                      },
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/externalSystemTypeOfActor.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "contexts": {
-                "title": "Context objects",
-                "description": "再利用可能なContext objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-context",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "type": "object",
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "markets": {
-                "title": "Market objects",
-                "description": "再利用可能なMarket objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-market",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "type": "object",
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/market.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "triggers": {
-                "title": "Trigger objects",
-                "description": "再利用可能なTrigger objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-trigger",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "type": "object",
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/webAccessTypeOfTrigger.json"
-                      },
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/timedActionTypeOfTrigger.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "traffics": {
-                "title": "Traffic objects",
-                "description": "再利用可能なTraffic objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
               "infoTypes": {
                 "title": "Information type objects",
                 "description": "再利用可能なInformation type objectを保持します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
@@ -614,9 +519,13 @@
           "traffics": {
             "title": "コンテキスト内の通信",
             "description": "必須. トラフィックオブジェクトを格納します。各トラフィックはトラフィックオブジェクトを指定します。 トラフィックはコンテキスト内の通信経路を意味します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
-            "oneOf":[
-              {"type": "object"},
-              {"type": "array"}
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "array"
+              }
             ],
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -654,8 +563,21 @@
         "required": [
           "type"
         ],
-        "if": { "properties":{ "type": { "enum":["Closed","OtherOpen"] }}},
-        "then": { "required":["provider"]},
+        "if": {
+          "properties": {
+            "type": {
+              "enum": [
+                "Closed",
+                "OtherOpen"
+              ]
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "provider"
+          ]
+        },
         "properties": {
           "type": {
             "title": "CDDのライセンス種別",
@@ -907,7 +829,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+(/components/actors|/actors)+/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/actors/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -945,7 +867,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/contexts/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/contexts/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -964,7 +886,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+(/components/triggers/+([a-zA-Z0-9])|/contexts/+([a-zA-Z0-9])+/trigger)+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/contexts/+([a-zA-Z0-9])+/trigger$"
           }
         }
       }
@@ -983,7 +905,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+(/components/traffics|/contexts/+([a-zA-Z0-9])+/traffics)+/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/contexts/+([a-zA-Z0-9])+/traffics/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -1021,7 +943,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/markets/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/markets/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -1151,7 +1073,6 @@
               "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
             }
           },
-
           "endpointTitle": {
             "title": "エンドポイント名",
             "description": "必須. エンドポイントの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-trigger-webaccess",

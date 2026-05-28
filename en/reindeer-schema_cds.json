@@ -100,101 +100,6 @@
             "description": "Holds a set of reusable objects for different aspects of the CDD. All objects defined within the components object will have no effect on the Cloud Design unless they are explicitly referenced from properties outside the components object. https://docs.reindeer.tech/index.html#s-components",
             "type": "object",
             "properties": {
-              "actors": {
-                "title": "Actor objects",
-                "description": "An object to hold reusable Actor object. https://docs.reindeer.tech/index.html#s-actor",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "anyOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/marketTypeOfActor.json"
-                      },
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/personsTypeOfActor.json"
-                      },
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/externalSystemTypeOfActor.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "contexts": {
-                "title": "Context objects",
-                "description": "An object to hold reusable Context object. https://docs.reindeer.tech/index.html#s-context",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "type": "object",
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "markets": {
-                "title": "Market objects",
-                "description": "An object to hold reusable Market object. https://docs.reindeer.tech/index.html#s-market",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "type": "object",
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/market.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "triggers": {
-                "title": "Trigger objects",
-                "description": "An object to hold reusable Trigger object. https://docs.reindeer.tech/index.html#s-trigger",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "type": "object",
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/webAccessTypeOfTrigger.json"
-                      },
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/timedActionTypeOfTrigger.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "traffics": {
-                "title": "Traffic objects",
-                "description": "An object to hold reusable Traffic object. https://docs.reindeer.tech/index.html#s-traffic",
-                "type": "object",
-                "patternProperties": {
-                  "^[0-9a-zA-Z]+$": {
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "$ref": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json"
-                      }
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
               "infoTypes": {
                 "title": "Information type objects",
                 "description": "An object to hold reusable Information type object. https://docs.reindeer.tech/index.html#s-infoType",
@@ -614,9 +519,13 @@
           "traffics": {
             "title": "Traffics of the context",
             "description": "REQUIRED. Holding the list of traffic objects. Each traffic is one of the types of traffic objects. The traffic means related data transfer route within the context. https://docs.reindeer.tech/index.html#s-traffic",
-            "oneOf":[
-              {"type": "object"},
-              {"type": "array"}
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "array"
+              }
             ],
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -654,12 +563,25 @@
         "required": [
           "type"
         ],
-        "if": { "properties":{ "type": { "enum":["Closed","OtherOpen"] }}},
-        "then": { "required":["provider"]},
+        "if": {
+          "properties": {
+            "type": {
+              "enum": [
+                "Closed",
+                "OtherOpen"
+              ]
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "provider"
+          ]
+        },
         "properties": {
           "type": {
             "title": "The license type of the CDD",
-            "description": "REQUIRED. This is the CDD license type. MUST be one of the following values: (CC0 recommended): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed https://docs.reindeer.tech/index.html#s-license" ,
+            "description": "REQUIRED. This is the CDD license type. MUST be one of the following values: (CC0 recommended): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed https://docs.reindeer.tech/index.html#s-license",
             "type": "string",
             "default": "CC0",
             "enum": [
@@ -907,7 +829,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+(/components/actors|/actors)+/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/actors/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -945,7 +867,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/contexts/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/contexts/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -964,7 +886,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+(/components/triggers/+([a-zA-Z0-9])|/contexts/+([a-zA-Z0-9])+/trigger)+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/contexts/+([a-zA-Z0-9])+/trigger$"
           }
         }
       }
@@ -983,7 +905,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+(/components/traffics|/contexts/+([a-zA-Z0-9])+/traffics)+/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/contexts/+([a-zA-Z0-9])+/traffics/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -1021,7 +943,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/markets/[a-zA-Z0-9]+$"
+            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/markets/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -1151,7 +1073,6 @@
               "$ref": "https://reindeer.tech/cds-schema/v1/refToResources.json"
             }
           },
-
           "endpointTitle": {
             "title": "The name of the endpoint",
             "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 70 letters string of UTF-8. The name of the endpoint. https://docs.reindeer.tech/index.html#s-trigger-webaccess",
