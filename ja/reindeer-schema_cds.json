@@ -796,7 +796,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/actors/[a-zA-Z0-9]+$"
+            "pattern": "^#/actors/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -821,25 +821,6 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cds-schema/v1/refToContext.json",
-      "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
-        "type": "object",
-        "required": [
-          "$ref"
-        ],
-        "properties": {
-          "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
-            "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/contexts/[a-zA-Z0-9]+$"
-          }
-        }
-      }
-    },
-    {
       "uri": "https://reindeer.tech/cds-schema/v1/refToTrigger.json",
       "schema": {
         "title": "参照",
@@ -853,7 +834,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/contexts/+([a-zA-Z0-9])+/trigger$"
+            "pattern": "^#/contexts/[a-zA-Z0-9]+/trigger$"
           }
         }
       }
@@ -872,7 +853,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/contexts/+([a-zA-Z0-9])+/traffics/[a-zA-Z0-9]+$"
+            "pattern": "^#/contexts/[a-zA-Z0-9]+/traffics/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -892,25 +873,6 @@
             "description": "必須. CDS 内部の #/components/infoTypes/<key> のみ有効です。外部ファイル参照は使用できません。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
             "pattern": "^#/components/infoTypes/[a-zA-Z0-9]+$"
-          }
-        }
-      }
-    },
-    {
-      "uri": "https://reindeer.tech/cds-schema/v1/refToMarket.json",
-      "schema": {
-        "title": "参照",
-        "description": "CDDの様々なフィールドからCDDやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを 参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、 同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく JSON参照仕様で定義されているとおりに行われます。 https://docs.reindeer.tech/index_ja.html#s-ref",
-        "type": "object",
-        "required": [
-          "$ref"
-        ],
-        "properties": {
-          "$ref": {
-            "title": "参照",
-            "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
-            "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/markets/[a-zA-Z0-9]+$"
           }
         }
       }
