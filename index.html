@@ -2500,6 +2500,39 @@
           <pre><code><span class="token tag">$ref: </span>awsTemplate.yaml#/resources/ApplicationLoadBalancer
 </code></pre>
 
+          <h6>Valid $ref formats by field</h6>
+          <p>The following table lists the fields that accept <code>$ref</code> and their permitted reference formats. Any other form (e.g. using <code>$ref</code> for actor, context, market, trigger or traffic entries themselves) is rejected by the schema.</p>
+          <div class="d-table table-responsive line-break">
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-primary text-white border">Field</p>
+              <p class="d-table-cell p-2 bg-primary text-white border">Valid $ref format</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">webAccess <code>trigger.start</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/actors/&lt;key&gt;</code> only</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">timedAction <code>trigger.start</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/actors/&lt;key&gt;</code> or <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code></p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">webAccess <code>trigger.end[]</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> only (provisioning resource reference)</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">timedAction <code>trigger.end[]</code><br><code>traffic.end[]</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> or <code>#/actors/&lt;key&gt;</code></p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>traffic.source</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/contexts/&lt;ctx&gt;/trigger</code> or <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code></p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>infoType</code> / <code>storedInfoType</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/components/infoTypes/&lt;key&gt;</code> only</p>
+            </div>
+          </div>
+
           <!--
             |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
             | Appendix

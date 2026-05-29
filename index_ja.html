@@ -2349,6 +2349,39 @@
           <pre><code><span class="token tag">$ref: </span>awsTemplate.yaml#/resources/ApplicationLoadBalancer
 </code></pre>
 
+          <h6>フィールド別の有効な $ref 形式</h6>
+          <p>CDS 内で <code>$ref</code> を使用できるフィールドと、それぞれで有効な参照形式を以下に示します。記載外の形式（例: <code>$ref</code> を使った actor・context・market・trigger・traffic エントリそのもの）はスキーマで弾かれます。</p>
+          <div class="d-table table-responsive line-break">
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-primary text-white border">フィールド</p>
+              <p class="d-table-cell p-2 bg-primary text-white border">有効な $ref 形式</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">webAccess <code>trigger.start</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/actors/&lt;key&gt;</code> のみ</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">timedAction <code>trigger.start</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/actors/&lt;key&gt;</code> または <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code></p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">webAccess <code>trigger.end[]</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> のみ（provisioning リソース参照）</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">timedAction <code>trigger.end[]</code><br><code>traffic.end[]</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> または <code>#/actors/&lt;key&gt;</code></p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>traffic.source</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/contexts/&lt;ctx&gt;/trigger</code> または <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code></p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>infoType</code> / <code>storedInfoType</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/components/infoTypes/&lt;key&gt;</code> のみ</p>
+            </div>
+          </div>
+
           <!--
             |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
             | Appendix
