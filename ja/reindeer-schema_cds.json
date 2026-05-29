@@ -919,16 +919,8 @@
           "infoType": {
             "title": "情報の種別",
             "description": "必須. InfoType objectに対する参照です。このトリガーが扱う情報の種別を定義します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "ports": {
             "title": "ポート番号",
@@ -1016,16 +1008,8 @@
           "storedInfoType": {
             "title": "保管データの情報種別",
             "description": "InfoType objectへの参照です。このトリガーのendが保管するデータの種類を示します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "storageDescription": {
             "title": "データ保管の目的",
@@ -1081,16 +1065,8 @@
           "infoType": {
             "title": "情報の種別",
             "description": "必須. InfoType objectに対する参照です。このトリガーが扱う情報の種別を定義します。 https://docs.reindeer.tech/index_ja.html#s-infoType",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "ports": {
             "title": "ポート番号",
@@ -1175,16 +1151,8 @@
           "storedInfoType": {
             "title": "保管するデータの種類",
             "description": "InfoType objectへの参照です。このトリガーのendが保管するデータの種類を示します。 https://docs.reindeer.tech/index_ja.html#s-trigger-timedAction",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "storageDescription": {
             "title": "保管データの目的",
@@ -1238,16 +1206,8 @@
           "infoType": {
             "title": "情報の種類",
             "description": "必須. InfoType objectへの参照です。 トラフィックが扱う情報の種類を明示します。　https://docs.reindeer.tech/index_ja.html#s-infoType",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "ports": {
             "title": "ポート番号",
@@ -1323,16 +1283,8 @@
           "storedInfoType": {
             "title": "保管データの種類",
             "description": "InfoType objectへの参照です。このトラフィックのendが保管するデータの種類を示します。 https://docs.reindeer.tech/index_ja.html#s-traffic-passThroughRatio",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "storageDescription": {
             "title": "データ保管の名前",
