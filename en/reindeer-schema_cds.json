@@ -55,10 +55,6 @@
                   {
                     "type": "object",
                     "$ref": "https://reindeer.tech/cds-schema/v1/externalSystemTypeOfActor.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
                   }
                 ]
               }
@@ -81,16 +77,8 @@
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/refToContext.json"
-                  }
-                ]
+                "type": "object",
+                "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
               }
             },
             "additionalProperties": false
@@ -243,16 +231,7 @@
             "title": "Market object",
             "description": "REQUIRED. Market information to which this actor belongs. https://docs.reindeer.tech/index.html#s-market",
             "type": "object",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/market.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToMarket.json"
-              }
-            ]
+            "$ref": "https://reindeer.tech/cds-schema/v1/market.json"
           },
           "marketShare": {
             "title": "Market share",
@@ -509,10 +488,6 @@
               {
                 "type": "object",
                 "$ref": "https://reindeer.tech/cds-schema/v1/timedActionTypeOfTrigger.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToTrigger.json"
               }
             ]
           },
@@ -529,16 +504,8 @@
             ],
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json"
-                  },
-                  {
-                    "type": "object",
-                    "$ref": "https://reindeer.tech/cds-schema/v1/refToTraffic.json"
-                  }
-                ]
+                "type": "object",
+                "$ref": "https://reindeer.tech/cds-schema/v1/passThroughRatioTypeOfTraffic.json"
               }
             },
             "additionalProperties": false
@@ -829,7 +796,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/actors/[a-zA-Z0-9]+$"
+            "pattern": "^#/actors/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -848,26 +815,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/+.+$"
-          }
-        }
-      }
-    },
-    {
-      "uri": "https://reindeer.tech/cds-schema/v1/refToContext.json",
-      "schema": {
-        "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
-        "type": "object",
-        "required": [
-          "$ref"
-        ],
-        "properties": {
-          "$ref": {
-            "title": "Reference",
-            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
-            "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/contexts/[a-zA-Z0-9]+$"
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\-\\.\\/]*\\.(yaml|yml|json|tf)#/.+$"
           }
         }
       }
@@ -886,7 +834,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/contexts/+([a-zA-Z0-9])+/trigger$"
+            "pattern": "^#/contexts/[a-zA-Z0-9]+/trigger$"
           }
         }
       }
@@ -905,7 +853,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json|tf)+#|#)+/contexts/+([a-zA-Z0-9])+/traffics/[a-zA-Z0-9]+$"
+            "pattern": "^#/contexts/[a-zA-Z0-9]+/traffics/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -924,26 +872,7 @@
             "title": "Reference",
             "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
             "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/components/infoTypes/[a-zA-Z0-9]+$"
-          }
-        }
-      }
-    },
-    {
-      "uri": "https://reindeer.tech/cds-schema/v1/refToMarket.json",
-      "schema": {
-        "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
-        "type": "object",
-        "required": [
-          "$ref"
-        ],
-        "properties": {
-          "$ref": {
-            "title": "Reference",
-            "description": "REQUIRED. Reference strings. In the case of referencing the object in the same file, you MUST start with #/, and MUST always describe the path from the root object. When specifying a reference to the external file, you MUST start with the file name with the extension .json, .yaml or .yml. After that, you MUST describe the same as in the same file reference. https://docs.reindeer.tech/index.html#s-ref",
-            "type": "string",
-            "pattern": "^([a-zA-Z0-9]+.+(yaml|yml|json)+#|#)+/markets/[a-zA-Z0-9]+$"
+            "pattern": "^#/components/infoTypes/[a-zA-Z0-9]+$"
           }
         }
       }
@@ -990,16 +919,8 @@
           "infoType": {
             "title": "Information type",
             "description": "REQUIRED. Reference to the InfoType object. Indicates the type of information handled in this trigger.  https://docs.reindeer.tech/index.html#s-infoType",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "ports": {
             "title": "Ports",
@@ -1057,12 +978,8 @@
           "start": {
             "title": "The start point of this trigger",
             "description": "REQUIRED. It MUST be a reference to the actor objects. The start point of this trigger. https://docs.reindeer.tech/index.html#s-actor",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToActor.json"
           },
           "end": {
             "title": "The end point of this traffic",
@@ -1087,16 +1004,8 @@
           "storedInfoType": {
             "title": "Information type of stored data",
             "description": "Reference to the InfoType object. Indicates the type of information stored at the ends of this trigger. https://docs.reindeer.tech/index.html#s-infoType",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "storageDescription": {
             "title": "Purpose of the storage",
@@ -1152,16 +1061,8 @@
           "infoType": {
             "title": "Information type",
             "description": "REQUIRED. Reference to the InfoType object. Indicates the type of information handled in this trigger. https://docs.reindeer.tech/index.html#s-infoType",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "ports": {
             "title": "Ports",
@@ -1246,16 +1147,8 @@
           "storedInfoType": {
             "title": "Information type",
             "description": "Reference to the InfoType object. Indicates the type of information stored at the ends of this trigger. https://docs.reindeer.tech/index.html#s-trigger-timedAction",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "storageDescription": {
             "title": "Purpose of the storage",
@@ -1309,16 +1202,8 @@
           "infoType": {
             "title": "Information type",
             "description": "REQUIRED. Reference to the InfoType object. Indicates the type of information handled in this traffic.　https://docs.reindeer.tech/index.html#s-infoType",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "ports": {
             "title": "Ports",
@@ -1394,16 +1279,8 @@
           "storedInfoType": {
             "title": "Information type of the storage",
             "description": "Reference to the InfoType object. Indicates the type of information stored at the ends of this traffic. https://docs.reindeer.tech/index.html#s-traffic-passThroughRatio",
-            "oneOf": [
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/infoType.json"
-              },
-              {
-                "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
-              }
-            ]
+            "type": "object",
+            "$ref": "https://reindeer.tech/cds-schema/v1/refToInfoType.json"
           },
           "storageDescription": {
             "title": "Purpose of the storage",
