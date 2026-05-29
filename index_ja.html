@@ -1492,11 +1492,11 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">end</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">[ Reference object ]</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                <a href="#s-resource">resource object</a>に記載されたリソースへの参照でなければなりません。このトリガーのエンドポイントを示します。<b
+                <a href="#s-resource">resource object</a>に記載されたリソースへの参照でなければなりません。このトリガーのエンドポイントを示します。プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）のみ有効です。<b
                   style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
-                <b style="color:darkred">⚠️ トラフィックオブジェクト（例: <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>）をここに指定してはなりません。スキーマ上は受理されますが、rendererはトラフィック参照をノードとして解決できず「？」マークを表示します。必ず <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> 形式で実リソースを参照してください。</b>
+                <b style="color:darkred">⚠️ CDS内部参照（<code>#/</code> で始まる形式）はスキーマで弾かれます。必ず <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> 形式で実リソースを参照してください。</b>
                 例：10GBのリクエストを送信するアクターに対して2台のWebサーバを列記した場合、各サーバが受信するリクエストは5GBとなります。静的コンテンツ用サーバと動的コンテンツ用サーバに9:1の割合でアクセスする設計の場合は両サーバを一つのendに併記せず、静的コンテンツを提供するコンテキストと動的コンテンツを提供するコンテキストを分けて、それぞれのendに各サーバを記述してください。
             </div>
 
@@ -1716,12 +1716,12 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">end</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> または <code>#/actors/&lt;key&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 トリガーのエンドポイントを示します。
-                <a href="#s-resource">resource object</a> または <a href="#s-actor">actor object</a>への参照でなければなりません。<b
+                プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）または CDS 内部アクター参照（<code>#/actors/&lt;key&gt;</code>）のみ有効です。<b
                   style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
-                <b style="color:darkred">⚠️ トラフィックオブジェクト（例: <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>）をここに指定してはなりません。スキーマ上は受理されますが、rendererはトラフィック参照をノードとして解決できず「？」マークを表示します。必ず <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> 形式で実リソースを参照してください。</b>
+                <b style="color:darkred">⚠️ CDS内部参照のうち、アクター（<code>#/actors/&lt;key&gt;</code>）以外（traffics・contexts等）はスキーマで弾かれます。</b>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -1948,10 +1948,10 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">end</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> または <code>#/actors/&lt;key&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 このトラフィックのエンドポイントを意味します。
-                <a href="#s-actor">actor objects</a> または <a href="#s-resource">resource object</a>内に記述された各リソースへの参照です。
+                プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）または CDS 内部アクター参照（<code>#/actors/&lt;key&gt;</code>）のみ有効です。
                 複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。
                 これはオートスケールグループのEC2インスタンス群などの同種リソース群のほか、
                 DBインスタンスとそのパラメータグループのように一体としてプロビジョニングする必要がある密結合リソース群にも適用されます。

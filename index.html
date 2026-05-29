@@ -1590,17 +1590,15 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">end</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">[ Reference object ]</a></p>
+              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 It MUST be references to the each resource item described in the <a href="#s-resource">resource
-                  object</a>. The end point of this trigger.
+                  object</a>. Only provisioning file references (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) are valid. The end point of this trigger.
                 <b style="color:red">If multiple resources are specified,
                   the traffic from start is determined to be evenly divided into each resource. Connections to resources
                   with different traffic weights or different uses, connection ports, etc. should not be listed here.
                   Write it as the end of the new context.</b>
-                <b style="color:darkred">⚠️ Do NOT reference a traffic object (e.g. <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>) here.
-                  Although the schema accepts it, the renderer cannot resolve a traffic reference as a node and will display a "?" mark.
-                  Always reference a real provisioning resource using the <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> format.</b>
+                <b style="color:darkred">⚠️ CDS-internal references (starting with <code>#/</code>) are rejected by the schema. Always use the <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> format.</b>
                 Example: If you list two web servers for an actor sending a 10GB request, each server will receive 5GB
                 of requests. In the case of designing to access the static content server and the dynamic content server
                 at a ratio of 9: 1, do not write both servers together in one end, and the context that provides static
@@ -1832,16 +1830,13 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">end</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> or <code>#/actors/&lt;key&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
-                It MUST be a reference to the <a href="#s-actor">actor object</a> or the <a href="#s-resource">resource
-                  object</a>. The end point of this trigger.<b style="color:red">If multiple resources are specified,
+                It MUST be a reference to the <a href="#s-actor">actor object</a> (<code>#/actors/&lt;key&gt;</code>) or a provisioning file resource (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>). The end point of this trigger.<b style="color:red">If multiple resources are specified,
                   the traffic from start is determined to be evenly divided into each resource. Connections to resources
                   with different traffic weights or different uses, connection ports, etc. should not be listed here.
                   Write it as the end of the new context.</b>
-                <b style="color:darkred">⚠️ Do NOT reference a traffic object (e.g. <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>) here.
-                  Although the schema accepts it, the renderer cannot resolve a traffic reference as a node and will display a "?" mark.
-                  Always reference a real provisioning resource using the <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> format.</b>
+                <b style="color:darkred">⚠️ Any CDS-internal reference other than <code>#/actors/&lt;key&gt;</code> (e.g. traffics, contexts) is rejected by the schema.</b>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -2084,10 +2079,9 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">end</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> ]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> or <code>#/actors/&lt;key&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
-                References to the <a href="#s-actor">actor objects</a> or the each resource item described in the <a
-                  href="#s-resource">resource object</a>.
+                Provisioning file resource references (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) or CDS-internal actor references (<code>#/actors/&lt;key&gt;</code>) only.
                 The end point of this traffic.
                 When multiple resources are listed, the traffic is assumed to be evenly distributed across all of them.
                 This applies to homogeneous resources (e.g. multiple EC2 instances in an auto-scaling group) as well as
