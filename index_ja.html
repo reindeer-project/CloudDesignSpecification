@@ -115,9 +115,9 @@
                     <a class="nav-link small" href="#s-resource">
                       <i class="fa fa-server mr-3" aria-hidden="true"></i>
                       Resource</a>
-                    <a class="nav-link small" href="#s-context">
+                    <a class="nav-link small" href="#s-usecase">
                       <i class="fa fa-route mr-3" aria-hidden="true"></i>
-                      Context</a>
+                      UseCase</a>
                     <a class="nav-link small" href="#s-components">
                       <i class="fa fa-cube mr-3" aria-hidden="true"></i>
                       Components</a>
@@ -279,7 +279,7 @@
             <br>
             参照 (<code>$ref</code>) は次の 2 種類があります:
             <ul>
-              <li><b>CDS内部参照</b> — 同一 CDS 内のディレクティブを指す。<code>#/</code> で始まり CDS root からのパスを記述 (例 <code>#/actors/customer</code>、<code>#/components/infoTypes/pii</code>、<code>#/contexts/web/trigger</code>)</li>
+              <li><b>CDS内部参照</b> — 同一 CDS 内のディレクティブを指す。<code>#/</code> で始まり CDS root からのパスを記述 (例 <code>#/actors/customer</code>、<code>#/components/infoTypes/pii</code>、<code>#/useCases/web/trigger</code>)</li>
               <li><b>provisioning リソース参照</b> — CDS の <code>resources[]</code> に列挙された provisioning ファイル内のリソースを指す。形式は <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>。<code>&lt;file&gt;</code> は <code>resources[]</code> に宣言したファイル名 (拡張子付き)、<code>&lt;section&gt;</code> は固定の小文字セクション識別子 (<code>resources</code> = CFn / Terraform / GDM / CIM / ARM / ROS、<code>functions</code> = Serverless Framework Lambda)、<code>&lt;RealKey&gt;</code> は provisioning ファイル内の実キー (大小文字区別あり)</li>
             </ul>
             <small><em>注: CDS を複数の外部ファイルに分割する「CDSスニペット」機構は 2026-05 に廃止されました。CDS 間のクロスファイル参照はサポートされません。プロジェクト横断の参照は将来的に project_id ベースの新仕様で提供予定です。provisioning リソース参照 (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) は CDS 間参照ではなく、CDS と自身が宣言する provisioning ファイル内エントリの紐付けなので引き続き有効です。</em></small>
@@ -340,10 +340,10 @@
                 クラウドの構造を記述する外部ドキュメント（プロビジョニングコードが記載されたファイル）への参照を示す、リソースオブジェクトの配列です。</p>.</p>
             </div>
             <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-context">Context object</a> ]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">useCases</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-usecase">ユースケースオブジェクト</a> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                コンテキストオブジェクトの配列です。アクターとクラウドリソースの間で、
+                ユースケースオブジェクトの配列です。アクターとクラウドリソースの間で、
                 特定の目的を達成するための関連性についての情報を提供します。
               </p>
             </div>
@@ -384,13 +384,13 @@
         以下Resourcesスキーマ参照
       }
   ],
-  <span class="token tag">"contexts": </span>{
+  <span class="token tag">"useCases": </span>{
     <span class="token tag">"customerWebAccess": </span>{
       <span class="token tag">"title": </span>{
         <span class="token tag">"en": </span>"Web access by customer",
         <span class="token tag">"ja": </span>"顧客によるウェブアクセス",
       },
-      以下Contextsスキーマ参照
+      以下UseCasesスキーマ参照
     }
   },
   <span class="token tag">"components": </span>{
@@ -953,9 +953,9 @@
 </code></pre>
 
           <hr class="hr-dot-bold my-7">
-          <h3 id="s-context">
+          <h3 id="s-usecase">
             <i class="fa fa-route mr-3" aria-hidden="true"></i>
-            Context object<a class="anchor" href="#s-context"></a>
+            ユースケースオブジェクト<a class="anchor" href="#s-usecase"></a>
           </h3>
           <p>
             このオブジェクトは、特定の機能を実行する目的でいくつかのアクターとリソースを関連付けることにより、
@@ -973,7 +973,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">title</p>
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                コンテキストの名称です。
+                ユースケースの名称です。
                 キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。
                 そして値はUTF-8の文字列でなければなりません。
               </p>
@@ -982,7 +982,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">description</p>
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                コンテキストの説明です。
+                ユースケースの説明です。
                 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。
                 キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。
                 そして値はUTF-8の文字列でなければなりません。
@@ -992,7 +992,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">trigger</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-trigger">Trigger objects</a></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                トリガーオブジェクトを指定します。トリガーはこのコンテキストの開始イベントを意味します。
+                トリガーオブジェクトを指定します。トリガーはこのユースケースの開始イベントを意味します。
               </p>
             </div>
             <div class="d-table-row">
@@ -1000,14 +1000,14 @@
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-traffic">Traffic objects</a> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 トラフィックオブジェクトを格納します。各トラフィックはトラフィックオブジェクトを指定します。
-                トラフィックはコンテキスト内の通信経路を意味します。
+                トラフィックはユースケース内の通信経路を意味します。
               </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">maxPerformanceDurationRatio</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border">
-                最大性能の月間持続時間比率を示します。コンテキストに求められるコストを計算する際、本値を利用してtriggerやtrafficsに含まれる各<a href="#s-rangeValue">Range
+                最大性能の月間持続時間比率を示します。ユースケースに求められるコストを計算する際、本値を利用してtriggerやtrafficsに含まれる各<a href="#s-rangeValue">Range
                   values object</a>のmaxとmin値を合成します。
                 例えば月間3日だけ広告効果でDAUを向上させる設計の場合、DAU値をmin:0.01, max:0.1、本値を0.1と表現します。
                 CloudDesignは月間使用量を基準に性能とコストを表現しますが、本値により月間平均は1rpsながらも瞬間最大性能100rpsを期待する設計が記録できます。
@@ -1369,7 +1369,7 @@
             Trigger objects<a class="anchor" href="#s-trigger"></a>
           </h3>
           <p>
-            <a href="#s-context">context</a>の初期イベントに関する情報を提供します。
+            <a href="#s-usecase">ユースケース</a>の初期イベントに関する情報を提供します。
             それはサーバへの人的なWebアクセス、または外部APIへの自動化された時限呼び出しである可能性があります。
           </p>
 
@@ -1495,9 +1495,9 @@
               <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 <a href="#s-resource">resource object</a>に記載されたリソースへの参照でなければなりません。このトリガーのエンドポイントを示します。プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）のみ有効です。<b
-                  style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
+                  style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいユースケースのendとして記述してください。</b>
                 <b style="color:darkred">⚠️ CDS内部参照（<code>#/</code> で始まる形式）はスキーマで弾かれます。必ず <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> 形式で実リソースを参照してください。</b>
-                例：10GBのリクエストを送信するアクターに対して2台のWebサーバを列記した場合、各サーバが受信するリクエストは5GBとなります。静的コンテンツ用サーバと動的コンテンツ用サーバに9:1の割合でアクセスする設計の場合は両サーバを一つのendに併記せず、静的コンテンツを提供するコンテキストと動的コンテンツを提供するコンテキストを分けて、それぞれのendに各サーバを記述してください。
+                例：10GBのリクエストを送信するアクターに対して2台のWebサーバを列記した場合、各サーバが受信するリクエストは5GBとなります。静的コンテンツ用サーバと動的コンテンツ用サーバに9:1の割合でアクセスする設計の場合は両サーバを一つのendに併記せず、静的コンテンツを提供するユースケースと動的コンテンツを提供するユースケースを分けて、それぞれのendに各サーバを記述してください。
             </div>
 
             <div class="d-table-row">
@@ -1720,8 +1720,8 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 トリガーのエンドポイントを示します。
                 プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）または CDS 内部アクター参照（<code>#/actors/&lt;key&gt;</code>）のみ有効です。<b
-                  style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいコンテキストのendとして記述してください。</b>
-                <b style="color:darkred">⚠️ CDS内部参照のうち、アクター（<code>#/actors/&lt;key&gt;</code>）以外（traffics・contexts等）はスキーマで弾かれます。</b>
+                  style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいユースケースのendとして記述してください。</b>
+                <b style="color:darkred">⚠️ CDS内部参照のうち、アクター（<code>#/actors/&lt;key&gt;</code>）以外（traffics・useCases等）はスキーマで弾かれます。</b>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -1842,7 +1842,7 @@
             Traffic objects<a class="anchor" href="#s-traffic"></a>
           </h3>
           <p>
-            <a href="#s-context">context</a>内の通信に関する情報を提供します。これはトリガーイベントの後続処理で利用されなければなりません。
+            <a href="#s-usecase">ユースケース</a>内の通信に関する情報を提供します。これはトリガーイベントの後続処理で利用されなければなりません。
             例えばWebサーバーからアプリケーションサーバへの動的コンテンツ要求や、アプリケーションサーバからデータベースへのデータ保存などが表現されます。
           </p>
           <hr class="hr-dot my-5">
@@ -1867,19 +1867,19 @@
   <span class="token tag">t1:</span>
     <span class="token tag">type: passThroughRatio</span>
     <span class="token tag">source:</span>
-      <span class="token tag">$ref: "#/contexts/myContext/trigger"</span>
+      <span class="token tag">$ref: "#/useCases/myUseCase/trigger"</span>
     <span class="token tag">end:</span>
       <span class="token tag">- $ref: "#/resources/myCloudFront"</span>
   <span class="token tag">t2:</span>
     <span class="token tag">type: passThroughRatio</span>
     <span class="token tag">source:</span>
-      <span class="token tag">$ref: "#/contexts/myContext/traffics/t1"</span>
+      <span class="token tag">$ref: "#/useCases/myUseCase/traffics/t1"</span>
     <span class="token tag">end:</span>
       <span class="token tag">- $ref: "#/resources/myApiGateway"</span>
   <span class="token tag">t3:</span>
     <span class="token tag">type: passThroughRatio</span>
     <span class="token tag">source:</span>
-      <span class="token tag">$ref: "#/contexts/myContext/traffics/t2"</span>
+      <span class="token tag">$ref: "#/useCases/myUseCase/traffics/t2"</span>
     <span class="token tag">end:</span>
       <span class="token tag">- $ref: "#/resources/myLambda"</span></code></pre>
           <h6>固定フィールド</h6>
@@ -1937,7 +1937,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">source</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/contexts/&lt;ctx&gt;/trigger</code> または <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>)</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/useCases/&lt;uc&gt;/trigger</code> または <code>#/useCases/&lt;uc&gt;/traffics/&lt;key&gt;</code>)</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 <a href="#s-trigger">trigger object</a> または <a href="#s-traffic">traffic object</a>への参照です。
                 このトラフィックの開始点を意味します。
@@ -2033,7 +2033,7 @@
   <span class="token tag">"ports": </span>[80],
   <span class="token tag">"internet": </span>false,
   <span class="token tag">"restriction": </span>false,
-  <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/contexts/customerWebAccess/trigger"},
+  <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/useCases/customerWebAccess/trigger"},
   <span class="token tag">"end": </span>[
         {<span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/s3"}
   ],
@@ -2068,7 +2068,7 @@
 <span class="token tag">internet: </span>false
 <span class="token tag">restriction: </span>false
 <span class="token tag">source: </span>
-      <span class="token tag">$ref: </span>#/contexts/customerWebAccess/trigger
+      <span class="token tag">$ref: </span>#/useCases/customerWebAccess/trigger
 <span class="token tag">end: </span>
     - <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/s3
 <span class="token tag">passThroughReqRatio: </span>{<code>max:</code> 1, <code>min:</code> 0.1}
@@ -2350,7 +2350,7 @@
 </code></pre>
 
           <h6>フィールド別の有効な $ref 形式</h6>
-          <p>CDS 内で <code>$ref</code> を使用できるフィールドと、それぞれで有効な参照形式を以下に示します。記載外の形式（例: <code>$ref</code> を使った actor・context・market・trigger・traffic エントリそのもの）はスキーマで弾かれます。</p>
+          <p>CDS 内で <code>$ref</code> を使用できるフィールドと、それぞれで有効な参照形式を以下に示します。記載外の形式（例: <code>$ref</code> を使った actor・useCase・market・trigger・traffic エントリそのもの）はスキーマで弾かれます。</p>
           <div class="d-table table-responsive line-break">
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-primary text-white border">フィールド</p>
@@ -2374,7 +2374,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border"><code>traffic.source</code></p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/contexts/&lt;ctx&gt;/trigger</code> または <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/useCases/&lt;uc&gt;/trigger</code> または <code>#/useCases/&lt;uc&gt;/traffics/&lt;key&gt;</code></p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border"><code>infoType</code> / <code>storedInfoType</code></p>
@@ -2459,7 +2459,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">1.3.0</p>
               <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
-                ContextにmaxPerformanceDurationRatioを追加し、合成コスト表現をサポート
+                UseCaseにmaxPerformanceDurationRatioを追加し、合成コスト表現をサポート
               </p>
             </div>
             <div class="d-table-row">

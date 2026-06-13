@@ -116,9 +116,9 @@
                     <a class="nav-link small" href="#s-resource">
                       <i class="fa fa-server mr-3" aria-hidden="true"></i>
                       Resource</a>
-                    <a class="nav-link small" href="#s-context">
+                    <a class="nav-link small" href="#s-usecase">
                       <i class="fa fa-route mr-3" aria-hidden="true"></i>
-                      Context</a>
+                      UseCase</a>
                     <a class="nav-link small" href="#s-components">
                       <i class="fa fa-cube mr-3" aria-hidden="true"></i>
                       Components</a>
@@ -301,7 +301,7 @@
             <ul>
               <li><b>CDS-internal reference</b> — points to a directive inside the same CDS document. Starts with
                 <code>#/</code> and describes the path from the CDS root (e.g. <code>#/actors/customer</code>,
-                <code>#/components/infoTypes/pii</code>, <code>#/contexts/web/trigger</code>).</li>
+                <code>#/components/infoTypes/pii</code>, <code>#/useCases/web/trigger</code>).</li>
               <li><b>Provisioning resource reference</b> — points to a specific resource declared inside a provisioning
                 file listed in the CDS <code>resources[]</code> array. Form is
                 <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> where <code>&lt;file&gt;</code> matches a
@@ -388,10 +388,10 @@
                 codes) describing the cloud architecture.</p>
             </div>
             <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">contexts</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-context">Context object</a> ]</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">useCases</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-usecase">UseCase object</a> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
-                An array of context objects, which provide information about the relationship
+                An array of use case objects, which provide information about the relationship
                 for achieving a specific purpose between actors and cloud resources.
               </p>
             </div>
@@ -432,13 +432,13 @@
         Refer 'Resources' schema
       }
   ],
-  <span class="token tag">"contexts": </span>{
+  <span class="token tag">"useCases": </span>{
     <span class="token tag">"customerWebAccess": </span>{
       <span class="token tag">"title": </span>{
         <span class="token tag">"en": </span>"Web access by customer",
         <span class="token tag">"ja": </span>"顧客によるウェブアクセス",
       },
-      Refer 'Contexts' schema
+      Refer 'UseCases' schema
     }
   },
   <span class="token tag">"components": </span>{
@@ -1024,9 +1024,9 @@
 </code></pre>
 
           <hr class="hr-dot-bold my-7">
-          <h3 id="s-context">
+          <h3 id="s-usecase">
             <i class="fa fa-route mr-3" aria-hidden="true"></i>
-            Context object<a class="anchor" href="#s-context"></a>
+            UseCase object<a class="anchor" href="#s-usecase"></a>
           </h3>
           <p>
             The object provides information about the use case of the system by associating
@@ -1047,7 +1047,7 @@
                 The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO
                   639-1</a>.
                 And the value MUST be string of UTF-8.<br>
-                The title of the context.
+                The title of the use case.
               </p>
             </div>
             <div class="d-table-row">
@@ -1057,7 +1057,7 @@
                 The key MUST be 2 letter language code of <a href="https://www.iso.org/iso-639-language-codes.html">ISO
                   639-1</a>.
                 And the value MUST be string of UTF-8. <br>
-                The description of the context.
+                The description of the use case.
               </p>
             </div>
             <div class="d-table-row">
@@ -1065,7 +1065,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-trigger">Trigger objects</a></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 One of the types of trigger object.
-                The trigger means the initial event of this context.
+                The trigger means the initial event of this use case.
               </p>
             </div>
             <div class="d-table-row">
@@ -1073,7 +1073,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <a href="#s-traffic">Traffic objects</a> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 Holding the list of traffic objects. Each traffic is one of the types of traffic objects.
-                The traffic means related data transfer route within the context.
+                The traffic means related data transfer route within the use case.
               </p>
             </div>
             <div class="d-table-row">
@@ -1081,7 +1081,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><code>float</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border">
                 Shows the monthly duration ratio of maximum performance.
-                When calculating the cost required for the context, this value is used to synthesize the max and min
+                When calculating the cost required for the use case, this value is used to synthesize the max and min
                 values ​​of each <a href="#s-rangeValue"> Range values ​​object </a> included in trigger and traffic.
                 For example, in the case of a design that improves DAU by advertising effect only 3 days a month, the
                 DAU value is expressed as min: 0.01, max: 0.1, and this value is expressed as 0.1.
@@ -1455,7 +1455,7 @@
             Trigger objects<a class="anchor" href="#s-trigger"></a>
           </h3>
           <p>
-            The objects provide information about the initial event of the <a href="#s-context">context</a>.
+            The objects provide information about the initial event of the <a href="#s-usecase">use case</a>.
             It MAY be person's web site access to the server, or it MAY be an automated timed call to the external API.
           </p>
 
@@ -1597,12 +1597,12 @@
                 <b style="color:red">If multiple resources are specified,
                   the traffic from start is determined to be evenly divided into each resource. Connections to resources
                   with different traffic weights or different uses, connection ports, etc. should not be listed here.
-                  Write it as the end of the new context.</b>
+                  Write it as the end of the new use case.</b>
                 <b style="color:darkred">⚠️ CDS-internal references (starting with <code>#/</code>) are rejected by the schema. Always use the <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> format.</b>
                 Example: If you list two web servers for an actor sending a 10GB request, each server will receive 5GB
                 of requests. In the case of designing to access the static content server and the dynamic content server
-                at a ratio of 9: 1, do not write both servers together in one end, and the context that provides static
-                content and the context that provides dynamic content. Please describe each server in each end
+                at a ratio of 9: 1, do not write both servers together in one end, and the use case that provides static
+                content and the use case that provides dynamic content. Please describe each server in each end
                 separately.
             </div>
 
@@ -1835,8 +1835,8 @@
                 It MUST be a reference to the <a href="#s-actor">actor object</a> (<code>#/actors/&lt;key&gt;</code>) or a provisioning file resource (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>). The end point of this trigger.<b style="color:red">If multiple resources are specified,
                   the traffic from start is determined to be evenly divided into each resource. Connections to resources
                   with different traffic weights or different uses, connection ports, etc. should not be listed here.
-                  Write it as the end of the new context.</b>
-                <b style="color:darkred">⚠️ Any CDS-internal reference other than <code>#/actors/&lt;key&gt;</code> (e.g. traffics, contexts) is rejected by the schema.</b>
+                  Write it as the end of the new use case.</b>
+                <b style="color:darkred">⚠️ Any CDS-internal reference other than <code>#/actors/&lt;key&gt;</code> (e.g. traffics, useCases) is rejected by the schema.</b>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -1961,7 +1961,7 @@
             Traffic objects<a class="anchor" href="#s-traffic"></a>
           </h3>
           <p>
-            The objects provide information about related traffics within the <a href="#s-context">context</a>.
+            The objects provide information about related traffics within the <a href="#s-usecase">use case</a>.
             This must be used in the subsequent processing of the trigger event.
             For example, dynamic content request from Web server to application server,
             data storage from application server to database, etc. are expressed.
@@ -1995,19 +1995,19 @@
   <span class="token tag">t1:</span>
     <span class="token tag">type: passThroughRatio</span>
     <span class="token tag">source:</span>
-      <span class="token tag">$ref: "#/contexts/myContext/trigger"</span>
+      <span class="token tag">$ref: "#/useCases/myUseCase/trigger"</span>
     <span class="token tag">end:</span>
       <span class="token tag">- $ref: "#/resources/myCloudFront"</span>
   <span class="token tag">t2:</span>
     <span class="token tag">type: passThroughRatio</span>
     <span class="token tag">source:</span>
-      <span class="token tag">$ref: "#/contexts/myContext/traffics/t1"</span>
+      <span class="token tag">$ref: "#/useCases/myUseCase/traffics/t1"</span>
     <span class="token tag">end:</span>
       <span class="token tag">- $ref: "#/resources/myApiGateway"</span>
   <span class="token tag">t3:</span>
     <span class="token tag">type: passThroughRatio</span>
     <span class="token tag">source:</span>
-      <span class="token tag">$ref: "#/contexts/myContext/traffics/t2"</span>
+      <span class="token tag">$ref: "#/useCases/myUseCase/traffics/t2"</span>
     <span class="token tag">end:</span>
       <span class="token tag">- $ref: "#/resources/myLambda"</span></code></pre>
           <h6>Fixed Fields</h6>
@@ -2066,7 +2066,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">source</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/contexts/&lt;ctx&gt;/trigger</code> or <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code>)</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-ref">Reference object</a> (<code>#/useCases/&lt;uc&gt;/trigger</code> or <code>#/useCases/&lt;uc&gt;/traffics/&lt;key&gt;</code>)</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
                 References to the <a href="#s-trigger">trigger object</a> or the <a href="#s-traffic">traffic
                   object</a>.
@@ -2172,7 +2172,7 @@
   <span class="token tag">"ports": </span>[80],
   <span class="token tag">"internet": </span>false,
   <span class="token tag">"restriction": </span>false,
-  <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/contexts/customerWebAccess/trigger"},
+  <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/useCases/customerWebAccess/trigger"},
   <span class="token tag">"end": </span>[
         {<span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/s3"}
   ],
@@ -2207,7 +2207,7 @@
 <span class="token tag">internet: </span>false
 <span class="token tag">restriction: </span>false
 <span class="token tag">source: </span>
-      <span class="token tag">$ref: </span>#/contexts/customerWebAccess/trigger
+      <span class="token tag">$ref: </span>#/useCases/customerWebAccess/trigger
 <span class="token tag">end: </span>
     - <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/s3
 <span class="token tag">passThroughReqRatio: </span>{<code>max:</code> 1, <code>min:</code> 0.1}
@@ -2501,7 +2501,7 @@
 </code></pre>
 
           <h6>Valid $ref formats by field</h6>
-          <p>The following table lists the fields that accept <code>$ref</code> and their permitted reference formats. Any other form (e.g. using <code>$ref</code> for actor, context, market, trigger or traffic entries themselves) is rejected by the schema.</p>
+          <p>The following table lists the fields that accept <code>$ref</code> and their permitted reference formats. Any other form (e.g. using <code>$ref</code> for actor, use case, market, trigger or traffic entries themselves) is rejected by the schema.</p>
           <div class="d-table table-responsive line-break">
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-primary text-white border">Field</p>
@@ -2525,7 +2525,7 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border"><code>traffic.source</code></p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/contexts/&lt;ctx&gt;/trigger</code> or <code>#/contexts/&lt;ctx&gt;/traffics/&lt;key&gt;</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>#/useCases/&lt;uc&gt;/trigger</code> or <code>#/useCases/&lt;uc&gt;/traffics/&lt;key&gt;</code></p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border"><code>infoType</code> / <code>storedInfoType</code></p>
@@ -2614,7 +2614,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">1.3.0</p>
               <p class="d-table-cell p-2 bg-white text-dark border">2020-11-10</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
-                Add 'maxPerformanceDurationRatio' to Context for supporting synthetic cost representation.
+                Add 'maxPerformanceDurationRatio' to UseCase for supporting synthetic cost representation.
               </p>
             </div>
             <div class="d-table-row">
