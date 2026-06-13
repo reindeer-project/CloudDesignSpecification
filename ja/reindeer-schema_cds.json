@@ -16,7 +16,7 @@
           "info",
           "actors",
           "resources",
-          "contexts"
+          "useCases"
         ],
         "properties": {
           "reindeer": {
@@ -71,14 +71,14 @@
             },
             "additionalProperties": false
           },
-          "contexts": {
-            "title": "コンテキスト",
-            "description": "必須. コンテキストオブジェクトの配列です。アクターとクラウドコンピューティングリソースの間で、 特定の目的を達成するための関連性についての情報を提供します。 https://docs.reindeer.tech/index_ja.html#s-context",
+          "useCases": {
+            "title": "ユースケース",
+            "description": "必須. ユースケースオブジェクトの配列です。アクターとクラウドコンピューティングリソースの間で、 特定の目的を達成するための関連性についての情報を提供します。 https://docs.reindeer.tech/index_ja.html#s-usecase",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
                 "type": "object",
-                "$ref": "https://reindeer.tech/cds-schema/v1/context.json"
+                "$ref": "https://reindeer.tech/cds-schema/v1/usecase.json"
               }
             },
             "additionalProperties": false
@@ -452,10 +452,10 @@
       }
     },
     {
-      "uri": "https://reindeer.tech/cds-schema/v1/context.json",
+      "uri": "https://reindeer.tech/cds-schema/v1/usecase.json",
       "schema": {
-        "title": "コンテキストオブジェクト",
-        "description": "このオブジェクトは、特定の機能を実行する目的でいくつかのアクターとリソースを関連付けることにより、 システムの利用ケースに関する情報を提供します。 それはCDDを正しく設計、監査するために、包括的に記述されるべきです。 https://docs.reindeer.tech/index_ja.html#s-context",
+        "title": "ユースケースオブジェクト",
+        "description": "このオブジェクトは、特定の機能を実行する目的でいくつかのアクターとリソースを関連付けることにより、 システムのユースケースに関する情報を提供します。 それはCDDを正しく設計、監査するために、包括的に記述されるべきです。 https://docs.reindeer.tech/index_ja.html#s-usecase",
         "type": "object",
         "required": [
           "title",
@@ -465,20 +465,20 @@
         ],
         "properties": {
           "title": {
-            "title": "コンテキストの名称",
-            "description": "必須. コンテキストの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "title": "ユースケースの名称",
+            "description": "必須. ユースケースの名称です。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の70文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-usecase",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/title.json"
           },
           "description": {
-            "title": "コンテキストの説明",
-            "description": "必須. コンテキストの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "title": "ユースケースの説明",
+            "description": "必須. ユースケースの説明です。 このテキストは外部ツールによる検索インデックスとして使われる可能性があります。 キーはISO 639-1の2文字の言語コードでなければなりません。 そして値はUTF-8の500文字以内の文字列でなければなりません。 https://docs.reindeer.tech/index_ja.html#s-usecase",
             "type": "object",
             "$ref": "https://reindeer.tech/cds-schema/v1/description.json"
           },
           "trigger": {
-            "title": "コンテキストの開始点",
-            "description": "必須. トリガーオブジェクトを指定します。トリガーはこのコンテキストの開始イベントを意味します。 https://docs.reindeer.tech/index_ja.html#s-trigger",
+            "title": "ユースケースの開始点",
+            "description": "必須. トリガーオブジェクトを指定します。トリガーはこのユースケースの開始イベントを意味します。 https://docs.reindeer.tech/index_ja.html#s-trigger",
             "type": "object",
             "oneOf": [
               {
@@ -492,8 +492,8 @@
             ]
           },
           "traffics": {
-            "title": "コンテキスト内の通信",
-            "description": "必須. トラフィックオブジェクトを格納します。各トラフィックはトラフィックオブジェクトを指定します。 トラフィックはコンテキスト内の通信経路を意味します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
+            "title": "ユースケース内の通信",
+            "description": "必須. トラフィックオブジェクトを格納します。各トラフィックはトラフィックオブジェクトを指定します。 トラフィックはユースケース内の通信経路を意味します。 https://docs.reindeer.tech/index_ja.html#s-traffic",
             "oneOf": [
               {
                 "type": "object"
@@ -512,7 +512,7 @@
           },
           "maxPerformanceDurationRatio": {
             "title": "最大性能の月間持続時間比率",
-            "description": "コンテキストに求められるコストを計算する際、本値を利用してtriggerやtrafficsに含まれる各Range values objectのmaxとmin値を合成します。 例えば月間3日だけ広告効果でDAUを向上させる設計の場合、DAU値をmin:0.01, max:0.1、本値を0.1と表現します。 CloudDesignは月間使用量を基準に性能とコストを表現しますが、本値により月間平均は1rpsながらも瞬間最大性能100rpsを期待する設計が記録できます。 https://docs.reindeer.tech/index_ja.html#s-context",
+            "description": "ユースケースに求められるコストを計算する際、本値を利用してtriggerやtrafficsに含まれる各Range values objectのmaxとmin値を合成します。 例えば月間3日だけ広告効果でDAUを向上させる設計の場合、DAU値をmin:0.01, max:0.1、本値を0.1と表現します。 CloudDesignは月間使用量を基準に性能とコストを表現しますが、本値により月間平均は1rpsながらも瞬間最大性能100rpsを期待する設計が記録できます。 https://docs.reindeer.tech/index_ja.html#s-usecase",
             "type": "number",
             "minimum": 0,
             "maximum": 1
@@ -834,7 +834,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^#/contexts/[a-zA-Z0-9]+/trigger$"
+            "pattern": "^#/useCases/[a-zA-Z0-9]+/trigger$"
           }
         }
       }
@@ -853,7 +853,7 @@
             "title": "参照",
             "description": "必須. Reference strings. 同一ファイルの場合は#/で始まる形で参照を記述し、必ずルートオブジェクトからのパスを記述します。 また外部ファイルを指定するときは、必ず拡張子.json、.yaml、または.ymlを付けたファイル名から参照を記述し、 #/以降は同一ファイルの場合と同様に記述します。 https://docs.reindeer.tech/index_ja.html#s-ref",
             "type": "string",
-            "pattern": "^#/contexts/[a-zA-Z0-9]+/traffics/[a-zA-Z0-9]+$"
+            "pattern": "^#/useCases/[a-zA-Z0-9]+/traffics/[a-zA-Z0-9]+$"
           }
         }
       }
