@@ -105,7 +105,7 @@
                   <div class="nav">
                     <a class="nav-link small" href="#s-clouddesign">
                       <i class="fa fa-home mr-3" aria-hidden="true"></i>
-                      Cloud Design</a>
+                      ADL</a>
                     <a class="nav-link small" href="#s-info">
                       <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
                       Info</a>
@@ -218,7 +218,7 @@
           <h3 id="tools">ツール<a class="anchor" href="#tools"></a></h3>
           <p>様々なツールを用いて、クラウドの設計を作成、保管、検索、再利用することができます。
             <br><br>
-          <p><B>Cloud Design Schema 日本語</B><br>サードパーティー製エディタ等に組み込むことで、CDSの文法チェックに利用できるJSONスキーマファイルです。</p>
+          <p><B>ADL Schema 日本語</B><br>サードパーティー製エディタ等に組み込むことで、CDSの文法チェックに利用できるJSONスキーマファイルです。</p>
           <a class="btn btn-primary mb-1" href="/ja/reindeer-schema_cds.json" target="_blank"
             onClick="ga('send','event','btn', 'click', 'cds_schema_ja');">CDSルートスキーマのダウンロード</a>
           <br><br>
@@ -243,7 +243,7 @@
                 style="font-size: 50px;"></i></a></div>
           <h2 id="general">概要<a class="anchor" href="#general"></a></h2>
           <div class="alert alert-secondary">
-            <p class="lead-2">Cloud Designの概要を記載します。
+            <p class="lead-2">ADLドキュメントの概要を記載します。
             </p>
           </div>
 
@@ -288,7 +288,7 @@
           <hr class="hr-dot-bold my-7">
           <h3 id="s-clouddesign">
             <i class="fa fa-home mr-3" aria-hidden="true"></i>
-            Cloud Design Object<a class="anchor" href="#s-clouddesign"></a>
+            ADL Object<a class="anchor" href="#s-clouddesign"></a>
           </h3>
           <p>これはCDSのルートオブジェクトです。</p>
           <h6>固定フィールド</h6>
@@ -315,7 +315,7 @@
                 この文字列はCDSのファイル名です。
                 拡張子は<code>.json</code>, <code>.yaml</code> または <code>.yml</code>でなければなりません。
                 <code>self</code>フィールドは、CDSを解釈するためのツールに使用されるべきです。
-                <span style="font-weight:bold;color:red"><a href="https://conccent.com/ja/" target="_blank">Conccent</a>では「cloudDesign.json」をご指定ください。</span>
+                <span style="font-weight:bold;color:red"><a href="https://conccent.com/ja/" target="_blank">Conccent</a>では「adl.json」をご指定ください。</span>
               </p>
             </div>
             <div class="d-table-row">
@@ -361,7 +361,7 @@
           <h6>JSON example</h6>
           <pre><code>{
   <span class="token tag">"reindeer": </span>"1.3.2",
-  <span class="token tag">"self": </span>"cloudDesign.json"
+  <span class="token tag">"self": </span>"adl.json"
   <span class="token tag">"info": </span>{
     <span class="token tag">"title": </span>{
       <span class="token tag">"en": </span>"Sample system",
@@ -1096,7 +1096,7 @@
           <h2 id="childSchema">子スキーマ<a class="anchor" href="#childSchema"></a></h2>
           <div class="alert alert-secondary">
             <p class="lead-2">
-              Cloud Designの主要なデータ構造の子を説明します。
+              ADLドキュメントの主要なデータ構造の子を説明します。
               以下の説明では、フィールドが明示的に「必須」と定義されない、または「しなければならない」または「する／することになる」と記載されていない場合、オプションと見なすことができます。
           </div>
           <hr class="hr-dot-bold my-7">
@@ -2193,7 +2193,7 @@
           <h2 id="commonSchema">Common Schema<a class="anchor" href="#commonSchema"></a></h2>
           <div class="alert alert-secondary">
             <p class="lead-2">
-              Cloud designの汎用データ構造について説明します。
+              ADLドキュメントの汎用データ構造について説明します。
               以下の説明では、フィールドが明示的に「必須」と定義されない、または「しなければならない」または「する／することになる」と記載されていない場合、オプションと見なすことができます。
           </div>
 

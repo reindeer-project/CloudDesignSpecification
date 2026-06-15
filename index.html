@@ -106,7 +106,7 @@
                   <div class="nav">
                     <a class="nav-link small" href="#s-clouddesign">
                       <i class="fa fa-home mr-3" aria-hidden="true"></i>
-                      Cloud Design</a>
+                      ADL</a>
                     <a class="nav-link small" href="#s-info">
                       <i class="fa fa-info-circle mr-3" aria-hidden="true"></i>
                       Info</a>
@@ -229,9 +229,9 @@
 
           <hr class="hr-dot-bold my-7">
           <h3 id="tools">Tools<a class="anchor" href="#tools"></a></h3>
-          <p>You can create, store, search, reuse the Cloud Designs by using various tools.</p>
+          <p>You can create, store, search, reuse the ADL documents by using various tools.</p>
           <br><br>
-          <p><B>Cloud Design Schema</B><br>It is a JSON schema file that can be used to check the grammar of the CDS by
+          <p><B>ADL Schema</B><br>It is a JSON schema file that can be used to check the grammar of the CDS by
             incorporating it into a third party editor.</p>
           <a class="btn btn-primary mb-1" href="/en/reindeer-schema_cds.json" target="_blank"
             onClick="ga('send','event','btn', 'click', 'cds_schema_en');">Download CDS root schema</a>
@@ -261,7 +261,7 @@
                 style="font-size: 50px;"></i></a></div>
           <h2 id="general">General<a class="anchor" href="#general"></a></h2>
           <div class="alert alert-secondary">
-            <p class="lead-2">Describing the general specification of Cloud Design.</p>
+            <p class="lead-2">Describing the general specification of ADL documents.</p>
           </div>
 
           <hr class="hr-dot-bold my-7">
@@ -326,7 +326,7 @@
                 style="font-size: 50px;"></i></a></div>
           <h2 id="parentSchema">Parent Schema<a class="anchor" href="#parentSchema"></a></h2>
           <div class="alert alert-secondary">
-            <p class="lead-2">Describing the primary data structure of Cloud Design.
+            <p class="lead-2">Describing the primary data structure of ADL documents.
               In the following description, if a field is not explicitly REQUIRED or described with a MUST or SHALL,
               it can be considered OPTIONAL.
             </p>
@@ -334,7 +334,7 @@
           <hr class="hr-dot-bold my-7">
           <h3 id="s-clouddesign">
             <i class="fa fa-home mr-3" aria-hidden="true"></i>
-            Cloud Design Object<a class="anchor" href="#s-clouddesign"></a>
+            ADL Object<a class="anchor" href="#s-clouddesign"></a>
           </h3>
           <p>This is the root object of the CDS.</p>
           <h6>Fixed Fields</h6>
@@ -361,7 +361,7 @@
                 This string is the filename of the CDS. It MUST be with the extension, <code>.json</code>,
                 <code>.yaml</code> or <code>.yml</code>.
                 The <code>self</code> field SHOULD be used by tools for interpreting the CDS.
-                <span style="font-weight:bold;color:red">Use 'cloudDesign.json' at <a href="https://conccent.com/" target="_blank">Conccent</a></span>
+                <span style="font-weight:bold;color:red">Use 'adl.json' at <a href="https://conccent.com/" target="_blank">Conccent</a></span>
               </p>
             </div>
             <div class="d-table-row">
@@ -400,7 +400,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-components">Components object</a></p>
               <p class="d-table-cell p-2 bg-white text-dark border">Holds a set of reusable objects for different
                 aspects of the CDS.
-                All objects defined within the components object will have no effect on the Cloud Design
+                All objects defined within the components object will have no effect on the ADL document
                 unless they are explicitly referenced from properties outside the components object.
               </p>
             </div>
@@ -409,7 +409,7 @@
           <h6>JSON example</h6>
           <pre><code>{
   <span class="token tag">"reindeer": </span>"1.3.2",
-  <span class="token tag">"self": </span>"cloudDesign.json"
+  <span class="token tag">"self": </span>"adl.json"
   <span class="token tag">"info": </span>{
     <span class="token tag">"title": </span>{
       <span class="token tag">"en": </span>"Sample system",
@@ -1172,7 +1172,7 @@
                 style="font-size: 50px;"></i></a></div>
           <h2 id="childSchema">Child Schema<a class="anchor" href="#childSchema"></a></h2>
           <div class="alert alert-secondary">
-            <p class="lead-2">Describing the child of the primary data structure of Cloud Design. In the following
+            <p class="lead-2">Describing the child of the primary data structure of ADL documents. In the following
               description, if a field is not explicitly REQUIRED or described with a MUST or SHALL, it can be considered
               OPTIONAL.</p>
           </div>
@@ -2334,7 +2334,7 @@
                 style="font-size: 50px;"></i></a></div>
           <h2 id="commonSchema">Common Schema<a class="anchor" href="#commonSchema"></a></h2>
           <div class="alert alert-secondary">
-            <p class="lead-2">Describing the common data structure of Cloud Design. In the following description, if a
+            <p class="lead-2">Describing the common data structure of ADL documents. In the following description, if a
               field is not explicitly REQUIRED or described with a MUST or SHALL, it can be considered OPTIONAL.</p>
           </div>
 

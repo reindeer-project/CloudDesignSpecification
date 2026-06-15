@@ -7,7 +7,7 @@
         "https://reindeer.tech/cds-schema/default.json"
       ],
       "schema": {
-        "title": "Cloud Design Object",
+        "title": "ADL Object",
         "description": "This is the root object of the CDD. https://docs.reindeer.tech/index.html#s-clouddesign",
         "type": "object",
         "required": [
@@ -29,7 +29,7 @@
             "title": "File name",
             "description": "REQUIRED. This string is the filename of the CDD. It MUST be with the extension, .json, .yaml, or .yml. The self field SHOULD be used by tools for interpreting the CDD. https://docs.reindeer.tech/index.html#s-clouddesign",
             "type": "string",
-            "default": "cloudDesign.json",
+            "default": "adl.json",
             "pattern": "^[a-zA-Z0-9_.\\-]+\\.(yaml|yml|json)$"
           },
           "info": {
@@ -85,7 +85,7 @@
           },
           "components": {
             "title": "Component objects",
-            "description": "Holds a set of reusable objects for different aspects of the CDD. All objects defined within the components object will have no effect on the Cloud Design unless they are explicitly referenced from properties outside the components object. https://docs.reindeer.tech/index.html#s-components",
+            "description": "Holds a set of reusable objects for different aspects of the CDD. All objects defined within the components object will have no effect on the ADL document unless they are explicitly referenced from properties outside the components object. https://docs.reindeer.tech/index.html#s-components",
             "type": "object",
             "properties": {
               "infoTypes": {
