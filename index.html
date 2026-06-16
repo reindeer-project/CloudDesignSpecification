@@ -64,9 +64,9 @@
       <div class="row">
         <div class="col-sm-12" style="text-align:center">
           <img src="cloudDesignSpecification.svg" class="mb-3" style="max-width:150px;">
-          <h1 style="padding-top:10px;">ADL</h1>
-          <div style="padding-top:8px;font-size:16px;color:white">Architecture Description Language</div>
-          <div style="padding-top:8px;font-size:16px;color:white">formerly Cloud Design Specification (CDS).</div>
+          <div style="padding:8px 8px 0px 8px;font-size:16px;color:white">Architecture Description Language</div>
+          <h1 style="padding:0px 10px 0px 10px;">ADL</h1>
+          <div style="padding:0px 8px 0px 8px;font-size:12px;color:white">( formerly CDS: Cloud Design Specification )</div>
           <div style="padding-bottom:30px;padding-top:10px;font-size:20px;color:white">Ver 2.0.0</div>
         </div>
       </div>
@@ -197,7 +197,9 @@
             !-->
           <h2 id="gettingstarted">Getting started<a class="anchor" href="#gettingstarted"></a></h2>
           <div class="alert alert-secondary">
-            <p class="lead-2">Get started with Cloud requirements definition with this reference and tools.</p>
+            <p class="lead-2">A world where people and AI share the same understanding of a system and can move toward the same goal.</p>
+            <p>By precisely expressing a system's use cases, ADL injects its purpose and business context into AI. And because ADL is a general-purpose JSON format that interoperates with a wide range of tools, it lets people grasp how AI understands their systems — and guide that understanding correctly.
+            </p>
             <p>This document is licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0.html"
                 target="_blank">
                 The Apache License, Version 2.0</a>.
@@ -210,29 +212,16 @@
 
           <hr class="hr-dot-bold my-7">
           <h3 id="introduction">Introduction<a class="anchor" href="#introduction"></a></h3>
-          <p>ADL (Architecture Description Language) describes a system's configuration information starting from its use cases,
-            as a new description language that lets AI and humans mutually understand a system's configuration.
-            <br>In this document, ADL is the name of the language specification itself, and at the same time, it
-            indicates the code described based on the specification. The described code is interpreted by both
-            humans and computers, so it SHOULD be written so that the intent of the design is unambiguous.
+          <p>ADL (Architecture Description Language) is an open architecture description language that describes a
+            system's configuration information starting from its use cases, so that people and AI can mutually
+            understand it. It originates from CDS (Cloud Design Specification), first published by Reindeer Technology
+            PTE. Ltd. in 2019, and was renamed to ADL in 2026.
           </p>
-          <hr class="hr-dot-bold my-7">
-          <h3 id="extension">Extension of the existing provisioning codes <a class="anchor" href="#introduction"></a>
-          </h3>
-          <p>ADL is a requirements definition code that complements existing provisioning code such as CloudFormation. System
-            requirements such as users and access volumes are described in this own specifications, and cloud resource
-            definitions are expressed by references to existing provisioning codes. This structure reduces the
-            learning cost of developers and encourages the utilization of existing code assets.
-            <br>Please refer <a href="#s-resource">Resource object</a> for the types of provisioning code that you can
-            use on ADL.
-          </p>
-
           <hr class="hr-dot-bold my-7">
           <h3 id="tools">Tools<a class="anchor" href="#tools"></a></h3>
-          <p>ADL is an open, tool-agnostic format. An ADL document is a plain JSON document, so it can be authored,
-            stored, searched, validated and reused with any tooling that supports the ADL JSON schema — from a simple
-            text editor to a dedicated design environment. The specification does not depend on, nor require, any
-            particular product or vendor.</p>
+          <p>ADL is an open, tool-agnostic, general-purpose format. Any tooling that supports the ADL JSON schema —
+            from a simple text editor to a dedicated design environment — can author, store, search, validate and
+            reuse it. The specification does not depend on, nor require, any particular product or vendor.</p>
           <br>
           <p><B>ADL Schema</B><br>It is a JSON schema file that can be used to validate the grammar of an ADL document
             by incorporating it into any editor or validation pipeline that supports JSON Schema.</p>
@@ -326,7 +315,7 @@
                 This string MUST be the <a href="#versions">semantic version number</a> of ADL itself.
                 The <code>reindeer</code> field SHOULD be used by tools for interpreting the ADL document.
                 This is not related to the <code>info.version</code> string.
-                <span style="font-weight:bold;color:red">Use '2.0.0'.</span>
+                <span style="font-weight:bold;color:red">Specify the version of this specification (the latest is 2.0.x).</span>
               </p>
             </div>
             <div class="d-table-row">
@@ -2263,14 +2252,6 @@
               <p class="d-table-cell p-2 bg-primary text-white border">Notes</p>
             </div>
             <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">2.0.0(Rebranding)</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">
-                (Rebranding) Renamed Cloud Design Specification (CDS) to ADL (Architecture Description Language);
-                renamed the core concept 'Context' to 'UseCase'.
-              </p>
-            </div>
-            <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">1.0.0</p>
               <p class="d-table-cell p-2 bg-white text-dark border">2019-07-31</p>
               <p class="d-table-cell p-2 bg-white text-dark border">Initial public release of the Cloud Design
@@ -2376,6 +2357,20 @@
                 and remain valid. <code>&lt;section&gt;</code> is the lowercase section indicator
                 (<code>resources</code> or <code>functions</code>). Documentation, schema, and code examples
                 updated to use this form consistently.
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">1.4.0</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                Renamed the parent schema 'Context' to 'UseCase'.
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">2.0.0 (Rebranding)</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                (Rebranding) Renamed Cloud Design Specification (CDS) to ADL (Architecture Description Language).
               </p>
             </div>
           </div>
