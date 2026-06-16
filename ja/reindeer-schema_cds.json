@@ -20,10 +20,10 @@
         ],
         "properties": {
           "reindeer": {
-            "title": "CDSのバージョン",
-            "description": "必須. この文字列はCDSのsemantic version numberでなければなりません。 reindeerフィールドは、CDDを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。 https://docs.reindeer.tech/index_ja.html#s-clouddesign",
+            "title": "ADLのバージョン",
+            "description": "必須. この文字列はADLのsemantic version numberでなければなりません。 reindeerフィールドは、ADLドキュメントを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。 https://docs.reindeer.tech/index_ja.html#s-clouddesign",
             "type": "string",
-            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]$"
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
           },
           "self": {
             "title": "ファイル名",

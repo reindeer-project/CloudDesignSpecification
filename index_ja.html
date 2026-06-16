@@ -63,11 +63,11 @@
       <div class="row">
         <div class="col-sm-12" style="text-align:center">
           <img src="cloudDesignSpecification.svg" class="mb-3" style="max-width:150px;">
-          <h1 style="padding-top:10px;">ADL</h1>
-          <div style="padding-top:8px;font-size:16px;color:white">アーキテクチャ記述言語</div>
-          <div style="padding-top:8px;font-size:16px;color:white">Architecture Description Language</div>
-          <div style="padding-top:8px;font-size:16px;color:white">旧Cloud Design Specification (CDS).</div>
-          <div style="padding-bottom:30px;padding-top:10px;font-size:20px;color:white">Ver 1.3.2</div>
+          <div style="padding:8px 8px 0px 8px;font-size:16px;color:white">アーキテクチャ記述言語</div>
+          <h1 style="padding:0px 10px 0px 10px;">ADL</h1>
+          <div style="padding:0px 8px 0px 8px;font-size:16px;color:white">Architecture Description Language</div>
+          <div style="padding:0px 8px 0px 8px;font-size:12px;color:white">（ 旧称 CDS: Cloud Design Specification ） </div>
+          <div style="padding-bottom:30px;padding-top:10px;font-size:20px;color:white">Ver 2.0.0</div>
         </div>
       </div>
     </div>
@@ -197,7 +197,9 @@
             !-->
           <h2 id="gettingstarted">はじめに<a class="anchor" href="#gettingstarted"></a></h2>
           <div class="alert alert-secondary">
-            <p class="lead-2">本資料とツール群を使って、クラウドの要件定義をはじめましょう！</p>
+            <p class="lead-2">人とAIがシステムへの認識を共有し、同じ目標にむかえる世界を。</p>
+            <p>ADLはシステムのユースケースを的確に表現することで、その目的や業務理解をAIに注入します。またADLは汎用JSONフォーマットで様々なツールと連携し、人によるAI理解の把握とその正しい導きを実現します。
+            </p>
             <p>この文書は、<a href="https://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">
                 The Apache License, Version 2.0</a> のもとで公開されます。
             </p>
@@ -208,17 +210,10 @@
 
           <hr class="hr-dot-bold my-7">
           <h3 id="introduction">紹介<a class="anchor" href="#introduction"></a></h3>
-          <p>ADL（アーキテクチャ記述言語）は、ユースケースを起点にシステムの構成情報を記述し、AIと人間が相互にシステムの構成情報を理解するための新しい記述言語です。
-            <br>本ドキュメントにおいて、ADLという呼称は言語仕様そのものの名称であると同時に、同仕様に基づいて記述された設計コードを示します。記述されたコードは人間とコンピュータの双方が解釈するため、設計の意図が曖昧にならないよう記述すべきです。
-            <hr class="hr-dot-bold my-7">
-          <h3 id="extension">既存のプロビジョニングコードの拡張 <a class="anchor" href="#introduction"></a></h3>
-          <p>
-            ADLはCloudFormationなど既存のプロビジョニングコードを拡張する要件定義コードです。クラウドの利用者やアクセスボリュームといったシステム要件を独自の仕様で記述し、クラウドリソースの定義は既存のプロビジョニングコードへの参照によって表現します。同構造により、デベロッパーの学習コストを抑え、既存コード資産の活用を促します。
-            <br>ADLが含むことのできるプロビジョニングコードの種類については、<a href="#s-resource">Resource object</a>をご参照下さい。
-          </p>
+          <p>ADL（アーキテクチャ記述言語）は、ユースケースを起点にシステムの構成情報を記述し、人とAIが相互にシステムの構成情報を理解するための、オープンなアーキテクチャ記述言語です。Reindeer Technology PTE.Ltd. が2019年に公開したCDS（CloudDesignSpecification）をオリジナルとし、2026年に名称をADLに変更、現在にいたります。
           <hr class="hr-dot-bold my-7">
           <h3 id="tools">ツール<a class="anchor" href="#tools"></a></h3>
-          <p>ADLはオープンでツール非依存のフォーマットです。ADLドキュメントは単なるJSONドキュメントであるため、ADLのJSONスキーマに対応したツールであれば、簡易なテキストエディタから専用の設計環境まで、どのようなツールでも作成・保管・検索・検証・再利用することができます。本仕様は特定の製品やベンダーに依存せず、またそれらを必要としません。</p>
+          <p>ADLはオープンでツール非依存の汎用フォーマットです。ADLのJSONスキーマに対応したツールであれば、簡易なテキストエディタから専用の設計環境まで、どのようなツールでも作成・保管・検索・検証・再利用することができます。本仕様は特定の製品やベンダーに依存せず、またそれらを必要としません。</p>
           <br>
           <p><B>ADL Schema 日本語</B><br>JSON Schemaに対応した任意のエディタや検証パイプラインに組み込むことで、ADLドキュメントの文法を検証できるJSONスキーマファイルです。</p>
           <br>
@@ -283,7 +278,7 @@
                 この文字列はADL自体の<a href="#versions">semantic version number</a>でなければなりません。
                 <code>reindeer</code>フィールドは、ADLドキュメントを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。
                 <br>
-                <span style="font-weight:bold;color:red">「1.3.2」をご指定ください。</span>
+                <span style="font-weight:bold;color:red">本仕様のバージョン（最新は2.0.x）をご指定ください。</span>
               </p>
             </div>
             <div class="d-table-row">
@@ -338,7 +333,7 @@
 
           <h6>JSON example</h6>
           <pre><code>{
-  <span class="token tag">"reindeer": </span>"1.3.2",
+  <span class="token tag">"reindeer": </span>"2.0.0",
   <span class="token tag">"self": </span>"adl.json"
   <span class="token tag">"info": </span>{
     <span class="token tag">"title": </span>{
@@ -2150,13 +2145,7 @@
               <p class="d-table-cell p-2 bg-primary text-white border">リリース日</p>
               <p class="d-table-cell p-2 bg-primary text-white border">備考</p>
             </div>
-            <div class="d-table-row">
-              <p class="d-table-cell p-2 bg-white text-dark border">1.3.2（リブランディング）</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">
-                （リブランディング）Cloud Design Specification（CDS）を ADL（アーキテクチャ記述言語）に改称。中核概念「Context」を「UseCase」に改称。
-              </p>
-            </div>
+            
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">1.0.0</p>
               <p class="d-table-cell p-2 bg-white text-dark border">2019-07-31</p>
@@ -2259,6 +2248,20 @@
                 <strong>provisioning リソース参照</strong>（CDS から自身が <code>resources[]</code> で宣言する provisioning ファイル内エントリへのリンク）は引き続き有効で、形式は <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> です。
                 <code>&lt;section&gt;</code> は小文字固定のセクション識別子 (<code>resources</code> または <code>functions</code>)。
                 ドキュメント、スキーマ、コード例をこの形式に統一しました。
+              </p>
+            </div>
+             <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">1.4.0</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                親スキーマ「Context」を「UseCase」に変更。
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">2.0.0（リブランディング）</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                （リブランディング）Cloud Design Specification（CDS）を ADL（アーキテクチャ記述言語）に改称。
               </p>
             </div>
           </div>

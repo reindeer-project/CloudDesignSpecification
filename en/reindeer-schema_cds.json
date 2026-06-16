@@ -21,9 +21,9 @@
         "properties": {
           "reindeer": {
             "title": "Version number",
-            "description": "REQUIRED. This string MUST be the semantic version number of the CDS version. The reindeer field SHOULD be used by tools for interpreting the CDD. This is not related to the info.version string. https://docs.reindeer.tech/index.html#s-clouddesign",
+            "description": "REQUIRED. This string MUST be the semantic version number of the ADL version. The reindeer field SHOULD be used by tools for interpreting the ADL document. This is not related to the info.version string. https://docs.reindeer.tech/index.html#s-clouddesign",
             "type": "string",
-            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]$"
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
           },
           "self": {
             "title": "File name",
