@@ -62,9 +62,11 @@
     <div id="headertitle" class="container">
       <div class="row">
         <div class="col-sm-12" style="text-align:center">
-          <img src="cloudDesignSpecification.svg" class="mb-3" style="max-width:150px;">
+          <img src="adl-penguin.svg" class="mb-3" style="max-width:150px;">
           <h1 style="padding-top:10px;">ADL</h1>
-          <div style="padding-top:8px;font-size:16px;color:white">ADL（アーキテクチャ記述言語）— 旧称 Cloud Design Specification（CDS）。</div>
+          <div style="padding-top:8px;font-size:16px;color:white">アーキテクチャ記述言語</div>
+          <div style="padding-top:8px;font-size:16px;color:white">Architecture Description Language</div>
+          <div style="padding-top:8px;font-size:16px;color:white">旧Cloud Design Specification (CDS).</div>
           <div style="padding-bottom:30px;padding-top:10px;font-size:20px;color:white">Ver 1.3.2</div>
         </div>
       </div>
@@ -206,34 +208,19 @@
 
           <hr class="hr-dot-bold my-7">
           <h3 id="introduction">紹介<a class="anchor" href="#introduction"></a></h3>
-          <p>クラウドデザイン仕様 (<b>the "CDS"</b>) はJSON/YAMLコードにより、人間とコンピュータの双方が理解できるよう、クラウドの利用要件を定義します。
-            <br>本ドキュメントにおいて、CDSという呼称は言語仕様そのものの名称であると同時に、同仕様に基づいて記述された設計コードを示します。以前は後者をCloud Design Definition(<b>the
-              "CDD"</b>)として明確に区別しましたが、混乱を避けるためCDSに統一されました。よってツールや周辺ドキュメントの一部にCDDの記述が存在しますが、CDSと同義とお考えいただいて問題ありません。
+          <p>ADL（アーキテクチャ記述言語）は、ユースケースを起点にシステムの構成情報を記述し、AIと人間が相互にシステムの構成情報を理解するための新しい記述言語です。
+            <br>本ドキュメントにおいて、ADLという呼称は言語仕様そのものの名称であると同時に、同仕様に基づいて記述された設計コードを示します。記述されたコードは人間とコンピュータの双方が解釈するため、設計の意図が曖昧にならないよう記述すべきです。
             <hr class="hr-dot-bold my-7">
           <h3 id="extension">既存のプロビジョニングコードの拡張 <a class="anchor" href="#introduction"></a></h3>
           <p>
-            CDSはCloudFormationなど既存のプロビジョニングコードを拡張する要件定義コードです。クラウドの利用者やアクセスボリュームといったシステム要件を独自の仕様で記述し、クラウドリソースの定義は既存のプロビジョニングコードへの参照によって表現します。同構造により、デベロッパーの学習コストを抑え、既存コード資産の活用を促します。
-            <br>CDSが含むことのできるプロビジョニングコードの種類については、<a href="#s-resource">Resource object</a>をご参照下さい。
+            ADLはCloudFormationなど既存のプロビジョニングコードを拡張する要件定義コードです。クラウドの利用者やアクセスボリュームといったシステム要件を独自の仕様で記述し、クラウドリソースの定義は既存のプロビジョニングコードへの参照によって表現します。同構造により、デベロッパーの学習コストを抑え、既存コード資産の活用を促します。
+            <br>ADLが含むことのできるプロビジョニングコードの種類については、<a href="#s-resource">Resource object</a>をご参照下さい。
           </p>
           <hr class="hr-dot-bold my-7">
           <h3 id="tools">ツール<a class="anchor" href="#tools"></a></h3>
-          <p>様々なツールを用いて、クラウドの設計を作成、保管、検索、再利用することができます。
-            <br><br>
-          <p><B>ADL Schema 日本語</B><br>サードパーティー製エディタ等に組み込むことで、CDSの文法チェックに利用できるJSONスキーマファイルです。</p>
-          <a class="btn btn-primary mb-1" href="/ja/reindeer-schema_cds.json" target="_blank"
-            onClick="ga('send','event','btn', 'click', 'cds_schema_ja');">CDSルートスキーマのダウンロード</a>
-          <br><br>
-          <p><B>Conccent</B><br>Reindeer Technology
-            PTE.LTD.が提供する、AI伴奏型のクラウド構成管理プラットフォームです。AIで増殖する個別システムを、人とAIが相互に学びながら継続的に把握・維持していくための情報基盤を提供します。（Reindeer ProjectはReindeer
-            Technology PTE.LTD.に発展的に法人化されました。）
-          </p>
-          <p><a class="btn btn-primary mb-1" href="https://conccent.com/ja/" target="_blank"
-              onClick="ga('send','event','btn', 'click', 'hub_ja');">アクセス</a>
-          </p>
-          <p><B>Reindeer Editor</B><br>Reindeer Projectがサポートする、ドキュメント生成ツールです。CDSを編集し、クラウド
-            の利用に関するレポートを表示することができます。</p>
-          <p><a class="btn btn-primary mb-1" href="https://github.com/reindeer-project/reindeer-editor" target="_blank"
-              onClick="ga('send','event','btn', 'click', 'download_editor_ja');">ダウンロード</a></p>
+          <p>ADLはオープンでツール非依存のフォーマットです。ADLドキュメントは単なるJSONドキュメントであるため、ADLのJSONスキーマに対応したツールであれば、簡易なテキストエディタから専用の設計環境まで、どのようなツールでも作成・保管・検索・検証・再利用することができます。本仕様は特定の製品やベンダーに依存せず、またそれらを必要としません。</p>
+          <br>
+          <p><B>ADL Schema 日本語</B><br>JSON Schemaに対応した任意のエディタや検証パイプラインに組み込むことで、ADLドキュメントの文法を検証できるJSONスキーマファイルです。</p>
           <br>
           <!--
             |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
@@ -250,7 +237,7 @@
 
           <hr class="hr-dot-bold my-7">
           <h3 id="versions">バージョン<a class="anchor" href="#versions"></a></h3>
-          <p>CDSは<a href="https://semver.org/spec/v2.0.0.html" target="_blank">Semantic Versioning 2.0.0</a>
+          <p>ADLは<a href="https://semver.org/spec/v2.0.0.html" target="_blank">Semantic Versioning 2.0.0</a>
             (SemVer)を利用してバージョン管理され、
             以下の仕様に従います。
             <br>バージョンナンバーは<code>メジャー番号.マイナー番号.パッチ番号</code>の形でインクリメンタルに増加します。
@@ -259,31 +246,21 @@
             よって、パッチバージョンはツールの利用において考慮されるべきではありません。例えば1.0.0と1.0.1の間で、機能またはツールの区別はすべきではありません。
             <hr class="hr-dot-bold my-7">
           <h3 id="format">形式<a class="anchor" href="#format"></a></h3>
-          <p>CDSはJSONオブジェクトです。JSONまたはYAMLフォーマットの両方を用いて表現することができます。
-            YAMLとJSONフォーマットの互換性を維持するため、YAML利用時は以下いくつかの追加の制約に沿った上で、バージョン
-            <a href="https://yaml.org/spec/1.2/spec.html" target="_blank">1.2</a> の利用を推奨します。
-          <ul>
-            <li>タグは<a href="http://www.yaml.org/spec/1.2/spec.html#id2803231" target="_blank">JSON Schema
-                ruleset</a>で許可されているものに
-              限定する必要があります。</li>
-            <li>YAMLのmapで仕様されるキーは、<a href="http://yaml.org/spec/1.2/spec.html#id2802346" target="_blank">YAML Failsafe
-                schema ruleset</a>で
-              定義されているように、スカラー文字列に制限されなければなりません。</li>
-          </ul>
+          <p>ADLドキュメントはJSONドキュメントです。妥当なJSONオブジェクトでなければなりません。</p>
           <p>仕様内のすべてのフィールド名は、大文字と小文字が<b>区別されます</b>。これには、
             map型のキーとして仕様されるすべてのフィールドが含まれます。ただし、キーが大文字と小文字を<b>区別しない</b>と明示されている場合を除きます。
           </p>
 
           <hr class="hr-dot-bold my-7">
           <h3 id="structure">構造<a class="anchor" href="#structure"></a></h3>
-          <p>CDSは単一のルート文書である必要があります。ルートファイルは 'clouddesign.json' か 'clouddesign.yaml' という命名にすべきです。
+          <p>ADLドキュメントは単一のルート文書である必要があります。ルートファイルは 'adl.json' という命名にすべきです。
             <br>
             参照 (<code>$ref</code>) は次の 2 種類があります:
             <ul>
-              <li><b>CDS内部参照</b> — 同一 CDS 内のディレクティブを指す。<code>#/</code> で始まり CDS root からのパスを記述 (例 <code>#/actors/customer</code>、<code>#/components/infoTypes/pii</code>、<code>#/useCases/web/trigger</code>)</li>
-              <li><b>provisioning リソース参照</b> — CDS の <code>resources[]</code> に列挙された provisioning ファイル内のリソースを指す。形式は <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>。<code>&lt;file&gt;</code> は <code>resources[]</code> に宣言したファイル名 (拡張子付き)、<code>&lt;section&gt;</code> は固定の小文字セクション識別子 (<code>resources</code> = CFn / Terraform / GDM / CIM / ARM / ROS、<code>functions</code> = Serverless Framework Lambda)、<code>&lt;RealKey&gt;</code> は provisioning ファイル内の実キー (大小文字区別あり)</li>
+              <li><b>ADL内部参照</b> — 同一 ADL ドキュメント内のディレクティブを指す。<code>#/</code> で始まり ADL root からのパスを記述 (例 <code>#/actors/customer</code>、<code>#/components/infoTypes/pii</code>、<code>#/useCases/web/trigger</code>)</li>
+              <li><b>provisioning リソース参照</b> — ADL の <code>resources[]</code> に列挙された provisioning ファイル内のリソースを指す。形式は <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>。<code>&lt;file&gt;</code> は <code>resources[]</code> に宣言したファイル名 (拡張子付き)、<code>&lt;section&gt;</code> は固定の小文字セクション識別子 (<code>resources</code> = CFn / Terraform / GDM / CIM / ARM / ROS、<code>functions</code> = Serverless Framework Lambda)、<code>&lt;RealKey&gt;</code> は provisioning ファイル内の実キー (大小文字区別あり)</li>
             </ul>
-            <small><em>注: CDS を複数の外部ファイルに分割する「CDSスニペット」機構は 2026-05 に廃止されました。CDS 間のクロスファイル参照はサポートされません。プロジェクト横断の参照は将来的に project_id ベースの新仕様で提供予定です。provisioning リソース参照 (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) は CDS 間参照ではなく、CDS と自身が宣言する provisioning ファイル内エントリの紐付けなので引き続き有効です。</em></small>
+            <small><em>注: ADL ドキュメントを複数の外部ファイルに分割する「ADLスニペット」機構は 2026-05 に廃止されました。ADL 間のクロスファイル参照はサポートされません。プロジェクト横断の参照は将来的に project_id ベースの新仕様で提供予定です。provisioning リソース参照 (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>) は ADL 間参照ではなく、ADL ドキュメントと自身が宣言する provisioning ファイル内エントリの紐付けなので引き続き有効です。</em></small>
             </p>
 
           <hr class="hr-dot-bold my-7">
@@ -291,7 +268,7 @@
             <i class="fa fa-home mr-3" aria-hidden="true"></i>
             ADL Object<a class="anchor" href="#s-clouddesign"></a>
           </h3>
-          <p>これはCDSのルートオブジェクトです。</p>
+          <p>これはADLドキュメントのルートオブジェクトです。</p>
           <h6>固定フィールド</h6>
           <div class="d-table table-responsive line-break">
             <div class="d-table-row">
@@ -303,20 +280,20 @@
               <p class="d-table-cell p-2 bg-white text-dark border">reindeer</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                この文字列はCDS自体の<a href="#versions">semantic version number</a>でなければなりません。
-                <code>reindeer</code>フィールドは、CDSを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。
+                この文字列はADL自体の<a href="#versions">semantic version number</a>でなければなりません。
+                <code>reindeer</code>フィールドは、ADLドキュメントを解釈するためのツールに使用されるべきです。 これはinfo.versionフィールドとは関係ありません。
                 <br>
-                <span style="font-weight:bold;color:red"><a href="https://conccent.com/ja/" target="_blank">Conccent</a>では「1.3.2」をご指定ください。</span>
+                <span style="font-weight:bold;color:red">「1.3.2」をご指定ください。</span>
               </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">self</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                この文字列はCDSのファイル名です。
-                拡張子は<code>.json</code>, <code>.yaml</code> または <code>.yml</code>でなければなりません。
-                <code>self</code>フィールドは、CDSを解釈するためのツールに使用されるべきです。
-                <span style="font-weight:bold;color:red"><a href="https://conccent.com/ja/" target="_blank">Conccent</a>では「adl.json」をご指定ください。</span>
+                この文字列はADLドキュメントのファイル名です。
+                拡張子は<code>.json</code>でなければなりません。
+                <code>self</code>フィールドは、ADLドキュメントを解釈するためのツールに使用されるべきです。
+                <span style="font-weight:bold;color:red">「adl.json」をご指定ください。</span>
               </p>
             </div>
             <div class="d-table-row">
@@ -351,7 +328,7 @@
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">components</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-components">Components object</a></p>
-              <p class="d-table-cell p-2 bg-white text-dark border">CDSのさまざまな側面に対応する一連の再利用可能な
+              <p class="d-table-cell p-2 bg-white text-dark border">ADLドキュメントのさまざまな側面に対応する一連の再利用可能な
                 オブジェクトを保持します。 コンポーネントオブジェクト内で定義されたすべてのオブジェクトは、
                 それらがコンポーネントオブジェクトの外部のプロパティから
                 明示的に参照されない限り、クラウドの設計には影響しません。
@@ -412,8 +389,8 @@
             Info object<a class="anchor" href="#s-info"></a>
           </h3>
           <p>
-            このオブジェクトはCDSに関するメタデータを提供します。
-            他の人がCDSを簡単に検索、発見できるよう、メタデータは適切に記入されるべきです。
+            このオブジェクトはADLドキュメントに関するメタデータを提供します。
+            他の人がADLドキュメントを簡単に検索、発見できるよう、メタデータは適切に記入されるべきです。
           </p>
           <h6>固定フィールド</h6>
           <div class="d-table table-responsive line-break">
@@ -426,13 +403,13 @@
               <p class="d-table-cell p-2 bg-white text-dark border">version</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                あなたの設計のバージョンです。（<a href="#versions">the CDS version</a>とは異なります）
+                あなたの設計のバージョンです。（<a href="#versions">the ADL version</a>とは異なります）
               </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">license</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><a href="#s-license">License object</a></p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDSのライセンス情報です。</p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. ADLドキュメントのライセンス情報です。</p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">title</p>
@@ -457,7 +434,7 @@
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">status</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDSの状態です。
+              <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. ADLドキュメントの状態です。
                 以下の値が利用できます。<br>
                 <code>draft: </code>ドラフト<br>
                 <code>prepared: </code>準備済<br>
@@ -469,14 +446,14 @@
               <p class="d-table-cell p-2 bg-white text-dark border">designedAt</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                CDSが作成された日時です。UNIXタイムスタンプ形式を利用する必要があります。
+                ADLが作成された日時です。UNIXタイムスタンプ形式を利用する必要があります。
               </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">authors</p>
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a
                   href="#s-author">Author object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. CDSの作成者です。
+              <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. ADLドキュメントの作成者です。
                 この情報は外部ツールによって利用される可能性があり、関係者のスキルや経験を証明する重要な情報となります。
               </p>
             </div>
@@ -484,7 +461,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">organizations</p>
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code>, <a
                   href="#s-organization">Organization object</a> ]</p>
-              <p class="d-table-cell p-2 bg-white text-dark border">CDS作成に関与する組織です。
+              <p class="d-table-cell p-2 bg-white text-dark border">ADL作成に関与する組織です。
                 この情報は外部ツールによって利用される可能性があり、組織のスキルや経験を証明する重要な情報となります。
               </p>
             </div>
@@ -532,41 +509,7 @@
 }
 </code></pre>
 
-          <h6>YAML example</h6>
-          <pre><code><span class="token tag">version: </span>1.0.0
-<span class="token tag">license: </span>
-      <span class="token tag">type: </span>CC0
-<span class="token tag">title: </span>
-      <span class="token tag">en: </span>Sample system
-      <span class="token tag">ja: </span>サンプルシステム
-      <span class="token tag">ru: </span>Образец системы
-<span class="token tag">description: </span>
-      <span class="token tag">en: </span>Sample description
-      <span class="token tag">ja: </span>説明サンプル
-      <span class="token tag">ru: </span>Пример описания
-<span class="token tag">status: </span>draft
-<span class="token tag">designedAt: </span>1548731447
-<span class="token tag">authors: </span>
-      <span class="token tag">sampleHandleNameA: </span>
-            <span class="token tag">roles: </span>
-                  <span class="token tag">- </span>designer
-            <span class="token tag">joinedAt: </span>1548730447
-            <span class="token tag">leavedAt: </span>1548731447
-      <span class="token tag">sampleHandleNameB: </span>
-            <span class="token tag">roles: </span>
-                  <span class="token tag">- </span>designer
-                  <span class="token tag">- </span>auditor
-            <span class="token tag">sign: </span>xxxxxxx123
 
-            <span class="token tag">joinedAt: </span>1548730447
-      <span class="token tag">organizations: </span>
-            <span class="token tag">sampleHandleNameA: </span>
-                  <span class="token tag">joinedAt: </span>1548730447
-                  <span class="token tag">leavedAt: </span>1548731447
-                  <span class="token tag">sign: </span>xxxxxxx123
-            <span class="token tag">sampleHandleNameB: </span>
-                  <span class="token tag">joinedAt: </span>1548730447
-</code></pre>
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-actor">
@@ -575,7 +518,7 @@
           </h3>
           <p>
             クラウドにアクセスするユーザーや運用者、外部システムに関する情報を提供するオブジェクトです。
-            CDSを正しく設計、監査するため、包括的に表現されるべきです。
+            ADLドキュメントを正しく設計、監査するため、包括的に表現されるべきです。
           </p>
 
           <hr class="hr-dot my-5">
@@ -680,33 +623,7 @@
 }
 </code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">type: market</span>
-<span class="token tag">title: </span>
-      <span class="token tag">en: </span>Customers 
-      <span class="token tag">ja: </span>顧客
-      <span class="token tag">ru: </span>Клиенты
-<span class="token tag">description: </span>
-      <span class="token tag">en: </span>Users of our products.
-      <span class="token tag">ja: </span>当社製品の利用ユーザー
-      <span class="token tag">ru: </span>Пользователи нашей продукции.
-<span class="token tag">market: </span>
-      <span class="token tag">title: </span>
-            <span class="token tag">en: </span>65 years and over in U.S., July 2018 
-            <span class="token tag">ja: </span>65才以上の人口　米国　2018年7月
-            <span class="token tag">ru: </span>65 лет и старше в США, июль 2018 года
-      <span class="token tag">description: </span>
-            <span class="token tag">en: </span>General population data of U.S. at 2018 by govermental research.
-            <span class="token tag">ja: </span>米国政府による2018年の人口統計
-            <span class="token tag">ru: </span>| 
-                Данные об общей численности населения США на 2018
-                год по данным государственных исследований.
-      <span class="token tag">num: </span>51038120
-      <span class="token tag">estimatedBy: </span>U.S. Census Bureau
-      <span class="token tag">estimatedAt: </span>1530370800
-<span class="token tag">marketShare: </span>0.01
-<span class="token tag">sourceIdentification: </span>false
-</code></pre>
+
 
           <hr class="hr-dot my-5">
           <h3 id="s-actor-persons" class="font-italic">個人タイプのアクターオブジェクト<a class="anchor" href="#s-actor-persons"></a>
@@ -788,21 +705,7 @@
   <span class="token tag">"identificationGroup": </span>"IPsOfOperatorGroupA"
 }</code></pre>
 
-          <h6>YAML example</h6>
-          <pre><code><span class="token tag">type: persons</span>
-<span class="token tag">title: </span>a
-      <span class="token tag">en: </span>Operators 
-      <span class="token tag">ja: </span>運用担当者
-      <span class="token tag">ru: </span>операторы
-<span class="token tag">description: </span>
-      <span class="token tag">en: </span>Operators using management console.
-      <span class="token tag">ja: </span>管理コンソールを利用する運用担当者
-      <span class="token tag">ru: </span>Операторы, использующие консоль управления.
-<span class="token tag">num: </span>7
-<span class="token tag">sourceIdentification: </span>true
-<span class="token tag">identificationGroup: </span>IPsOfOperatorGroupA
 
-</code></pre>
 
           <hr class="hr-dot my-5">
           <h3 id="s-actor-system" class="font-italic">外部システムタイプのアクターオブジェクト<a class="anchor" href="#s-actor-system"></a>
@@ -879,19 +782,7 @@
   <span class="token tag">"identificationGroup": </span>"ipsOfSFA"
 }</code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">type: externalSystem</span>
-<span class="token tag">title: </span>
-      <span class="token tag">en: </span>API of SFA platform
-      <span class="token tag">ja: </span>SFAプラットフォームのAPI
-      <span class="token tag">ru: </span>API платформы SFA
-<span class="token tag">description: </span>
-      <span class="token tag">en: </span>Providing GET and POST interfaces of sales information.
-      <span class="token tag">ja: </span>販売情報のGETおよびPOSTインターフェースを提供する外部システム
-      <span class="token tag">ru: </span>Предоставление GET и POST интерфейсов информации о продажах.
-<span class="token tag">sourceIdentification: </span>true
-<span class="token tag">identificationGroup: </span>ipsOfSFA
-</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-resource">
@@ -900,7 +791,7 @@
           </h3>
           <p>
             このオブジェクトは、利用するクラウドリソースに関する情報を提供します。
-            JSONまたはYAMLでフォーマットされた外部ファイルに対する参照でなければなりません。
+            JSONでフォーマットされた外部ファイルに対する参照でなければなりません。
             そして、以下のようなクラウド自動化ツールのために、整形されたデータであるべきです。
             <br>
           <div class="font-italic">AWS CloudFormation</div>
@@ -936,7 +827,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 プロビジョニングコードで記述されたファイルへの参照で、<a href="#s-ref">Reference object</a>の$refアイテムと同じです。
-                <code>.json</code>, <code>.yaml</code>, または <code>.yml</code>の拡張子を持つ外部ファイルを参照しなければなりません。
+                <code>.json</code>の拡張子を持つ外部ファイルを参照しなければなりません。
                 そしてその拡張子は、外部ツールによってリンク先のファイルフォーマットを検出するために利用されるべきものです。
             </div>
           </div>
@@ -948,10 +839,7 @@
 }
 </code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">type: acf</span>
-<span class="token tag">$ref: </span>xxx.json
-</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-usecase">
@@ -961,7 +849,7 @@
           <p>
             このオブジェクトは、特定の機能を実行する目的でいくつかのアクターとリソースを関連付けることにより、
             システムの利用ケースに関する情報を提供します。
-            それはCDSを正しく設計、監査するために、包括的に記述されるべきです。
+            それはADLドキュメントを正しく設計、監査するために、包括的に記述されるべきです。
           </p>
           <h6>固定フィールド</h6>
           <div class="d-table table-responsive line-break">
@@ -1039,27 +927,7 @@
   <span class="token tag">"maxPerformanceDurationRatio": </span>0.1
 }</code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">title: </span>
-      <span class="token tag">en: </span>Customers view
-      <span class="token tag">ja: </span>カスタマー閲覧
-      <span class="token tag">ru: </span>Просмотр клиента
-<span class="token tag">description: </span>
-      <span class="token tag">en: </span>Custormer's web site view of static contents through internet.
-      <span class="token tag">ja: </span>インターネット経由の静的コンテンツ閲覧
-      <span class="token tag">ru: </span>Просмотр статического содержимого через Интернет
-<span class="token tag">trigger: </span>
-  <span class="token tag">type: </span>webAccess
-  <span class="token tag">...: </span>...
-<span class="token tag">traffics: </span>
-  <span class="token tag">traffic1: </span>
-    <span class="token tag">type: </span>passThroughRatio
-    <span class="token tag">...: </span>...
-  <span class="token tag">traffic2: </span>
-    <span class="token tag">type: </span>passThroughRatio
-    <span class="token tag">...: </span>...
-<span class="token tag">maxPerformanceDurationRatio: </span>0.1
-</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-components">
@@ -1106,7 +974,7 @@
             License object<a class="anchor" href="#s-license"></a>
           </h3>
           <p>
-            CDSのライセンス情報です。
+            ADLドキュメントのライセンス情報です。
           </p>
           <h6>固定フィールド</h6>
           <div class="d-table table-responsive line-break">
@@ -1119,7 +987,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">type</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                CDSのライセンス種別です。以下何れかの値である必要があります。(CC0推奨)<br>
+                ADLのライセンス種別です。以下何れかの値である必要があります。(CC0推奨)<br>
                 <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0</a><br>
                 <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache-2.0</a><br>
                 <a href="https://opensource.org/licenses/mit-license" target="_blank">MIT</a><br>
@@ -1146,12 +1014,7 @@
   <span class="token tag">"provider": </span>"Reindeer technology PTE.LTD."
 }</code></pre>
 
-          <h6>YAML Examples</h6>
-          <pre><span class="badge badge-danger">RECOMMENDED</span>
-<code><span class="token tag">type: </span>CC0</code></pre>
 
-          <pre><code><span class="token tag">type: </span>Closed
-<span class="token tag">provider: </span>Reindeer technology PTE.LTD.</code></pre>
 
 
           <hr class="hr-dot-bold my-7">
@@ -1160,7 +1023,7 @@
             Author object<a class="anchor" href="#s-author"></a>
           </h3>
           <p>
-            このオブジェクトは、CDSの作者とその役割についての情報を提供します。
+            このオブジェクトは、ADLドキュメントの作者とその役割についての情報を提供します。
             対象のシステム、クラウド技術、そして同システムのサービス提供市場について正しい知識を持っている人を
             他の人が見つけるのを助けるため、包括的に記載されるべきです。
           </p>
@@ -1175,11 +1038,11 @@
               <p class="d-table-cell p-2 bg-white text-dark border">roles</p>
               <p class="d-table-cell p-2 bg-white text-dark border">[ <code>string</code> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                CDSに関与した役割を保持します。役割は、以下の何れかの値でなければなりません。
+                ADLドキュメントに関与した役割を保持します。役割は、以下の何れかの値でなければなりません。
                 <br><code>planner</code>: 企画者
                 <br><code>designer</code>: 設計者
-                <br><code>auditor</code>: CDSの監査者
-                <br><code>operator</code>: CDSで設計されたシステムの運用者
+                <br><code>auditor</code>: ADLドキュメントの監査者
+                <br><code>operator</code>: ADLで設計されたシステムの運用者
                 <br><code>others</code>: その他
               </p>
             </div>
@@ -1187,14 +1050,14 @@
               <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                作者が本CDSに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
+                作者が本ADLドキュメントに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
               </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                作者が本CDSの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
+                作者が本ADLドキュメントの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
               </p>
             </div>
             <div class="d-table-row">
@@ -1213,14 +1076,7 @@
 }
 </code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">roles: </span>
-      - <span class="token tag">designer</span>
-      - <span class="token tag">auditor</span>
-<span class="token tag">joinedAt: </span>1548730447
-<span class="token tag">leavedAt: </span>1548731447
-<span class="token tag">sign: </span>ABC123DEF456HIJ789#abc
-</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-organization">
@@ -1228,7 +1084,7 @@
             Organization object<a class="anchor" href="#s-organization"></a>
           </h3>
           <p>
-            このオブジェクトは、CDSの関連組織とその役割についての情報を提供します。
+            このオブジェクトは、ADLドキュメントの関連組織とその役割についての情報を提供します。
             対象のシステム、クラウド技術、そして同システムのサービス提供市場について正しい知識を持っている組織を
             他の人が見つけるのを助けるため、包括的に記載されるべきです。
           </p>
@@ -1243,14 +1099,14 @@
               <p class="d-table-cell p-2 bg-white text-dark border">joinedAt</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                組織が本CDSに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
+                組織が本ADLドキュメントに関与しはじめた日時です。UNIXTIME形式で記載されねばなりません。
               </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">leavedAt</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                組織が本CDSの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
+                組織が本ADLドキュメントの作成、運用から離任した日時です。UNIXTIME形式で記載されねばなりません。
               </p>
             </div>
             <div class="d-table-row">
@@ -1268,11 +1124,7 @@
 }
 </code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">joinedAt: </span>1548730447
-<span class="token tag">leavedAt: </span>1548731447
-<span class="token tag">sign: </span>ABC123DEF456HIJ789#abc
-</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-market">
@@ -1294,7 +1146,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">Map[ <code>string</code>, <code>string</code> ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 マーケットの名称です。
-                会員の特性、興味、推定年などを説明する言葉を含めることにより、このCDS上でユニークであるべきです。
+                会員の特性、興味、推定年などを説明する言葉を含めることにより、このADLドキュメント上でユニークであるべきです。
                 キーは<a href="https://www.iso.org/iso-639-language-codes.html">ISO 639-1</a>の2文字の言語コードでなければなりません。
                 そして値はUTF-8の文字列でなければなりません。
               </p>
@@ -1346,23 +1198,7 @@
 }
 </code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">title: </span>
-      <span class="token tag">en: </span>65 years and over in U.S., July 2018 
-      <span class="token tag">ja: </span>65才以上の人口　米国　2018年7月
-      <span class="token tag">ru: </span>65 лет и старше в США, июль 2018 года
-<span class="token tag">description: </span>
-      <span class="token tag">en: </span>|
-      General population data of U.S. 
-      at 2018 by govermental research.
-      <span class="token tag">ja: </span>米国政府による2018年の人口統計
-      <span class="token tag">ru: </span>|
-      Данные об общей численности населения США 
-      на 2018 год по данным государственных исследований.
-<span class="token tag">population: </span>51038120
-<span class="token tag">estimatedBy: </span>U.S. Census Bureau
-<span class="token tag">estimatedAt: </span>1530370800
-</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-trigger">
@@ -1497,7 +1333,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 <a href="#s-resource">resource object</a>に記載されたリソースへの参照でなければなりません。このトリガーのエンドポイントを示します。プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）のみ有効です。<b
                   style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいユースケースのendとして記述してください。</b>
-                <b style="color:darkred">⚠️ CDS内部参照（<code>#/</code> で始まる形式）はスキーマで弾かれます。必ず <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> 形式で実リソースを参照してください。</b>
+                <b style="color:darkred">⚠️ ADL内部参照（<code>#/</code> で始まる形式）はスキーマで弾かれます。必ず <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> 形式で実リソースを参照してください。</b>
                 例：10GBのリクエストを送信するアクターに対して2台のWebサーバを列記した場合、各サーバが受信するリクエストは5GBとなります。静的コンテンツ用サーバと動的コンテンツ用サーバに9:1の割合でアクセスする設計の場合は両サーバを一つのendに併記せず、静的コンテンツを提供するユースケースと動的コンテンツを提供するユースケースを分けて、それぞれのendに各サーバを記述してください。
             </div>
 
@@ -1564,7 +1400,7 @@
         <span class="token tag">"$ref": </span>"#/actors/customer"
   },
   <span class="token tag">"end": </span>[
-        {<span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/cloudFront"}
+        {<span class="token tag">"$ref": </span>"awsCloudEnvironment.json#/resources/cloudFront"}
   ],
   <span class="token tag">"endpointTitle": </span>{
     <span class="token tag">"en": </span>"LoadBalancer",
@@ -1582,41 +1418,7 @@
   }
 }</code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">type: webAccess</span>
-<span class="token tag">description: </span>{
-      <span class="token tag">en: </span>Static content distribution,
-      <span class="token tag">ja: </span>静的コンテンツの配信,
-      <span class="token tag">ru: </span>Распределение статического контента
-<span class="token tag">infoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoTypes/general
-<span class="token tag">ports: </span>[443]
-<span class="token tag">internet: </span>true
-<span class="token tag">restriction: </span>false
-<span class="token tag">dau: </span>{<code>max:</code> 0.1, <code>min:</code> 0.03}
-<span class="token tag">pagesVisit: </span>{<code>max:</code> 10, <code>min:</code> 10}
-<span class="token tag">kbPage: </span>{<code>max:</code> 1024, <code>min:</code> 1024}
-<span class="token tag">reqPage: </span>{<code>max:</code> 100, <code>min:</code> 100}
-<span class="token tag">busyHours: </span>{<code>max:</code> 3, <code>min:</code> 3}
-<span class="token tag">postRatio: </span>{<code>max:</code> 0.1, <code>min:</code> 0.001}
-<span class="token tag">kbPost: </span>{<code>max:</code> 100, <code>min:</code> 100}
-<span class="token tag">start: </span>
-      <span class="token tag">$ref: </span>#/actors/customer
-<span class="token tag">end: </span>
-      - <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/cloudFront
-<span class="token tag">endpointTitle: </span>
-      <span class="token tag">en: </span>LoadBalancer
-      <span class="token tag">ja: </span>ロードバランサ
-      <span class="token tag">ru: </span>Балансировщик нагрузки
-<span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
-<span class="token tag">storedInfoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoTypes/general
-<span class="token tag">storageDescription: </span>{
-      <span class="token tag">en: </span>Logging for API usage tracing.,
-      <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
-      <span class="token tag">ru: </span>Хранение журнала для статуса использования API
 
-</code></pre>
 
           <hr class="hr-dot my-5">
           <h3 id="s-trigger-timedAction" class="font-italic">時限アクションタイプのトリガーオブジェクト<a class="anchor"
@@ -1720,9 +1522,9 @@
               <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> または <code>#/actors/&lt;key&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 トリガーのエンドポイントを示します。
-                プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）または CDS 内部アクター参照（<code>#/actors/&lt;key&gt;</code>）のみ有効です。<b
+                プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）または ADL 内部アクター参照（<code>#/actors/&lt;key&gt;</code>）のみ有効です。<b
                   style="color:red">複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。リソースごとに通信量の比重が異なる場合、また用途や接続ポートなどが異なるリソースへの接続が必要な場合はここに列記すべきではありません。新しいユースケースのendとして記述してください。</b>
-                <b style="color:darkred">⚠️ CDS内部参照のうち、アクター（<code>#/actors/&lt;key&gt;</code>）以外（traffics・useCases等）はスキーマで弾かれます。</b>
+                <b style="color:darkred">⚠️ ADL内部参照のうち、アクター（<code>#/actors/&lt;key&gt;</code>）以外（traffics・useCases等）はスキーマで弾かれます。</b>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">endpointTitle</p>
@@ -1780,7 +1582,7 @@
   <span class="token tag">"kbRequest": </span>{<code>"max":</code> 0.01, <code>"min":</code> 0.01},
   <span class="token tag">"kbResponse": </span>{<code>"max":</code> 1, <code>"min":</code> 1},
   <span class="token tag">"start": </span>{
-        <span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/jobServer"
+        <span class="token tag">"$ref": </span>"awsCloudEnvironment.json#/resources/jobServer"
   },
   <span class="token tag">"end": </span>[
         {<span class="token tag">"$ref": </span>"##/actors/api"}
@@ -1803,38 +1605,7 @@
 }</code></pre>
 
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">type: timedAction</span>
-<span class="token tag">description: </span>{
-      <span class="token tag">en: </span>Static content distribution,
-      <span class="token tag">ja: </span>静的コンテンツの配信,
-      <span class="token tag">ru: </span>Распределение статического контента
-<span class="token tag">infoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoTypes/general
-<span class="token tag">ports: </span>[443]
-<span class="token tag">internet: </span>false
-<span class="token tag">restriction: </span>false
-<span class="token tag">onlineRps: </span>{<code>max:</code> 3, <code>min:</code> 1}
-<span class="token tag">reqMonth: </span>{<code>max:</code> 9000, <code>min:</code> 5000}
-<span class="token tag">kbRequest: </span>{<code>max:</code> 0.01, <code>min:</code> 0.01}
-<span class="token tag">kbResponse: </span>{<code>max:</code> 1, <code>min:</code> 1}
-<span class="token tag">start: </span>
-      <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/jobServer
-<span class="token tag">end: </span>
-      - <span class="token tag">$ref: </span>#/actors/api
-<span class="token tag">endpointTitle: </span>
-      <span class="token tag">en: </span>LoadBalancer
-      <span class="token tag">ja: </span>ロードバランサ
-      <span class="token tag">ru: </span>Балансировщик нагрузки
-<span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
-<span class="token tag">storedInfoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoTypes/general
-<span class="token tag">storageDescription: </span>{
-      <span class="token tag">en: </span>Logging for API usage tracing.,
-      <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
-      <span class="token tag">ru: </span>Хранение журнала для статуса использования API
- 
-</code></pre>
+
 
 
           <hr class="hr-dot-bold my-7">
@@ -1952,7 +1723,7 @@
               <p class="d-table-cell p-2 bg-white text-dark border">[ <a href="#s-ref">Reference object</a> (<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code> または <code>#/actors/&lt;key&gt;</code>) ]</p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
                 このトラフィックのエンドポイントを意味します。
-                プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）または CDS 内部アクター参照（<code>#/actors/&lt;key&gt;</code>）のみ有効です。
+                プロビジョニングファイル参照（<code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>）または ADL 内部アクター参照（<code>#/actors/&lt;key&gt;</code>）のみ有効です。
                 複数のリソースが指定された場合、startからの通信量は各リソースに均等に分割されるものと判断されます。
                 これはオートスケールグループのEC2インスタンス群などの同種リソース群のほか、
                 DBインスタンスとそのパラメータグループのように一体としてプロビジョニングする必要がある密結合リソース群にも適用されます。
@@ -2036,7 +1807,7 @@
   <span class="token tag">"restriction": </span>false,
   <span class="token tag">"source": </span>{<span class="token tag">"$ref": </span>"#/useCases/customerWebAccess/trigger"},
   <span class="token tag">"end": </span>[
-        {<span class="token tag">"$ref": </span>"awsCloudEnvironment.yaml#/resources/s3"}
+        {<span class="token tag">"$ref": </span>"awsCloudEnvironment.json#/resources/s3"}
   ],
   <span class="token tag">"passThroughReqRatio": </span>{<code>"max":</code> 1, <code>"min":</code> 0.1},
   <span class="token tag">"compositResRatio": </span>{<code>"max":</code> 0.5, <code>"min":</code> 0.5},
@@ -2057,36 +1828,7 @@
 }</code></pre>
 
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">type: passThroughRatio</span>
-<span class="token tag">description: </span>{
-      <span class="token tag">en: </span>Static content distribution,
-      <span class="token tag">ja: </span>静的コンテンツの配信,
-      <span class="token tag">ru: </span>Распределение статического контента
-<span class="token tag">infoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoTypes/general
-<span class="token tag">ports: </span>[80]
-<span class="token tag">internet: </span>false
-<span class="token tag">restriction: </span>false
-<span class="token tag">source: </span>
-      <span class="token tag">$ref: </span>#/useCases/customerWebAccess/trigger
-<span class="token tag">end: </span>
-    - <span class="token tag">$ref: </span>awsCloudEnvironment.yaml#/resources/s3
-<span class="token tag">passThroughReqRatio: </span>{<code>max:</code> 1, <code>min:</code> 0.1}
-<span class="token tag">compositResRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.5}
-<span class="token tag">endpointTitle: </span>
-      <span class="token tag">en: </span>LoadBalancer
-      <span class="token tag">ja: </span>ロードバランサ
-      <span class="token tag">ru: </span>Балансировщик нагрузки
-<span class="token tag">storedRatio: </span>{<code>max:</code> 0.5, <code>min:</code> 0.3}
-<span class="token tag">storedInfoType: </span>
-      <span class="token tag">$ref: </span>#/components/infoTypes/general
-<span class="token tag">storageDescription: </span>{
-      <span class="token tag">en: </span>Logging for API usage tracing.,
-      <span class="token tag">ja: </span>API利用状況把握のためのログ保管,
-      <span class="token tag">ru: </span>Хранение журнала для статуса использования API
-  
-</code></pre>
+
 
 
           <hr class="hr-dot-bold my-7">
@@ -2168,20 +1910,7 @@
 }</code></pre>
 
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">title: </span>
-      <span class="token tag">en: </span>confidential level 
-      <span class="token tag">ja: </span>個人情報取り扱いレベル
-      <span class="token tag">ru: </span>Чувствительный уровень
-<span class="token tag">description: </span>
-      <span class="token tag">en: </span>Contains privacy information.
-      <span class="token tag">ja: </span>個人情報を含む
-      <span class="token tag">ru: </span>Содержит конфиденциальную личную информацию.
-<span class="token tag">confidential: </span>true
-<span class="token tag">privacy: </span>true
-<span class="token tag">definedBy: </span>ABC company
-<span class="token tag">definedAt: </span>1530370800
-</code></pre>
+
 
 
           <!--
@@ -2204,7 +1933,7 @@
             Range values object<a class="anchor" href="#s-rangeValue"></a>
           </h3>
           <p>
-            CDSの様々なフィールドで利用される、値範囲を示すオブジェクトです。
+            ADLの様々なフィールドで利用される、値範囲を示すオブジェクトです。
           </p>
           <h6>固定フィールド</h6>
           <div class="d-table table-responsive line-break">
@@ -2233,10 +1962,7 @@
 }
 </code></pre>
 
-          <h6>YAML Example</h6>
-          <pre><code><span class="token tag">max: </span>1.0
-<span class="token tag">min: </span>0.01
-</code></pre>
+
 
           <hr class="hr-dot-bold my-7">
           <h3 id="s-meta">
@@ -2244,11 +1970,11 @@
             由来メタデータオブジェクト (<code>_meta</code>)<a class="anchor" href="#s-meta"></a>
           </h3>
           <p>
-            CDS ノード（<a href="#s-actor">actor</a>、<a href="#s-resource">resource</a>、
+            ADL ノード（<a href="#s-actor">actor</a>、<a href="#s-resource">resource</a>、
             <a href="#s-traffic">traffic</a>、<a href="#s-trigger">trigger</a>）の作成者と確信度を
             記録する OPTIONAL なオブジェクトです。
             省略時は AI が確信度 1.0 で作成したとみなされます。
-            Conccent の学習ループにおいて、AI 推論と人間の手修正を区別するために使用されます。
+            ツールにおいて、AI 推論と人間の手修正を区別するために使用されます。
           </p>
           <h6>固定フィールド</h6>
           <div class="d-table table-responsive line-break">
@@ -2308,7 +2034,7 @@
             Reference object<a class="anchor" href="#s-ref"></a>
           </h3>
           <p>
-            CDSの様々なフィールドからCDSやクラウドオートメーションツール用ファイル内のjson/yamlオブジェクトを
+            ADLの様々なフィールドからADLやクラウドオートメーションツール用ファイル内のjsonオブジェクトを
             参照する際に利用する参照先指定オブジェクトです。参照オブジェクトはJSON参照によって定義されており、
             同じ構造、動作、および規則に従います。 この仕様では、参照の解決はJSONスキーマ仕様ではなく
             JSON参照仕様で定義されているとおりに行われます。
@@ -2325,10 +2051,10 @@
               <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>. 参照文字列。次の 2 形式:
                 <ul>
-                  <li><b>CDS 内部参照</b>: <code>#/</code> で始まり CDS root からのパス (例 <code>#/actors/customer</code>、<code>#/components/infoTypes/pii</code>)</li>
-                  <li><b>provisioning リソース参照</b>: <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>。<code>&lt;file&gt;</code> は CDS <code>resources[]</code> で宣言したファイル名 (拡張子付き)、<code>&lt;section&gt;</code> は <code>resources</code> (CFn / Terraform / GDM / CIM / ARM / ROS) または <code>functions</code> (Serverless Framework Lambda)、<code>&lt;RealKey&gt;</code> は provisioning ファイル内の実キー (大小文字区別あり)</li>
+                  <li><b>ADL 内部参照</b>: <code>#/</code> で始まり ADL root からのパス (例 <code>#/actors/customer</code>、<code>#/components/infoTypes/pii</code>)</li>
+                  <li><b>provisioning リソース参照</b>: <code>&lt;file&gt;#/&lt;section&gt;/&lt;RealKey&gt;</code>。<code>&lt;file&gt;</code> は ADL <code>resources[]</code> で宣言したファイル名 (拡張子付き)、<code>&lt;section&gt;</code> は <code>resources</code> (CFn / Terraform / GDM / CIM / ARM / ROS) または <code>functions</code> (Serverless Framework Lambda)、<code>&lt;RealKey&gt;</code> は provisioning ファイル内の実キー (大小文字区別あり)</li>
                 </ul>
-                CDS 間のクロスファイル参照 (旧「CDSスニペット」形式、例 <code>other.json#/actors/x</code>) はサポートされません。
+                ADL 間のクロスファイル参照 (旧「ADLスニペット」形式、例 <code>other.json#/actors/x</code>) はサポートされません。
               </p>
             </div>
           </div>
@@ -2342,16 +2068,12 @@
   <span class="token tag">"$ref": </span>"awsTemplate.json#/resources/ApplicationLoadBalancer"
 }</code></pre>
 
-          <h6>YAML Example (infoType への参照)</h6>
-          <pre><code><span class="token tag">$ref: </span>#/components/infoTypes/classA
-</code></pre>
 
-          <h6>YAML Example (プロビジョニングリソースへの参照)</h6>
-          <pre><code><span class="token tag">$ref: </span>awsTemplate.yaml#/resources/ApplicationLoadBalancer
-</code></pre>
+
+
 
           <h6>フィールド別の有効な $ref 形式</h6>
-          <p>CDS 内で <code>$ref</code> を使用できるフィールドと、それぞれで有効な参照形式を以下に示します。記載外の形式（例: <code>$ref</code> を使った actor・useCase・market・trigger・traffic エントリそのもの）はスキーマで弾かれます。</p>
+          <p>ADL 内で <code>$ref</code> を使用できるフィールドと、それぞれで有効な参照形式を以下に示します。記載外の形式（例: <code>$ref</code> を使った actor・useCase・market・trigger・traffic エントリそのもの）はスキーマで弾かれます。</p>
           <div class="d-table table-responsive line-break">
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-primary text-white border">フィールド</p>
@@ -2397,7 +2119,7 @@
           <hr class="hr-dot-bold my-7">
           <h3 id="resourcearticles">参考資料<a class="anchor" href="#resourcearticles"></a></h3>
           <p>
-            Cloud Design仕様は<a href="https://reindeer.tech/ja/index.html" target="_blank"> Reindeer Project</a>の
+            ADLは<a href="https://reindeer.tech/ja/index.html" target="_blank"> Reindeer Project</a>の
             一環として生まれました。
             <br>Reindeer Projectはクラウド活用の支援を通じて、すべての人々につくる力を届けたいと願っています。
             <br>誰もが自分の力でサービスを創造できる社会は、表現の自由と生活様式や価値観の多様性をもたらすだけではありません。それはまた、すべての人々に対する富の再分配を促進し、世界中の人々の平均的な富と幸福を改善すると信じています。
@@ -2427,6 +2149,13 @@
               <p class="d-table-cell p-2 bg-primary text-white border">バージョン</p>
               <p class="d-table-cell p-2 bg-primary text-white border">リリース日</p>
               <p class="d-table-cell p-2 bg-primary text-white border">備考</p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">1.3.2（リブランディング）</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                （リブランディング）Cloud Design Specification（CDS）を ADL（アーキテクチャ記述言語）に改称。中核概念「Context」を「UseCase」に改称。
+              </p>
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">1.0.0</p>
