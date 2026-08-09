@@ -1,0 +1,31 @@
+version: 0.2
+
+# ADL 言語仕様サイト（docs.reindeer.tech）のデプロイ。
+# 環境変数 TARGET_BUCKET / CF_DIST_ID は CodeBuild から注入される。
+#
+# 配信対象＝**このリポジトリの全ファイル**。中身はすべて公開リポジトリに既にあるもので、
+# HTTP で配っても新たに晒すものは無い（README.md も GitHub の raw で公開済み）。
+#
+# 🚨 ただし .git は必ず除外する。中身が同じでも、.git を HTTP で配ると
+#    リポジトリ全体をディレクトリ走査で引き抜ける状態になる。
+#
+# キャッシュ方針（他の静的サイトと同じ）:
+#  - HTML = no-cache, must-revalidate … CloudFront invalidation 後に即時反映（stale 回避）
+#  - それ以外 = 長期キャッシュ（max-age=1週間）
+#  - CloudFront のキャッシュ削除（invalidation /*）はデプロイ毎に必須
+#
+# ⚠️ スキーマ JSON は「長期キャッシュ側」に入る。仕様を直したのに 1 週間古いものを
+#    掴まれることが無いよう、invalidation は必ず最後まで走らせること。
+phases:
+  build:
+    commands:
+      - echo "Deploying ADL spec to s3://${TARGET_BUCKET}"
+      # HTML: no-cache
+      - aws s3 sync --delete . "s3://${TARGET_BUCKET}/" --exclude "*" --include "*.html" --cache-control "no-cache, must-revalidate"
+      # それ以外: 長期キャッシュ。.git と buildspec 自身は配らない。
+      - aws s3 sync --delete . "s3://${TARGET_BUCKET}/" --exclude "*.html" --exclude ".git/*" --exclude "buildspec.yml" --cache-control "public, max-age=604800"
+      # 念のため: .git が万一入っていたら消す（--delete は exclude したものを消さないため）
+      - aws s3 rm "s3://${TARGET_BUCKET}/.git" --recursive || true
+      # CloudFront キャッシュ削除（必須）
+      - aws cloudfront create-invalidation --distribution-id "${CF_DIST_ID}" --paths '/*'
+      - echo "Done."
