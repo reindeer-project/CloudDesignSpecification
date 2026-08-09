@@ -8,7 +8,7 @@
       ],
       "schema": {
         "title": "ADL Object",
-        "description": "This is the root object of the CDD. https://docs.reindeer.tech/index.html#s-clouddesign",
+        "description": "This is the root object of the ADL. https://docs.reindeer.tech/index.html#s-clouddesign",
         "type": "object",
         "required": [
           "reindeer",
@@ -27,7 +27,7 @@
           },
           "self": {
             "title": "File name",
-            "description": "REQUIRED. This string is the filename of the CDD. It MUST be with the extension, .json, .yaml, or .yml. The self field SHOULD be used by tools for interpreting the CDD. https://docs.reindeer.tech/index.html#s-clouddesign",
+            "description": "REQUIRED. This string is the filename of the ADL. It MUST be with the extension, .json, .yaml, or .yml. The self field SHOULD be used by tools for interpreting the ADL. https://docs.reindeer.tech/index.html#s-clouddesign",
             "type": "string",
             "default": "adl.json",
             "pattern": "^[a-zA-Z0-9_.\\-]+\\.(yaml|yml|json)$"
@@ -85,7 +85,7 @@
           },
           "components": {
             "title": "Component objects",
-            "description": "Holds a set of reusable objects for different aspects of the CDD. All objects defined within the components object will have no effect on the ADL document unless they are explicitly referenced from properties outside the components object. https://docs.reindeer.tech/index.html#s-components",
+            "description": "Holds a set of reusable objects for different aspects of the ADL. All objects defined within the components object will have no effect on the ADL document unless they are explicitly referenced from properties outside the components object. https://docs.reindeer.tech/index.html#s-components",
             "type": "object",
             "properties": {
               "infoTypes": {
@@ -111,7 +111,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/info.json",
       "schema": {
         "title": "Info object",
-        "description": "The object provides metadata about the CDD. The metadata SHOULD be filled properly for helping others easy to search and find the CDD. https://docs.reindeer.tech/index.html#s-info",
+        "description": "The object provides metadata about the ADL. The metadata SHOULD be filled properly for helping others easy to search and find the ADL. https://docs.reindeer.tech/index.html#s-info",
         "type": "object",
         "required": [
           "version",
@@ -124,14 +124,14 @@
         ],
         "properties": {
           "version": {
-            "title": "CDD's version number",
-            "description": "REQUIRED. The version of the CDD defined by your willing (which is distinct from the CDS version). https://docs.reindeer.tech/index.html#s-info",
+            "title": "ADL's version number",
+            "description": "REQUIRED. The version of this ADL document, defined by you (distinct from the version of the ADL specification itself). https://docs.reindeer.tech/index.html#s-info",
             "default": "1.0.0",
             "type": "string"
           },
           "license": {
-            "title": "License of this CDD",
-            "description": "REQUIRED. The license information of the CDD. https://docs.reindeer.tech/index.html#s-license",
+            "title": "License of this ADL",
+            "description": "REQUIRED. The license information of the ADL. https://docs.reindeer.tech/index.html#s-license",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/license.json"
           },
@@ -148,8 +148,8 @@
             "$ref": "https://reindeer.tech/adl-schema/v1/description.json"
           },
           "status": {
-            "title": "The status of the CDD",
-            "description": "REQUIRED. The status of the CDD. Valid values are draft, requirement-defined, design-completed and design-reviewd.\ndraft: Requirement unregistered or under definition.\nprepared: State where requirements are defined.\ndesigned: Design codes created based on requirements.\nreviewed: Completed design review and modification.\n https://docs.reindeer.tech/index.html#s-info",
+            "title": "The status of the ADL",
+            "description": "REQUIRED. The status of the ADL. Valid values are draft, requirement-defined, design-completed and design-reviewd.\ndraft: Requirement unregistered or under definition.\nprepared: State where requirements are defined.\ndesigned: Design codes created based on requirements.\nreviewed: Completed design review and modification.\n https://docs.reindeer.tech/index.html#s-info",
             "type": "string",
             "enum": [
               "draft",
@@ -160,13 +160,13 @@
           },
           "designedAt": {
             "title": "Designed time",
-            "description": "REQUIRED. The time when the CDD was designed at. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-info",
+            "description": "REQUIRED. The time when the ADL was designed at. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-info",
             "type": "integer",
             "minimum": 1
           },
           "authors": {
             "title": "Authors",
-            "description": "REQUIRED. The authors of the CDD. This information MAY be used by external tools as the important evidence of involved person's skill and experience. https://docs.reindeer.tech/index.html#s-author",
+            "description": "REQUIRED. The authors of the ADL. This information MAY be used by external tools as the important evidence of involved person's skill and experience. https://docs.reindeer.tech/index.html#s-author",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -178,7 +178,7 @@
           },
           "organizations": {
             "title": "Organizations",
-            "description": "Related organizations of the CDD. This information MAY be used by external tools as the important evidence of involved organization's skill and experience. https://docs.reindeer.tech/index.html#s-organization",
+            "description": "Related organizations of the ADL. This information MAY be used by external tools as the important evidence of involved organization's skill and experience. https://docs.reindeer.tech/index.html#s-organization",
             "type": "object",
             "patternProperties": {
               "^[0-9a-zA-Z]+$": {
@@ -253,7 +253,7 @@
           },
           "_meta": {
             "title": "Provenance metadata",
-            "description": "OPTIONAL. Authorship and confidence metadata for Conccent's learning loop. Absent implies AI-defined with full confidence.",
+            "description": "OPTIONAL. Authorship and confidence metadata. Absent implies AI-defined with full confidence.",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/meta.json"
           }
@@ -325,7 +325,7 @@
           },
           "_meta": {
             "title": "Provenance metadata",
-            "description": "OPTIONAL. Authorship and confidence metadata for Conccent's learning loop. Absent implies AI-defined with full confidence.",
+            "description": "OPTIONAL. Authorship and confidence metadata. Absent implies AI-defined with full confidence.",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/meta.json"
           }
@@ -390,7 +390,7 @@
           },
           "_meta": {
             "title": "Provenance metadata",
-            "description": "OPTIONAL. Authorship and confidence metadata for Conccent's learning loop. Absent implies AI-defined with full confidence.",
+            "description": "OPTIONAL. Authorship and confidence metadata. Absent implies AI-defined with full confidence.",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/meta.json"
           }
@@ -443,7 +443,7 @@
           },
           "_meta": {
             "title": "Provenance metadata",
-            "description": "OPTIONAL. Authorship and confidence metadata for Conccent's learning loop. Absent implies AI-defined with full confidence.",
+            "description": "OPTIONAL. Authorship and confidence metadata. Absent implies AI-defined with full confidence.",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/meta.json"
           }
@@ -455,7 +455,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/usecase.json",
       "schema": {
         "title": "UseCase object",
-        "description": "The object provides information about the use case of the system by associating some actors and resources by the purpose of running the specific function. It SHOULD be comprehensive for designing and auditing the CDD correctly. https://docs.reindeer.tech/index.html#s-usecase",
+        "description": "The object provides information about the use case of the system by associating some actors and resources by the purpose of running the specific function. It SHOULD be comprehensive for designing and auditing the ADL correctly. https://docs.reindeer.tech/index.html#s-usecase",
         "type": "object",
         "required": [
           "title",
@@ -525,7 +525,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/license.json",
       "schema": {
         "title": "License object",
-        "description": "License information for the CDD. https://docs.reindeer.tech/index.html#s-license",
+        "description": "License information for the ADL. https://docs.reindeer.tech/index.html#s-license",
         "type": "object",
         "required": [
           "type"
@@ -547,8 +547,8 @@
         },
         "properties": {
           "type": {
-            "title": "The license type of the CDD",
-            "description": "REQUIRED. This is the CDD license type. MUST be one of the following values: (CC0 recommended): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed https://docs.reindeer.tech/index.html#s-license",
+            "title": "The license type of the ADL",
+            "description": "REQUIRED. This is the ADL license type. MUST be one of the following values: (CC0 recommended): CC0 Apache-2.0 MIT BSD-2-Clause OtherOpen Closed https://docs.reindeer.tech/index.html#s-license",
             "type": "string",
             "default": "CC0",
             "enum": [
@@ -573,7 +573,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/author.json",
       "schema": {
         "title": "Author object",
-        "description": "The object provides information about authors and their roles on the CDD. It SHOULD be comprehensive for helping others find the person who has correct knowledge about the system, the cloud computing technology, and the market the system is serving. https://docs.reindeer.tech/index.html#s-author",
+        "description": "The object provides information about authors and their roles on the ADL. It SHOULD be comprehensive for helping others find the person who has correct knowledge about the system, the cloud computing technology, and the market the system is serving. https://docs.reindeer.tech/index.html#s-author",
         "type": "object",
         "required": [
           "roles",
@@ -582,7 +582,7 @@
         "properties": {
           "roles": {
             "title": "Roles of author",
-            "description": "REQUIRED. Holds a set of roles related to the CDD. Each role MUST be one of below strings. \nplanner: Planing the cloud computing adoption. \ndesigner: Design the cloud computing architecture. \nauditor: Audit the CDD. \noperator: Operating the system designed by CDD. \nothers: Other role. https://docs.reindeer.tech/index.html#s-author",
+            "description": "REQUIRED. Holds a set of roles related to the ADL. Each role MUST be one of below strings. \nplanner: Planing the cloud computing adoption. \ndesigner: Design the cloud computing architecture. \nauditor: Audit the ADL. \noperator: Operating the system designed by ADL. \nothers: Other role. https://docs.reindeer.tech/index.html#s-author",
             "type": "array",
             "items": {
               "type": "string",
@@ -597,13 +597,13 @@
           },
           "joinedAt": {
             "title": "Joined time",
-            "description": "REQUIRED. The time when the author was joined at this CDD creation / operation. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-author",
+            "description": "REQUIRED. The time when the author was joined at this ADL creation / operation. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-author",
             "type": "integer",
             "minimum": 1
           },
           "leavedAt": {
             "title": "Leaved time",
-            "description": "REQUIRED. The time when the author was leaved at this CDD creation / operation. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-author",
+            "description": "REQUIRED. The time when the author was leaved at this ADL creation / operation. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-author",
             "type": "integer",
             "minimum": 1
           },
@@ -621,7 +621,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/organization.json",
       "schema": {
         "title": "Organization object",
-        "description": "The object provides information about organizations related to the CDD. It SHOULD be comprehensive for helping others find the organization who has correct knowledge about the system, the cloud computing technology, and the market the system is serving. https://docs.reindeer.tech/index.html#s-organization",
+        "description": "The object provides information about organizations related to the ADL. It SHOULD be comprehensive for helping others find the organization who has correct knowledge about the system, the cloud computing technology, and the market the system is serving. https://docs.reindeer.tech/index.html#s-organization",
         "type": "object",
         "required": [
           "joinedAt"
@@ -629,13 +629,13 @@
         "properties": {
           "joinedAt": {
             "title": "Joined time",
-            "description": "REQUIRED. The time when the organization was joined at this CDD creation / operation. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-organization",
+            "description": "REQUIRED. The time when the organization was joined at this ADL creation / operation. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-organization",
             "type": "integer",
             "minimum": 1
           },
           "leavedAt": {
             "title": "Leaved time",
-            "description": "REQUIRED. The time when the organization was leaved at this CDD creation / operation. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-organization",
+            "description": "REQUIRED. The time when the organization was leaved at this ADL creation / operation. It MUST be the UNIXTIME format. https://docs.reindeer.tech/index.html#s-organization",
             "type": "integer",
             "minimum": 1
           },
@@ -665,7 +665,7 @@
         "properties": {
           "title": {
             "title": "Title of the market",
-            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 70 letters string of UTF-8. The content SHOULD be unique on this CDD by including the words describing a member's properties, interest, estimated year and so on. https://docs.reindeer.tech/index.html#s-market",
+            "description": "REQUIRED. The key MUST be 2 letter language code of ISO 639-1. And the value MUST be within 70 letters string of UTF-8. The content SHOULD be unique on this ADL by including the words describing a member's properties, interest, estimated year and so on. https://docs.reindeer.tech/index.html#s-market",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/title.json"
           },
@@ -786,7 +786,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/refToActor.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for ADL or Cloud Automation Tools from various fields of ADL. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
         "type": "object",
         "required": [
           "$ref"
@@ -805,7 +805,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/refToResources.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for ADL or Cloud Automation Tools from various fields of ADL. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
         "type": "object",
         "required": [
           "$ref"
@@ -824,7 +824,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/refToTrigger.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for ADL or Cloud Automation Tools from various fields of ADL. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
         "type": "object",
         "required": [
           "$ref"
@@ -843,7 +843,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/refToTraffic.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for ADL or Cloud Automation Tools from various fields of ADL. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
         "type": "object",
         "required": [
           "$ref"
@@ -862,7 +862,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/refToInfoType.json",
       "schema": {
         "title": "Reference",
-        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for CDD or Cloud Automation Tools from various fields of CDD. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
+        "description": "This is a reference specification object used when referencing JSON/YAML objects in files for ADL or Cloud Automation Tools from various fields of ADL. Reference objects are defined by JSON references and follow the same structure, behavior, and rules. In this specification, reference resolution is done as defined in the JSON Reference Specification, not the JSON Schema Specification. https://docs.reindeer.tech/index.html#s-ref",
         "type": "object",
         "required": [
           "$ref"
@@ -1014,7 +1014,7 @@
           },
           "_meta": {
             "title": "Provenance metadata",
-            "description": "OPTIONAL. Authorship and confidence metadata for Conccent's learning loop. Absent implies AI-defined with full confidence.",
+            "description": "OPTIONAL. Authorship and confidence metadata. Absent implies AI-defined with full confidence.",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/meta.json"
           },
@@ -1157,7 +1157,7 @@
           },
           "_meta": {
             "title": "Provenance metadata",
-            "description": "OPTIONAL. Authorship and confidence metadata for Conccent's learning loop. Absent implies AI-defined with full confidence.",
+            "description": "OPTIONAL. Authorship and confidence metadata. Absent implies AI-defined with full confidence.",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/meta.json"
           },
@@ -1289,7 +1289,7 @@
           },
           "_meta": {
             "title": "Provenance metadata",
-            "description": "OPTIONAL. Authorship and confidence metadata for Conccent's learning loop. Absent implies AI-defined with full confidence.",
+            "description": "OPTIONAL. Authorship and confidence metadata. Absent implies AI-defined with full confidence.",
             "type": "object",
             "$ref": "https://reindeer.tech/adl-schema/v1/meta.json"
           },
@@ -1301,7 +1301,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/rangeValue.json",
       "schema": {
         "title": "Range values object",
-        "description": "An object representing the range values used at fields on CDD. https://docs.reindeer.tech/index.html#s-rangeValue",
+        "description": "An object representing the range values used at fields on ADL. https://docs.reindeer.tech/index.html#s-rangeValue",
         "type": "object",
         "required": [
           "max",
@@ -1327,7 +1327,7 @@
       "uri": "https://reindeer.tech/adl-schema/v1/meta.json",
       "schema": {
         "title": "Provenance metadata object",
-        "description": "An optional object tracking the authorship and confidence of a CDS node (actor, resource, traffic, trigger). Absence implies AI-defined with full confidence. Used by Conccent's learning loop to distinguish AI inference from human curation.",
+        "description": "An optional object tracking the authorship and confidence of a ADL node (actor, resource, traffic, trigger). Absence implies AI-defined with full confidence. Distinguishes AI inference from human curation.",
         "type": "object",
         "properties": {
           "d": {
