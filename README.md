@@ -19,7 +19,7 @@ grounding for questions like *"if I change this database, who is affected?"*
 | Path | Contents |
 |------|----------|
 | `ja/`, `en/` | The canonical JSON Schema for ADL, in Japanese and English |
-| `index.html`, `index_ja.html` | The specification, rendered for reading |
+| `index.html`, `index_ja.html` | The specification, rendered for reading — published at [docs.reindeer.tech](https://docs.reindeer.tech/) ([日本語](https://docs.reindeer.tech/index_ja.html)) |
 | `resources/` | Stylesheets and scripts used by the rendered specification |
 | `LICENSE` | Apache License, Version 2.0 |
 
