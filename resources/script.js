@@ -25,7 +25,9 @@ $(function() {
     |
     */
 
-    googleAnalyticsId: 'UA-73325209-2',
+    // 計測は index.html / index_ja.html の gtag が担う。ここは空にする
+    // （page.min.js 側が真偽値ガードなので、空文字で初期化ごと止まる）。
+    googleAnalyticsId: '',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,14 +58,6 @@ $(function() {
   |
   */
 
-  $('.navbar .btn-success').on('click', function() {
-    ga('send', 'event', {
-      eventCategory: 'Button',
-      eventAction: 'Click',
-      eventLabel: 'Buy',
-      transport: 'beacon'
-    });
-  });
 
 
 });
