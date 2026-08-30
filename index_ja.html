@@ -396,9 +396,10 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">version</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>必須</strong>.
-                あなたの設計のバージョンです。（<a href="#versions">the ADL version</a>とは異なります）
+                この ADL 文書の改訂番号です。1 から始まる整数で、文書を管理するアプリケーションの版管理機構が採番します（保存のたびに 1 ずつ増えます）。
+                著者が手で決める欄ではありません。（<a href="#versions">the ADL version</a>とは異なります）
               </p>
             </div>
             <div class="d-table-row">
@@ -463,7 +464,7 @@
           </div>
           <h6>JSON example</h6>
           <pre><code>{
-  <span class="token tag">"version": </span>"1.0.0",
+  <span class="token tag">"version": </span>1,
   <span class="token tag">"license": </span>{
       <span class="token tag">"type": </span>"CC0"
   },
@@ -2258,6 +2259,16 @@
               <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
                 （リブランディング）Cloud Design Specification（CDS）を ADL（アーキテクチャ記述言語）に改称。
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">2.0.1</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-08-30</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                <code>info.version</code> の型定義を <code>string</code> から <code>integer</code>（1 以上）に修正。
+                あわせて、この欄を「著者が決めるバージョン」から「文書を管理するアプリケーションの版管理機構が採番する改訂番号」に定義し直しました。
+                ADL 文書は複数の担い手が保存を重ねて育てるため、改訂の採番は文書を管理するツールが担うほうが実態に合います。
+                著者が意味づけするバージョンを別に持ちたい場合は、<code>info</code> の他のフィールドで表現してください。
               </p>
             </div>
           </div>

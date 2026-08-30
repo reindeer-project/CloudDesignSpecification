@@ -434,9 +434,11 @@
             </div>
             <div class="d-table-row">
               <p class="d-table-cell p-2 bg-white text-dark border">version</p>
-              <p class="d-table-cell p-2 bg-white text-dark border"><code>string</code></p>
+              <p class="d-table-cell p-2 bg-white text-dark border"><code>integer</code></p>
               <p class="d-table-cell p-2 bg-white text-dark border"><strong>REQUIRED</strong>.
-                The version of your design (which is distinct from <a href="#versions">the ADL version</a>).
+                The revision number of this ADL document. An integer starting at 1, assigned by the version-management
+                mechanism of the application that manages the document (incremented by 1 on each save). It is not a field
+                the author sets by hand. (This is distinct from <a href="#versions">the ADL version</a>.)
               </p>
             </div>
             <div class="d-table-row">
@@ -506,7 +508,7 @@
           </div>
           <h6>JSON example</h6>
           <pre><code>{
-  <span class="token tag">"version": </span>"1.0.0",
+  <span class="token tag">"version": </span>1,
   <span class="token tag">"license": </span>{
       <span class="token tag">"type": </span>"CC0"
   },
@@ -2367,6 +2369,18 @@
               <p class="d-table-cell p-2 bg-white text-dark border">2026-06-16</p>
               <p class="d-table-cell p-2 bg-white text-dark border">
                 (Rebranding) Renamed Cloud Design Specification (CDS) to ADL (Architecture Description Language).
+              </p>
+            </div>
+            <div class="d-table-row">
+              <p class="d-table-cell p-2 bg-white text-dark border">2.0.1</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">2026-08-30</p>
+              <p class="d-table-cell p-2 bg-white text-dark border">
+                Corrected the type of <code>info.version</code> from <code>string</code> to <code>integer</code> (minimum 1),
+                and redefined the field from "a version the author decides" to "a revision number assigned by the
+                version-management mechanism of the application that manages the document".
+                An ADL document is grown by repeated saves, often by more than one hand, so numbering the revisions
+                belongs to the tool that manages the document. If you want a version that carries authorial meaning,
+                express it in another field of <code>info</code>.
               </p>
             </div>
           </div>

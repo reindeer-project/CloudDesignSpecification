@@ -124,10 +124,11 @@
         ],
         "properties": {
           "version": {
-            "title": "ADLのバージョン",
-            "description": "必須. あなたの意思で定義される、この ADL 文書のバージョンです。（ADL 仕様そのもののバージョンとは異なります） https://docs.reindeer.tech/index_ja.html#s-info",
-            "default": "1.0.0",
-            "type": "string"
+            "title": "ADL文書の改訂番号",
+            "description": "必須. この ADL 文書の改訂番号です。1 から始まる整数で、文書を管理するアプリケーションの版管理機構が採番します（保存のたびに 1 ずつ増えます）。著者が手で決める欄ではありません。ADL 仕様そのもののバージョン（reindeer フィールド）とは異なります。 https://docs.reindeer.tech/index_ja.html#s-info",
+            "default": 1,
+            "type": "integer",
+            "minimum": 1
           },
           "license": {
             "title": "ADLのライセンス",

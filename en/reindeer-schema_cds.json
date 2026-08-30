@@ -124,10 +124,11 @@
         ],
         "properties": {
           "version": {
-            "title": "ADL's version number",
-            "description": "REQUIRED. The version of this ADL document, defined by you (distinct from the version of the ADL specification itself). https://docs.reindeer.tech/index.html#s-info",
-            "default": "1.0.0",
-            "type": "string"
+            "title": "ADL document revision number",
+            "description": "REQUIRED. The revision number of this ADL document. An integer starting at 1, assigned by the version-management mechanism of the application that manages the document (incremented by 1 on each save). It is not a field the author sets by hand. This is distinct from the version of the ADL specification itself (the reindeer field). https://docs.reindeer.tech/index.html#s-info",
+            "default": 1,
+            "type": "integer",
+            "minimum": 1
           },
           "license": {
             "title": "License of this ADL",
