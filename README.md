@@ -1,5 +1,7 @@
 # ADL — Architecture Description Language
 
+Maintained by Reindeer Technology Pte. Ltd. Licensed under the Apache License, Version 2.0.
+
 ADL is an open, provider-agnostic format for describing a software system's
 architecture as data.
 
@@ -34,4 +36,5 @@ or tool.
 
 ## Licensing
 
+Copyright 2019-2026 Reindeer Technology Pte. Ltd.
 Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
